@@ -34,6 +34,12 @@
 		232CC07327A036FC00040131 /* StoryboardRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC07227A036FC00040131 /* StoryboardRepresentation.swift */; };
 		232CC07527A0370D00040131 /* TypeOfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC07427A0370D00040131 /* TypeOfViewController.swift */; };
 		232CC07727A0372300040131 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC07627A0372300040131 /* ViewControllerFactory.swift */; };
+		232CC08727A038FB00040131 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC08627A038FB00040131 /* UIColor+.swift */; };
+		232CC08927A0390B00040131 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC08827A0390B00040131 /* UIFont+.swift */; };
+		232CC08B27A0391F00040131 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC08A27A0391F00040131 /* Notification+.swift */; };
+		232CC09527A039B700040131 /* SFPRODISPLAYBOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 232CC08C27A039B700040131 /* SFPRODISPLAYBOLD.OTF */; };
+		232CC09727A039B700040131 /* SFPRODISPLAYMEDIUM.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 232CC08E27A039B700040131 /* SFPRODISPLAYMEDIUM.OTF */; };
+		232CC09D27A039B700040131 /* SFPRODISPLAYREGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 232CC09427A039B700040131 /* SFPRODISPLAYREGULAR.OTF */; };
 		E30ED2FBCEA8C01F3C5952C9 /* Pods_ITZZA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B86A065F16EA791EF7DBAD0 /* Pods_ITZZA.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +73,12 @@
 		232CC07227A036FC00040131 /* StoryboardRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardRepresentation.swift; sourceTree = "<group>"; };
 		232CC07427A0370D00040131 /* TypeOfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfViewController.swift; sourceTree = "<group>"; };
 		232CC07627A0372300040131 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		232CC08627A038FB00040131 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		232CC08827A0390B00040131 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		232CC08A27A0391F00040131 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
+		232CC08C27A039B700040131 /* SFPRODISPLAYBOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBOLD.OTF; sourceTree = "<group>"; };
+		232CC08E27A039B700040131 /* SFPRODISPLAYMEDIUM.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYMEDIUM.OTF; sourceTree = "<group>"; };
+		232CC09427A039B700040131 /* SFPRODISPLAYREGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYREGULAR.OTF; sourceTree = "<group>"; };
 		31D68BDCB09FB35125D965C7 /* Pods-ITZZA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.release.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.release.xcconfig"; sourceTree = "<group>"; };
 		557F2FCE2D67BC938F058D88 /* Pods-ITZZA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.debug.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.debug.xcconfig"; sourceTree = "<group>"; };
 		7B86A065F16EA791EF7DBAD0 /* Pods_ITZZA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITZZA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -371,6 +383,7 @@
 			children = (
 				232CC06F27A0364300040131 /* Factory */,
 				232CC06E27A0363C00040131 /* Struct */,
+				232CC08427A038D600040131 /* Extension */,
 				232CC06C27A0363200040131 /* Font */,
 			);
 			path = Global;
@@ -379,6 +392,9 @@
 		232CC06C27A0363200040131 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				232CC08C27A039B700040131 /* SFPRODISPLAYBOLD.OTF */,
+				232CC08E27A039B700040131 /* SFPRODISPLAYMEDIUM.OTF */,
+				232CC09427A039B700040131 /* SFPRODISPLAYREGULAR.OTF */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -399,6 +415,16 @@
 				232CC07627A0372300040131 /* ViewControllerFactory.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		232CC08427A038D600040131 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				232CC08627A038FB00040131 /* UIColor+.swift */,
+				232CC08827A0390B00040131 /* UIFont+.swift */,
+				232CC08A27A0391F00040131 /* Notification+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		9B55279D0715D74085818E27 /* Pods */ = {
@@ -477,12 +503,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				232CC09727A039B700040131 /* SFPRODISPLAYMEDIUM.OTF in Resources */,
 				232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */,
 				232CC06027A0334100040131 /* Mypage.storyboard in Resources */,
 				232CC01E27A0317900040131 /* Assets.xcassets in Resources */,
 				232CC01C27A0317900040131 /* Main.storyboard in Resources */,
 				232CC04C27A032D700040131 /* Community.storyboard in Resources */,
+				232CC09527A039B700040131 /* SFPRODISPLAYBOLD.OTF in Resources */,
 				232CC03827A0326C00040131 /* Home.storyboard in Resources */,
+				232CC09D27A039B700040131 /* SFPRODISPLAYREGULAR.OTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,13 +555,16 @@
 				232CC07127A0367C00040131 /* Identifiers.swift in Sources */,
 				232CC05E27A0333500040131 /* MypageVC.swift in Sources */,
 				232CC07527A0370D00040131 /* TypeOfViewController.swift in Sources */,
+				232CC08B27A0391F00040131 /* Notification+.swift in Sources */,
 				232CC06627A0336100040131 /* k.swift in Sources */,
 				232CC06827A0336600040131 /* l.swift in Sources */,
 				232CC05227A032F400040131 /* g.swift in Sources */,
+				232CC08927A0390B00040131 /* UIFont+.swift in Sources */,
 				232CC05027A032EA00040131 /* f.swift in Sources */,
 				232CC05427A032F900040131 /* h.swift in Sources */,
 				232CC01527A0317900040131 /* AppDelegate.swift in Sources */,
 				232CC06427A0335C00040131 /* j.swift in Sources */,
+				232CC08727A038FB00040131 /* UIColor+.swift in Sources */,
 				232CC07727A0372300040131 /* ViewControllerFactory.swift in Sources */,
 				232CC03E27A0328600040131 /* c.swift in Sources */,
 				232CC03A27A0327B00040131 /* a.swift in Sources */,
