@@ -31,6 +31,9 @@
 		232CC06627A0336100040131 /* k.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC06527A0336100040131 /* k.swift */; };
 		232CC06827A0336600040131 /* l.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC06727A0336600040131 /* l.swift */; };
 		232CC07127A0367C00040131 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC07027A0367C00040131 /* Identifiers.swift */; };
+		232CC07327A036FC00040131 /* StoryboardRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC07227A036FC00040131 /* StoryboardRepresentation.swift */; };
+		232CC07527A0370D00040131 /* TypeOfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC07427A0370D00040131 /* TypeOfViewController.swift */; };
+		232CC07727A0372300040131 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC07627A0372300040131 /* ViewControllerFactory.swift */; };
 		E30ED2FBCEA8C01F3C5952C9 /* Pods_ITZZA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B86A065F16EA791EF7DBAD0 /* Pods_ITZZA.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +64,9 @@
 		232CC06527A0336100040131 /* k.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = k.swift; sourceTree = "<group>"; };
 		232CC06727A0336600040131 /* l.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = l.swift; sourceTree = "<group>"; };
 		232CC07027A0367C00040131 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
+		232CC07227A036FC00040131 /* StoryboardRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardRepresentation.swift; sourceTree = "<group>"; };
+		232CC07427A0370D00040131 /* TypeOfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfViewController.swift; sourceTree = "<group>"; };
+		232CC07627A0372300040131 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		31D68BDCB09FB35125D965C7 /* Pods-ITZZA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.release.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.release.xcconfig"; sourceTree = "<group>"; };
 		557F2FCE2D67BC938F058D88 /* Pods-ITZZA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.debug.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.debug.xcconfig"; sourceTree = "<group>"; };
 		7B86A065F16EA791EF7DBAD0 /* Pods_ITZZA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITZZA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -365,7 +371,6 @@
 			children = (
 				232CC06F27A0364300040131 /* Factory */,
 				232CC06E27A0363C00040131 /* Struct */,
-				232CC06D27A0363600040131 /* Extension */,
 				232CC06C27A0363200040131 /* Font */,
 			);
 			path = Global;
@@ -376,13 +381,6 @@
 			children = (
 			);
 			path = Font;
-			sourceTree = "<group>";
-		};
-		232CC06D27A0363600040131 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		232CC06E27A0363C00040131 /* Struct */ = {
@@ -396,6 +394,9 @@
 		232CC06F27A0364300040131 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
+				232CC07227A036FC00040131 /* StoryboardRepresentation.swift */,
+				232CC07427A0370D00040131 /* TypeOfViewController.swift */,
+				232CC07627A0372300040131 /* ViewControllerFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -519,10 +520,12 @@
 			files = (
 				232CC03627A0326500040131 /* HomeVC.swift in Sources */,
 				232CC01927A0317900040131 /* ViewController.swift in Sources */,
+				232CC07327A036FC00040131 /* StoryboardRepresentation.swift in Sources */,
 				232CC04A27A032CF00040131 /* CommunityVC.swift in Sources */,
 				232CC04E27A032E600040131 /* e.swift in Sources */,
 				232CC07127A0367C00040131 /* Identifiers.swift in Sources */,
 				232CC05E27A0333500040131 /* MypageVC.swift in Sources */,
+				232CC07527A0370D00040131 /* TypeOfViewController.swift in Sources */,
 				232CC06627A0336100040131 /* k.swift in Sources */,
 				232CC06827A0336600040131 /* l.swift in Sources */,
 				232CC05227A032F400040131 /* g.swift in Sources */,
@@ -530,6 +533,7 @@
 				232CC05427A032F900040131 /* h.swift in Sources */,
 				232CC01527A0317900040131 /* AppDelegate.swift in Sources */,
 				232CC06427A0335C00040131 /* j.swift in Sources */,
+				232CC07727A0372300040131 /* ViewControllerFactory.swift in Sources */,
 				232CC03E27A0328600040131 /* c.swift in Sources */,
 				232CC03A27A0327B00040131 /* a.swift in Sources */,
 				232CC06227A0335500040131 /* i.swift in Sources */,
