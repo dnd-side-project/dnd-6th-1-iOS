@@ -40,6 +40,8 @@
 		232CC09527A039B700040131 /* SFPRODISPLAYBOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 232CC08C27A039B700040131 /* SFPRODISPLAYBOLD.OTF */; };
 		232CC09727A039B700040131 /* SFPRODISPLAYMEDIUM.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 232CC08E27A039B700040131 /* SFPRODISPLAYMEDIUM.OTF */; };
 		232CC09D27A039B700040131 /* SFPRODISPLAYREGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 232CC09427A039B700040131 /* SFPRODISPLAYREGULAR.OTF */; };
+		232CC0A227A03B4100040131 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232CC0A127A03B4100040131 /* TabBar.storyboard */; };
+		232CC0A427A03B8F00040131 /* ITZZATBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC0A327A03B8F00040131 /* ITZZATBC.swift */; };
 		E30ED2FBCEA8C01F3C5952C9 /* Pods_ITZZA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B86A065F16EA791EF7DBAD0 /* Pods_ITZZA.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,8 @@
 		232CC08C27A039B700040131 /* SFPRODISPLAYBOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBOLD.OTF; sourceTree = "<group>"; };
 		232CC08E27A039B700040131 /* SFPRODISPLAYMEDIUM.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYMEDIUM.OTF; sourceTree = "<group>"; };
 		232CC09427A039B700040131 /* SFPRODISPLAYREGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYREGULAR.OTF; sourceTree = "<group>"; };
+		232CC0A127A03B4100040131 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		232CC0A327A03B8F00040131 /* ITZZATBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITZZATBC.swift; sourceTree = "<group>"; };
 		31D68BDCB09FB35125D965C7 /* Pods-ITZZA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.release.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.release.xcconfig"; sourceTree = "<group>"; };
 		557F2FCE2D67BC938F058D88 /* Pods-ITZZA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.debug.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.debug.xcconfig"; sourceTree = "<group>"; };
 		7B86A065F16EA791EF7DBAD0 /* Pods_ITZZA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITZZA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +144,7 @@
 		232CC02927A031FE00040131 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				232CC09E27A03B1900040131 /* TabBar */,
 				232CC02C27A0320E00040131 /* Home */,
 				232CC02B27A0320900040131 /* Community */,
 				232CC02A27A0320300040131 /* Mypage */,
@@ -427,6 +432,31 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		232CC09E27A03B1900040131 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				232CC0A027A03B3200040131 /* Storyboard */,
+				232CC09F27A03B2600040131 /* Controller */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		232CC09F27A03B2600040131 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				232CC0A327A03B8F00040131 /* ITZZATBC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		232CC0A027A03B3200040131 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				232CC0A127A03B4100040131 /* TabBar.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		9B55279D0715D74085818E27 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -503,6 +533,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				232CC0A227A03B4100040131 /* TabBar.storyboard in Resources */,
 				232CC09727A039B700040131 /* SFPRODISPLAYMEDIUM.OTF in Resources */,
 				232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */,
 				232CC06027A0334100040131 /* Mypage.storyboard in Resources */,
@@ -566,6 +597,7 @@
 				232CC06427A0335C00040131 /* j.swift in Sources */,
 				232CC08727A038FB00040131 /* UIColor+.swift in Sources */,
 				232CC07727A0372300040131 /* ViewControllerFactory.swift in Sources */,
+				232CC0A427A03B8F00040131 /* ITZZATBC.swift in Sources */,
 				232CC03E27A0328600040131 /* c.swift in Sources */,
 				232CC03A27A0327B00040131 /* a.swift in Sources */,
 				232CC06227A0335500040131 /* i.swift in Sources */,
@@ -725,7 +757,7 @@
 				INFOPLIST_FILE = ITZZA/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = TabBar;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -754,7 +786,7 @@
 				INFOPLIST_FILE = ITZZA/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = TabBar;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
