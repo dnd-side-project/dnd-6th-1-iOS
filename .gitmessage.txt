@@ -1,5 +1,5 @@
 # --- Head ---
-# [BE/FE] Type: Message 
+# Type: Message 
 # Title은 최대 50글자 정도로만 입력
 # Title 끝에 마침표 금지, 무엇을 했는지 명확하게 작성
 
