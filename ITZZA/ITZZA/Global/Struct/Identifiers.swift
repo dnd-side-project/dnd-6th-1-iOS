@@ -12,12 +12,14 @@ struct Identifiers {
     static let homeSB = "Home"
     static let communitySB = "Community"
     static let mypageSB = "Mypage"
+    static let signSB = "Sign"
     
     //MARK: - Controller
     static let itzzaTBC = "ITZZATBC"
     static let homeVC = "HomeVC"
     static let communityVC = "CommunityVC"
     static let mypageVC = "MypageVC"
+    static let signVC = "SignVC"
     
     //MARK: - TVC
     
