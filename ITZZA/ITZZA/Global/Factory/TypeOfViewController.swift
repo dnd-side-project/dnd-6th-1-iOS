@@ -6,11 +6,13 @@
 //
 
 import Foundation
+
 enum TypeOfViewController {
     case tabBar
     case home
     case community
     case mypage
+    case sign
 }
 
 extension TypeOfViewController {
@@ -24,6 +26,8 @@ extension TypeOfViewController {
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.communitySB, storyboardId: Identifiers.communityVC)
         case .mypage:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.mypageSB, storyboardId: Identifiers.mypageVC)
+        case .sign:
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.signSB, storyboardId: Identifiers.signVC)
         }
     }
 }

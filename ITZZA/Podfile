@@ -6,5 +6,13 @@ target 'ITZZA' do
   use_frameworks!
 
   # Pods for ITZZA
+  # Rx
+  pod 'RxSwift', '< 6.2.0'
+  pod 'RxCocoa', '< 6.2.0'
+  pod 'RxGesture', '< 4.1.0'
+  pod 'RxDataSources', '<5.1.0'
+  
+  # Others
+  pod 'Alamofire', '~> 5.5'
 
 end
