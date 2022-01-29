@@ -43,6 +43,8 @@
 		6208CFDB27A254B900F17603 /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6208CFDA27A254B900F17603 /* Sign.storyboard */; };
 		6208CFDE27A258F600F17603 /* SignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CFDD27A258F600F17603 /* SignVC.swift */; };
 		6208CFE127A2662700F17603 /* SignVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CFE027A2662700F17603 /* SignVM.swift */; };
+		62C4008727A51ADB002B3F33 /* tmp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C4008627A51ADB002B3F33 /* tmp.swift */; };
+		62C4008B27A51B1E002B3F33 /* tmp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C4008A27A51B1E002B3F33 /* tmp.storyboard */; };
 		E30ED2FBCEA8C01F3C5952C9 /* Pods_ITZZA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B86A065F16EA791EF7DBAD0 /* Pods_ITZZA.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,8 @@
 		6208CFDA27A254B900F17603 /* Sign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
 		6208CFDD27A258F600F17603 /* SignVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignVC.swift; sourceTree = "<group>"; };
 		6208CFE027A2662700F17603 /* SignVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignVM.swift; sourceTree = "<group>"; };
+		62C4008627A51ADB002B3F33 /* tmp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tmp.swift; sourceTree = "<group>"; };
+		62C4008A27A51B1E002B3F33 /* tmp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = tmp.storyboard; sourceTree = "<group>"; };
 		7B86A065F16EA791EF7DBAD0 /* Pods_ITZZA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITZZA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -144,6 +148,7 @@
 		232CC02927A031FE00040131 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				62C4008527A51AC3002B3F33 /* Share */,
 				6208CFD727A2539700F17603 /* Sign */,
 				232CC09E27A03B1900040131 /* TabBar */,
 				232CC02C27A0320E00040131 /* Home */,
@@ -500,6 +505,31 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		62C4008527A51AC3002B3F33 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				62C4008927A51AFC002B3F33 /* Storyboard */,
+				62C4008827A51AF2002B3F33 /* Controllers */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		62C4008827A51AF2002B3F33 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				62C4008627A51ADB002B3F33 /* tmp.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		62C4008927A51AFC002B3F33 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				62C4008A27A51B1E002B3F33 /* tmp.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		9B55279D0715D74085818E27 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +617,7 @@
 				232CC09527A039B700040131 /* SFPRODISPLAYBOLD.OTF in Resources */,
 				232CC03827A0326C00040131 /* Home.storyboard in Resources */,
 				232CC09D27A039B700040131 /* SFPRODISPLAYREGULAR.OTF in Resources */,
+				62C4008B27A51B1E002B3F33 /* tmp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,6 +678,7 @@
 				232CC07127A0367C00040131 /* Identifiers.swift in Sources */,
 				232CC05E27A0333500040131 /* MypageVC.swift in Sources */,
 				6208CFE127A2662700F17603 /* SignVM.swift in Sources */,
+				62C4008727A51ADB002B3F33 /* tmp.swift in Sources */,
 				232CC07527A0370D00040131 /* TypeOfViewController.swift in Sources */,
 				232CC08B27A0391F00040131 /* Notification+.swift in Sources */,
 				232CC06627A0336100040131 /* k.swift in Sources */,
