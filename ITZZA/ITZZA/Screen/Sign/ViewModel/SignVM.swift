@@ -10,14 +10,16 @@ import RxCocoa
 
 class SignVM {
     
-    let emailText = BehaviorSubject(value: "")
-    let passwordText = BehaviorSubject(value: "")
+    let emailText = BehaviorRelay(value: "")
+    let passwordText = BehaviorRelay(value: "")
     
-    let isEmailVaild = BehaviorSubject(value: false)
-    let isPasswordValid = BehaviorSubject(value: false)
+    let isEmailVaild = BehaviorRelay(value: false)
+    let isPasswordValid = BehaviorRelay(value: false)
     
-    let eyeOnOff = BehaviorSubject(value: UIImage())
-    let isEyeOn = BehaviorSubject(value: false)
+    let eyeOnOff = BehaviorRelay(value: UIImage())
+    let isEyeOn = BehaviorRelay(value: false)
+    
+    let emailPassword = (email: "", password: "")
     
     init () {
         _ = emailText.distinctUntilChanged()
@@ -50,6 +52,12 @@ class SignVM {
         else {
             return false
         }
+    }
+    
+    func tapLoginButton(_ email: String, _ password: String) {
+        // 로그인 API 서버로부터 데이터 주고 받기
+        // success -> 홈 화면 이동
+        // fail -> 로그인 실패 알림 
     }
     
 }

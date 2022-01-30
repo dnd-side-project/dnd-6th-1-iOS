@@ -23,26 +23,18 @@ class SignVC: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var passwordEyeButton: UIButton!
     
-    
     var disposeBag = DisposeBag()
     var signViewModel = SignVM()
 
     override func viewDidLoad() {
-        emailView.layer.cornerRadius = 3
-        passwordView.layer.cornerRadius = 3
-        loginButton.layer.cornerRadius = 3
-        
         bindUI()
-    
-        isEmailValidLabel.isHidden = true
-        isPasswordValidLabel.isHidden = true
-        
-        emailView.layer.borderWidth = 0
-        passwordView.layer.borderWidth = 0
+        setInitialUIValue()
+        didTapLoginButton()
     }
     
 }
 
+// MARK:- Binding Methods
 extension SignVC {
     private func bindUI() {
         // Input
@@ -60,40 +52,41 @@ extension SignVC {
             .bind(to: signViewModel.eyeOnOff)
             .disposed(by: disposeBag)
             
-        
         // Output
-        let emailObs = signViewModel.isEmailVaild
+        let emailValidObservable = signViewModel.isEmailVaild
                         .asObservable()
                         .share()
                         .asDriver(onErrorJustReturn: false)
         
-        emailObs
+        emailValidObservable
             .drive(isEmailValidLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
-        emailObs
+        emailValidObservable
             .drive(onNext: { [weak self] email in
                 self?.checkIdPasswordEnable(email, (self?.emailView)!)
             })
             .disposed(by: disposeBag)
         
-        let passwordObs = signViewModel.isPasswordValid
+        let passwordValidObservable = signViewModel.isPasswordValid
                             .asObservable()
                             .share()
                             .asDriver(onErrorJustReturn: false)
         
-        passwordObs
+        passwordValidObservable
             .drive(isPasswordValidLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
-        passwordObs
+        passwordValidObservable
             .drive(onNext: { [weak self] pw in
                 self?.checkIdPasswordEnable(pw, (self?.passwordView)!)
             })
             .disposed(by: disposeBag)
         
         Observable.combineLatest(signViewModel.isEmailVaild,
-                                 signViewModel.isPasswordValid) { $0 && $1 }
+                                 signViewModel.isPasswordValid) {
+            $0 && $1
+        }
         .map(isEnableLoginButton)
         .bind(to: loginButton.rx.isEnabled)
         .disposed(by: disposeBag)
@@ -103,24 +96,17 @@ extension SignVC {
                 self?.didTapPasswordEyeButton(eyeStatus)
             })
             .disposed(by: disposeBag)
-        
-        // 로그인 미 구현
-        loginButton.rx
-            .controlEvent(.touchUpInside)
-            .subscribe(onNext: { [weak self] _ in
-                self?.loginButtonDidTap()
-            })
-            .disposed(by: disposeBag)
     }
 }
 
+// MARK:- Custom Methods
 extension SignVC {
     func isEnableLoginButton(_ flag: Bool) -> Bool {
         if flag {
             loginButton.backgroundColor = .systemPink
             return true
         } else {
-            loginButton.backgroundColor = UIColor(rgb: 0x8E8E93)
+            loginButton.backgroundColor = UIColor.loginButtonBackgroundColor
             return false
         }
     }
@@ -144,7 +130,31 @@ extension SignVC {
         }
     }
     
-    func loginButtonDidTap() {
-        // id, pw 암호화 작업 후 서버에 전송 
+    func didTapLoginButton() {
+        let emailObservable = emailTextField.rx.text.orEmpty
+        let passwordObservable = passwordTextField.rx.text.orEmpty
+        let combinedEmailPassword = Observable.combineLatest(emailObservable, passwordObservable)
+        
+        loginButton.rx.tap
+            .withLatestFrom(combinedEmailPassword)
+            .subscribe(onNext: { [weak self] in
+                self?.signViewModel.tapLoginButton($0, $1)
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK:- Set Initial UI Value
+extension SignVC {
+    func setInitialUIValue() {
+        emailView.layer.cornerRadius = 3
+        passwordView.layer.cornerRadius = 3
+        loginButton.layer.cornerRadius = 3
+    
+        isEmailValidLabel.isHidden = true
+        isPasswordValidLabel.isHidden = true
+        
+        emailView.layer.borderWidth = 0
+        passwordView.layer.borderWidth = 0
     }
 }
