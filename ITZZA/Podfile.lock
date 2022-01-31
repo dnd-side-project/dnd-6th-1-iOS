@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (5.5.0)
   - Differentiator (5.0.0)
+  - Pageboy (3.6.2)
   - RxCocoa (6.1.0):
     - RxRelay (= 6.1.0)
     - RxSwift (= 6.1.0)
@@ -14,6 +15,8 @@ PODS:
   - RxRelay (6.1.0):
     - RxSwift (= 6.1.0)
   - RxSwift (6.1.0)
+  - Tabman (2.11.1):
+    - Pageboy (~> 3.6.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.5)
@@ -21,26 +24,31 @@ DEPENDENCIES:
   - RxDataSources (< 5.1.0)
   - RxGesture (< 4.1.0)
   - RxSwift (< 6.2.0)
+  - Tabman (~> 2.9)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Differentiator
+    - Pageboy
     - RxCocoa
     - RxDataSources
     - RxGesture
     - RxRelay
     - RxSwift
+    - Tabman
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  Pageboy: cf121b9dd48c63f3f281b2a9ec93d02e0f23879b
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
   RxGesture: abadd243fc36db74df43dfc893829ddde94f1a3d
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
+  Tabman: 792ac76fd1ec95af175c93db880a3c47cabedc91
 
-PODFILE CHECKSUM: c37732b82bb0c58b3ffb72f6cee19c08fc163b61
+PODFILE CHECKSUM: b56b1ec4cbefa48d8baa5b994a5776361ae4df0b
 
 COCOAPODS: 1.11.2
