@@ -17,4 +17,8 @@ extension UINavigationController {
         
         navigationItem!.leftBarButtonItem = UIBarButtonItem.init(customView: naviTitle)
     }
+    
+    func setNaviItemTintColor(navigationController: UINavigationController?, color: UIColor) {
+        navigationController?.navigationBar.tintColor = color
+    }
 }

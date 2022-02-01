@@ -29,11 +29,31 @@ extension CommunityVC {
     
     func configureNavigationBar() {
         navigationController?.setNaviBarTitle(navigationItem: self.navigationItem, title: "커뮤니티")
+        navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .black)
+        
+        setNaviBarItems()
     }
     
     func configureCategoryView() {
         setCategoryIndicator()
         setCategoryPage()
+    }
+}
+
+//MARK: - setting Methods
+extension CommunityVC {
+    func setNaviBarItems() {
+        let searchBtn = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchPostList))
+        let addPostBtn = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addPost))
+        navigationItem.rightBarButtonItems = [addPostBtn, searchBtn]
+    }
+    
+    @objc func searchPostList() {
+        print("search")
+    }
+    
+    @objc func addPost() {
+        print("addPost")
     }
     
     func setCategoryPage() {
@@ -82,6 +102,7 @@ extension CommunityVC {
         
         addBar(bar, dataSource: self, at: .custom(view: categoryTB, layout: nil))
     }
+    
 }
 
 //MARK: TMBarDataSource
