@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="87" width="414" height="775"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleTVC" rowHeight="250" id="xwV-L7-gDs" customClass="ArticleTVC" customModule="ITZZA" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostTVC" rowHeight="250" id="xwV-L7-gDs" customClass="PostTVC" customModule="ITZZA" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xwV-L7-gDs" id="ROE-hK-Gt1">
@@ -93,7 +93,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="articleListTV" destination="f6T-ia-dT7" id="OaH-lk-3Na"/>
+                        <outlet property="postListTV" destination="f6T-ia-dT7" id="OaH-lk-3Na"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

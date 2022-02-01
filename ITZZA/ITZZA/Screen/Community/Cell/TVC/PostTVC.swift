@@ -1,5 +1,5 @@
 //
-//  articleTVC.swift
+//  postTVC.swift
 //  ITZZA
 //
 //  Created by 황윤경 on 2022/01/31.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ArticleTVC: UITableViewCell {
+class PostTVC: UITableViewCell {
     @IBOutlet weak var headerView: ProfileHeaderView!
     @IBOutlet weak var footerView: PostButtonsView!
     @IBOutlet weak var contents: UITextView!

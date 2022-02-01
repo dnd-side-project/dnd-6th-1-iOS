@@ -11,14 +11,15 @@ import RxCocoa
 import RxDataSources
 
 class CategoryVC: UIViewController {
-    @IBOutlet weak var articleListTV: UITableView!
+    @IBOutlet weak var postListTV: UITableView!
     
     let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        articleListTV.dataSource = self
+        postListTV.dataSource = self
+        postListTV.backgroundColor = .systemGray6
     }
 }
 
@@ -35,9 +36,9 @@ extension CategoryVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.articleTVC, for: indexPath) as! ArticleTVC
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.postTVC, for: indexPath) as! PostTVC
         
-        cell.backgroundColor = .systemGray6
+        cell.backgroundColor = .clear
         
         return cell
     }
