@@ -7,8 +7,11 @@
 
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class SignVM {
+    
+    var disposeBag = DisposeBag()
     
     let emailText = BehaviorRelay(value: "")
     let passwordText = BehaviorRelay(value: "")
@@ -20,6 +23,11 @@ class SignVM {
     let isEyeOn = BehaviorRelay(value: false)
     
     let emailPassword = (email: "", password: "")
+    
+    let apiSession = APISession()
+    var onError = PublishSubject<APIError>()
+    var loginResponseFail = PublishSubject<String>()
+    var loginResponseSuccess = PublishSubject<String>()
     
     init () {
         _ = emailText.distinctUntilChanged()
@@ -55,9 +63,27 @@ class SignVM {
     }
     
     func tapLoginButton(_ email: String, _ password: String) {
-        // 로그인 API 서버로부터 데이터 주고 받기
-        // success -> 홈 화면 이동
-        // fail -> 로그인 실패 알림 
+        let loginURL = "https://3044b01e-b59d-4905-a40d-1bef340f11ab.mock.pstmn.io/v1/login"
+        let url = URL(string: loginURL)!
+        let loginInformation = LoginModel(email: email, password: password)
+        
+        apiSession
+            .loginRequest(with: url, info: loginInformation)
+            .subscribe(onNext: { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .failure(let error):
+                    self.onError.onNext(error)
+                    
+                case .success(let response):
+                    if response.flag == "0" {
+                        self.loginResponseFail.onNext(response.flag)
+                    } else {
+                        self.loginResponseSuccess.onNext(response.flag)
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
     }
-    
+
 }

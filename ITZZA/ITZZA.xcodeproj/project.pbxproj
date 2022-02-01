@@ -43,6 +43,12 @@
 		6208CFDB27A254B900F17603 /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6208CFDA27A254B900F17603 /* Sign.storyboard */; };
 		6208CFE127A2662700F17603 /* SignVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CFE027A2662700F17603 /* SignVM.swift */; };
 		62BE208D27A590D0001F150A /* SignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE208C27A590D0001F150A /* SignVC.swift */; };
+		62BE209027A66F34001F150A /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE208F27A66F34001F150A /* APISession.swift */; };
+		62BE209227A66F52001F150A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209127A66F52001F150A /* APIService.swift */; };
+		62BE209427A66F60001F150A /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209327A66F60001F150A /* APIError.swift */; };
+		62BE209927A679A2001F150A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209827A679A2001F150A /* Service.swift */; };
+		62BE209E27A67F15001F150A /* SignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209D27A67F15001F150A /* SignModel.swift */; };
+		62BE20A027A8F1A0001F150A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209F27A8F1A0001F150A /* UIViewController+.swift */; };
 		62C4008727A51ADB002B3F33 /* tmp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C4008627A51ADB002B3F33 /* tmp.swift */; };
 		62C4008B27A51B1E002B3F33 /* tmp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C4008A27A51B1E002B3F33 /* tmp.storyboard */; };
 		E30ED2FBCEA8C01F3C5952C9 /* Pods_ITZZA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B86A065F16EA791EF7DBAD0 /* Pods_ITZZA.framework */; };
@@ -89,6 +95,12 @@
 		6208CFDA27A254B900F17603 /* Sign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
 		6208CFE027A2662700F17603 /* SignVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignVM.swift; sourceTree = "<group>"; };
 		62BE208C27A590D0001F150A /* SignVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignVC.swift; sourceTree = "<group>"; };
+		62BE208F27A66F34001F150A /* APISession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
+		62BE209127A66F52001F150A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		62BE209327A66F60001F150A /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		62BE209827A679A2001F150A /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		62BE209D27A67F15001F150A /* SignModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignModel.swift; sourceTree = "<group>"; };
+		62BE209F27A8F1A0001F150A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		62C4008627A51ADB002B3F33 /* tmp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tmp.swift; sourceTree = "<group>"; };
 		62C4008A27A51B1E002B3F33 /* tmp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = tmp.storyboard; sourceTree = "<group>"; };
 		7B86A065F16EA791EF7DBAD0 /* Pods_ITZZA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITZZA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -392,6 +404,8 @@
 		232CC06B27A0362900040131 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				62BE209727A67995001F150A /* Service */,
+				62BE208E27A66F04001F150A /* Network */,
 				232CC06F27A0364300040131 /* Factory */,
 				232CC06E27A0363C00040131 /* Struct */,
 				232CC08427A038D600040131 /* Extension */,
@@ -434,6 +448,7 @@
 				232CC08627A038FB00040131 /* UIColor+.swift */,
 				232CC08827A0390B00040131 /* UIFont+.swift */,
 				232CC08A27A0391F00040131 /* Notification+.swift */,
+				62BE209F27A8F1A0001F150A /* UIViewController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -466,6 +481,7 @@
 		6208CFD727A2539700F17603 /* Sign */ = {
 			isa = PBXGroup;
 			children = (
+				62BE209C27A67F05001F150A /* Model */,
 				6208CFDF27A2661300F17603 /* ViewModel */,
 				6208CFDC27A258DE00F17603 /* View */,
 			);
@@ -503,6 +519,32 @@
 				6208CFE027A2662700F17603 /* SignVM.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		62BE208E27A66F04001F150A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				62BE208F27A66F34001F150A /* APISession.swift */,
+				62BE209127A66F52001F150A /* APIService.swift */,
+				62BE209327A66F60001F150A /* APIError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		62BE209727A67995001F150A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				62BE209827A679A2001F150A /* Service.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		62BE209C27A67F05001F150A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				62BE209D27A67F15001F150A /* SignModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		62C4008527A51AC3002B3F33 /* Share */ = {
@@ -672,6 +714,8 @@
 			files = (
 				232CC03627A0326500040131 /* HomeVC.swift in Sources */,
 				232CC07327A036FC00040131 /* StoryboardRepresentation.swift in Sources */,
+				62BE209227A66F52001F150A /* APIService.swift in Sources */,
+				62BE209E27A67F15001F150A /* SignModel.swift in Sources */,
 				232CC04A27A032CF00040131 /* CommunityVC.swift in Sources */,
 				232CC04E27A032E600040131 /* e.swift in Sources */,
 				232CC07127A0367C00040131 /* Identifiers.swift in Sources */,
@@ -683,6 +727,7 @@
 				232CC06627A0336100040131 /* k.swift in Sources */,
 				232CC06827A0336600040131 /* l.swift in Sources */,
 				232CC05227A032F400040131 /* g.swift in Sources */,
+				62BE209027A66F34001F150A /* APISession.swift in Sources */,
 				232CC08927A0390B00040131 /* UIFont+.swift in Sources */,
 				232CC05027A032EA00040131 /* f.swift in Sources */,
 				232CC05427A032F900040131 /* h.swift in Sources */,
@@ -691,7 +736,10 @@
 				232CC08727A038FB00040131 /* UIColor+.swift in Sources */,
 				232CC07727A0372300040131 /* ViewControllerFactory.swift in Sources */,
 				232CC0A427A03B8F00040131 /* ITZZATBC.swift in Sources */,
+				62BE209427A66F60001F150A /* APIError.swift in Sources */,
+				62BE209927A679A2001F150A /* Service.swift in Sources */,
 				232CC03E27A0328600040131 /* c.swift in Sources */,
+				62BE20A027A8F1A0001F150A /* UIViewController+.swift in Sources */,
 				232CC03A27A0327B00040131 /* a.swift in Sources */,
 				232CC06227A0335500040131 /* i.swift in Sources */,
 				232CC03C27A0328000040131 /* b.swift in Sources */,

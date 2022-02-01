@@ -30,6 +30,8 @@ class SignVC: UIViewController {
         bindUI()
         setInitialUIValue()
         didTapLoginButton()
+        bindLoginOnSessionError()
+        loginResponseFail()
     }
     
 }
@@ -99,7 +101,7 @@ extension SignVC {
     }
 }
 
-// MARK:- Custom Methods
+// MARK:- UI Custom Methods
 extension SignVC {
     func isEnableLoginButton(_ flag: Bool) -> Bool {
         if flag {
@@ -129,7 +131,10 @@ extension SignVC {
             idPasswordView.layer.borderColor = UIColor.systemPink.cgColor
         }
     }
-    
+}
+
+// MARK:- Login Methods
+extension SignVC {
     func didTapLoginButton() {
         let emailObservable = emailTextField.rx.text.orEmpty
         let passwordObservable = passwordTextField.rx.text.orEmpty
@@ -142,6 +147,33 @@ extension SignVC {
             })
             .disposed(by: disposeBag)
     }
+    
+    func bindLoginOnSessionError() {
+        signViewModel.onError.asDriver(onErrorJustReturn: .unknown)
+            .drive { [weak self] error in
+                guard let self = self else { return }
+                self.showLoginErrorAlert(error.description)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func loginResponseFail() {
+        signViewModel.loginResponseFail.asDriver(onErrorJustReturn: "0")
+            .drive{ [weak self] response in
+                guard let self = self else { return }
+                self.showLoginErrorAlert("로그인 정보가 잘못되었습니다")
+            }
+            .disposed(by: disposeBag)
+    }
+    
+//    func loginResponseSuccess() {
+//        signViewModel.loginResponseSuccess.asDriver(onErrorJustReturn: "1")
+//            .drive { [weak self] response in
+//                guard let self = self else { return }
+//
+//            }
+//            .disposed(by: disposeBag)
+//    }
 }
 
 // MARK:- Set Initial UI Value
