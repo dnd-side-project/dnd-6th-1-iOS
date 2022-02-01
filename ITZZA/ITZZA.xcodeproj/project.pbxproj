@@ -39,6 +39,8 @@
 		232CC0A427A03B8F00040131 /* ITZZATBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC0A327A03B8F00040131 /* ITZZATBC.swift */; };
 		2335241127A98CBA009C654F /* e.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2335241027A98CBA009C654F /* e.swift */; };
 		2335241327A98D57009C654F /* DataSourceArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2335241227A98D57009C654F /* DataSourceArticle.swift */; };
+		2335241727A98FA0009C654F /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2335241527A98FA0009C654F /* ProfileHeaderView.swift */; };
+		2335241827A98FA0009C654F /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2335241627A98FA0009C654F /* ProfileHeaderView.xib */; };
 		238CEEA027A7DEA0006BE766 /* CommunityNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */; };
 		238CEEA227A7DFCF006BE766 /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEEA127A7DFCF006BE766 /* NavigationController+.swift */; };
 		238CEEA427A7E6F1006BE766 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 238CEEA327A7E6F1006BE766 /* Category.storyboard */; };
@@ -88,6 +90,8 @@
 		232CC0A327A03B8F00040131 /* ITZZATBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITZZATBC.swift; sourceTree = "<group>"; };
 		2335241027A98CBA009C654F /* e.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = e.swift; sourceTree = "<group>"; };
 		2335241227A98D57009C654F /* DataSourceArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceArticle.swift; sourceTree = "<group>"; };
+		2335241527A98FA0009C654F /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		2335241627A98FA0009C654F /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNC.swift; sourceTree = "<group>"; };
 		238CEEA127A7DFCF006BE766 /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
 		238CEEA327A7E6F1006BE766 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 		232CC04627A032AB00040131 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2335241427A98F44009C654F /* Shared */,
 				232CC04827A032BD00040131 /* Storyboard */,
 				232CC04727A032B800040131 /* Controller */,
 			);
@@ -478,6 +483,16 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		2335241427A98F44009C654F /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				2335241527A98FA0009C654F /* ProfileHeaderView.swift */,
+				2335241627A98FA0009C654F /* ProfileHeaderView.xib */,
+			);
+			name = Shared;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		6208CFD727A2539700F17603 /* Sign */ = {
 			isa = PBXGroup;
 			children = (
@@ -628,6 +643,7 @@
 				232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */,
 				6208CFDB27A254B900F17603 /* Sign.storyboard in Resources */,
 				232CC06027A0334100040131 /* Mypage.storyboard in Resources */,
+				2335241827A98FA0009C654F /* ProfileHeaderView.xib in Resources */,
 				232CC01E27A0317900040131 /* Assets.xcassets in Resources */,
 				232CC04C27A032D700040131 /* Community.storyboard in Resources */,
 				232CC09527A039B700040131 /* SFPRODISPLAYBOLD.OTF in Resources */,
@@ -693,6 +709,7 @@
 				6208CFDE27A258F600F17603 /* SignVC.swift in Sources */,
 				232CC07127A0367C00040131 /* Identifiers.swift in Sources */,
 				232CC05E27A0333500040131 /* MypageVC.swift in Sources */,
+				2335241727A98FA0009C654F /* ProfileHeaderView.swift in Sources */,
 				6208CFE127A2662700F17603 /* SignVM.swift in Sources */,
 				62C4008727A51ADB002B3F33 /* tmp.swift in Sources */,
 				232CC07527A0370D00040131 /* TypeOfViewController.swift in Sources */,
