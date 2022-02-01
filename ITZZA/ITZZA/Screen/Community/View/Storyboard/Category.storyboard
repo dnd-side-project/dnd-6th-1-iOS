@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="f6T-ia-dT7">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="87" width="414" height="775"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleTVC" rowHeight="200" id="xwV-L7-gDs" customClass="ArticleTVC" customModule="ITZZA" customModuleProvider="target">
@@ -28,28 +28,28 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXZ-Da-ELH" customClass="ProfileHeaderView" customModule="ITZZA" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="11" width="374" height="51"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="51" id="F1u-0U-del"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W2H-W3-njc">
-                                                    <rect key="frame" x="20" y="125" width="374" height="64"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W2H-W3-njc" customClass="PostButtonsView" customModule="ITZZA" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="150" width="414" height="50"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="64" id="x12-4P-Xpf"/>
+                                                        <constraint firstAttribute="height" constant="50" id="x12-4P-Xpf"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="QXZ-Da-ELH" firstAttribute="trailing" secondItem="ROE-hK-Gt1" secondAttribute="trailingMargin" id="9pU-Mv-a9J"/>
-                                                <constraint firstItem="W2H-W3-njc" firstAttribute="top" secondItem="QXZ-Da-ELH" secondAttribute="bottom" constant="63" id="DwW-bg-BVl"/>
-                                                <constraint firstItem="QXZ-Da-ELH" firstAttribute="leading" secondItem="ROE-hK-Gt1" secondAttribute="leadingMargin" id="IEd-sH-ErK"/>
-                                                <constraint firstItem="QXZ-Da-ELH" firstAttribute="top" secondItem="ROE-hK-Gt1" secondAttribute="topMargin" id="T5X-b6-vCI"/>
-                                                <constraint firstItem="W2H-W3-njc" firstAttribute="leading" secondItem="ROE-hK-Gt1" secondAttribute="leadingMargin" id="TBq-IM-5sD"/>
-                                                <constraint firstItem="W2H-W3-njc" firstAttribute="bottom" secondItem="ROE-hK-Gt1" secondAttribute="bottomMargin" id="Xdx-Pr-s4s"/>
-                                                <constraint firstItem="W2H-W3-njc" firstAttribute="trailing" secondItem="ROE-hK-Gt1" secondAttribute="trailingMargin" id="eHH-fV-6n4"/>
+                                                <constraint firstAttribute="bottom" secondItem="W2H-W3-njc" secondAttribute="bottom" id="0Mm-IZ-zCe"/>
+                                                <constraint firstItem="QXZ-Da-ELH" firstAttribute="top" secondItem="ROE-hK-Gt1" secondAttribute="top" id="Nee-w4-esP"/>
+                                                <constraint firstItem="W2H-W3-njc" firstAttribute="top" secondItem="QXZ-Da-ELH" secondAttribute="bottom" constant="99" id="Yid-fj-R9a"/>
+                                                <constraint firstItem="W2H-W3-njc" firstAttribute="leading" secondItem="ROE-hK-Gt1" secondAttribute="leading" id="Yxn-hS-PmW"/>
+                                                <constraint firstItem="QXZ-Da-ELH" firstAttribute="leading" secondItem="ROE-hK-Gt1" secondAttribute="leading" id="gPC-uh-scd"/>
+                                                <constraint firstAttribute="trailing" secondItem="W2H-W3-njc" secondAttribute="trailing" id="t7n-iQ-g0V"/>
+                                                <constraint firstAttribute="trailing" secondItem="QXZ-Da-ELH" secondAttribute="trailing" id="waX-td-svX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -62,9 +62,12 @@
                             <constraint firstItem="f6T-ia-dT7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="4mX-cm-aAh"/>
                             <constraint firstItem="f6T-ia-dT7" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="7r9-FX-LoM"/>
                             <constraint firstItem="f6T-ia-dT7" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="afu-Jg-fQG"/>
-                            <constraint firstItem="f6T-ia-dT7" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="fxV-KH-4SS"/>
+                            <constraint firstItem="f6T-ia-dT7" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="43" id="fxV-KH-4SS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="articleListTV" destination="f6T-ia-dT7" id="OaH-lk-3Na"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

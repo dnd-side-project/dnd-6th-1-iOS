@@ -18,6 +18,7 @@ class CategoryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        articleListTV.dataSource = self
     }
 }
 
@@ -25,5 +26,17 @@ class CategoryVC: UIViewController {
 extension CategoryVC {
     func bindTV() {
 
+    }
+}
+
+extension CategoryVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        30
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.articleTVC, for: indexPath) as! ArticleTVC
+        
+        return cell
     }
 }

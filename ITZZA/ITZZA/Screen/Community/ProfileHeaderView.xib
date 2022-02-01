@@ -26,18 +26,18 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="u3d-zd-Py9">
-                    <rect key="frame" x="16" y="10.999999999999998" width="30" height="28.666666666666664"/>
+                    <rect key="frame" x="16" y="11.666666666666666" width="30" height="28.666666666666679"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="9P2-if-aEW"/>
                         <constraint firstAttribute="height" constant="30" id="hQ6-iV-FCH"/>
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="nmC-ZS-pPM">
-                    <rect key="frame" x="54" y="8" width="301" height="34"/>
+                    <rect key="frame" x="54" y="8.6666666666666643" width="301" height="34"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용자 닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4e-KR-uIn">
                             <rect key="frame" x="0.0" y="0.0" width="301" height="18"/>
