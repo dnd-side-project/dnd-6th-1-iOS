@@ -25,6 +25,7 @@ struct Identifiers {
     static let signVC = "SignVC"
     
     //MARK: - TVC
+    static let articleTVC = "ArticleTVC"
     
     //MARK: - CVC
     
