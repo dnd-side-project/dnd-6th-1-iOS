@@ -6,15 +6,31 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        guard let userEmail = UserDefaults.standard.string(forKey: "email"),
+            let userPassword = KeychainWrapper.standard.string(forKey: userEmail) else {
+                print("No Saved Login Data")
+                let signVC = ViewControllerFactory.viewController(for: .sign)
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                self.window?.rootViewController = signVC
+                self.window?.makeKeyAndVisible()
+                return true
+        }
+        
+        print("Saved Login Data Exist")
+        let tabVC = ViewControllerFactory.viewController(for: .tabBar)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = tabVC
+        self.window?.makeKeyAndVisible()
         return true
     }
 

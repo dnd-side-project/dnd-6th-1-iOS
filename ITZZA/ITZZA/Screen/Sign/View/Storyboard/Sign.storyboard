@@ -151,6 +151,25 @@
                                     </attributedString>
                                 </buttonConfiguration>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="XDw-xK-6no">
+                                <rect key="frame" x="229" y="574" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="로그인 상태 유지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdD-Hp-NZr">
+                                <rect key="frame" x="303" y="498" width="67" height="12"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeC-2v-8o6">
+                                <rect key="frame" x="275" y="494" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="checkmark.square.fill" catalog="system"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -163,9 +182,11 @@
                         <outlet property="isEmailValidLabel" destination="bf4-cy-zoI" id="AEr-v0-EKd"/>
                         <outlet property="isPasswordValidLabel" destination="OJP-qX-bSj" id="glX-e9-T5e"/>
                         <outlet property="loginButton" destination="1NW-QV-AGM" id="6kk-PZ-ikU"/>
+                        <outlet property="loginIndicatorView" destination="XDw-xK-6no" id="xVH-AW-bQX"/>
                         <outlet property="passwordEyeButton" destination="OsZ-8B-ILK" id="Ghg-g5-f19"/>
                         <outlet property="passwordTextField" destination="faK-ka-rmN" id="YnH-OP-GGs"/>
                         <outlet property="passwordView" destination="WkG-gq-Xda" id="lvT-17-Glo"/>
+                        <outlet property="saveLoginStateButton" destination="qeC-2v-8o6" id="47D-Ot-FSy"/>
                         <outlet property="signUpButton" destination="AXX-7o-tMK" id="otR-MM-phJ"/>
                     </connections>
                 </viewController>
@@ -176,6 +197,7 @@
     </scenes>
     <resources>
         <image name="PasswordEyeOn" width="24" height="24"/>
+        <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

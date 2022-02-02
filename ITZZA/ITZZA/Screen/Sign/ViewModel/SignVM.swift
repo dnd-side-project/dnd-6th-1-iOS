@@ -7,11 +7,12 @@
 
 import RxSwift
 import RxCocoa
-import RxDataSources
+import SwiftKeychainWrapper
 
 class SignVM {
     
     var disposeBag = DisposeBag()
+    let apiSession = APISession()
     
     let emailText = BehaviorRelay(value: "")
     let passwordText = BehaviorRelay(value: "")
@@ -23,24 +24,32 @@ class SignVM {
     let isEyeOn = BehaviorRelay(value: false)
     
     let emailPassword = (email: "", password: "")
+
+    let onError = PublishSubject<APIError>()
+    let loginResponseFail = PublishSubject<String>()
+    let loginResponseSuccess = PublishSubject<String>()
+    let isLoading = BehaviorRelay(value: true)
     
-    let apiSession = APISession()
-    var onError = PublishSubject<APIError>()
-    var loginResponseFail = PublishSubject<String>()
-    var loginResponseSuccess = PublishSubject<String>()
+    let savedStatus = BehaviorRelay(value: false)
+    let savedEmail = PublishSubject<String>()
+    let savedPassword = PublishSubject<String>()
+    let isLoginStateSelected = BehaviorRelay(value: false)
     
     init () {
-        _ = emailText.distinctUntilChanged()
+        emailText.distinctUntilChanged()
             .map(checkEmailVaild)
             .bind(to: isEmailVaild)
+            .disposed(by: disposeBag)
         
-        _ = passwordText.distinctUntilChanged()
+        passwordText.distinctUntilChanged()
             .map(checkPasswordVaild)
             .bind(to: isPasswordValid)
+            .disposed(by: disposeBag)
         
-        _ = eyeOnOff
+        eyeOnOff
             .map(checkEyeOn)
             .bind(to: isEyeOn)
+            .disposed(by: disposeBag)
     }
     
     private func checkEmailVaild(_ email: String) -> Bool {
@@ -62,7 +71,39 @@ class SignVM {
         }
     }
     
+    func changeSaveLoginStatus() {
+        isLoginStateSelected.accept(!isLoginStateSelected.value)
+    }
+    
+    // AppDelegate
+//    func checkSavedLoginData() {
+//        guard let userEmail = UserDefaults.standard.string(forKey: "email"),
+//            let userPassword = KeychainWrapper.standard.string(forKey: userEmail) else {
+//                print("no")
+//                savedStatus.accept(false)
+//                return
+//        }
+//        print("yes")
+//        savedStatus.accept(true)
+//        savedEmail.onNext(userEmail)
+//        savedPassword.onNext(userPassword)
+////        loginWithSavedData(with: userEmail, userPassword)
+//
+////        if let userEmail = UserDefaults.standard.string(forKey: "email") {
+////            let userPassword = KeychainWrapper.standard.string(forKey: userEmail) ?? "00000000"
+////            loginWithSavedData(with: userEmail, userPassword)
+////        } else {
+////            print("No data")
+////        }
+//    }
+//
+//    // AppDelegate
+//    func loginWithSavedData(with email: String, _ password: String) {
+//        tapLoginButton(email, password)
+//    }
+    
     func tapLoginButton(_ email: String, _ password: String) {
+        
         let loginURL = "https://3044b01e-b59d-4905-a40d-1bef340f11ab.mock.pstmn.io/v1/login"
         let url = URL(string: loginURL)!
         let loginInformation = LoginModel(email: email, password: password)
@@ -77,13 +118,22 @@ class SignVM {
                     
                 case .success(let response):
                     if response.flag == "0" {
-                        self.loginResponseFail.onNext(response.flag)
+                        self.loginResponseFail.onNext("로그인 정보가 잘못되었습니다")
                     } else {
+                        if self.isLoginStateSelected.value {
+                            print("data save")
+                            self.saveUserData(email, password)
+                        }
                         self.loginResponseSuccess.onNext(response.flag)
                     }
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    func saveUserData(_ email: String, _ password: String) {
+        UserDefaults.standard.set(email, forKey: "email")
+        KeychainWrapper.standard.set(password, forKey: email)
     }
 
 }

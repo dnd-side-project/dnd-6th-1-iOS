@@ -14,6 +14,7 @@ PODS:
   - RxRelay (6.1.0):
     - RxSwift (= 6.1.0)
   - RxSwift (6.1.0)
+  - SwiftKeychainWrapper (4.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.5)
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - RxDataSources (< 5.1.0)
   - RxGesture (< 4.1.0)
   - RxSwift (< 6.2.0)
+  - SwiftKeychainWrapper
 
 SPEC REPOS:
   trunk:
@@ -31,6 +33,7 @@ SPEC REPOS:
     - RxGesture
     - RxRelay
     - RxSwift
+    - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
@@ -40,7 +43,8 @@ SPEC CHECKSUMS:
   RxGesture: abadd243fc36db74df43dfc893829ddde94f1a3d
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
+  SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
 
-PODFILE CHECKSUM: c37732b82bb0c58b3ffb72f6cee19c08fc163b61
+PODFILE CHECKSUM: 60d9dc45c126b32cccd0a29513bb234b219bfd7d
 
 COCOAPODS: 1.11.2
