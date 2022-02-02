@@ -24,9 +24,9 @@ extension UINavigationController {
     }
     
     func setBackButtonOnlyTitle(navigationController: UINavigationController?, title: String) {
-        let image = UIImage()
-        navigationController?.navigationBar.backIndicatorImage = image
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = image
+//        let image = UIImage()
+//        navigationController?.navigationBar.backIndicatorImage = image
+//        navigationController?.navigationBar.backIndicatorTransitionMaskImage = image
         navigationController?.navigationBar.topItem?.title = title
     }
     

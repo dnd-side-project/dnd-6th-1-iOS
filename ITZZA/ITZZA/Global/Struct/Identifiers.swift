@@ -28,6 +28,11 @@ struct Identifiers {
     static let mypageVC = "MypageVC"
     static let signVC = "SignVC"
     
+    //MARK: - View
+    static let profileHeaderView = "ProfileHeaderView"
+    static let postButtonsView = "PostButtonsView"
+    static let imageAddBar = "ImageAddBar"
+    
     //MARK: - TVC
     static let postTVC = "PostTVC"
     

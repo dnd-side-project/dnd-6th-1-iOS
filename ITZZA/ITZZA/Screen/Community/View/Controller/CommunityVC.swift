@@ -59,29 +59,29 @@ extension CommunityVC {
         
         searchBtn.rx.tap
             .bind {
-                guard let searchPostVC = UIStoryboard(name: Identifiers.searchPostSB, bundle: nil).instantiateViewController(withIdentifier: Identifiers.searchPostVC) as? SearchPostVC else { return }
+                guard let searchPostVC = ViewControllerFactory.viewController(for: .searchPost) as? SearchPostVC else { return }
                 
-                self.hidesBottomBarWhenPushed = true
+                searchPostVC.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(searchPostVC, animated: true)
             }
             .disposed(by: bag)
         
         addPostBtn.rx.tap
             .bind {
-                guard let addPostVC = UIStoryboard(name: Identifiers.addPostSB, bundle: nil).instantiateViewController(withIdentifier: Identifiers.addPostVC) as? AddPostVC else { return }
+                guard let addPostVC = ViewControllerFactory.viewController(for: .addPost) as? AddPostVC else { return }
                 
-                self.hidesBottomBarWhenPushed = true
+                addPostVC.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(addPostVC, animated: true)
             }
             .disposed(by: bag)
     }
     
     func setCategoryPage() {
-        let allTab = UIStoryboard.init(name: Identifiers.categorySB, bundle: nil).instantiateViewController(withIdentifier: Identifiers.categoryVC) as! CategoryVC
-        let openHeartTab = UIStoryboard.init(name: Identifiers.categorySB, bundle: nil).instantiateViewController(withIdentifier: Identifiers.categoryVC) as! CategoryVC
-        let angryTab = UIStoryboard.init(name: Identifiers.categorySB, bundle: nil).instantiateViewController(withIdentifier: Identifiers.categoryVC) as! CategoryVC
-        let dealTab = UIStoryboard.init(name: Identifiers.categorySB, bundle: nil).instantiateViewController(withIdentifier: Identifiers.categoryVC) as! CategoryVC
-        let questionTab = UIStoryboard.init(name: Identifiers.categorySB, bundle: nil).instantiateViewController(withIdentifier: Identifiers.categoryVC) as! CategoryVC
+        let allTab = ViewControllerFactory.viewController(for: .communityCategory) as! CategoryVC
+        let openHeartTab = ViewControllerFactory.viewController(for: .communityCategory) as! CategoryVC
+        let angryTab = ViewControllerFactory.viewController(for: .communityCategory) as! CategoryVC
+        let dealTab = ViewControllerFactory.viewController(for: .communityCategory) as! CategoryVC
+        let questionTab = ViewControllerFactory.viewController(for: .communityCategory) as! CategoryVC
         
         viewControllers.append(allTab)
         viewControllers.append(openHeartTab)
