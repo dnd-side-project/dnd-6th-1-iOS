@@ -9,13 +9,17 @@ import UIKit
 import RxSwift
 
 class AddPostVC: UIViewController {
-
+    @IBOutlet weak var chooseCategoryButton: UIButton!
+    @IBOutlet weak var addImageBar: ImageAddBar!
+    
     let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureNavigationBar()
+        setAddImageBar()
+        setChooseCategoryButton()
     }
 }
 
@@ -35,5 +39,20 @@ extension AddPostVC {
             .disposed(by: bag)
         
         navigationItem.rightBarButtonItem = savePost
+    }
+    
+    func setAddImageBar() {
+        addImageBar.addImageButton.rx.tap
+            .bind {
+                print("addImage")
+            }
+            .disposed(by: bag)
+    }
+    
+    func setChooseCategoryButton() {
+        chooseCategoryButton.backgroundColor = .systemGray6
+        chooseCategoryButton.layer.cornerRadius = chooseCategoryButton.frame.height / 2
+        chooseCategoryButton.layer.borderColor = UIColor.systemGray3.cgColor
+        chooseCategoryButton.layer.borderWidth = 1
     }
 }

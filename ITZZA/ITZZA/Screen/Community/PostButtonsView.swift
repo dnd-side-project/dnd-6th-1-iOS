@@ -10,15 +10,13 @@ import UIKit
 class PostButtonsView: UIView {
     @IBOutlet var view: UIView!
     
-    private static let NIB_NAME = "PostButtonsView"
-    
     // awakeFromNib
     override func awakeFromNib() {
         initWithNib()
     }
     
     private func initWithNib() {
-        Bundle.main.loadNibNamed(PostButtonsView.NIB_NAME, owner: self, options: nil)
+        Bundle.main.loadNibNamed(Identifiers.postButtonsView, owner: self, options: nil)
         addSubview(view)
         setupLayout()
         setUpView()

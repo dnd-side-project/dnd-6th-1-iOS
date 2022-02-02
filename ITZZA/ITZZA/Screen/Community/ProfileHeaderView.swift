@@ -13,15 +13,13 @@ class ProfileHeaderView: UIView {
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var createAt: UILabel!
     
-    private static let NIB_NAME = "ProfileHeaderView"
-    
     // awakeFromNib
     override func awakeFromNib() {
         initWithNib()
     }
     
     private func initWithNib() {
-        Bundle.main.loadNibNamed(ProfileHeaderView.NIB_NAME, owner: self, options: nil)
+        Bundle.main.loadNibNamed(Identifiers.profileHeaderView, owner: self, options: nil)
         addSubview(view)
         setupLayout()
         setUpView()
