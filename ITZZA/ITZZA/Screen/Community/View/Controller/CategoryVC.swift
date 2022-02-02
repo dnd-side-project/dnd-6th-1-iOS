@@ -30,6 +30,7 @@ extension CategoryVC {
         postListTV.backgroundColor = .systemGray6
     }
     
+    // TODO: PostModel, PostDataSource로 구조화
     func bindTV() {
         let configureCell: (TableViewSectionedDataSource<SectionModel<String, String>>, UITableView,IndexPath, String) -> UITableViewCell = { (datasource, tableView, indexPath,  element) in
 

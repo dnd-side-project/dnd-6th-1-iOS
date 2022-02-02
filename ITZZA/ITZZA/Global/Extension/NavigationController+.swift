@@ -18,6 +18,17 @@ extension UINavigationController {
         navigationItem!.leftBarButtonItem = UIBarButtonItem.init(customView: naviTitle)
     }
     
+    func setSubNaviBarTitle(navigationItem: UINavigationItem?, title: String) {
+        navigationItem!.title = title
+    }
+    
+    func setBackButtonOnlyTitle(navigationController: UINavigationController?, title: String) {
+        let image = UIImage()
+        navigationController?.navigationBar.backIndicatorImage = image
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = image
+        navigationController?.navigationBar.topItem?.title = title
+    }
+    
     func setNaviItemTintColor(navigationController: UINavigationController?, color: UIColor) {
         navigationController?.navigationBar.tintColor = color
     }

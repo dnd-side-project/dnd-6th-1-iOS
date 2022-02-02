@@ -8,11 +8,14 @@
 import UIKit
 import Tabman
 import Pageboy
+import RxSwift
 
 class CommunityVC: TabmanViewController {
     private var viewControllers: Array<UIViewController> = []
     
     @IBOutlet weak var categoryTB: UIView!
+    
+    let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,17 +46,27 @@ extension CommunityVC {
 //MARK: - setting Methods
 extension CommunityVC {
     func setNaviBarItems() {
-        let searchBtn = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchPostList))
-        let addPostBtn = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addPost))
+        let searchBtn = UIBarButtonItem()
+        searchBtn.image = UIImage(systemName: "magnifyingglass")
+        
+        let addPostBtn = UIBarButtonItem()
+        addPostBtn.image = UIImage(systemName: "plus")
+        
         navigationItem.rightBarButtonItems = [addPostBtn, searchBtn]
-    }
-    
-    @objc func searchPostList() {
-        print("search")
-    }
-    
-    @objc func addPost() {
-        print("addPost")
+        
+        searchBtn.rx.tap
+            .bind {
+                print("search")
+            }
+            .disposed(by: bag)
+        
+        addPostBtn.rx.tap
+            .bind {
+                guard let addPostVC = UIStoryboard(name: Identifiers.addPostSB, bundle: nil).instantiateViewController(withIdentifier: Identifiers.addPostVC) as? AddPostVC else { return }
+                
+                self.navigationController?.pushViewController(addPostVC, animated: true)
+            }
+            .disposed(by: bag)
     }
     
     func setCategoryPage() {

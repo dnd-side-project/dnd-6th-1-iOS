@@ -12,6 +12,7 @@ struct Identifiers {
     static let homeSB = "Home"
     static let communitySB = "Community"
     static let categorySB = "Category"
+    static let addPostSB = "AddPost"
     static let mypageSB = "Mypage"
     static let signSB = "Sign"
     
@@ -21,6 +22,7 @@ struct Identifiers {
     static let communityNC = "CommunityNC"
     static let communityVC = "CommunityVC"
     static let categoryVC = "CategoryVC"
+    static let addPostVC = "AddPostVC"
     static let mypageVC = "MypageVC"
     static let signVC = "SignVC"
     
