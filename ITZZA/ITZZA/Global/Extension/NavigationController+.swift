@@ -14,6 +14,7 @@ extension UINavigationController {
         naviTitle.textColor = .label
         naviTitle.text = title
         naviTitle.font = UIFont.SFProDisplayBold(size: 22)
+        navigationItem?.title = ""
         
         navigationItem!.leftBarButtonItem = UIBarButtonItem.init(customView: naviTitle)
     }

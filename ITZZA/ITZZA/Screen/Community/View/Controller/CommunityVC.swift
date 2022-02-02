@@ -21,12 +21,15 @@ class CommunityVC: TabmanViewController {
         super.viewDidLoad()
         configureView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        configureNavigationBar()
+    }
 }
 
 //MARK: - Custom Methods
 extension CommunityVC {
     func configureView() {
-        configureNavigationBar()
         configureCategoryView()
     }
     
@@ -64,6 +67,7 @@ extension CommunityVC {
             .bind {
                 guard let addPostVC = UIStoryboard(name: Identifiers.addPostSB, bundle: nil).instantiateViewController(withIdentifier: Identifiers.addPostVC) as? AddPostVC else { return }
                 
+                self.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(addPostVC, animated: true)
             }
             .disposed(by: bag)
