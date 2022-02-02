@@ -59,7 +59,10 @@ extension CommunityVC {
         
         searchBtn.rx.tap
             .bind {
-                print("search")
+                guard let searchPostVC = UIStoryboard(name: Identifiers.searchPostSB, bundle: nil).instantiateViewController(withIdentifier: Identifiers.searchPostVC) as? SearchPostVC else { return }
+                
+                self.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(searchPostVC, animated: true)
             }
             .disposed(by: bag)
         
