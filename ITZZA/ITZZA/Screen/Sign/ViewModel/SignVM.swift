@@ -22,13 +22,11 @@ class SignVM {
     
     let eyeOnOff = BehaviorRelay(value: UIImage())
     let isEyeOn = BehaviorRelay(value: false)
-    
-    let emailPassword = (email: "", password: "")
 
     let onError = PublishSubject<APIError>()
     let loginResponseFail = PublishSubject<String>()
     let loginResponseSuccess = PublishSubject<String>()
-    let isLoading = BehaviorRelay(value: true)
+    // let isLoading = BehaviorRelay(value: true)
     
     let savedStatus = BehaviorRelay(value: false)
     let savedEmail = PublishSubject<String>()
@@ -75,33 +73,6 @@ class SignVM {
         isLoginStateSelected.accept(!isLoginStateSelected.value)
     }
     
-    // AppDelegate
-//    func checkSavedLoginData() {
-//        guard let userEmail = UserDefaults.standard.string(forKey: "email"),
-//            let userPassword = KeychainWrapper.standard.string(forKey: userEmail) else {
-//                print("no")
-//                savedStatus.accept(false)
-//                return
-//        }
-//        print("yes")
-//        savedStatus.accept(true)
-//        savedEmail.onNext(userEmail)
-//        savedPassword.onNext(userPassword)
-////        loginWithSavedData(with: userEmail, userPassword)
-//
-////        if let userEmail = UserDefaults.standard.string(forKey: "email") {
-////            let userPassword = KeychainWrapper.standard.string(forKey: userEmail) ?? "00000000"
-////            loginWithSavedData(with: userEmail, userPassword)
-////        } else {
-////            print("No data")
-////        }
-//    }
-//
-//    // AppDelegate
-//    func loginWithSavedData(with email: String, _ password: String) {
-//        tapLoginButton(email, password)
-//    }
-    
     func tapLoginButton(_ email: String, _ password: String) {
         
         let loginURL = "https://3044b01e-b59d-4905-a40d-1bef340f11ab.mock.pstmn.io/v1/login"
@@ -133,7 +104,7 @@ class SignVM {
     
     func saveUserData(_ email: String, _ password: String) {
         UserDefaults.standard.set(email, forKey: "email")
-        KeychainWrapper.standard.set(password, forKey: email)
+        KeychainWrapper.standard[.myKey] = password
     }
 
 }

@@ -8,10 +8,9 @@
 import UIKit
 
 class ITZZATBC: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setTabBar()
     }
     
@@ -27,7 +26,6 @@ class ITZZATBC: UITabBarController {
     
     /// setTabBar - 탭바 Setting
     func setTabBar() {
-        
         let homeTab = makeTabVC(vcType: .home, tabBarTitle: "Home", tabBarImage: "", tabBarSelectedImage: "")
         let communityTab = makeTabVC(vcType: .community, tabBarTitle: "Community", tabBarImage: "", tabBarSelectedImage: "")
         let mypageTab = makeTabVC(vcType: .mypage, tabBarTitle: "Mypage", tabBarImage: "", tabBarSelectedImage: "")

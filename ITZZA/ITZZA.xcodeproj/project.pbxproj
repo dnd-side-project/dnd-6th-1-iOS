@@ -42,6 +42,7 @@
 		232CC0A427A03B8F00040131 /* ITZZATBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC0A327A03B8F00040131 /* ITZZATBC.swift */; };
 		6208CFDB27A254B900F17603 /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6208CFDA27A254B900F17603 /* Sign.storyboard */; };
 		6208CFE127A2662700F17603 /* SignVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CFE027A2662700F17603 /* SignVM.swift */; };
+		622D07C027ABF12E00707E47 /* KeychainWrapper+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */; };
 		62BE208D27A590D0001F150A /* SignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE208C27A590D0001F150A /* SignVC.swift */; };
 		62BE209027A66F34001F150A /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE208F27A66F34001F150A /* APISession.swift */; };
 		62BE209227A66F52001F150A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209127A66F52001F150A /* APIService.swift */; };
@@ -94,6 +95,7 @@
 		557F2FCE2D67BC938F058D88 /* Pods-ITZZA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.debug.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.debug.xcconfig"; sourceTree = "<group>"; };
 		6208CFDA27A254B900F17603 /* Sign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
 		6208CFE027A2662700F17603 /* SignVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignVM.swift; sourceTree = "<group>"; };
+		622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeychainWrapper+.swift"; sourceTree = "<group>"; };
 		62BE208C27A590D0001F150A /* SignVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignVC.swift; sourceTree = "<group>"; };
 		62BE208F27A66F34001F150A /* APISession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
 		62BE209127A66F52001F150A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 				232CC08827A0390B00040131 /* UIFont+.swift */,
 				232CC08A27A0391F00040131 /* Notification+.swift */,
 				62BE209F27A8F1A0001F150A /* UIViewController+.swift */,
+				622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				62BE209227A66F52001F150A /* APIService.swift in Sources */,
 				62BE209E27A67F15001F150A /* SignModel.swift in Sources */,
 				232CC04A27A032CF00040131 /* CommunityVC.swift in Sources */,
+				622D07C027ABF12E00707E47 /* KeychainWrapper+.swift in Sources */,
 				232CC04E27A032E600040131 /* e.swift in Sources */,
 				232CC07127A0367C00040131 /* Identifiers.swift in Sources */,
 				232CC05E27A0333500040131 /* MypageVC.swift in Sources */,

@@ -124,34 +124,6 @@ extension SignVC {
 
 // MARK:- Save Login Method
 extension SignVC {
-//    func checkLoginData() {
-//        signViewModel.checkSavedLoginData()
-//    }
-    
-//    func receiveLoginDataStatus() {
-//        signViewModel.savedStatus
-//            .subscribe(onNext: { [weak self] status in
-//                guard let self = self else { return }
-//                self.showProperView(status)
-//            })
-//            .disposed(by: disposeBag)
-//    }
-    
-//    func showProperView(_ status: Bool) {
-//        if status {
-////            loginResponseSuccess()
-//
-//        } else {
-//            bindUI()
-//            setInitialUIValue()
-//            bindDidTapLoginButton()
-//            bindLoginOnSessionError()
-//            loginResponseFail()
-//            loginResponseSuccess()
-//            changeSaveLoginButton()
-//        }
-//    }
-    
     func changeSaveLoginButton() {
         saveLoginStateButton.rx.tap
             .asObservable()
@@ -164,9 +136,9 @@ extension SignVC {
     
     func didTapSaveLoginButton(_ selected: Bool) {
         if selected {
-            saveLoginStateButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
+            saveLoginStateButton.setImage(UIImage(named: "SaveLoginStatusFill"), for: .normal)
         } else {
-            saveLoginStateButton.setImage(UIImage(systemName: "square"), for: .normal)
+            saveLoginStateButton.setImage(UIImage(named: "SaveLoginStatusOutline"), for: .normal)
         }
     }
 }
@@ -247,10 +219,13 @@ extension SignVC {
         signViewModel.loginResponseSuccess.asDriver(onErrorJustReturn: "1")
             .drive { [weak self] response in
                 guard let self = self else { return }
+                let tabBarVC = ViewControllerFactory.viewController(for: .tabBar)
+                tabBarVC.modalPresentationStyle = .fullScreen
+                
                 self.view.window?.rootViewController?.dismiss(animated: false) {
-                    let tabBarVC = ITZZATBC()
-                    tabBarVC.modalPresentationStyle = .fullScreen
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.email = self.emailTextField.text
+                    appDelegate.password = self.passwordTextField.text
                     appDelegate.window?.rootViewController?.present(tabBarVC, animated: true, completion: nil)
                 }
             }
@@ -272,5 +247,6 @@ extension SignVC {
         passwordView.layer.borderWidth = 0
         
         saveLoginStateButton.isSelected = false
+        saveLoginStateButton.layer.cornerRadius = 20
     }
 }
