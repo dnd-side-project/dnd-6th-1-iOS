@@ -11,17 +11,30 @@ struct Identifiers {
     static let tabBarSB = "TabBar"
     static let homeSB = "Home"
     static let communitySB = "Community"
+    static let categorySB = "Category"
+    static let addPostSB = "AddPost"
+    static let searchPostSB = "SearchPost"
     static let mypageSB = "Mypage"
     static let signSB = "Sign"
     
     //MARK: - Controller
     static let itzzaTBC = "ITZZATBC"
     static let homeVC = "HomeVC"
+    static let communityNC = "CommunityNC"
     static let communityVC = "CommunityVC"
+    static let categoryVC = "CategoryVC"
+    static let addPostVC = "AddPostVC"
+    static let searchPostVC = "SearchPostVC"
     static let mypageVC = "MypageVC"
     static let signVC = "SignVC"
     
+    //MARK: - View
+    static let profileHeaderView = "ProfileHeaderView"
+    static let postButtonsView = "PostButtonsView"
+    static let imageAddBar = "ImageAddBar"
+    
     //MARK: - TVC
+    static let postTVC = "PostTVC"
     
     //MARK: - CVC
     

@@ -13,6 +13,10 @@ enum TypeOfViewController {
     case community
     case mypage
     case sign
+    
+    case communityCategory
+    case addPost
+    case searchPost
 }
 
 extension TypeOfViewController {
@@ -23,11 +27,18 @@ extension TypeOfViewController {
         case .home:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.homeSB, storyboardId: Identifiers.homeVC)
         case .community:
-            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.communitySB, storyboardId: Identifiers.communityVC)
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.communitySB, storyboardId: Identifiers.communityNC)
         case .mypage:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.mypageSB, storyboardId: Identifiers.mypageVC)
         case .sign:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.signSB, storyboardId: Identifiers.signVC)
+            
+        case .communityCategory:
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.categorySB, storyboardId: Identifiers.categoryVC)
+        case .addPost:
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.addPostSB, storyboardId: Identifiers.addPostVC)
+        case .searchPost:
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.searchPostSB, storyboardId: Identifiers.searchPostVC)
         }
     }
 }

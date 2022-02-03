@@ -6,24 +6,157 @@
 //
 
 import UIKit
+import Tabman
+import Pageboy
+import RxSwift
 
-class CommunityVC: UIViewController {
-
+class CommunityVC: TabmanViewController {
+    private var viewControllers: Array<UIViewController> = []
+    
+    @IBOutlet weak var categoryTB: UIView!
+    
+    let bag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configureView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        configureNavigationBar()
     }
-    */
+}
 
+//MARK: - Custom Methods
+extension CommunityVC {
+    func configureView() {
+        configureCategoryView()
+    }
+    
+    func configureNavigationBar() {
+        navigationController?.setNaviBarTitle(navigationItem: self.navigationItem, title: "커뮤니티")
+        navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .black)
+        
+        setNaviBarItems()
+    }
+    
+    func configureCategoryView() {
+        setCategoryIndicator()
+        setCategoryPage()
+    }
+}
+
+//MARK: - setting Methods
+extension CommunityVC {
+    func setNaviBarItems() {
+        let searchBtn = UIBarButtonItem()
+        searchBtn.image = UIImage(systemName: "magnifyingglass")
+        
+        let addPostBtn = UIBarButtonItem()
+        addPostBtn.image = UIImage(systemName: "plus")
+        
+        navigationItem.rightBarButtonItems = [addPostBtn, searchBtn]
+        
+        searchBtn.rx.tap
+            .bind {
+                guard let searchPostVC = ViewControllerFactory.viewController(for: .searchPost) as? SearchPostVC else { return }
+                
+                searchPostVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(searchPostVC, animated: true)
+            }
+            .disposed(by: bag)
+        
+        addPostBtn.rx.tap
+            .bind {
+                guard let addPostVC = ViewControllerFactory.viewController(for: .addPost) as? AddPostVC else { return }
+                
+                addPostVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(addPostVC, animated: true)
+            }
+            .disposed(by: bag)
+    }
+    
+    func setCategoryPage() {
+        let allTab = ViewControllerFactory.viewController(for: .communityCategory) as! CategoryVC
+        let openHeartTab = ViewControllerFactory.viewController(for: .communityCategory) as! CategoryVC
+        let angryTab = ViewControllerFactory.viewController(for: .communityCategory) as! CategoryVC
+        let dealTab = ViewControllerFactory.viewController(for: .communityCategory) as! CategoryVC
+        let questionTab = ViewControllerFactory.viewController(for: .communityCategory) as! CategoryVC
+        
+        viewControllers.append(allTab)
+        viewControllers.append(openHeartTab)
+        viewControllers.append(angryTab)
+        viewControllers.append(dealTab)
+        viewControllers.append(questionTab)
+        
+        self.dataSource = self
+    }
+    
+    func setCategoryIndicator() {
+        let bar = TMBar.ButtonBar()
+        
+        bar.backgroundView.style = .flat(color: .white)
+        bar.layout.contentInset = UIEdgeInsets(top: 0.0,
+                                               left: 20.0,
+                                               bottom: 0.0,
+                                               right: 20.0)
+        bar.buttons.customize { (button) in
+            button.tintColor = .systemGray3
+            button.selectedTintColor = .black
+            
+            button.backgroundColor = .white
+            button.contentInset = UIEdgeInsets(top: 0.0, left: 17.0, bottom: 0.0, right: 17.0)
+            
+            button.font = UIFont.SFProDisplayMedium(size: 16)
+            button.selectedFont = UIFont.SFProDisplayBold(size: 16)
+        }
+    
+        bar.indicator.weight = .medium
+        bar.indicator.tintColor = .black
+        bar.indicator.overscrollBehavior = .compress
+        
+        bar.layout.alignment = .centerDistributed
+        bar.layout.contentMode = .intrinsic
+        bar.layout.interButtonSpacing = 14
+        bar.layout.transitionStyle = .snap
+        
+        addBar(bar, dataSource: self, at: .custom(view: categoryTB, layout: nil))
+    }
+    
+}
+
+//MARK: TMBarDataSource
+extension CommunityVC: TMBarDataSource {
+    func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
+        switch index {
+        case 0:
+            return TMBarItem(title: "전체")
+        case 1:
+            return TMBarItem(title: "털어놓자")
+        case 2:
+            return TMBarItem(title: "화내자")
+        case 3:
+            return TMBarItem(title: "타협하자")
+        case 4:
+            return TMBarItem(title: "물어보자")
+        default:
+            let title = "Page \(index)"
+            return TMBarItem(title: title)
+        }
+    }
+}
+
+//MARK: PageboyViewControllerDataSource
+extension CommunityVC: PageboyViewControllerDataSource {
+    func numberOfViewControllers(in pageboyViewController: PageboyViewController) -> Int {
+        return viewControllers.count
+    }
+    
+    func viewController(for pageboyViewController: PageboyViewController, at index: PageboyViewController.PageIndex) -> UIViewController? {
+        return viewControllers[index]
+    }
+    
+    func defaultPage(for pageboyViewController: PageboyViewController) -> PageboyViewController.Page? {
+        return nil
+    }
 }
