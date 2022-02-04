@@ -19,7 +19,7 @@ class CommunityVC: TabmanViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
+        configureCategoryView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,14 +29,8 @@ class CommunityVC: TabmanViewController {
 
 //MARK: - Custom Methods
 extension CommunityVC {
-    func configureView() {
-        configureCategoryView()
-    }
-    
     func configureNavigationBar() {
-        navigationController?.setNaviBarTitle(navigationItem: self.navigationItem, title: "커뮤니티")
-        navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .black)
-        
+        setNaviBarView()
         setNaviBarItems()
     }
     
@@ -46,8 +40,13 @@ extension CommunityVC {
     }
 }
 
-//MARK: - setting Methods
+//MARK: - Setup Methods
 extension CommunityVC {
+    func setNaviBarView() {
+        navigationController?.setNaviBarTitle(navigationItem: self.navigationItem, title: "커뮤니티")
+        navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .black)
+    }
+    
     func setNaviBarItems() {
         let searchBtn = UIBarButtonItem()
         searchBtn.image = UIImage(systemName: "magnifyingglass")
