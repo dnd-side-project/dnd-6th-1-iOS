@@ -16,7 +16,7 @@ extension UIColor {
         return UIColor(red: 245.0 / 255.0, green: 245.0 / 255.0, blue: 248.0 / 255.0, alpha: 1.0)
     }
     
-    @nonobjc class var loginButtonBackgroundColor: UIColor {
+    @nonobjc class var signInButtonBackgroundColor: UIColor {
         return UIColor(red: 142.0 / 255.0, green: 142.0 / 255.0, blue: 147.0 / 255.0, alpha: 1.0)
     }
 }

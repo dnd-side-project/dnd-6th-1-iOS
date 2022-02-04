@@ -9,6 +9,6 @@ import Foundation
 import RxSwift
 
 protocol APIService {
-    func loginRequest(with url: URL, info: LoginModel) -> Observable<Result<LoginResponse, APIError>>
+    func signInRequest(with url: URL, info: SignInModel) -> Observable<Result<SignInResponse, APIError>>
 }
 

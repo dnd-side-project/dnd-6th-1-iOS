@@ -10,9 +10,9 @@ import Foundation
 import RxSwift
 
 struct APISession: APIService {
-    func loginRequest(with url: URL, info: LoginModel) -> Observable<Result<LoginResponse, APIError>> {
+    func signInRequest(with url: URL, info: SignInModel) -> Observable<Result<SignInResponse, APIError>> {
         
-        Observable<Result<LoginResponse, APIError>>.create { observer in
+        Observable<Result<SignInResponse, APIError>>.create { observer in
             
             let header : HTTPHeaders = ["Content-Type": "application/json"]
             let task = AF.request(url, method: .post,
@@ -20,7 +20,7 @@ struct APISession: APIService {
                                   encoding: JSONEncoding.default,
                                   headers: header)
                 .validate(statusCode: 200...399)
-                .responseDecodable(of: LoginResponse.self) { response in
+                .responseDecodable(of: SignInResponse.self) { response in
                     
                     switch response.result {
                     case .failure(let error):

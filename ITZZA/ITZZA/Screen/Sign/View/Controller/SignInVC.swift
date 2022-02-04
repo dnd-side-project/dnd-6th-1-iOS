@@ -11,12 +11,12 @@ import RxCocoa
 import Alamofire
 import SwiftKeychainWrapper
 
-class SignVC: UIViewController {
+class SignInVC: UIViewController {
     
     @IBOutlet weak var appLogoImage: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var isEmailValidLabel: UILabel!
     @IBOutlet weak var isPasswordValidLabel: UILabel!
     @IBOutlet weak var emailView: UIView!
@@ -24,36 +24,34 @@ class SignVC: UIViewController {
     @IBOutlet weak var findIdPasswordButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var passwordEyeButton: UIButton!
-    @IBOutlet weak var loginIndicatorView: UIActivityIndicatorView!
-    @IBOutlet weak var saveLoginStateButton: UIButton!
+    @IBOutlet weak var signInIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var saveSignInStateButton: UIButton!
     
     var disposeBag = DisposeBag()
-    var signViewModel = SignVM()
+    var signInViewModel = SignInVM()
 
     override func viewDidLoad() {
-//        checkLoginData()
-//        receiveLoginDataStatus()
         bindUI()
         setInitialUIValue()
-        bindDidTapLoginButton()
-        bindLoginOnSessionError()
-        loginResponseFail()
-        loginResponseSuccess()
-        changeSaveLoginButton()
+        bindDidTapsignInButton()
+        bindsignInOnSessionError()
+        signInResponseFail()
+        signInResponseSuccess()
+        changeSaveSignInButton()
     }
     
 }
 
 // MARK:- Binding Methods
-extension SignVC {
+extension SignInVC {
     private func bindUI() {
         // Input
         emailTextField.rx.text.orEmpty
-            .bind(to: signViewModel.emailText)
+            .bind(to: signInViewModel.emailText)
             .disposed(by: disposeBag)
         
         passwordTextField.rx.text.orEmpty
-            .bind(to: signViewModel.passwordText)
+            .bind(to: signInViewModel.passwordText)
             .disposed(by: disposeBag)
         
         passwordEyeButton.rx.tap
@@ -61,15 +59,15 @@ extension SignVC {
             .map { [weak self] in
                 (self?.passwordEyeButton.currentImage)!
             }
-            .bind(to: signViewModel.eyeOnOff)
+            .bind(to: signInViewModel.eyeOnOff)
             .disposed(by: disposeBag)
         
 //        signViewModel.isLoading.asDriver()
-//            .drive(loginIndicatorView.rx.isHidden)
+//            .drive(signInIndicatorView.rx.isHidden)
 //            .disposed(by: disposeBag)
        
         // Output
-        let emailValidObservable = signViewModel.isEmailVaild
+        let emailValidObservable = signInViewModel.isEmailVaild
                         .asObservable()
                         .share()
                         .asDriver(onErrorJustReturn: false)
@@ -84,7 +82,7 @@ extension SignVC {
             })
             .disposed(by: disposeBag)
         
-        let passwordValidObservable = signViewModel.isPasswordValid
+        let passwordValidObservable = signInViewModel.isPasswordValid
                             .asObservable()
                             .share()
                             .asDriver(onErrorJustReturn: false)
@@ -99,58 +97,58 @@ extension SignVC {
             })
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(signViewModel.isEmailVaild,
-                                 signViewModel.isPasswordValid) {
+        Observable.combineLatest(signInViewModel.isEmailVaild,
+                                 signInViewModel.isPasswordValid) {
             $0 && $1
         }
-        .map(isEnableLoginButton)
-        .bind(to: loginButton.rx.isEnabled)
+        .map(isEnablesignInButton)
+        .bind(to: signInButton.rx.isEnabled)
         .disposed(by: disposeBag)
         
-        signViewModel.isEyeOn
+        signInViewModel.isEyeOn
             .subscribe(onNext: { [weak self] eyeStatus in
                 self?.didTapPasswordEyeButton(eyeStatus)
             })
             .disposed(by: disposeBag)
         
-        signViewModel.isLoginStateSelected.asDriver()
+        signInViewModel.isSignInStateSelected.asDriver()
             .drive(onNext: { [weak self] selected in
                 guard let self = self else { return }
-                self.didTapSaveLoginButton(selected)
+                self.didTapSavesignInButton(selected)
             })
             .disposed(by: disposeBag)
     }
 }
 
-// MARK:- Save Login Method
-extension SignVC {
-    func changeSaveLoginButton() {
-        saveLoginStateButton.rx.tap
+// MARK:- Save signIn Method
+extension SignInVC {
+    func changeSaveSignInButton() {
+        saveSignInStateButton.rx.tap
             .asObservable()
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.signViewModel.changeSaveLoginStatus()
+                self.signInViewModel.changeSaveSignInStatus()
             })
             .disposed(by: disposeBag)
     }
     
-    func didTapSaveLoginButton(_ selected: Bool) {
+    func didTapSavesignInButton(_ selected: Bool) {
         if selected {
-            saveLoginStateButton.setImage(UIImage(named: "SaveLoginStatusFill"), for: .normal)
+            saveSignInStateButton.setImage(UIImage(named: "SaveSignInStatusFill"), for: .normal)
         } else {
-            saveLoginStateButton.setImage(UIImage(named: "SaveLoginStatusOutline"), for: .normal)
+            saveSignInStateButton.setImage(UIImage(named: "SaveSignInStatusOutline"), for: .normal)
         }
     }
 }
 
 // MARK:- UI Custom Methods
-extension SignVC {
-    func isEnableLoginButton(_ flag: Bool) -> Bool {
+extension SignInVC {
+    func isEnablesignInButton(_ flag: Bool) -> Bool {
         if flag {
-            loginButton.backgroundColor = .systemPink
+            signInButton.backgroundColor = .systemPink
             return true
         } else {
-            loginButton.backgroundColor = UIColor.loginButtonBackgroundColor
+            signInButton.backgroundColor = UIColor.signInButtonBackgroundColor
             return false
         }
     }
@@ -175,48 +173,48 @@ extension SignVC {
     }
 }
 
-// MARK:- Login Methods
-extension SignVC {
-    func bindDidTapLoginButton() {
+// MARK:- signIn Methods
+extension SignInVC {
+    func bindDidTapsignInButton() {
         
         let emailObservable = emailTextField.rx.text.orEmpty
         let passwordObservable = passwordTextField.rx.text.orEmpty
         let combinedEmailPassword = Observable.combineLatest(emailObservable, passwordObservable)
         
-        loginButton.rx.tap
+        signInButton.rx.tap
             .withLatestFrom(combinedEmailPassword)
             .subscribe(onNext: { [weak self] in
-                self?.signViewModel.tapLoginButton($0, $1)
+                self?.signInViewModel.tapSignInButton($0, $1)
             })
             .disposed(by: disposeBag)
     }
     
-    func bindLoginOnSessionError() {
-        // loginIndicatorView.stopAnimating()
+    func bindsignInOnSessionError() {
+        // signInIndicatorView.stopAnimating()
         
-        signViewModel.onError.asDriver(onErrorJustReturn: .unknown)
+        signInViewModel.onError.asDriver(onErrorJustReturn: .unknown)
             .drive { [weak self] error in
                 guard let self = self else { return }
-                self.showLoginErrorAlert(error.description)
+                self.showSignInErrorAlert(error.description)
             }
             .disposed(by: disposeBag)
     }
     
-    func loginResponseFail() {
-        // loginIndicatorView.stopAnimating()
+    func signInResponseFail() {
+        // signInIndicatorView.stopAnimating()
         
-        signViewModel.loginResponseFail.asDriver(onErrorJustReturn: "0")
+        signInViewModel.signInResponseFail.asDriver(onErrorJustReturn: "0")
             .drive { [weak self] response in
                 guard let self = self else { return }
-                self.showLoginErrorAlert(response)
+                self.showSignInErrorAlert(response)
             }
             .disposed(by: disposeBag)
     }
     
-    func loginResponseSuccess() {
-        // loginIndicatorView.stopAnimating()
+    func signInResponseSuccess() {
+        // signInIndicatorView.stopAnimating()
         
-        signViewModel.loginResponseSuccess.asDriver(onErrorJustReturn: "1")
+        signInViewModel.signInResponseSuccess.asDriver(onErrorJustReturn: "1")
             .drive { [weak self] response in
                 guard let self = self else { return }
                 let tabBarVC = ViewControllerFactory.viewController(for: .tabBar)
@@ -234,11 +232,11 @@ extension SignVC {
 }
 
 // MARK:- Set Initial UI Value
-extension SignVC {
+extension SignInVC {
     func setInitialUIValue() {
         emailView.layer.cornerRadius = 3
         passwordView.layer.cornerRadius = 3
-        loginButton.layer.cornerRadius = 3
+        signInButton.layer.cornerRadius = 3
     
         isEmailValidLabel.isHidden = true
         isPasswordValidLabel.isHidden = true
@@ -246,7 +244,7 @@ extension SignVC {
         emailView.layer.borderWidth = 0
         passwordView.layer.borderWidth = 0
         
-        saveLoginStateButton.isSelected = false
-        saveLoginStateButton.layer.cornerRadius = 20
+        saveSignInStateButton.isSelected = false
+        saveSignInStateButton.layer.cornerRadius = 20
     }
 }

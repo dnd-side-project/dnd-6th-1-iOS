@@ -9,7 +9,7 @@ import RxSwift
 import RxCocoa
 import SwiftKeychainWrapper
 
-class SignVM {
+class SignInVM {
     
     var disposeBag = DisposeBag()
     let apiSession = APISession()
@@ -24,14 +24,14 @@ class SignVM {
     let isEyeOn = BehaviorRelay(value: false)
 
     let onError = PublishSubject<APIError>()
-    let loginResponseFail = PublishSubject<String>()
-    let loginResponseSuccess = PublishSubject<String>()
+    let signInResponseFail = PublishSubject<String>()
+    let signInResponseSuccess = PublishSubject<String>()
     // let isLoading = BehaviorRelay(value: true)
     
     let savedStatus = BehaviorRelay(value: false)
     let savedEmail = PublishSubject<String>()
     let savedPassword = PublishSubject<String>()
-    let isLoginStateSelected = BehaviorRelay(value: false)
+    let isSignInStateSelected = BehaviorRelay(value: false)
     
     init () {
         emailText.distinctUntilChanged()
@@ -69,18 +69,18 @@ class SignVM {
         }
     }
     
-    func changeSaveLoginStatus() {
-        isLoginStateSelected.accept(!isLoginStateSelected.value)
+    func changeSaveSignInStatus() {
+        isSignInStateSelected.accept(!isSignInStateSelected.value)
     }
     
-    func tapLoginButton(_ email: String, _ password: String) {
+    func tapSignInButton(_ email: String, _ password: String) {
         
         let loginURL = "https://3044b01e-b59d-4905-a40d-1bef340f11ab.mock.pstmn.io/v1/login"
         let url = URL(string: loginURL)!
-        let loginInformation = LoginModel(email: email, password: password)
+        let loginInformation = SignInModel(email: email, password: password)
         
         apiSession
-            .loginRequest(with: url, info: loginInformation)
+            .signInRequest(with: url, info: loginInformation)
             .subscribe(onNext: { [weak self] result in
                 guard let self = self else { return }
                 switch result {
@@ -89,13 +89,13 @@ class SignVM {
                     
                 case .success(let response):
                     if response.flag == "0" {
-                        self.loginResponseFail.onNext("로그인 정보가 잘못되었습니다")
+                        self.signInResponseFail.onNext("로그인 정보가 잘못되었습니다")
                     } else {
-                        if self.isLoginStateSelected.value {
+                        if self.isSignInStateSelected.value {
                             print("data save")
                             self.saveUserData(email, password)
                         }
-                        self.loginResponseSuccess.onNext(response.flag)
+                        self.signInResponseSuccess.onNext(response.flag)
                     }
                 }
             })

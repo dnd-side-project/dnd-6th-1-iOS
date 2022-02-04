@@ -8,19 +8,19 @@
 import Foundation
 import Alamofire
 
-struct LoginModel {
+struct SignInModel {
     let email: String
     let password: String
 }
 
-extension LoginModel {
+extension SignInModel {
     var loginParam: Parameters {
         return ["email": email,
                 "password": password]
     }
 }
 
-struct LoginResponse: Decodable {
+struct SignInResponse: Decodable {
     let flag: String
 }
 

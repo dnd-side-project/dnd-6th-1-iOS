@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--SignVC-->
+        <!--Sign InVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="SignVC" id="Y6W-OH-hqX" customClass="SignVC" customModule="ITZZA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInVC" id="Y6W-OH-hqX" customClass="SignInVC" customModule="ITZZA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -181,12 +181,12 @@
                         <outlet property="findIdPasswordButton" destination="oZm-dr-Tkd" id="ROd-Uf-xtY"/>
                         <outlet property="isEmailValidLabel" destination="bf4-cy-zoI" id="AEr-v0-EKd"/>
                         <outlet property="isPasswordValidLabel" destination="OJP-qX-bSj" id="glX-e9-T5e"/>
-                        <outlet property="loginButton" destination="1NW-QV-AGM" id="6kk-PZ-ikU"/>
-                        <outlet property="loginIndicatorView" destination="XDw-xK-6no" id="xVH-AW-bQX"/>
                         <outlet property="passwordEyeButton" destination="OsZ-8B-ILK" id="Ghg-g5-f19"/>
                         <outlet property="passwordTextField" destination="faK-ka-rmN" id="YnH-OP-GGs"/>
                         <outlet property="passwordView" destination="WkG-gq-Xda" id="lvT-17-Glo"/>
-                        <outlet property="saveLoginStateButton" destination="qeC-2v-8o6" id="47D-Ot-FSy"/>
+                        <outlet property="saveSignInStateButton" destination="qeC-2v-8o6" id="mlK-0M-aUm"/>
+                        <outlet property="signInButton" destination="1NW-QV-AGM" id="7Lb-b5-rdd"/>
+                        <outlet property="signInIndicatorView" destination="XDw-xK-6no" id="7yy-yM-h6n"/>
                         <outlet property="signUpButton" destination="AXX-7o-tMK" id="otR-MM-phJ"/>
                     </connections>
                 </viewController>

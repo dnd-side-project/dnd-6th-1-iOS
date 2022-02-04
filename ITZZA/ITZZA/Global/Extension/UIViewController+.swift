@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIViewController {
-    func showLoginErrorAlert(_ message: String?) {
+    func showSignInErrorAlert(_ message: String?) {
         let alertController = UIAlertController(title: "Login Error",
                                                 message: message,
                                                 preferredStyle: .alert)

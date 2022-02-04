@@ -20,11 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         guard let userEmail = UserDefaults.standard.string(forKey: "email"),
               let userPassword: String = KeychainWrapper.standard[.myKey] else {
-                let signVC = ViewControllerFactory.viewController(for: .sign)
-                self.window = UIWindow(frame: UIScreen.main.bounds)
-                self.window?.rootViewController = signVC
-                self.window?.makeKeyAndVisible()
-                return true
+                  let signInVC = ViewControllerFactory.viewController(for: .signIn)
+                  self.window = UIWindow(frame: UIScreen.main.bounds)
+                  self.window?.rootViewController = signInVC
+                  self.window?.makeKeyAndVisible()
+                  return true
         }
         
         email = userEmail
