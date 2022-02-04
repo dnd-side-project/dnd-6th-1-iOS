@@ -30,7 +30,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="u3d-zd-Py9">
-                    <rect key="frame" x="16" y="11.666666666666666" width="30" height="28.333333333333336"/>
+                    <rect key="frame" x="16" y="11.666666666666666" width="30" height="28.666666666666679"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="9P2-if-aEW"/>
                         <constraint firstAttribute="height" constant="30" id="hQ6-iV-FCH"/>

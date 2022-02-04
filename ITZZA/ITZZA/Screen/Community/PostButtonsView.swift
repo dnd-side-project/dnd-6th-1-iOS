@@ -9,6 +9,8 @@ import UIKit
 
 class PostButtonsView: UIView {
     @IBOutlet var view: UIView!
+    @IBOutlet weak var likeCnt: UILabel!
+    @IBOutlet weak var commentCnt: UILabel!
     
     // awakeFromNib
     override func awakeFromNib() {

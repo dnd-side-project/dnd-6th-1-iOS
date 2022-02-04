@@ -15,6 +15,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostButtonsView" customModule="ITZZA" customModuleProvider="target">
             <connections>
+                <outlet property="commentCnt" destination="vBj-xc-9l9" id="9uM-Pg-DTE"/>
+                <outlet property="likeCnt" destination="8Y9-f3-SuG" id="ZeC-er-U6I"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="8yR-j2-Ie1"/>
             </connections>
         </placeholder>

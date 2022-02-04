@@ -55,4 +55,13 @@ extension PostTVC {
         contentView.backgroundColor = .white
     }
 
+    func configureCell(with post: PostModel) {
+        headerView.userName.text = post.nickName
+        headerView.createAt.text = post.createdAt
+        
+        contents.text = post.postContent
+        
+        footerView.likeCnt.text = String(describing: post.likeCnt!)
+        footerView.commentCnt.text = String(describing: post.commentCnt!)
+    }
 }
