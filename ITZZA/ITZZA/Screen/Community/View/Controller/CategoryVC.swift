@@ -16,13 +16,24 @@ class CategoryVC: UIViewController {
     let bag = DisposeBag()
     let dummyData = PostModel(nickName: "익명의 사용자",
                               profileImgURL: "",
+                              likeCnt: 4,
+                              commentCnt: 1,
+                              bookmarkCnt: 2,
+                              createdAt: "1시간 전",
+                              boardId: 0,
+                              categoryName: "",
+                              postTitle: "ㅁㄴㅇㄹ",
+                              postContent: "ㅁㄴㅇㄹ",
+                              imageCnt: 1)
+    let dummyData2 = PostModel(nickName: "익명의 사용자",
+                              profileImgURL: "",
                               likeCnt: 14,
                               commentCnt: 14,
                               bookmarkCnt: 14,
                               createdAt: "3시간 전",
                               boardId: 0,
                               categoryName: "",
-                              postTitle: "",
+                              postTitle: "ㅁㄴㅇㄹ",
                               postContent: "ㅁㄴㅇㄹ",
                               imageCnt: 0)
     
@@ -52,8 +63,7 @@ extension CategoryVC {
         })
         
         let sections = [
-            PostDataSource(section: 0, items: [dummyData]),
-            PostDataSource(section: 0, items: [dummyData])
+            PostDataSource(section: 0, items: [dummyData, dummyData2])
         ]
 
         Observable.just(sections)

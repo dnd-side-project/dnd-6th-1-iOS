@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import Kingfisher
+import RxSwift
 
 class PostTVC: UITableViewCell {
     @IBOutlet weak var headerView: ProfileHeaderView!
     @IBOutlet weak var footerView: PostButtonsView!
+    @IBOutlet weak var contentTitle: UILabel!
     @IBOutlet weak var contents: UITextView!
+    @IBOutlet weak var imageCnt: UILabel!
+    @IBOutlet weak var imageCntView: UIStackView!
     
     let cellSpace = UIEdgeInsets(top: 0.0,
                                  left: 0.0,
@@ -56,10 +61,23 @@ extension PostTVC {
     }
 
     func configureCell(with post: PostModel) {
+        headerView.profileImg.kf.setImage(with: post.profileimgURL,
+                                          placeholder: UIImage(systemName: "person.circle"),
+                                          options: [
+                                            .scaleFactor(UIScreen.main.scale),
+                                            .cacheOriginalImage
+                                          ])
         headerView.userName.text = post.nickName
         headerView.createAt.text = post.createdAt
         
+        contentTitle.text = post.postTitle
         contents.text = post.postContent
+        
+        if post.imageCnt == 0 {
+            imageCntView.isHidden = true
+        } else {
+            imageCnt.text = "+" + String(post.imageCnt!)
+        }
         
         footerView.likeCnt.text = String(describing: post.likeCnt!)
         footerView.commentCnt.text = String(describing: post.commentCnt!)

@@ -15,5 +15,6 @@ target 'ITZZA' do
   # Others
   pod 'Alamofire', '~> 5.5'
   pod 'Tabman', '~> 2.9'
+  pod 'Kingfisher', '~> 7.0'
 
 end
