@@ -53,6 +53,9 @@
 		62BE20A027A8F1A0001F150A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209F27A8F1A0001F150A /* UIViewController+.swift */; };
 		62C4008727A51ADB002B3F33 /* tmp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C4008627A51ADB002B3F33 /* tmp.swift */; };
 		62C4008B27A51B1E002B3F33 /* tmp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C4008A27A51B1E002B3F33 /* tmp.storyboard */; };
+		62E2BDF827ACFBD80052DDCE /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E2BDF727ACFBD80052DDCE /* SignUp.storyboard */; };
+		62E2BDFA27AD25CA0052DDCE /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E2BDF927AD25CA0052DDCE /* SignUpVM.swift */; };
+		62E2BDFC27AD41620052DDCE /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E2BDFB27AD41620052DDCE /* UIImage+.swift */; };
 		E30ED2FBCEA8C01F3C5952C9 /* Pods_ITZZA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B86A065F16EA791EF7DBAD0 /* Pods_ITZZA.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +110,9 @@
 		62BE209F27A8F1A0001F150A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		62C4008627A51ADB002B3F33 /* tmp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tmp.swift; sourceTree = "<group>"; };
 		62C4008A27A51B1E002B3F33 /* tmp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = tmp.storyboard; sourceTree = "<group>"; };
+		62E2BDF727ACFBD80052DDCE /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		62E2BDF927AD25CA0052DDCE /* SignUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
+		62E2BDFB27AD41620052DDCE /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		7B86A065F16EA791EF7DBAD0 /* Pods_ITZZA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITZZA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -454,6 +460,7 @@
 				232CC08A27A0391F00040131 /* Notification+.swift */,
 				62BE209F27A8F1A0001F150A /* UIViewController+.swift */,
 				622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */,
+				62E2BDFB27AD41620052DDCE /* UIImage+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -497,6 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				6208CFDA27A254B900F17603 /* SignIn.storyboard */,
+				62E2BDF727ACFBD80052DDCE /* SignUp.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -523,6 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				6208CFE027A2662700F17603 /* SignInVM.swift */,
+				62E2BDF927AD25CA0052DDCE /* SignUpVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -657,6 +666,7 @@
 			files = (
 				232CC0A227A03B4100040131 /* TabBar.storyboard in Resources */,
 				232CC09727A039B700040131 /* SFPRODISPLAYMEDIUM.OTF in Resources */,
+				62E2BDF827ACFBD80052DDCE /* SignUp.storyboard in Resources */,
 				232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */,
 				6208CFDB27A254B900F17603 /* SignIn.storyboard in Resources */,
 				232CC06027A0334100040131 /* Mypage.storyboard in Resources */,
@@ -728,8 +738,10 @@
 				232CC07127A0367C00040131 /* Identifiers.swift in Sources */,
 				232CC05E27A0333500040131 /* MypageVC.swift in Sources */,
 				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,
+				62E2BDFA27AD25CA0052DDCE /* SignUpVM.swift in Sources */,
 				62C4008727A51ADB002B3F33 /* tmp.swift in Sources */,
 				232CC07527A0370D00040131 /* TypeOfViewController.swift in Sources */,
+				62E2BDFC27AD41620052DDCE /* UIImage+.swift in Sources */,
 				232CC08B27A0391F00040131 /* Notification+.swift in Sources */,
 				232CC06627A0336100040131 /* k.swift in Sources */,
 				232CC06827A0336600040131 /* l.swift in Sources */,

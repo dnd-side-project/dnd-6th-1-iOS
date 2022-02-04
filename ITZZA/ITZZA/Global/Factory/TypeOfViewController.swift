@@ -13,6 +13,7 @@ enum TypeOfViewController {
     case community
     case mypage
     case signIn
+    case signUp
 }
 
 extension TypeOfViewController {
@@ -28,6 +29,8 @@ extension TypeOfViewController {
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.mypageSB, storyboardId: Identifiers.mypageVC)
         case .signIn:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.signInSB, storyboardId: Identifiers.signInVC)
+        case .signUp:
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.signUpSB, storyboardId: Identifiers.signUpVC)
         }
     }
 }

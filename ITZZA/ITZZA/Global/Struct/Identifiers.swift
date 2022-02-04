@@ -13,6 +13,7 @@ struct Identifiers {
     static let communitySB = "Community"
     static let mypageSB = "Mypage"
     static let signInSB = "SignIn"
+    static let signUpSB = "SignUp"
     
     //MARK: - Controller
     static let itzzaTBC = "ITZZATBC"
@@ -20,6 +21,7 @@ struct Identifiers {
     static let communityVC = "CommunityVC"
     static let mypageVC = "MypageVC"
     static let signInVC = "SignInVC"
+    static let signUpVC = "SignUpVC"
     
     //MARK: - TVC
     

@@ -26,7 +26,7 @@ class SignInVM {
     let onError = PublishSubject<APIError>()
     let signInResponseFail = PublishSubject<String>()
     let signInResponseSuccess = PublishSubject<String>()
-    // let isLoading = BehaviorRelay(value: true)
+    let indicatorController = BehaviorRelay(value: false)
     
     let savedStatus = BehaviorRelay(value: false)
     let savedEmail = PublishSubject<String>()
@@ -92,7 +92,6 @@ class SignInVM {
                         self.signInResponseFail.onNext("로그인 정보가 잘못되었습니다")
                     } else {
                         if self.isSignInStateSelected.value {
-                            print("data save")
                             self.saveUserData(email, password)
                         }
                         self.signInResponseSuccess.onNext(response.flag)
