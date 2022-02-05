@@ -20,49 +20,33 @@
                                 <rect key="frame" x="16" y="44" width="343" height="168"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LXn-ZG-jp3">
-                                        <rect key="frame" x="4" y="116" width="70" height="8"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="04r-df-8ot">
-                                        <rect key="frame" x="82" y="116" width="70" height="8"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mJ3-jU-Kl8">
-                                        <rect key="frame" x="160" y="116" width="70" height="8"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PF4-4i-oKM">
-                                        <rect key="frame" x="238" y="116" width="70" height="8"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="blK-AY-ANy">
-                                        <rect key="frame" x="141" y="105" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lQb-ob-LoR">
-                                        <rect key="frame" x="221" y="105" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uUr-Lj-6hZ">
-                                        <rect key="frame" x="63" y="105" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wJi-i7-bJj">
-                                        <rect key="frame" x="305" y="105" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1WB-u7-H4a">
                                         <rect key="frame" x="8" y="30" width="275" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oWn-wD-yat">
+                                        <rect key="frame" x="8" y="118" width="321" height="4"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </progressView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tif-mh-bs6">
+                                        <rect key="frame" x="63" y="105" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="frV-8o-vox">
+                                        <rect key="frame" x="142" y="105" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fas-WN-jY5">
+                                        <rect key="frame" x="221" y="105" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l8t-IF-Hxr">
+                                        <rect key="frame" x="305" y="105" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -126,16 +110,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="angryImage" destination="uUr-Lj-6hZ" id="Ooz-9P-wPM"/>
-                        <outlet property="angryView" destination="LXn-ZG-jp3" id="Grc-vh-JX4"/>
-                        <outlet property="comfyImage" destination="wJi-i7-bJj" id="Lwo-nx-ynk"/>
-                        <outlet property="comfyView" destination="PF4-4i-oKM" id="3jU-Oh-hfn"/>
-                        <outlet property="confuseImage" destination="blK-AY-ANy" id="BHk-hl-vkN"/>
-                        <outlet property="confuseView" destination="04r-df-8ot" id="gca-gd-dbs"/>
+                        <outlet property="angryImage" destination="Tif-mh-bs6" id="fDp-Wi-wvX"/>
+                        <outlet property="comfyImage" destination="l8t-IF-Hxr" id="e9U-DN-vNR"/>
+                        <outlet property="confuseImage" destination="frV-8o-vox" id="qDu-29-YgL"/>
                         <outlet property="nextButton" destination="aRA-zH-cYa" id="Qoo-JW-BVF"/>
                         <outlet property="previousButton" destination="oCf-YE-iJB" id="nNB-V5-8be"/>
-                        <outlet property="sadImage" destination="lQb-ob-LoR" id="37o-GE-ceK"/>
-                        <outlet property="sadView" destination="mJ3-jU-Kl8" id="z5I-2g-XEt"/>
+                        <outlet property="progressBar" destination="oWn-wD-yat" id="MZb-CH-Xn0"/>
+                        <outlet property="sadImage" destination="fas-WN-jY5" id="eyu-Zd-ZjO"/>
                         <outlet property="scrollView" destination="kM7-qL-NRu" id="8xs-ij-eAy"/>
                         <outlet property="signInButton" destination="dDm-bw-RXw" id="tLU-r1-EwI"/>
                         <outlet property="titleLabel" destination="1WB-u7-H4a" id="bt6-n5-7pZ"/>
