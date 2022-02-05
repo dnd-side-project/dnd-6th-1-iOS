@@ -6,15 +6,34 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var email: String?
+    var password: String?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        guard let userEmail = UserDefaults.standard.string(forKey: "email"),
+              let userPassword: String = KeychainWrapper.standard[.myKey] else {
+                  let signInVC = ViewControllerFactory.viewController(for: .signIn)
+                  self.window = UIWindow(frame: UIScreen.main.bounds)
+                  self.window?.rootViewController = signInVC
+                  self.window?.makeKeyAndVisible()
+                  return true
+        }
+        
+        email = userEmail
+        password = userPassword
+        
+        let tabBarVC = ViewControllerFactory.viewController(for: .tabBar)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = tabBarVC
+        self.window?.makeKeyAndVisible()
         return true
     }
 
