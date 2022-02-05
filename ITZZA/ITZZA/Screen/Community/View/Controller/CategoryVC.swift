@@ -49,9 +49,19 @@ class CategoryVC: UIViewController {
 extension CategoryVC {
     func setPostTV() {
         postListTV.backgroundColor = .systemGray6
+        postListTV.separatorStyle = .none
+        
+        bindPostListTVItemSelected()
     }
     
-    // TODO: PostModel, PostDataSource로 구조화
+    func bindPostListTVItemSelected() {
+        postListTV.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                self?.postListTV.deselectRow(at: indexPath, animated: true)
+            })
+            .disposed(by: bag)
+    }
+    
     func bindTV() {
 
         let dataSource = RxTableViewSectionedReloadDataSource<PostDataSource>(

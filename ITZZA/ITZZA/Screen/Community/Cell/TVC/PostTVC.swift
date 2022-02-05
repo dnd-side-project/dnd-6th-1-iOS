@@ -24,7 +24,6 @@ class PostTVC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         setContents()
         setViewBackgroundColor()
@@ -33,7 +32,13 @@ class PostTVC: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        if selected {
+            contentView.backgroundColor = .clear
+        } else {
+            UIView.animate(withDuration: 0.7, delay: 0, options: UIView.AnimationOptions(), animations: {
+                self.contentView.backgroundColor = .white
+            }, completion: nil)
+        }
     }
     
     override func layoutSubviews() {
@@ -48,12 +53,13 @@ class PostTVC: UITableViewCell {
 extension PostTVC {
     func setContents() {
         contents.isScrollEnabled = false
-        contents.isEditable = false
-        contents.isSelectable = false
+        contents.isUserInteractionEnabled = false
         contents.backgroundColor = .clear
     }
     
     func setViewBackgroundColor() {
+        backgroundColor = .clear
+        
         headerView.backgroundColor = .clear
         footerView.backgroundColor = .clear
         

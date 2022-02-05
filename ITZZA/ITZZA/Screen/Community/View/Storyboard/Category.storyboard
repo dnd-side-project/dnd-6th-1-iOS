@@ -109,7 +109,6 @@
                                                 <constraint firstItem="QXZ-Da-ELH" firstAttribute="leading" secondItem="ROE-hK-Gt1" secondAttribute="leading" id="ybi-yB-jbf"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <connections>
                                             <outlet property="contentTitle" destination="KCT-AG-JxG" id="VWk-Iz-mlr"/>
                                             <outlet property="contents" destination="XkU-eQ-7YZ" id="wTE-P1-Z8e"/>
