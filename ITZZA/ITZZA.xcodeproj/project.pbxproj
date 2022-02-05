@@ -37,17 +37,6 @@
 		232CC09D27A039B700040131 /* SFPRODISPLAYREGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 232CC09427A039B700040131 /* SFPRODISPLAYREGULAR.OTF */; };
 		232CC0A227A03B4100040131 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232CC0A127A03B4100040131 /* TabBar.storyboard */; };
 		232CC0A427A03B8F00040131 /* ITZZATBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC0A327A03B8F00040131 /* ITZZATBC.swift */; };
-		6208CFDB27A254B900F17603 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6208CFDA27A254B900F17603 /* SignIn.storyboard */; };
-		6208CFE127A2662700F17603 /* SignInVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CFE027A2662700F17603 /* SignInVM.swift */; };
-		622D07C027ABF12E00707E47 /* KeychainWrapper+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */; };
-		6270D40127ACE590004FD7A9 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6270D40027ACE590004FD7A9 /* SignUpVC.swift */; };
-		62BE208D27A590D0001F150A /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE208C27A590D0001F150A /* SignInVC.swift */; };
-		62BE209027A66F34001F150A /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE208F27A66F34001F150A /* APISession.swift */; };
-		62BE209227A66F52001F150A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209127A66F52001F150A /* APIService.swift */; };
-		62BE209427A66F60001F150A /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209327A66F60001F150A /* APIError.swift */; };
-		62BE209927A679A2001F150A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209827A679A2001F150A /* Service.swift */; };
-		62BE209E27A67F15001F150A /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209D27A67F15001F150A /* SignInModel.swift */; };
-		62BE20A027A8F1A0001F150A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209F27A8F1A0001F150A /* UIViewController+.swift */; };
 		2335241127A98CBA009C654F /* CommunityVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2335241027A98CBA009C654F /* CommunityVM.swift */; };
 		2335241327A98D57009C654F /* PostDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2335241227A98D57009C654F /* PostDataSource.swift */; };
 		2335241727A98FA0009C654F /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2335241527A98FA0009C654F /* ProfileHeaderView.swift */; };
@@ -66,9 +55,19 @@
 		238EC09C27AA7295001CBB24 /* SearchPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238EC09B27AA7295001CBB24 /* SearchPostVC.swift */; };
 		238EC09F27AA88EC001CBB24 /* ImageAddBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */; };
 		238EC0A027AA88EC001CBB24 /* ImageAddBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */; };
-		6208CFDB27A254B900F17603 /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6208CFDA27A254B900F17603 /* Sign.storyboard */; };
-		6208CFDE27A258F600F17603 /* SignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CFDD27A258F600F17603 /* SignVC.swift */; };
-		6208CFE127A2662700F17603 /* SignVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CFE027A2662700F17603 /* SignVM.swift */; };
+		6208CFDB27A254B900F17603 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6208CFDA27A254B900F17603 /* SignIn.storyboard */; };
+		6208CFDE27A258F600F17603 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		6208CFE127A2662700F17603 /* SignInVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CFE027A2662700F17603 /* SignInVM.swift */; };
+		622D07C027ABF12E00707E47 /* KeychainWrapper+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */; };
+		6270D40127ACE590004FD7A9 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6270D40027ACE590004FD7A9 /* SignUpVC.swift */; };
+		627E1A8F27AEAD7D005C1777 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E1A8E27AEAD7D005C1777 /* Array+.swift */; };
+		62BE208D27A590D0001F150A /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE208C27A590D0001F150A /* SignInVC.swift */; };
+		62BE209027A66F34001F150A /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE208F27A66F34001F150A /* APISession.swift */; };
+		62BE209227A66F52001F150A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209127A66F52001F150A /* APIService.swift */; };
+		62BE209427A66F60001F150A /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209327A66F60001F150A /* APIError.swift */; };
+		62BE209927A679A2001F150A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209827A679A2001F150A /* Service.swift */; };
+		62BE209E27A67F15001F150A /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209D27A67F15001F150A /* SignInModel.swift */; };
+		62BE20A027A8F1A0001F150A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209F27A8F1A0001F150A /* UIViewController+.swift */; };
 		62C4008727A51ADB002B3F33 /* tmp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C4008627A51ADB002B3F33 /* tmp.swift */; };
 		62C4008B27A51B1E002B3F33 /* tmp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C4008A27A51B1E002B3F33 /* tmp.storyboard */; };
 		62E2BDF827ACFBD80052DDCE /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E2BDF727ACFBD80052DDCE /* SignUp.storyboard */; };
@@ -134,6 +133,7 @@
 		6208CFE027A2662700F17603 /* SignInVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVM.swift; sourceTree = "<group>"; };
 		622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeychainWrapper+.swift"; sourceTree = "<group>"; };
 		6270D40027ACE590004FD7A9 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		627E1A8E27AEAD7D005C1777 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		62BE208C27A590D0001F150A /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		62BE208F27A66F34001F150A /* APISession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
 		62BE209127A66F52001F150A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -504,6 +504,7 @@
 				622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */,
 				62E2BDFB27AD41620052DDCE /* UIImage+.swift */,
 				238CEEA127A7DFCF006BE766 /* NavigationController+.swift */,
+				627E1A8E27AEAD7D005C1777 /* Array+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -798,16 +799,16 @@
 				62BE209E27A67F15001F150A /* SignInModel.swift in Sources */,
 				232CC04A27A032CF00040131 /* CommunityVC.swift in Sources */,
 				622D07C027ABF12E00707E47 /* KeychainWrapper+.swift in Sources */,
-				232CC04E27A032E600040131 /* e.swift in Sources */,
 				232CC07127A0367C00040131 /* Identifiers.swift in Sources */,
 				232CC05E27A0333500040131 /* MypageVC.swift in Sources */,
 				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,
 				62E2BDFA27AD25CA0052DDCE /* SignUpVM.swift in Sources */,
 				2335241F27A99392009C654F /* PostButtonsView.swift in Sources */,
-				6208CFDE27A258F600F17603 /* SignVC.swift in Sources */,
+				6208CFDE27A258F600F17603 /* (null) in Sources */,
+				627E1A8F27AEAD7D005C1777 /* Array+.swift in Sources */,
 				238EC09827AA4C4A001CBB24 /* AddPostVC.swift in Sources */,
 				2335241727A98FA0009C654F /* ProfileHeaderView.swift in Sources */,
-				6208CFE127A2662700F17603 /* SignVM.swift in Sources */,
+				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,
 				62C4008727A51ADB002B3F33 /* tmp.swift in Sources */,
 				232CC07527A0370D00040131 /* TypeOfViewController.swift in Sources */,
 				62E2BDFC27AD41620052DDCE /* UIImage+.swift in Sources */,
