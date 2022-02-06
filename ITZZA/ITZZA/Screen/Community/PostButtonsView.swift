@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class PostButtonsView: UIView {
     @IBOutlet var view: UIView!
@@ -14,6 +15,8 @@ class PostButtonsView: UIView {
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var commentCnt: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
+    
+    let bag = DisposeBag()
     
     // awakeFromNib
     override func awakeFromNib() {
@@ -40,5 +43,39 @@ class PostButtonsView: UIView {
     private func setUpView() {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
+    }
+}
+
+//MARK: - Button Event
+extension PostButtonsView {
+    func didTapLikeButton() {
+        likeButton.rx.tap
+             .scan(false) { lastState, newState in
+                 !lastState
+             }
+             .subscribe(onNext: {
+                 self.likeButton.setImageToggle($0, UIImage(systemName: "heart")!, UIImage(systemName: "heart.fill")!)
+                 self.likeCnt.text = self.setButtonCnt($0, self.likeCnt.text!)
+             })
+             .disposed(by: bag)
+    }
+    
+    func didTapBookmarkButton() {
+        bookmarkButton.rx.tap
+             .scan(false) { lastState, newState in
+                 !lastState
+             }
+             .subscribe(onNext: {
+                 self.bookmarkButton.setImageToggle($0, UIImage(systemName: "bookmark")!, UIImage(systemName: "bookmark.fill")!)
+             })
+             .disposed(by: bag)
+    }
+    
+    func setButtonCnt(_ state: Bool, _ lastCnt: String) -> String {
+        if state {
+            return String(Int(lastCnt)! + 1)
+        } else {
+            return String(Int(lastCnt)! - 1)
+        }
     }
 }
