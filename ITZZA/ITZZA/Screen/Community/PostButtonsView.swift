@@ -9,8 +9,11 @@ import UIKit
 
 class PostButtonsView: UIView {
     @IBOutlet var view: UIView!
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var likeCnt: UILabel!
+    @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var commentCnt: UILabel!
+    @IBOutlet weak var bookmarkButton: UIButton!
     
     // awakeFromNib
     override func awakeFromNib() {

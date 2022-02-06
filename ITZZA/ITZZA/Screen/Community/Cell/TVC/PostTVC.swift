@@ -17,6 +17,8 @@ class PostTVC: UITableViewCell {
     @IBOutlet weak var imageCnt: UILabel!
     @IBOutlet weak var imageCntView: UIStackView!
     
+    let bag = DisposeBag()
+    
     let cellSpace = UIEdgeInsets(top: 0.0,
                                  left: 0.0,
                                  bottom: 5.0,
@@ -87,5 +89,41 @@ extension PostTVC {
         
         footerView.likeCnt.text = String(describing: post.likeCnt!)
         footerView.commentCnt.text = String(describing: post.commentCnt!)
+    }
+    
+    func bindButtonAction() {
+        didTapLikeButton()
+        didTapBookmarkButton()
+    }
+    
+    func didTapLikeButton() {
+        footerView.likeButton.rx.tap
+             .scan(false) { lastState, newState in
+                 !lastState
+             }
+             .subscribe(onNext: {
+                 self.footerView.likeButton.setImageToggle($0, UIImage(systemName: "heart")!, UIImage(systemName: "heart.fill")!)
+                 self.footerView.likeCnt.text = self.setButtonCnt($0, self.footerView.likeCnt.text!)
+             })
+             .disposed(by: bag)
+    }
+    
+    func didTapBookmarkButton() {
+        footerView.bookmarkButton.rx.tap
+             .scan(false) { lastState, newState in
+                 !lastState
+             }
+             .subscribe(onNext: {
+                 self.footerView.bookmarkButton.setImageToggle($0, UIImage(systemName: "bookmark")!, UIImage(systemName: "bookmark.fill")!)
+             })
+             .disposed(by: bag)
+    }
+    
+    func setButtonCnt(_ state: Bool, _ lastCnt: String) -> String {
+        if state {
+            return String(Int(lastCnt)! + 1)
+        } else {
+            return String(Int(lastCnt)! - 1)
+        }
     }
 }

@@ -68,7 +68,7 @@ extension CategoryVC {
           configureCell: { dataSource, tableView, indexPath, item in
               let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.postTVC, for: indexPath) as! PostTVC
               cell.configureCell(with: item)
-              
+              cell.bindButtonAction()
               return cell
         })
         

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2305120D27AEE52100CF7FCF /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2305120C27AEE52100CF7FCF /* UIButton+.swift */; };
 		232CC01527A0317900040131 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC01427A0317900040131 /* AppDelegate.swift */; };
 		232CC01E27A0317900040131 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 232CC01D27A0317900040131 /* Assets.xcassets */; };
 		232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232CC01F27A0317900040131 /* LaunchScreen.storyboard */; };
@@ -63,6 +64,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2305120C27AEE52100CF7FCF /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		232CC01127A0317900040131 /* ITZZA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITZZA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		232CC01427A0317900040131 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		232CC01D27A0317900040131 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 				232CC08827A0390B00040131 /* UIFont+.swift */,
 				232CC08A27A0391F00040131 /* Notification+.swift */,
 				238CEEA127A7DFCF006BE766 /* NavigationController+.swift */,
+				2305120C27AEE52100CF7FCF /* UIButton+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				238CEEA627A7E705006BE766 /* CategoryVC.swift in Sources */,
+				2305120D27AEE52100CF7FCF /* UIButton+.swift in Sources */,
 				232CC03627A0326500040131 /* HomeVC.swift in Sources */,
 				232CC07327A036FC00040131 /* StoryboardRepresentation.swift in Sources */,
 				232CC04A27A032CF00040131 /* CommunityVC.swift in Sources */,
@@ -908,7 +912,7 @@
 				INFOPLIST_FILE = ITZZA/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = TabBar;
+				INFOPLIST_KEY_UIMainStoryboardFile = Sign;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -937,7 +941,7 @@
 				INFOPLIST_FILE = ITZZA/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = TabBar;
+				INFOPLIST_KEY_UIMainStoryboardFile = Sign;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
