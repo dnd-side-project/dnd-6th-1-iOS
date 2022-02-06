@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatInputView" customModule="ITZZA" customModuleProvider="target">
+            <connections>
+                <outlet property="sendButton" destination="wO1-Sr-exj" id="83i-S9-MVX"/>
+                <outlet property="textInputField" destination="rdy-Fj-jbj" id="BWS-Lt-ZXh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="hOy-MC-3RV"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdy-Fj-jbj">
+                    <rect key="frame" x="16" y="10" width="343" height="60"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wO1-Sr-exj">
+                    <rect key="frame" x="320" y="28" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="BYK-vh-MCa"/>
+                        <constraint firstAttribute="height" constant="24" id="VwB-W8-h0i"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="paperplane" catalog="system"/>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="rdy-Fj-jbj" secondAttribute="bottom" constant="10" id="4US-fA-G6j"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wO1-Sr-exj" secondAttribute="trailing" constant="31" id="60o-wM-vC4"/>
+                <constraint firstItem="wO1-Sr-exj" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="XNA-zk-Xu5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rdy-Fj-jbj" secondAttribute="trailing" constant="16" id="fFa-rV-SqK"/>
+                <constraint firstItem="rdy-Fj-jbj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="g2F-LB-DE5"/>
+                <constraint firstItem="rdy-Fj-jbj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="mJj-yv-v97"/>
+                <constraint firstItem="rdy-Fj-jbj" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="zrU-99-Nnc"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="138.40579710144928" y="90.736607142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="paperplane" catalog="system" width="128" height="118"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
