@@ -15,6 +15,7 @@ enum TypeOfViewController {
     case signIn
     case signUp
     case communityCategory
+    case postDetail
     case addPost
     case searchPost
     
@@ -46,6 +47,8 @@ extension TypeOfViewController {
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.signUpSB, storyboardId: Identifiers.signUpVC)
         case .communityCategory:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.categorySB, storyboardId: Identifiers.categoryVC)
+        case .postDetail:
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.postDetailSB, storyboardId: Identifiers.postDetailVC)
         case .addPost:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.addPostSB, storyboardId: Identifiers.addPostVC)
         case .searchPost:

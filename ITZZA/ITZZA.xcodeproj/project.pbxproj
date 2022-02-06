@@ -43,6 +43,8 @@
 		2335241827A98FA0009C654F /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2335241627A98FA0009C654F /* ProfileHeaderView.xib */; };
 		2335241F27A99392009C654F /* PostButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2335241D27A99392009C654F /* PostButtonsView.swift */; };
 		2335242027A99392009C654F /* PostButtonsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2335241E27A99392009C654F /* PostButtonsView.xib */; };
+		233B636927AF9D8C00914F60 /* PostDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 233B636827AF9D8C00914F60 /* PostDetail.storyboard */; };
+		233B636B27AF9D9D00914F60 /* PostDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B636A27AF9D9D00914F60 /* PostDetailVC.swift */; };
 		238CEEA027A7DEA0006BE766 /* CommunityNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */; };
 		238CEEA227A7DFCF006BE766 /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEEA127A7DFCF006BE766 /* NavigationController+.swift */; };
 		238CEEA427A7E6F1006BE766 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 238CEEA327A7E6F1006BE766 /* Category.storyboard */; };
@@ -115,6 +117,8 @@
 		2335241627A98FA0009C654F /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		2335241D27A99392009C654F /* PostButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButtonsView.swift; sourceTree = "<group>"; };
 		2335241E27A99392009C654F /* PostButtonsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostButtonsView.xib; sourceTree = "<group>"; };
+		233B636827AF9D8C00914F60 /* PostDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostDetail.storyboard; sourceTree = "<group>"; };
+		233B636A27AF9D9D00914F60 /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVC.swift; sourceTree = "<group>"; };
 		238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNC.swift; sourceTree = "<group>"; };
 		238CEEA127A7DFCF006BE766 /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
 		238CEEA327A7E6F1006BE766 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
@@ -371,6 +375,7 @@
 				238CEEA527A7E705006BE766 /* CategoryVC.swift */,
 				238EC09727AA4C4A001CBB24 /* AddPostVC.swift */,
 				238EC09B27AA7295001CBB24 /* SearchPostVC.swift */,
+				233B636A27AF9D9D00914F60 /* PostDetailVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -382,6 +387,7 @@
 				238CEEA327A7E6F1006BE766 /* Category.storyboard */,
 				238EC09527AA4C3B001CBB24 /* AddPost.storyboard */,
 				238EC09927AA7288001CBB24 /* SearchPost.storyboard */,
+				233B636827AF9D8C00914F60 /* PostDetail.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -728,6 +734,7 @@
 				62E2BDF827ACFBD80052DDCE /* SignUp.storyboard in Resources */,
 				232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */,
 				6208CFDB27A254B900F17603 /* SignIn.storyboard in Resources */,
+				233B636927AF9D8C00914F60 /* PostDetail.storyboard in Resources */,
 				232CC06027A0334100040131 /* Mypage.storyboard in Resources */,
 				2335241827A98FA0009C654F /* ProfileHeaderView.xib in Resources */,
 				232CC01E27A0317900040131 /* Assets.xcassets in Resources */,
@@ -809,6 +816,7 @@
 				627E1A8F27AEAD7D005C1777 /* Array+.swift in Sources */,
 				238EC09827AA4C4A001CBB24 /* AddPostVC.swift in Sources */,
 				2335241727A98FA0009C654F /* ProfileHeaderView.swift in Sources */,
+				233B636B27AF9D9D00914F60 /* PostDetailVC.swift in Sources */,
 				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,
 				62C4008727A51ADB002B3F33 /* tmp.swift in Sources */,
 				232CC07527A0370D00040131 /* TypeOfViewController.swift in Sources */,
