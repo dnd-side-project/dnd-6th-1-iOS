@@ -16,6 +16,7 @@ PODS:
   - RxRelay (6.1.0):
     - RxSwift (= 6.1.0)
   - RxSwift (6.1.0)
+  - SwiftKeychainWrapper (4.0.1)
   - Tabman (2.11.1):
     - Pageboy (~> 3.6.0)
 
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - RxDataSources (< 5.1.0)
   - RxGesture (< 4.1.0)
   - RxSwift (< 6.2.0)
+  - SwiftKeychainWrapper
   - Tabman (~> 2.9)
 
 SPEC REPOS:
@@ -39,6 +41,7 @@ SPEC REPOS:
     - RxGesture
     - RxRelay
     - RxSwift
+    - SwiftKeychainWrapper
     - Tabman
 
 SPEC CHECKSUMS:
@@ -51,8 +54,9 @@ SPEC CHECKSUMS:
   RxGesture: abadd243fc36db74df43dfc893829ddde94f1a3d
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
+  SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
   Tabman: 792ac76fd1ec95af175c93db880a3c47cabedc91
 
-PODFILE CHECKSUM: 0d6eec56f69b5966b7a7081bf631df8154a155d6
+PODFILE CHECKSUM: 054c30778d44c21a4721a0ed3e1c2b85cfd394e7
 
 COCOAPODS: 1.11.2

@@ -15,7 +15,8 @@ struct Identifiers {
     static let addPostSB = "AddPost"
     static let searchPostSB = "SearchPost"
     static let mypageSB = "Mypage"
-    static let signSB = "Sign"
+    static let signInSB = "SignIn"
+    static let signUpSB = "SignUp"
     
     //MARK: - Controller
     static let itzzaTBC = "ITZZATBC"
@@ -26,7 +27,8 @@ struct Identifiers {
     static let addPostVC = "AddPostVC"
     static let searchPostVC = "SearchPostVC"
     static let mypageVC = "MypageVC"
-    static let signVC = "SignVC"
+    static let signInVC = "SignInVC"
+    static let signUpVC = "SignUpVC"
     
     //MARK: - View
     static let profileHeaderView = "ProfileHeaderView"

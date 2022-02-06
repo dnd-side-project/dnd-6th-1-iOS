@@ -14,6 +14,7 @@ target 'ITZZA' do
   
   # Others
   pod 'Alamofire', '~> 5.5'
+  pod 'SwiftKeychainWrapper'
   pod 'Tabman', '~> 2.9'
   pod 'Kingfisher', '~> 7.0'
 
