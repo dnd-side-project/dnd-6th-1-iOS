@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2305120D27AEE52100CF7FCF /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2305120C27AEE52100CF7FCF /* UIButton+.swift */; };
 		232CC01527A0317900040131 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC01427A0317900040131 /* AppDelegate.swift */; };
 		232CC01E27A0317900040131 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 232CC01D27A0317900040131 /* Assets.xcassets */; };
 		232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232CC01F27A0317900040131 /* LaunchScreen.storyboard */; };
@@ -37,7 +38,6 @@
 		232CC09D27A039B700040131 /* SFPRODISPLAYREGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 232CC09427A039B700040131 /* SFPRODISPLAYREGULAR.OTF */; };
 		232CC0A227A03B4100040131 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232CC0A127A03B4100040131 /* TabBar.storyboard */; };
 		232CC0A427A03B8F00040131 /* ITZZATBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC0A327A03B8F00040131 /* ITZZATBC.swift */; };
-		2335241127A98CBA009C654F /* CommunityVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2335241027A98CBA009C654F /* CommunityVM.swift */; };
 		2335241327A98D57009C654F /* PostDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2335241227A98D57009C654F /* PostDataSource.swift */; };
 		2335241727A98FA0009C654F /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2335241527A98FA0009C654F /* ProfileHeaderView.swift */; };
 		2335241827A98FA0009C654F /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2335241627A98FA0009C654F /* ProfileHeaderView.xib */; };
@@ -77,6 +77,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2305120C27AEE52100CF7FCF /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		232CC01127A0317900040131 /* ITZZA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITZZA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		232CC01427A0317900040131 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		232CC01D27A0317900040131 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,7 +110,6 @@
 		232CC09427A039B700040131 /* SFPRODISPLAYREGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYREGULAR.OTF; sourceTree = "<group>"; };
 		232CC0A127A03B4100040131 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		232CC0A327A03B8F00040131 /* ITZZATBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITZZATBC.swift; sourceTree = "<group>"; };
-		2335241027A98CBA009C654F /* CommunityVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityVM.swift; sourceTree = "<group>"; };
 		2335241227A98D57009C654F /* PostDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDataSource.swift; sourceTree = "<group>"; };
 		2335241527A98FA0009C654F /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		2335241627A98FA0009C654F /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
@@ -349,7 +349,6 @@
 		232CC04527A032A600040131 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2335241027A98CBA009C654F /* CommunityVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -504,6 +503,7 @@
 				622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */,
 				62E2BDFB27AD41620052DDCE /* UIImage+.swift */,
 				238CEEA127A7DFCF006BE766 /* NavigationController+.swift */,
+				2305120C27AEE52100CF7FCF /* UIButton+.swift */,
 				627E1A8E27AEAD7D005C1777 /* Array+.swift */,
 			);
 			path = Extension;
@@ -793,6 +793,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				238CEEA627A7E705006BE766 /* CategoryVC.swift in Sources */,
+				2305120D27AEE52100CF7FCF /* UIButton+.swift in Sources */,
 				232CC03627A0326500040131 /* HomeVC.swift in Sources */,
 				232CC07327A036FC00040131 /* StoryboardRepresentation.swift in Sources */,
 				62BE209227A66F52001F150A /* APIService.swift in Sources */,
@@ -816,7 +817,6 @@
 				238EC09C27AA7295001CBB24 /* SearchPostVC.swift in Sources */,
 				232CC06627A0336100040131 /* k.swift in Sources */,
 				232CC06827A0336600040131 /* l.swift in Sources */,
-				2335241127A98CBA009C654F /* CommunityVM.swift in Sources */,
 				232CC05227A032F400040131 /* g.swift in Sources */,
 				62BE209027A66F34001F150A /* APISession.swift in Sources */,
 				2335241327A98D57009C654F /* PostDataSource.swift in Sources */,

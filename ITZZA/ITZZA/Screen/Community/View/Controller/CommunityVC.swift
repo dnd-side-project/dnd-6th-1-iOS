@@ -11,7 +11,8 @@ import Pageboy
 import RxSwift
 
 class CommunityVC: TabmanViewController {
-    private var viewControllers: Array<UIViewController> = []
+    private let viewControllers = TypeOfViewController.communityCases.compactMap { ViewControllerFactory.viewController(for: $0) as? CategoryVC
+    }
     
     @IBOutlet weak var categoryTB: UIView!
     
@@ -19,7 +20,7 @@ class CommunityVC: TabmanViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
+        configureCategoryView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,25 +30,24 @@ class CommunityVC: TabmanViewController {
 
 //MARK: - Custom Methods
 extension CommunityVC {
-    func configureView() {
-        configureCategoryView()
-    }
-    
     func configureNavigationBar() {
-        navigationController?.setNaviBarTitle(navigationItem: self.navigationItem, title: "커뮤니티")
-        navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .black)
-        
+        setNaviBarView()
         setNaviBarItems()
     }
     
     func configureCategoryView() {
         setCategoryIndicator()
-        setCategoryPage()
+        setCategoryPageDataSource()
     }
 }
 
-//MARK: - setting Methods
+//MARK: - Setup Methods
 extension CommunityVC {
+    func setNaviBarView() {
+        navigationController?.setNaviBarTitle(navigationItem: self.navigationItem, title: "커뮤니티")
+        navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .black)
+    }
+    
     func setNaviBarItems() {
         let searchBtn = UIBarButtonItem()
         searchBtn.image = UIImage(systemName: "magnifyingglass")
@@ -76,41 +76,30 @@ extension CommunityVC {
             .disposed(by: bag)
     }
     
-    func setCategoryPage() {
-        let allTab = ViewControllerFactory.viewController(for: .communityCategory) as! CategoryVC
-        let openHeartTab = ViewControllerFactory.viewController(for: .communityCategory) as! CategoryVC
-        let angryTab = ViewControllerFactory.viewController(for: .communityCategory) as! CategoryVC
-        let dealTab = ViewControllerFactory.viewController(for: .communityCategory) as! CategoryVC
-        let questionTab = ViewControllerFactory.viewController(for: .communityCategory) as! CategoryVC
-        
-        viewControllers.append(allTab)
-        viewControllers.append(openHeartTab)
-        viewControllers.append(angryTab)
-        viewControllers.append(dealTab)
-        viewControllers.append(questionTab)
-        
+    func setCategoryPageDataSource() {
         self.dataSource = self
     }
     
     func setCategoryIndicator() {
-        let bar = TMBar.ButtonBar()
+        let bar = TMBarView<TMHorizontalBarLayout, TabPagerButton, TMLineBarIndicator>()
         
         bar.backgroundView.style = .flat(color: .white)
         bar.layout.contentInset = UIEdgeInsets(top: 0.0,
-                                               left: 20.0,
+                                               left: 16.0,
                                                bottom: 0.0,
-                                               right: 20.0)
+                                               right: 16.0)
         bar.buttons.customize { (button) in
-            button.tintColor = .systemGray3
-            button.selectedTintColor = .black
+            button.tintColor = .darkGray
+            button.selectedTintColor = .white
             
-            button.backgroundColor = .white
+            button.layer.cornerRadius = 7
             button.contentInset = UIEdgeInsets(top: 0.0, left: 17.0, bottom: 0.0, right: 17.0)
             
             button.font = UIFont.SFProDisplayMedium(size: 16)
             button.selectedFont = UIFont.SFProDisplayBold(size: 16)
         }
     
+        bar.indicator.cornerStyle = .eliptical
         bar.indicator.weight = .medium
         bar.indicator.tintColor = .black
         bar.indicator.overscrollBehavior = .compress
@@ -122,7 +111,7 @@ extension CommunityVC {
         
         addBar(bar, dataSource: self, at: .custom(view: categoryTB, layout: nil))
     }
-    
+
 }
 
 //MARK: TMBarDataSource
@@ -158,5 +147,18 @@ extension CommunityVC: PageboyViewControllerDataSource {
     
     func defaultPage(for pageboyViewController: PageboyViewController) -> PageboyViewController.Page? {
         return nil
+    }
+}
+
+class TabPagerButton: Tabman.TMLabelBarButton {
+    override func update(for selectionState: TMBarButton.SelectionState) {
+        switch selectionState {
+            case .selected:
+                backgroundColor = .black
+            default:
+                backgroundColor = .systemGray6
+        }
+
+        super.update(for: selectionState)
     }
 }

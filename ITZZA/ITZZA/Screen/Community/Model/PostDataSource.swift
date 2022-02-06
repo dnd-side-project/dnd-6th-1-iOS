@@ -15,9 +15,9 @@ struct PostDataSource {
 
 }
 extension PostDataSource: SectionModelType {
-    typealias Item = String
+    typealias Item = PostModel
 
-    init(original: PostDataSource, items: [String]) {
+    init(original: PostDataSource, items: [Item]) {
         self = original
         self.items = items
     }

@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (5.5.0)
   - Differentiator (5.0.0)
+  - Kingfisher (7.1.2)
   - Pageboy (3.6.2)
   - RxCocoa (6.1.0):
     - RxRelay (= 6.1.0)
@@ -21,6 +22,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.5)
+  - Kingfisher (~> 7.0)
   - RxCocoa (< 6.2.0)
   - RxDataSources (< 5.1.0)
   - RxGesture (< 4.1.0)
@@ -32,6 +34,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Differentiator
+    - Kingfisher
     - Pageboy
     - RxCocoa
     - RxDataSources
@@ -44,6 +47,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
   Pageboy: cf121b9dd48c63f3f281b2a9ec93d02e0f23879b
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
