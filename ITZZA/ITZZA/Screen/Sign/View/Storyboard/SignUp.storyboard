@@ -47,8 +47,18 @@
                                         <rect key="frame" x="305" y="105" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Y1-jS-3G0">
+                                        <rect key="frame" x="34" y="65" width="89" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ItX-Qu-Mes">
+                                        <rect key="frame" x="75" y="91" width="8" height="8"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kM7-qL-NRu">
                                 <rect key="frame" x="16" y="220" width="343" height="365"/>
@@ -63,7 +73,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCf-YE-iJB">
                                         <rect key="frame" x="8" y="8" width="327" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="separatorColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="메인으로">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -103,7 +113,7 @@
                                         </buttonConfiguration>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -111,6 +121,7 @@
                     </view>
                     <connections>
                         <outlet property="angryImage" destination="Tif-mh-bs6" id="fDp-Wi-wvX"/>
+                        <outlet property="bubbleView" destination="3Y1-jS-3G0" id="ZVN-TO-Nfw"/>
                         <outlet property="comfyImage" destination="l8t-IF-Hxr" id="e9U-DN-vNR"/>
                         <outlet property="confuseImage" destination="frV-8o-vox" id="qDu-29-YgL"/>
                         <outlet property="nextButton" destination="aRA-zH-cYa" id="Qoo-JW-BVF"/>
@@ -119,6 +130,7 @@
                         <outlet property="sadImage" destination="fas-WN-jY5" id="eyu-Zd-ZjO"/>
                         <outlet property="scrollView" destination="kM7-qL-NRu" id="8xs-ij-eAy"/>
                         <outlet property="signInButton" destination="dDm-bw-RXw" id="tLU-r1-EwI"/>
+                        <outlet property="tipView" destination="ItX-Qu-Mes" id="M4E-2D-Abw"/>
                         <outlet property="titleLabel" destination="1WB-u7-H4a" id="bt6-n5-7pZ"/>
                     </connections>
                 </viewController>
