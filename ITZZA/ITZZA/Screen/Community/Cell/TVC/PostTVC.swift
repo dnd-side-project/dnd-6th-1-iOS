@@ -12,8 +12,7 @@ import RxSwift
 class PostTVC: UITableViewCell {
     @IBOutlet weak var headerView: ProfileHeaderView!
     @IBOutlet weak var footerView: PostButtonsView!
-    @IBOutlet weak var contentTitle: UILabel!
-    @IBOutlet weak var contents: UITextView!
+    @IBOutlet weak var postContentView: PostContentView!
     @IBOutlet weak var imageCnt: UILabel!
     @IBOutlet weak var imageCntView: UIStackView!
     
@@ -26,8 +25,6 @@ class PostTVC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        setContents()
         setViewBackgroundColor()
     }
 
@@ -53,12 +50,6 @@ class PostTVC: UITableViewCell {
 
 //MARK: - Custom Methods
 extension PostTVC {
-    func setContents() {
-        contents.isScrollEnabled = false
-        contents.isUserInteractionEnabled = false
-        contents.backgroundColor = .clear
-    }
-    
     func setViewBackgroundColor() {
         backgroundColor = .clear
         
@@ -78,8 +69,8 @@ extension PostTVC {
         headerView.userName.text = post.nickName
         headerView.createAt.text = post.createdAt
         
-        contentTitle.text = post.postTitle
-        contents.text = post.postContent
+        postContentView.postTitle.text = post.postTitle
+        postContentView.postContent.text = post.postContent
         
         if post.imageCnt == 0 {
             imageCntView.isHidden = true
@@ -89,10 +80,5 @@ extension PostTVC {
         
         footerView.likeCnt.text = String(describing: post.likeCnt!)
         footerView.commentCnt.text = String(describing: post.commentCnt!)
-    }
-    
-    func bindButtonAction() {
-        footerView.didTapLikeButton()
-        footerView.didTapBookmarkButton()
     }
 }

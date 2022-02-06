@@ -36,9 +36,12 @@ struct Identifiers {
     static let profileHeaderView = "ProfileHeaderView"
     static let postButtonsView = "PostButtonsView"
     static let imageAddBar = "ImageAddBar"
+    static let postContentView = "PostContentView"
     
     //MARK: - TVC
     static let postTVC = "PostTVC"
+    static let commentTVC = "CommentTVC"
+    static let commentCountCell = "CommentCountCell"
     
     //MARK: - CVC
     

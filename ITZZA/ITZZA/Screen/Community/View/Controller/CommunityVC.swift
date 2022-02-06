@@ -11,7 +11,8 @@ import Pageboy
 import RxSwift
 
 class CommunityVC: TabmanViewController {
-    private let viewControllers = TypeOfViewController.communityCases.compactMap { ViewControllerFactory.viewController(for: $0) as? CategoryVC
+    private let viewControllers = TypeOfViewController.communityCases.compactMap {
+        ViewControllerFactory.viewController(for: $0) as? CategoryVC
     }
     
     @IBOutlet weak var categoryTB: UIView!

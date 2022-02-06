@@ -21,6 +21,9 @@ class PostButtonsView: UIView {
     // awakeFromNib
     override func awakeFromNib() {
         initWithNib()
+        
+        didTapLikeButton()
+        didTapBookmarkButton()
     }
     
     private func initWithNib() {
