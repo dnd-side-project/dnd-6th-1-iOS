@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFPRODISPLAYBOLD.OTF">
+            <string>SFProDisplay-Bold</string>
+        </array>
+        <array key="SFPRODISPLAYREGULAR.OTF">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentTVC" id="KGk-i7-Jjw" customClass="CommentTVC" customModule="ITZZA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용자 닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUy-n0-BB6">
+                        <rect key="frame" x="65" y="15" width="70.5" height="16"/>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ttt-1p-vgq">
+                        <rect key="frame" x="65" y="36" width="230" height="56"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" systemColor="labelColor"/>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="13"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글 작성 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fq9-W1-Px2">
+                        <rect key="frame" x="65" y="100" width="47.5" height="12"/>
+                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lfD-ur-noy">
+                        <rect key="frame" x="25" y="15.5" width="30" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="4bg-pZ-iWB"/>
+                            <constraint firstAttribute="width" constant="30" id="czd-Fi-vhR"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GmH-sc-fyT">
+                        <rect key="frame" x="122.5" y="100" width="56" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="zb7-U5-6VO"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="답글 달기"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fq9-W1-Px2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="65" id="D03-23-vIt"/>
+                    <constraint firstItem="fq9-W1-Px2" firstAttribute="top" secondItem="ttt-1p-vgq" secondAttribute="bottom" constant="8" id="E47-uC-1dr"/>
+                    <constraint firstItem="NUy-n0-BB6" firstAttribute="leading" secondItem="lfD-ur-noy" secondAttribute="trailing" constant="10" id="RW6-cZ-9kv"/>
+                    <constraint firstItem="GmH-sc-fyT" firstAttribute="centerY" secondItem="fq9-W1-Px2" secondAttribute="centerY" id="UOf-xY-TAV"/>
+                    <constraint firstItem="GmH-sc-fyT" firstAttribute="leading" secondItem="fq9-W1-Px2" secondAttribute="trailing" constant="10" id="YS2-Gc-QZc"/>
+                    <constraint firstAttribute="trailing" secondItem="ttt-1p-vgq" secondAttribute="trailing" constant="25" id="avQ-M2-zEZ"/>
+                    <constraint firstItem="lfD-ur-noy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="d2g-qi-g1a"/>
+                    <constraint firstItem="NUy-n0-BB6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="fSJ-Yv-cdf"/>
+                    <constraint firstItem="lfD-ur-noy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="lLC-QG-GAw"/>
+                    <constraint firstAttribute="bottom" secondItem="GmH-sc-fyT" secondAttribute="bottom" constant="8" id="szC-0X-h6h"/>
+                    <constraint firstItem="ttt-1p-vgq" firstAttribute="top" secondItem="NUy-n0-BB6" secondAttribute="bottom" constant="5" id="ud8-hN-wFy"/>
+                    <constraint firstItem="ttt-1p-vgq" firstAttribute="leading" secondItem="lfD-ur-noy" secondAttribute="trailing" constant="10" id="zog-yk-RM4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <constraints>
+                <constraint firstItem="njF-e1-oar" firstAttribute="bottom" secondItem="fq9-W1-Px2" secondAttribute="bottom" constant="8" id="uyA-HS-rmA"/>
+            </constraints>
+            <connections>
+                <outlet property="commentContent" destination="ttt-1p-vgq" id="r7b-4z-EnO"/>
+                <outlet property="createAt" destination="fq9-W1-Px2" id="L2w-3U-tZm"/>
+                <outlet property="createCommentButton" destination="GmH-sc-fyT" id="6N7-fW-B9t"/>
+                <outlet property="profileImg" destination="lfD-ur-noy" id="vCK-o1-YeT"/>
+                <outlet property="userName" destination="NUy-n0-BB6" id="xrr-jj-oOq"/>
+            </connections>
+            <point key="canvasLocation" x="134.78260869565219" y="92.410714285714278"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

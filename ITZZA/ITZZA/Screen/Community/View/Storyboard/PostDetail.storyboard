@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFPRODISPLAYBOLD.OTF">
+            <string>SFProDisplay-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Post DetailVC-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="PostDetailVC" id="Y6W-OH-hqX" customClass="PostDetailVC" customModule="ITZZA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MJB-XE-rp5">
+                                <rect key="frame" x="0.0" y="44" width="375" height="669"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="2Nc-Wx-f2f">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="203"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wre-vP-bYg" customClass="ProfileHeaderView" customModule="ITZZA" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="51" id="318-AY-Uy3"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WUd-tV-nvb" customClass="PostButtonsView" customModule="ITZZA" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="153" width="375" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="Jmu-Z3-d4c"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLD-9o-eUx" customClass="PostContentView" customModule="ITZZA" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="51" width="375" height="102"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="WUd-tV-nvb" secondAttribute="bottom" id="0hF-N4-dYy"/>
+                                        <constraint firstItem="wre-vP-bYg" firstAttribute="leading" secondItem="2Nc-Wx-f2f" secondAttribute="leading" id="3je-Qs-ver"/>
+                                        <constraint firstItem="vLD-9o-eUx" firstAttribute="leading" secondItem="2Nc-Wx-f2f" secondAttribute="leading" id="910-lR-MaN"/>
+                                        <constraint firstItem="WUd-tV-nvb" firstAttribute="leading" secondItem="2Nc-Wx-f2f" secondAttribute="leading" id="9d9-Kr-LBf"/>
+                                        <constraint firstItem="wre-vP-bYg" firstAttribute="top" secondItem="2Nc-Wx-f2f" secondAttribute="top" id="UyK-K1-bUC"/>
+                                        <constraint firstItem="WUd-tV-nvb" firstAttribute="top" secondItem="vLD-9o-eUx" secondAttribute="bottom" id="f43-6u-sJg"/>
+                                        <constraint firstAttribute="trailing" secondItem="WUd-tV-nvb" secondAttribute="trailing" id="kVF-SA-2bn"/>
+                                        <constraint firstAttribute="trailing" secondItem="vLD-9o-eUx" secondAttribute="trailing" id="o7S-aD-iAx"/>
+                                        <constraint firstAttribute="trailing" secondItem="wre-vP-bYg" secondAttribute="trailing" id="qpp-xW-AF5"/>
+                                        <constraint firstItem="vLD-9o-eUx" firstAttribute="top" secondItem="wre-vP-bYg" secondAttribute="bottom" id="zJ9-UT-F0K"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentCountCell" rowHeight="70" id="fs5-el-khf" customClass="CommentCountTVC" customModule="ITZZA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="247.66666603088379" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fs5-el-khf" id="CDd-ja-eov">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 n개의 댓글" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8m-6X-JAi">
+                                                    <rect key="frame" x="25.000000000000007" y="26" width="79.666666666666686" height="18"/>
+                                                    <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="a8m-6X-JAi" firstAttribute="centerY" secondItem="CDd-ja-eov" secondAttribute="centerY" id="28g-Gg-lHZ"/>
+                                                <constraint firstItem="a8m-6X-JAi" firstAttribute="top" secondItem="CDd-ja-eov" secondAttribute="topMargin" constant="15" id="IoE-M0-1K1"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="a8m-6X-JAi" secondAttribute="bottom" constant="15" id="ybi-Yl-vnq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="a8m-6X-JAi" firstAttribute="leading" secondItem="fs5-el-khf" secondAttribute="leading" constant="25" id="Lrt-bg-0CG"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="commentCount" destination="a8m-6X-JAi" id="yIW-On-7r1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUP-jd-CM7" customClass="ChatInputView" customModule="ITZZA" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="713" width="375" height="65"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="Cmz-yI-0uv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RUP-jd-CM7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="0Xq-BY-Xv5"/>
+                            <constraint firstItem="MJB-XE-rp5" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="HRp-O4-gNq"/>
+                            <constraint firstItem="MJB-XE-rp5" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="M0b-Hm-bb5"/>
+                            <constraint firstItem="RUP-jd-CM7" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="gKK-rL-gBC"/>
+                            <constraint firstItem="RUP-jd-CM7" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="rD7-eU-OYO"/>
+                            <constraint firstItem="MJB-XE-rp5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="rcd-cw-dbh"/>
+                            <constraint firstItem="RUP-jd-CM7" firstAttribute="top" secondItem="MJB-XE-rp5" secondAttribute="bottom" id="ydz-Yb-eTC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commentListTV" destination="MJB-XE-rp5" id="4Ch-B1-neW"/>
+                        <outlet property="postButtonsView" destination="WUd-tV-nvb" id="ob3-ea-NWc"/>
+                        <outlet property="postContentView" destination="vLD-9o-eUx" id="Ftb-ab-pFv"/>
+                        <outlet property="profileHeaderView" destination="wre-vP-bYg" id="g9U-yO-EM7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1319.2" y="16.995073891625616"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

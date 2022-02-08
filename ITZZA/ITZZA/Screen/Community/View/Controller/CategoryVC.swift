@@ -57,7 +57,12 @@ extension CategoryVC {
     func bindPostListTVItemSelected() {
         postListTV.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
-                self?.postListTV.deselectRow(at: indexPath, animated: true)
+                self?.postListTV.deselectRow(at: indexPath, animated: false)
+                
+                guard let postDetailVC = ViewControllerFactory.viewController(for: .postDetail) as? PostDetailVC else { return }
+                postDetailVC.hidesBottomBarWhenPushed = true
+                self?.navigationController?.pushViewController(postDetailVC, animated: true)
+                
             })
             .disposed(by: bag)
     }
@@ -68,7 +73,6 @@ extension CategoryVC {
           configureCell: { dataSource, tableView, indexPath, item in
               let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.postTVC, for: indexPath) as! PostTVC
               cell.configureCell(with: item)
-              cell.bindButtonAction()
               return cell
         })
         

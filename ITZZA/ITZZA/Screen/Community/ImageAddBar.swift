@@ -9,35 +9,23 @@ import UIKit
 import RxSwift
 
 class ImageAddBar: UIView {
-    @IBOutlet var view: UIView!
     @IBOutlet weak var addImageButton: UIButton!
     
     let bag = DisposeBag()
     
-    // awakeFromNib
-    override func awakeFromNib() {
-        initWithNib()
+    override init(frame: CGRect) {
+      super.init(frame: frame)
+        setContentView()
     }
     
-    private func initWithNib() {
-        Bundle.main.loadNibNamed(Identifiers.imageAddBar, owner: self, options: nil)
-        addSubview(view)
-        setupLayout()
-        setUpView()
-    }
-    private func setupLayout() {
-        NSLayoutConstraint.activate(
-            [
-                view.topAnchor.constraint(equalTo: topAnchor),
-                view.leadingAnchor.constraint(equalTo: leadingAnchor),
-                view.bottomAnchor.constraint(equalTo: bottomAnchor),
-                view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            ]
-        )
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setContentView()
     }
     
-    private func setUpView() {
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private func setContentView() {
+        guard let view = loadViewFromNib(with: Identifiers.imageAddBar) else { return }
         view.backgroundColor = .clear
+        self.addSubview(view)
     }
 }

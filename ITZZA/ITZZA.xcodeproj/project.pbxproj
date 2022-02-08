@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2305120D27AEE52100CF7FCF /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2305120C27AEE52100CF7FCF /* UIButton+.swift */; };
+		232302FC27AFC13200E20078 /* CommentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232302FA27AFC13200E20078 /* CommentTVC.swift */; };
+		232302FD27AFC13200E20078 /* CommentTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232302FB27AFC13200E20078 /* CommentTVC.xib */; };
+		232302FF27AFD18000E20078 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232302FE27AFD18000E20078 /* UITextView+.swift */; };
+		2323030127B027CE00E20078 /* CommentCountTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2323030027B027CE00E20078 /* CommentCountTVC.swift */; };
+		2323030427B02D9200E20078 /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2323030227B02D9200E20078 /* ChatInputView.swift */; };
+		2323030527B02D9200E20078 /* ChatInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2323030327B02D9200E20078 /* ChatInputView.xib */; };
+		2323030927B035ED00E20078 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2323030827B035ED00E20078 /* UITextField+.swift */; };
 		232CC01527A0317900040131 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC01427A0317900040131 /* AppDelegate.swift */; };
 		232CC01E27A0317900040131 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 232CC01D27A0317900040131 /* Assets.xcassets */; };
 		232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232CC01F27A0317900040131 /* LaunchScreen.storyboard */; };
@@ -43,6 +50,11 @@
 		2335241827A98FA0009C654F /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2335241627A98FA0009C654F /* ProfileHeaderView.xib */; };
 		2335241F27A99392009C654F /* PostButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2335241D27A99392009C654F /* PostButtonsView.swift */; };
 		2335242027A99392009C654F /* PostButtonsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2335241E27A99392009C654F /* PostButtonsView.xib */; };
+		233B636927AF9D8C00914F60 /* PostDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 233B636827AF9D8C00914F60 /* PostDetail.storyboard */; };
+		233B636B27AF9D9D00914F60 /* PostDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B636A27AF9D9D00914F60 /* PostDetailVC.swift */; };
+		233B636D27AFAE2400914F60 /* PostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B636C27AFAE2400914F60 /* PostContentView.swift */; };
+		233B636F27AFAE3100914F60 /* PostContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 233B636E27AFAE3100914F60 /* PostContentView.xib */; };
+		236C98DE27B239C200CE1EFD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236C98DD27B239C200CE1EFD /* UIView+.swift */; };
 		238CEEA027A7DEA0006BE766 /* CommunityNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */; };
 		238CEEA227A7DFCF006BE766 /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEEA127A7DFCF006BE766 /* NavigationController+.swift */; };
 		238CEEA427A7E6F1006BE766 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 238CEEA327A7E6F1006BE766 /* Category.storyboard */; };
@@ -78,6 +90,13 @@
 
 /* Begin PBXFileReference section */
 		2305120C27AEE52100CF7FCF /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		232302FA27AFC13200E20078 /* CommentTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTVC.swift; sourceTree = "<group>"; };
+		232302FB27AFC13200E20078 /* CommentTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTVC.xib; sourceTree = "<group>"; };
+		232302FE27AFD18000E20078 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
+		2323030027B027CE00E20078 /* CommentCountTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCountTVC.swift; sourceTree = "<group>"; };
+		2323030227B02D9200E20078 /* ChatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
+		2323030327B02D9200E20078 /* ChatInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatInputView.xib; sourceTree = "<group>"; };
+		2323030827B035ED00E20078 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		232CC01127A0317900040131 /* ITZZA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITZZA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		232CC01427A0317900040131 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		232CC01D27A0317900040131 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +134,11 @@
 		2335241627A98FA0009C654F /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		2335241D27A99392009C654F /* PostButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButtonsView.swift; sourceTree = "<group>"; };
 		2335241E27A99392009C654F /* PostButtonsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostButtonsView.xib; sourceTree = "<group>"; };
+		233B636827AF9D8C00914F60 /* PostDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostDetail.storyboard; sourceTree = "<group>"; };
+		233B636A27AF9D9D00914F60 /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVC.swift; sourceTree = "<group>"; };
+		233B636C27AFAE2400914F60 /* PostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentView.swift; sourceTree = "<group>"; };
+		233B636E27AFAE3100914F60 /* PostContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostContentView.xib; sourceTree = "<group>"; };
+		236C98DD27B239C200CE1EFD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNC.swift; sourceTree = "<group>"; };
 		238CEEA127A7DFCF006BE766 /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
 		238CEEA327A7E6F1006BE766 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
@@ -325,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				238CEEA927A7EFD0006BE766 /* PostTVC.swift */,
+				2323030027B027CE00E20078 /* CommentCountTVC.swift */,
 			);
 			path = TVC;
 			sourceTree = "<group>";
@@ -371,6 +396,7 @@
 				238CEEA527A7E705006BE766 /* CategoryVC.swift */,
 				238EC09727AA4C4A001CBB24 /* AddPostVC.swift */,
 				238EC09B27AA7295001CBB24 /* SearchPostVC.swift */,
+				233B636A27AF9D9D00914F60 /* PostDetailVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -382,6 +408,7 @@
 				238CEEA327A7E6F1006BE766 /* Category.storyboard */,
 				238EC09527AA4C3B001CBB24 /* AddPost.storyboard */,
 				238EC09927AA7288001CBB24 /* SearchPost.storyboard */,
+				233B636827AF9D8C00914F60 /* PostDetail.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -498,13 +525,16 @@
 			children = (
 				232CC08627A038FB00040131 /* UIColor+.swift */,
 				232CC08827A0390B00040131 /* UIFont+.swift */,
-				232CC08A27A0391F00040131 /* Notification+.swift */,
-				62BE209F27A8F1A0001F150A /* UIViewController+.swift */,
-				622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */,
 				62E2BDFB27AD41620052DDCE /* UIImage+.swift */,
-				238CEEA127A7DFCF006BE766 /* NavigationController+.swift */,
 				2305120C27AEE52100CF7FCF /* UIButton+.swift */,
+				232302FE27AFD18000E20078 /* UITextView+.swift */,
+				62BE209F27A8F1A0001F150A /* UIViewController+.swift */,
+				232CC08A27A0391F00040131 /* Notification+.swift */,
+				622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */,
+				238CEEA127A7DFCF006BE766 /* NavigationController+.swift */,
 				627E1A8E27AEAD7D005C1777 /* Array+.swift */,
+				2323030827B035ED00E20078 /* UITextField+.swift */,
+				236C98DD27B239C200CE1EFD /* UIView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -543,6 +573,12 @@
 				2335241E27A99392009C654F /* PostButtonsView.xib */,
 				238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */,
 				238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */,
+				233B636C27AFAE2400914F60 /* PostContentView.swift */,
+				233B636E27AFAE3100914F60 /* PostContentView.xib */,
+				232302FA27AFC13200E20078 /* CommentTVC.swift */,
+				232302FB27AFC13200E20078 /* CommentTVC.xib */,
+				2323030227B02D9200E20078 /* ChatInputView.swift */,
+				2323030327B02D9200E20078 /* ChatInputView.xib */,
 			);
 			name = Shared;
 			path = ..;
@@ -725,18 +761,22 @@
 				238CEEA427A7E6F1006BE766 /* Category.storyboard in Resources */,
 				232CC0A227A03B4100040131 /* TabBar.storyboard in Resources */,
 				232CC09727A039B700040131 /* SFPRODISPLAYMEDIUM.OTF in Resources */,
+				2323030527B02D9200E20078 /* ChatInputView.xib in Resources */,
 				62E2BDF827ACFBD80052DDCE /* SignUp.storyboard in Resources */,
 				232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */,
 				6208CFDB27A254B900F17603 /* SignIn.storyboard in Resources */,
+				233B636927AF9D8C00914F60 /* PostDetail.storyboard in Resources */,
 				232CC06027A0334100040131 /* Mypage.storyboard in Resources */,
 				2335241827A98FA0009C654F /* ProfileHeaderView.xib in Resources */,
 				232CC01E27A0317900040131 /* Assets.xcassets in Resources */,
 				238EC0A027AA88EC001CBB24 /* ImageAddBar.xib in Resources */,
+				232302FD27AFC13200E20078 /* CommentTVC.xib in Resources */,
 				238EC09A27AA7288001CBB24 /* SearchPost.storyboard in Resources */,
 				232CC04C27A032D700040131 /* Community.storyboard in Resources */,
 				232CC09527A039B700040131 /* SFPRODISPLAYBOLD.OTF in Resources */,
 				232CC03827A0326C00040131 /* Home.storyboard in Resources */,
 				232CC09D27A039B700040131 /* SFPRODISPLAYREGULAR.OTF in Resources */,
+				233B636F27AFAE3100914F60 /* PostContentView.xib in Resources */,
 				2335242027A99392009C654F /* PostButtonsView.xib in Resources */,
 				238EC09627AA4C3B001CBB24 /* AddPost.storyboard in Resources */,
 				62C4008B27A51B1E002B3F33 /* tmp.storyboard in Resources */,
@@ -792,11 +832,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				233B636D27AFAE2400914F60 /* PostContentView.swift in Sources */,
 				238CEEA627A7E705006BE766 /* CategoryVC.swift in Sources */,
 				2305120D27AEE52100CF7FCF /* UIButton+.swift in Sources */,
 				232CC03627A0326500040131 /* HomeVC.swift in Sources */,
 				232CC07327A036FC00040131 /* StoryboardRepresentation.swift in Sources */,
 				62BE209227A66F52001F150A /* APIService.swift in Sources */,
+				2323030427B02D9200E20078 /* ChatInputView.swift in Sources */,
 				62BE209E27A67F15001F150A /* SignInModel.swift in Sources */,
 				232CC04A27A032CF00040131 /* CommunityVC.swift in Sources */,
 				622D07C027ABF12E00707E47 /* KeychainWrapper+.swift in Sources */,
@@ -805,17 +847,22 @@
 				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,
 				62E2BDFA27AD25CA0052DDCE /* SignUpVM.swift in Sources */,
 				2335241F27A99392009C654F /* PostButtonsView.swift in Sources */,
+				236C98DE27B239C200CE1EFD /* UIView+.swift in Sources */,
 				6208CFDE27A258F600F17603 /* (null) in Sources */,
 				627E1A8F27AEAD7D005C1777 /* Array+.swift in Sources */,
 				238EC09827AA4C4A001CBB24 /* AddPostVC.swift in Sources */,
 				2335241727A98FA0009C654F /* ProfileHeaderView.swift in Sources */,
+				233B636B27AF9D9D00914F60 /* PostDetailVC.swift in Sources */,
+				232302FC27AFC13200E20078 /* CommentTVC.swift in Sources */,
 				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,
 				62C4008727A51ADB002B3F33 /* tmp.swift in Sources */,
+				2323030927B035ED00E20078 /* UITextField+.swift in Sources */,
 				232CC07527A0370D00040131 /* TypeOfViewController.swift in Sources */,
 				62E2BDFC27AD41620052DDCE /* UIImage+.swift in Sources */,
 				232CC08B27A0391F00040131 /* Notification+.swift in Sources */,
 				238EC09C27AA7295001CBB24 /* SearchPostVC.swift in Sources */,
 				232CC06627A0336100040131 /* k.swift in Sources */,
+				2323030127B027CE00E20078 /* CommentCountTVC.swift in Sources */,
 				232CC06827A0336600040131 /* l.swift in Sources */,
 				232CC05227A032F400040131 /* g.swift in Sources */,
 				62BE209027A66F34001F150A /* APISession.swift in Sources */,
@@ -835,6 +882,7 @@
 				232CC03E27A0328600040131 /* c.swift in Sources */,
 				6270D40127ACE590004FD7A9 /* SignUpVC.swift in Sources */,
 				62BE20A027A8F1A0001F150A /* UIViewController+.swift in Sources */,
+				232302FF27AFD18000E20078 /* UITextView+.swift in Sources */,
 				232CC03A27A0327B00040131 /* a.swift in Sources */,
 				238CEEAA27A7EFD0006BE766 /* PostTVC.swift in Sources */,
 				232CC06227A0335500040131 /* i.swift in Sources */,
