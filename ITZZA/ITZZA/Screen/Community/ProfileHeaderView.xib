@@ -21,7 +21,6 @@
                 <outlet property="createAt" destination="wYz-dA-fZj" id="2tG-6H-H3W"/>
                 <outlet property="profileImg" destination="u3d-zd-Py9" id="Dgt-ig-Sf8"/>
                 <outlet property="userName" destination="D4e-KR-uIn" id="bWN-ZR-gUJ"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="MD9-hy-gm9"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

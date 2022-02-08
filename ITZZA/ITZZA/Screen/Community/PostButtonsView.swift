@@ -9,7 +9,6 @@ import UIKit
 import RxSwift
 
 class PostButtonsView: UIView {
-    @IBOutlet var view: UIView!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var likeCnt: UILabel!
     @IBOutlet weak var commentButton: UIButton!
@@ -18,34 +17,24 @@ class PostButtonsView: UIView {
     
     let bag = DisposeBag()
     
-    // awakeFromNib
-    override func awakeFromNib() {
-        initWithNib()
-        
+    override init(frame: CGRect) {
+      super.init(frame: frame)
+        setContentView()
         didTapLikeButton()
         didTapBookmarkButton()
     }
     
-    private func initWithNib() {
-        Bundle.main.loadNibNamed(Identifiers.postButtonsView, owner: self, options: nil)
-        addSubview(view)
-        setupLayout()
-        setUpView()
-    }
-    private func setupLayout() {
-        NSLayoutConstraint.activate(
-            [
-                view.topAnchor.constraint(equalTo: topAnchor),
-                view.leadingAnchor.constraint(equalTo: leadingAnchor),
-                view.bottomAnchor.constraint(equalTo: bottomAnchor),
-                view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            ]
-        )
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setContentView()
+        didTapLikeButton()
+        didTapBookmarkButton()
     }
     
-    private func setUpView() {
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private func setContentView() {
+        guard let view = loadViewFromNib(with: Identifiers.postButtonsView) else { return }
         view.backgroundColor = .clear
+        self.addSubview(view)
     }
 }
 

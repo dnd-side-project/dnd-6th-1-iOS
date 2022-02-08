@@ -54,6 +54,7 @@
 		233B636B27AF9D9D00914F60 /* PostDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B636A27AF9D9D00914F60 /* PostDetailVC.swift */; };
 		233B636D27AFAE2400914F60 /* PostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B636C27AFAE2400914F60 /* PostContentView.swift */; };
 		233B636F27AFAE3100914F60 /* PostContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 233B636E27AFAE3100914F60 /* PostContentView.xib */; };
+		236C98DE27B239C200CE1EFD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236C98DD27B239C200CE1EFD /* UIView+.swift */; };
 		238CEEA027A7DEA0006BE766 /* CommunityNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */; };
 		238CEEA227A7DFCF006BE766 /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEEA127A7DFCF006BE766 /* NavigationController+.swift */; };
 		238CEEA427A7E6F1006BE766 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 238CEEA327A7E6F1006BE766 /* Category.storyboard */; };
@@ -137,6 +138,7 @@
 		233B636A27AF9D9D00914F60 /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVC.swift; sourceTree = "<group>"; };
 		233B636C27AFAE2400914F60 /* PostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentView.swift; sourceTree = "<group>"; };
 		233B636E27AFAE3100914F60 /* PostContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostContentView.xib; sourceTree = "<group>"; };
+		236C98DD27B239C200CE1EFD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNC.swift; sourceTree = "<group>"; };
 		238CEEA127A7DFCF006BE766 /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
 		238CEEA327A7E6F1006BE766 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 				238CEEA127A7DFCF006BE766 /* NavigationController+.swift */,
 				627E1A8E27AEAD7D005C1777 /* Array+.swift */,
 				2323030827B035ED00E20078 /* UITextField+.swift */,
+				236C98DD27B239C200CE1EFD /* UIView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -844,6 +847,7 @@
 				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,
 				62E2BDFA27AD25CA0052DDCE /* SignUpVM.swift in Sources */,
 				2335241F27A99392009C654F /* PostButtonsView.swift in Sources */,
+				236C98DE27B239C200CE1EFD /* UIView+.swift in Sources */,
 				6208CFDE27A258F600F17603 /* (null) in Sources */,
 				627E1A8F27AEAD7D005C1777 /* Array+.swift in Sources */,
 				238EC09827AA4C4A001CBB24 /* AddPostVC.swift in Sources */,

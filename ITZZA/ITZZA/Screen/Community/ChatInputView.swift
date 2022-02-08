@@ -8,36 +8,27 @@
 import UIKit
 
 class ChatInputView: UIView {
-    @IBOutlet var view: UIView!
     @IBOutlet weak var textInputField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     
-    // awakeFromNib
-    override func awakeFromNib() {
-        initWithNib()
-    }
-    
-    private func initWithNib() {
-        Bundle.main.loadNibNamed(Identifiers.chatInputView, owner: self, options: nil)
-        addSubview(view)
-        setupLayout()
-        setUpView()
+    override init(frame: CGRect) {
+      super.init(frame: frame)
+        setContentView()
         setTextField()
         setViewShadow()
     }
-    private func setupLayout() {
-        NSLayoutConstraint.activate(
-            [
-                view.topAnchor.constraint(equalTo: topAnchor),
-                view.leadingAnchor.constraint(equalTo: leadingAnchor),
-                view.bottomAnchor.constraint(equalTo: bottomAnchor),
-                view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            ]
-        )
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setContentView()
+        setTextField()
+        setViewShadow()
     }
     
-    private func setUpView() {
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private func setContentView() {
+        guard let view = loadViewFromNib(with: Identifiers.chatInputView) else { return }
+        view.backgroundColor = .clear
+        self.addSubview(view)
     }
     
     func setTextField() {
@@ -48,9 +39,9 @@ class ChatInputView: UIView {
     }
     
     func setViewShadow(){
-        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowOffset = CGSize(width: 0, height: -3)
         layer.shadowRadius = 2
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.3
+        layer.shadowOpacity = 0.05
     }
 }

@@ -8,37 +8,25 @@
 import UIKit
 
 class PostContentView: UIView {
-    @IBOutlet var view: UIView!
     @IBOutlet weak var postTitle: UILabel!
     @IBOutlet weak var postContent: UITextView!
     
-    // awakeFromNib
-    override func awakeFromNib() {
-        initWithNib()
-        setUpView()
+    override init(frame: CGRect) {
+      super.init(frame: frame)
+        setContentView()
         setContents()
     }
     
-    private func initWithNib() {
-        Bundle.main.loadNibNamed(Identifiers.postContentView, owner: self, options: nil)
-        addSubview(view)
-        
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setContentView()
         setContents()
     }
     
-    private func setupLayout() {
-        NSLayoutConstraint.activate(
-            [
-                view.topAnchor.constraint(equalTo: topAnchor),
-                view.leadingAnchor.constraint(equalTo: leadingAnchor),
-                view.bottomAnchor.constraint(equalTo: bottomAnchor),
-                view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            ]
-        )
-    }
-    
-    private func setUpView() {
+    private func setContentView() {
+        guard let view = loadViewFromNib(with: Identifiers.postContentView) else { return }
         view.backgroundColor = .clear
+        self.addSubview(view)
     }
     
     func setContents() {
