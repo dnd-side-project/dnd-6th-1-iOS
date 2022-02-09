@@ -31,8 +31,7 @@ class AgreementView: UIView {
     }
     
     private func setContentView() {
-        guard let view = loadXibView(with: Identifiers.agreementView) else { return }
-        self.addSubview(view)
+        insertXibView(with: Identifiers.agreementView)
     }
 
 }

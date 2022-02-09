@@ -30,8 +30,7 @@ class NicknameView: UIView {
     }
     
     private func setContentView() {
-        guard let view = loadXibView(with: Identifiers.nicknameView) else { return }
-        self.addSubview(view)
+        insertXibView(with: Identifiers.nicknameView)
     }
     
 }

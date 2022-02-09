@@ -32,8 +32,7 @@ class PasswordView: UIView {
     }
     
     func setContentView() {
-        guard let view = loadXibView(with: Identifiers.passwordView) else { return }
-        self.addSubview(view)
+        insertXibView(with: Identifiers.passwordView)
     }
     
 }

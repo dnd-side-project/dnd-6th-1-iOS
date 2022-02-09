@@ -35,17 +35,26 @@ class SignInVM {
     
     init () {
         emailText.distinctUntilChanged()
-            .map(checkEmailVaild)
+            .withUnretained(self)
+            .map { owner, str in
+                owner.checkEmailVaild(str)
+            }
             .bind(to: isEmailVaild)
             .disposed(by: disposeBag)
         
         passwordText.distinctUntilChanged()
-            .map(checkPasswordVaild)
+            .withUnretained(self)
+            .map { owner, str in
+                owner.checkPasswordVaild(str)
+            }
             .bind(to: isPasswordValid)
             .disposed(by: disposeBag)
         
         eyeOnOff
-            .map(checkEyeOn)
+            .withUnretained(self)
+            .map { owner, img in
+                owner.checkEyeOn(img)
+            }
             .bind(to: isEyeOn)
             .disposed(by: disposeBag)
     }

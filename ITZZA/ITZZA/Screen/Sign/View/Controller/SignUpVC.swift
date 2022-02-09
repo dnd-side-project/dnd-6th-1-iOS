@@ -9,7 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 import CoreMedia
-import SwiftUI
 
 class SignUpVC: UIViewController {
     
@@ -33,6 +32,7 @@ class SignUpVC: UIViewController {
     var scrollTarget = 0.0
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         setInitialUIValue()
         recognizeTapInScrollView()
         setStackView()
@@ -40,6 +40,7 @@ class SignUpVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         createEmojiAndBubble()
         bindVM()
         fillProgressBar()
@@ -110,8 +111,6 @@ extension SignUpVC {
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             scrollView.bottomAnchor.constraint(equalTo: previousButton.topAnchor, constant: -20),
         ])
-        
-        print(scrollView.frame.width)
         
         let emailView = EmailView()
         let passwordView = PasswordView()

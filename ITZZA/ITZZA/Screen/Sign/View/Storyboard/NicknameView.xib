@@ -38,7 +38,7 @@
                     </subviews>
                 </stackView>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="내용 넣기" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="WLP-SX-YWR">
-                    <rect key="frame" x="0.0" y="65.5" width="335" height="56"/>
+                    <rect key="frame" x="0.0" y="65.5" width="249" height="56"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="V8l-Qv-klY"/>
                     </constraints>
@@ -52,7 +52,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prN-rb-x8T">
-                    <rect key="frame" x="132.5" y="80.5" width="70" height="26"/>
+                    <rect key="frame" x="265" y="80.5" width="70" height="26"/>
                     <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="26" id="ZFf-Cd-cE3"/>
@@ -75,10 +75,10 @@
             <viewLayoutGuide key="safeArea" id="kyD-61-JFN"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="kyD-61-JFN" firstAttribute="trailing" secondItem="prN-rb-x8T" secondAttribute="trailing" id="2Fz-Ie-6GM"/>
                 <constraint firstItem="sYG-yj-ly8" firstAttribute="top" secondItem="oTd-Qx-Q7d" secondAttribute="bottom" constant="75" id="7Jt-hb-YKa"/>
                 <constraint firstItem="kyD-61-JFN" firstAttribute="trailing" secondItem="vv4-Hw-NfD" secondAttribute="trailing" id="Bq2-ie-LlA"/>
                 <constraint firstItem="vv4-Hw-NfD" firstAttribute="leading" secondItem="kyD-61-JFN" secondAttribute="leading" id="J4y-k0-ooM"/>
-                <constraint firstItem="prN-rb-x8T" firstAttribute="centerX" secondItem="Vdb-xz-CZO" secondAttribute="centerX" id="LtP-AJ-81q"/>
                 <constraint firstItem="WLP-SX-YWR" firstAttribute="top" secondItem="oTd-Qx-Q7d" secondAttribute="bottom" constant="19" id="N3x-ey-Is4"/>
                 <constraint firstItem="oTd-Qx-Q7d" firstAttribute="top" secondItem="Vdb-xz-CZO" secondAttribute="top" id="Q6J-1p-zIQ"/>
                 <constraint firstItem="oTd-Qx-Q7d" firstAttribute="leading" secondItem="kyD-61-JFN" secondAttribute="leading" id="YcL-Yh-cIs"/>
@@ -88,7 +88,7 @@
                 <constraint firstItem="kyD-61-JFN" firstAttribute="trailing" secondItem="oTd-Qx-Q7d" secondAttribute="trailing" id="nhk-cj-4JW"/>
                 <constraint firstItem="sYG-yj-ly8" firstAttribute="leading" secondItem="kyD-61-JFN" secondAttribute="leading" id="tKc-uY-LMw"/>
                 <constraint firstItem="WLP-SX-YWR" firstAttribute="leading" secondItem="kyD-61-JFN" secondAttribute="leading" id="wbA-Wt-p7b"/>
-                <constraint firstItem="kyD-61-JFN" firstAttribute="trailing" secondItem="WLP-SX-YWR" secondAttribute="trailing" id="xVs-Yq-eE0"/>
+                <constraint firstItem="prN-rb-x8T" firstAttribute="leading" secondItem="WLP-SX-YWR" secondAttribute="trailing" constant="16" id="xVs-Yq-eE0"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
