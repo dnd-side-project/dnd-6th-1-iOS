@@ -143,9 +143,9 @@ extension SignInVC {
     
     func didTapSaveSignInStatusButton(_ selected: Bool) {
         if selected {
-            saveSignInStateButton.setImage(UIImage(named: "SaveSignInStatusFill"), for: .normal)
+            saveSignInStateButton.setImage(UIImage(named: "CheckBoxFill"), for: .normal)
         } else {
-            saveSignInStateButton.setImage(UIImage(named: "SaveSignInStatusOutline"), for: .normal)
+            saveSignInStateButton.setImage(UIImage(named: "CheckBoxOutline"), for: .normal)
         }
     }
 }

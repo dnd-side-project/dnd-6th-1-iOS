@@ -59,6 +59,15 @@
 		6208CFDE27A258F600F17603 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6208CFE127A2662700F17603 /* SignInVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CFE027A2662700F17603 /* SignInVM.swift */; };
 		622D07C027ABF12E00707E47 /* KeychainWrapper+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */; };
+		623DE2F527B25225005E78D0 /* EmailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 623DE2F427B25225005E78D0 /* EmailView.xib */; };
+		623DE2F727B25367005E78D0 /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE2F627B25367005E78D0 /* EmailView.swift */; };
+		623DE2F927B26581005E78D0 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE2F827B26581005E78D0 /* UIView+.swift */; };
+		623DE2FF27B3BA75005E78D0 /* AgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE2FE27B3BA75005E78D0 /* AgreementView.swift */; };
+		623DE30127B3BA9E005E78D0 /* AgreementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 623DE30027B3BA9E005E78D0 /* AgreementView.xib */; };
+		6254618227B152E300184DA1 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6254618127B152E300184DA1 /* PasswordView.swift */; };
+		6254618427B152EF00184DA1 /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6254618327B152EF00184DA1 /* NicknameView.swift */; };
+		6254618627B152FC00184DA1 /* PasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6254618527B152FC00184DA1 /* PasswordView.xib */; };
+		6254618827B1530500184DA1 /* NicknameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6254618727B1530500184DA1 /* NicknameView.xib */; };
 		6270D40127ACE590004FD7A9 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6270D40027ACE590004FD7A9 /* SignUpVC.swift */; };
 		627E1A8F27AEAD7D005C1777 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E1A8E27AEAD7D005C1777 /* Array+.swift */; };
 		62BE208D27A590D0001F150A /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE208C27A590D0001F150A /* SignInVC.swift */; };
@@ -132,6 +141,15 @@
 		6208CFDA27A254B900F17603 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		6208CFE027A2662700F17603 /* SignInVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVM.swift; sourceTree = "<group>"; };
 		622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeychainWrapper+.swift"; sourceTree = "<group>"; };
+		623DE2F427B25225005E78D0 /* EmailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmailView.xib; sourceTree = "<group>"; };
+		623DE2F627B25367005E78D0 /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
+		623DE2F827B26581005E78D0 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		623DE2FE27B3BA75005E78D0 /* AgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementView.swift; sourceTree = "<group>"; };
+		623DE30027B3BA9E005E78D0 /* AgreementView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreementView.xib; sourceTree = "<group>"; };
+		6254618127B152E300184DA1 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
+		6254618327B152EF00184DA1 /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
+		6254618527B152FC00184DA1 /* PasswordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordView.xib; sourceTree = "<group>"; };
+		6254618727B1530500184DA1 /* NicknameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NicknameView.xib; sourceTree = "<group>"; };
 		6270D40027ACE590004FD7A9 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		627E1A8E27AEAD7D005C1777 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		62BE208C27A590D0001F150A /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -505,6 +523,7 @@
 				238CEEA127A7DFCF006BE766 /* NavigationController+.swift */,
 				2305120C27AEE52100CF7FCF /* UIButton+.swift */,
 				627E1A8E27AEAD7D005C1777 /* Array+.swift */,
+				623DE2F827B26581005E78D0 /* UIView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -563,6 +582,10 @@
 			children = (
 				6208CFDA27A254B900F17603 /* SignIn.storyboard */,
 				62E2BDF727ACFBD80052DDCE /* SignUp.storyboard */,
+				6254618527B152FC00184DA1 /* PasswordView.xib */,
+				6254618727B1530500184DA1 /* NicknameView.xib */,
+				623DE2F427B25225005E78D0 /* EmailView.xib */,
+				623DE30027B3BA9E005E78D0 /* AgreementView.xib */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -572,6 +595,10 @@
 			children = (
 				62BE208C27A590D0001F150A /* SignInVC.swift */,
 				6270D40027ACE590004FD7A9 /* SignUpVC.swift */,
+				6254618127B152E300184DA1 /* PasswordView.swift */,
+				6254618327B152EF00184DA1 /* NicknameView.swift */,
+				623DE2F627B25367005E78D0 /* EmailView.swift */,
+				623DE2FE27B3BA75005E78D0 /* AgreementView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -725,19 +752,23 @@
 				238CEEA427A7E6F1006BE766 /* Category.storyboard in Resources */,
 				232CC0A227A03B4100040131 /* TabBar.storyboard in Resources */,
 				232CC09727A039B700040131 /* SFPRODISPLAYMEDIUM.OTF in Resources */,
+				6254618627B152FC00184DA1 /* PasswordView.xib in Resources */,
 				62E2BDF827ACFBD80052DDCE /* SignUp.storyboard in Resources */,
 				232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */,
 				6208CFDB27A254B900F17603 /* SignIn.storyboard in Resources */,
 				232CC06027A0334100040131 /* Mypage.storyboard in Resources */,
 				2335241827A98FA0009C654F /* ProfileHeaderView.xib in Resources */,
+				6254618827B1530500184DA1 /* NicknameView.xib in Resources */,
 				232CC01E27A0317900040131 /* Assets.xcassets in Resources */,
 				238EC0A027AA88EC001CBB24 /* ImageAddBar.xib in Resources */,
 				238EC09A27AA7288001CBB24 /* SearchPost.storyboard in Resources */,
+				623DE30127B3BA9E005E78D0 /* AgreementView.xib in Resources */,
 				232CC04C27A032D700040131 /* Community.storyboard in Resources */,
 				232CC09527A039B700040131 /* SFPRODISPLAYBOLD.OTF in Resources */,
 				232CC03827A0326C00040131 /* Home.storyboard in Resources */,
 				232CC09D27A039B700040131 /* SFPRODISPLAYREGULAR.OTF in Resources */,
 				2335242027A99392009C654F /* PostButtonsView.xib in Resources */,
+				623DE2F527B25225005E78D0 /* EmailView.xib in Resources */,
 				238EC09627AA4C3B001CBB24 /* AddPost.storyboard in Resources */,
 				62C4008B27A51B1E002B3F33 /* tmp.storyboard in Resources */,
 			);
@@ -793,6 +824,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				238CEEA627A7E705006BE766 /* CategoryVC.swift in Sources */,
+				6254618227B152E300184DA1 /* PasswordView.swift in Sources */,
 				2305120D27AEE52100CF7FCF /* UIButton+.swift in Sources */,
 				232CC03627A0326500040131 /* HomeVC.swift in Sources */,
 				232CC07327A036FC00040131 /* StoryboardRepresentation.swift in Sources */,
@@ -804,6 +836,7 @@
 				232CC05E27A0333500040131 /* MypageVC.swift in Sources */,
 				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,
 				62E2BDFA27AD25CA0052DDCE /* SignUpVM.swift in Sources */,
+				623DE2F727B25367005E78D0 /* EmailView.swift in Sources */,
 				2335241F27A99392009C654F /* PostButtonsView.swift in Sources */,
 				6208CFDE27A258F600F17603 /* (null) in Sources */,
 				627E1A8F27AEAD7D005C1777 /* Array+.swift in Sources */,
@@ -825,6 +858,7 @@
 				238CEEAE27A7F577006BE766 /* PostModel.swift in Sources */,
 				232CC01527A0317900040131 /* AppDelegate.swift in Sources */,
 				238CEEA027A7DEA0006BE766 /* CommunityNC.swift in Sources */,
+				6254618427B152EF00184DA1 /* NicknameView.swift in Sources */,
 				232CC06427A0335C00040131 /* j.swift in Sources */,
 				232CC08727A038FB00040131 /* UIColor+.swift in Sources */,
 				232CC07727A0372300040131 /* ViewControllerFactory.swift in Sources */,
@@ -838,8 +872,10 @@
 				232CC03A27A0327B00040131 /* a.swift in Sources */,
 				238CEEAA27A7EFD0006BE766 /* PostTVC.swift in Sources */,
 				232CC06227A0335500040131 /* i.swift in Sources */,
+				623DE2FF27B3BA75005E78D0 /* AgreementView.swift in Sources */,
 				232CC03C27A0328000040131 /* b.swift in Sources */,
 				62BE208D27A590D0001F150A /* SignInVC.swift in Sources */,
+				623DE2F927B26581005E78D0 /* UIView+.swift in Sources */,
 				232CC04027A0328B00040131 /* d.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
