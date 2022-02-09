@@ -70,17 +70,17 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Yqd-co-ev6" firstAttribute="leading" secondItem="ROE-hK-Gt1" secondAttribute="leading" id="7K0-AP-47e"/>
                                                 <constraint firstItem="W2H-W3-njc" firstAttribute="leading" secondItem="ROE-hK-Gt1" secondAttribute="leading" id="8vm-c0-cIX"/>
+                                                <constraint firstItem="Yqd-co-ev6" firstAttribute="leading" secondItem="ROE-hK-Gt1" secondAttribute="leading" id="KMr-MQ-ftA"/>
                                                 <constraint firstItem="W2H-W3-njc" firstAttribute="top" secondItem="wZr-wd-seU" secondAttribute="bottom" constant="8" symbolic="YES" id="OIe-2D-HrS"/>
                                                 <constraint firstAttribute="bottom" secondItem="W2H-W3-njc" secondAttribute="bottom" id="Tyh-87-pkD"/>
                                                 <constraint firstAttribute="trailing" secondItem="QXZ-Da-ELH" secondAttribute="trailing" id="UNQ-8T-ltM"/>
+                                                <constraint firstAttribute="trailing" secondItem="Yqd-co-ev6" secondAttribute="trailing" id="YSV-we-iPz"/>
                                                 <constraint firstItem="W2H-W3-njc" firstAttribute="top" secondItem="Yqd-co-ev6" secondAttribute="bottom" constant="44" id="ZP5-v1-xoh"/>
                                                 <constraint firstItem="QXZ-Da-ELH" firstAttribute="top" secondItem="ROE-hK-Gt1" secondAttribute="top" constant="3" id="d8j-v0-5CQ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="wZr-wd-seU" secondAttribute="trailing" id="dlN-bY-peA"/>
                                                 <constraint firstAttribute="trailing" secondItem="W2H-W3-njc" secondAttribute="trailing" id="oWP-jn-pag"/>
                                                 <constraint firstItem="Yqd-co-ev6" firstAttribute="top" secondItem="QXZ-Da-ELH" secondAttribute="bottom" id="pNs-IZ-nH2"/>
-                                                <constraint firstAttribute="trailing" secondItem="Yqd-co-ev6" secondAttribute="trailing" id="tqY-DI-B7L"/>
                                                 <constraint firstItem="QXZ-Da-ELH" firstAttribute="leading" secondItem="ROE-hK-Gt1" secondAttribute="leading" id="ybi-yB-jbf"/>
                                             </constraints>
                                         </tableViewCellContentView>

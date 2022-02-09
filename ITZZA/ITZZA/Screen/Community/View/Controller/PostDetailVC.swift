@@ -10,51 +10,45 @@ import RxSwift
 import RxDataSources
 
 class PostDetailVC: UIViewController {
-    @IBOutlet weak var postContentView: PostContentView!
     @IBOutlet weak var commentListTV: UITableView!
-    @IBOutlet weak var profileHeaderView: ProfileHeaderView!
-    @IBOutlet weak var postButtonsView: PostButtonsView!
     
     let bag = DisposeBag()
+    
+    let images: [UIImage] = [
+        UIImage(named: "Emoji_Angry")!,
+        UIImage(named: "Emoji_Comfy")!,
+        UIImage(named: "Emoji_Confuse")!
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setCommentListTV()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        sizeHeaderToFit(tableView: commentListTV)
     }
 }
 
 //MARK: - Custom Methods
 extension PostDetailVC {
     func setCommentListTV() {
+        commentListTV.delegate = self
         commentListTV.backgroundColor = .systemGray6
         commentListTV.separatorStyle = .none
-        commentListTV.register(UINib(nibName: Identifiers.commentTVC, bundle: nil), forCellReuseIdentifier: Identifiers.commentTVC)
         
+        register()
         bindTV()
         bindPostListTVItemSelected()
     }
     
-    func sizeHeaderToFit(tableView: UITableView) {
-        if let headerView = tableView.tableHeaderView {
-            let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-            var frame = headerView.frame
-            frame.size.height = height
-            headerView.frame = frame
-            tableView.tableHeaderView = headerView
-            headerView.setNeedsLayout()
-            headerView.layoutIfNeeded()
-        }
+    func register(){
+        commentListTV.register(UINib(nibName: Identifiers.commentTVC, bundle: nil), forCellReuseIdentifier: Identifiers.commentTVC)
+        commentListTV.register(PostContentTableViewHeader.self, forHeaderFooterViewReuseIdentifier: Identifiers.postContentTableViewHeader)
     }
     
     func bindPostListTVItemSelected() {
         commentListTV.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
-                self?.commentListTV.deselectRow(at: indexPath, animated: true)
+                if indexPath.row != 0 {
+                    print(indexPath.row, "댓글 눌림")
+                }
             })
             .disposed(by: bag)
     }
@@ -72,6 +66,7 @@ extension PostDetailVC {
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentTVC, for: indexPath) as? CommentTVC else { return UITableViewCell() }
+                cell.selectionStyle = .none
                 return cell
             }
         }
@@ -89,5 +84,19 @@ extension PostDetailVC {
         Observable.just(sections)
             .bind(to: commentListTV.rx.items(dataSource: datasource))
             .disposed(by: bag)
+    }
+}
+
+extension PostDetailVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: Identifiers.postContentTableViewHeader) as? PostContentTableViewHeader else { return nil }
+        headerView.image = images
+        headerView.configurePost()
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

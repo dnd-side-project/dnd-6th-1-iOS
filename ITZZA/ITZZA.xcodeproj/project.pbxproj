@@ -54,6 +54,8 @@
 		233B636B27AF9D9D00914F60 /* PostDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B636A27AF9D9D00914F60 /* PostDetailVC.swift */; };
 		233B636D27AFAE2400914F60 /* PostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B636C27AFAE2400914F60 /* PostContentView.swift */; };
 		233B636F27AFAE3100914F60 /* PostContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 233B636E27AFAE3100914F60 /* PostContentView.xib */; };
+		2368021127B2965B00A4392B /* PostContentTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */; };
+		2368021327B2966800A4392B /* PostContentTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2368021227B2966800A4392B /* PostContentTableViewHeader.xib */; };
 		236C98DE27B239C200CE1EFD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236C98DD27B239C200CE1EFD /* UIView+.swift */; };
 		238CEEA027A7DEA0006BE766 /* CommunityNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */; };
 		238CEEA227A7DFCF006BE766 /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEEA127A7DFCF006BE766 /* NavigationController+.swift */; };
@@ -67,6 +69,7 @@
 		238EC09C27AA7295001CBB24 /* SearchPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238EC09B27AA7295001CBB24 /* SearchPostVC.swift */; };
 		238EC09F27AA88EC001CBB24 /* ImageAddBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */; };
 		238EC0A027AA88EC001CBB24 /* ImageAddBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */; };
+		23A56BDA27B3F8BA00959269 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A56BD927B3F8BA00959269 /* UILabel+.swift */; };
 		6208CFDB27A254B900F17603 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6208CFDA27A254B900F17603 /* SignIn.storyboard */; };
 		6208CFDE27A258F600F17603 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6208CFE127A2662700F17603 /* SignInVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CFE027A2662700F17603 /* SignInVM.swift */; };
@@ -138,6 +141,8 @@
 		233B636A27AF9D9D00914F60 /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVC.swift; sourceTree = "<group>"; };
 		233B636C27AFAE2400914F60 /* PostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentView.swift; sourceTree = "<group>"; };
 		233B636E27AFAE3100914F60 /* PostContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostContentView.xib; sourceTree = "<group>"; };
+		2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentTableViewHeader.swift; sourceTree = "<group>"; };
+		2368021227B2966800A4392B /* PostContentTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostContentTableViewHeader.xib; sourceTree = "<group>"; };
 		236C98DD27B239C200CE1EFD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNC.swift; sourceTree = "<group>"; };
 		238CEEA127A7DFCF006BE766 /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
@@ -151,6 +156,7 @@
 		238EC09B27AA7295001CBB24 /* SearchPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPostVC.swift; sourceTree = "<group>"; };
 		238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAddBar.swift; sourceTree = "<group>"; };
 		238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageAddBar.xib; sourceTree = "<group>"; };
+		23A56BD927B3F8BA00959269 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		31D68BDCB09FB35125D965C7 /* Pods-ITZZA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.release.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.release.xcconfig"; sourceTree = "<group>"; };
 		557F2FCE2D67BC938F058D88 /* Pods-ITZZA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.debug.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.debug.xcconfig"; sourceTree = "<group>"; };
 		6208CFDA27A254B900F17603 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
@@ -529,12 +535,13 @@
 				2305120C27AEE52100CF7FCF /* UIButton+.swift */,
 				232302FE27AFD18000E20078 /* UITextView+.swift */,
 				62BE209F27A8F1A0001F150A /* UIViewController+.swift */,
+				23A56BD927B3F8BA00959269 /* UILabel+.swift */,
+				2323030827B035ED00E20078 /* UITextField+.swift */,
+				236C98DD27B239C200CE1EFD /* UIView+.swift */,
 				232CC08A27A0391F00040131 /* Notification+.swift */,
 				622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */,
 				238CEEA127A7DFCF006BE766 /* NavigationController+.swift */,
 				627E1A8E27AEAD7D005C1777 /* Array+.swift */,
-				2323030827B035ED00E20078 /* UITextField+.swift */,
-				236C98DD27B239C200CE1EFD /* UIView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -579,6 +586,8 @@
 				232302FB27AFC13200E20078 /* CommentTVC.xib */,
 				2323030227B02D9200E20078 /* ChatInputView.swift */,
 				2323030327B02D9200E20078 /* ChatInputView.xib */,
+				2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */,
+				2368021227B2966800A4392B /* PostContentTableViewHeader.xib */,
 			);
 			name = Shared;
 			path = ..;
@@ -770,6 +779,7 @@
 				2335241827A98FA0009C654F /* ProfileHeaderView.xib in Resources */,
 				232CC01E27A0317900040131 /* Assets.xcassets in Resources */,
 				238EC0A027AA88EC001CBB24 /* ImageAddBar.xib in Resources */,
+				2368021327B2966800A4392B /* PostContentTableViewHeader.xib in Resources */,
 				232302FD27AFC13200E20078 /* CommentTVC.xib in Resources */,
 				238EC09A27AA7288001CBB24 /* SearchPost.storyboard in Resources */,
 				232CC04C27A032D700040131 /* Community.storyboard in Resources */,
@@ -856,6 +866,8 @@
 				232302FC27AFC13200E20078 /* CommentTVC.swift in Sources */,
 				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,
 				62C4008727A51ADB002B3F33 /* tmp.swift in Sources */,
+				23A56BDA27B3F8BA00959269 /* UILabel+.swift in Sources */,
+				2368021127B2965B00A4392B /* PostContentTableViewHeader.swift in Sources */,
 				2323030927B035ED00E20078 /* UITextField+.swift in Sources */,
 				232CC07527A0370D00040131 /* TypeOfViewController.swift in Sources */,
 				62E2BDFC27AD41620052DDCE /* UIImage+.swift in Sources */,

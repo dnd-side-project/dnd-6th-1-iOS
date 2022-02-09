@@ -48,6 +48,7 @@ class CategoryVC: UIViewController {
 //MARK: - Custom Methods
 extension CategoryVC {
     func setPostTV() {
+        postListTV.delegate = self
         postListTV.backgroundColor = .systemGray6
         postListTV.separatorStyle = .none
         
@@ -83,5 +84,11 @@ extension CategoryVC {
         Observable.just(sections)
           .bind(to: postListTV.rx.items(dataSource: dataSource))
           .disposed(by: bag)
+    }
+}
+
+extension CategoryVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

@@ -35,6 +35,15 @@ class PostButtonsView: UIView {
         guard let view = loadViewFromNib(with: Identifiers.postButtonsView) else { return }
         view.backgroundColor = .clear
         self.addSubview(view)
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let constraints = [
+            view.topAnchor.constraint(equalTo: self.topAnchor),
+            view.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            view.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
     }
 }
 
