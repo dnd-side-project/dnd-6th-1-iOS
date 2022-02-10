@@ -11,6 +11,8 @@ import RxSwift
 class AddPostVC: UIViewController {
     @IBOutlet weak var chooseCategoryButton: UIButton!
     @IBOutlet weak var addImageBar: ImageAddBar!
+    @IBOutlet weak var postTitle: UITextField!
+    @IBOutlet weak var postContents: UITextView!
     
     let bag = DisposeBag()
     
@@ -20,6 +22,7 @@ class AddPostVC: UIViewController {
         configureNavigationBar()
         setAddImageBar()
         setChooseCategoryButton()
+        setPostContentComponent()
     }
 }
 
@@ -54,5 +57,24 @@ extension AddPostVC {
         chooseCategoryButton.layer.cornerRadius = chooseCategoryButton.frame.height / 2
         chooseCategoryButton.layer.borderColor = UIColor.systemGray3.cgColor
         chooseCategoryButton.layer.borderWidth = 1
+    }
+    
+    func setPostContentComponent() {
+        postTitle.placeholder = "제목"
+        
+        postContents.delegate = self
+        postContents.setAllMarginToZero()
+        postContents.setTextViewPlaceholder("글쓰기")
+    }
+}
+extension AddPostVC: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.setTextViewPlaceholder("글쓰기")
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            textView.setTextViewPlaceholder("글쓰기")
+        }
     }
 }
