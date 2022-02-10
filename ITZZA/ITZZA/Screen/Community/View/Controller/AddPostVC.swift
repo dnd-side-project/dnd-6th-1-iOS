@@ -13,6 +13,11 @@ class AddPostVC: UIViewController {
     @IBOutlet weak var addImageBar: ImageAddBar!
     @IBOutlet weak var postTitle: UITextField!
     @IBOutlet weak var postContents: UITextView!
+    @IBOutlet weak var imageStackView: UIStackView!
+    @IBOutlet weak var imageStackViewHeight: NSLayoutConstraint!
+    
+    let postContentsPlaceholder = "글쓰기"
+    var images: [UIImage] = []
     
     let bag = DisposeBag()
     
@@ -23,6 +28,11 @@ class AddPostVC: UIViewController {
         setAddImageBar()
         setChooseCategoryButton()
         setPostContentComponent()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setImageStackViewHeight()
     }
 }
 
@@ -57,6 +67,15 @@ extension AddPostVC {
         chooseCategoryButton.layer.cornerRadius = chooseCategoryButton.frame.height / 2
         chooseCategoryButton.layer.borderColor = UIColor.systemGray3.cgColor
         chooseCategoryButton.layer.borderWidth = 1
+        
+        let space = (view.frame.width - 20 - 20) - chooseCategoryButton.frame.height - chooseCategoryButton.intrinsicContentSize.width
+        
+        var configuration = UIButton.Configuration.plain()
+        
+        configuration.titlePadding = space
+        configuration.imagePadding = space
+        
+        chooseCategoryButton.configuration = configuration
     }
     
     func setPostContentComponent() {
@@ -64,17 +83,25 @@ extension AddPostVC {
         
         postContents.delegate = self
         postContents.setAllMarginToZero()
-        postContents.setTextViewPlaceholder("글쓰기")
+        postContents.setTextViewPlaceholder(postContentsPlaceholder)
+    }
+    
+    func setImageStackViewHeight() {
+        if images.count == 0 {
+            imageStackViewHeight.constant = 0
+        } else {
+            imageStackViewHeight.constant = CGFloat(images.count) * imageStackView.frame.width
+        }
     }
 }
 extension AddPostVC: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.setTextViewPlaceholder("글쓰기")
+        textView.setTextViewPlaceholder(postContentsPlaceholder)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == "" {
-            textView.setTextViewPlaceholder("글쓰기")
+            textView.setTextViewPlaceholder(postContentsPlaceholder)
         }
     }
 }

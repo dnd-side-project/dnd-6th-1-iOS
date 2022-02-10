@@ -89,19 +89,28 @@
                                                     <constraint firstAttribute="height" constant="1" id="GfN-Ik-qdy"/>
                                                 </constraints>
                                             </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="R3k-Vy-STu">
+                                                <rect key="frame" x="25" y="253" width="325" height="325"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="325" id="HLY-Z3-HHa"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="SQx-rR-1cV" firstAttribute="top" secondItem="kQq-3B-tif" secondAttribute="top" constant="32" id="2Nn-yi-Qmv"/>
-                                            <constraint firstAttribute="bottom" secondItem="1Su-hS-akh" secondAttribute="bottom" constant="390" id="AiO-YY-m7X"/>
                                             <constraint firstAttribute="trailing" secondItem="1Su-hS-akh" secondAttribute="trailing" constant="25" id="DO9-xD-XEZ"/>
+                                            <constraint firstItem="R3k-Vy-STu" firstAttribute="top" secondItem="1Su-hS-akh" secondAttribute="bottom" constant="30" id="KNX-xT-ylz"/>
+                                            <constraint firstItem="R3k-Vy-STu" firstAttribute="leading" secondItem="kQq-3B-tif" secondAttribute="leading" constant="25" id="LT9-7V-wpB"/>
                                             <constraint firstItem="SQx-rR-1cV" firstAttribute="leading" secondItem="kQq-3B-tif" secondAttribute="leading" constant="20" id="MB3-hx-lu5"/>
                                             <constraint firstAttribute="trailing" secondItem="IeY-Zk-i2L" secondAttribute="trailing" constant="20" id="WLu-yp-Z7q"/>
                                             <constraint firstItem="IeY-Zk-i2L" firstAttribute="top" secondItem="SQx-rR-1cV" secondAttribute="bottom" constant="30" id="eMX-eA-eXZ"/>
                                             <constraint firstItem="1Su-hS-akh" firstAttribute="leading" secondItem="kQq-3B-tif" secondAttribute="leading" constant="25" id="fux-98-fgc"/>
+                                            <constraint firstAttribute="bottom" secondItem="R3k-Vy-STu" secondAttribute="bottom" constant="35" id="hfL-z0-WHK"/>
                                             <constraint firstAttribute="trailing" secondItem="SQx-rR-1cV" secondAttribute="trailing" constant="20" id="n4a-be-gHH"/>
                                             <constraint firstItem="IeY-Zk-i2L" firstAttribute="leading" secondItem="kQq-3B-tif" secondAttribute="leading" constant="20" id="nJD-1O-6Ps"/>
                                             <constraint firstItem="1Su-hS-akh" firstAttribute="top" secondItem="IeY-Zk-i2L" secondAttribute="bottom" constant="29" id="rXh-w8-1yb"/>
+                                            <constraint firstAttribute="trailing" secondItem="R3k-Vy-STu" secondAttribute="trailing" constant="25" id="xJK-Te-OSc"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -135,6 +144,8 @@
                     <connections>
                         <outlet property="addImageBar" destination="CHq-Ju-mYJ" id="SQu-z9-pFX"/>
                         <outlet property="chooseCategoryButton" destination="SQx-rR-1cV" id="eAj-qQ-d93"/>
+                        <outlet property="imageStackView" destination="R3k-Vy-STu" id="Pty-66-cUS"/>
+                        <outlet property="imageStackViewHeight" destination="HLY-Z3-HHa" id="xqj-2A-iDy"/>
                         <outlet property="postContents" destination="zEA-Fn-Poq" id="zNU-Uq-6D4"/>
                         <outlet property="postTitle" destination="YTn-RX-fNM" id="AkX-cg-BPe"/>
                     </connections>
