@@ -28,6 +28,7 @@ class SignInVC: UIViewController {
     
     var disposeBag = DisposeBag()
     var signInViewModel = SignInVM()
+    var validation = Validation()
 
     override func viewDidLoad() {
         bindUI()
@@ -45,11 +46,11 @@ class SignInVC: UIViewController {
 extension SignInVC {
     private func bindUI() {
         emailTextField.rx.text.orEmpty
-            .bind(to: signInViewModel.emailText)
+            .bind(to: validation.emailText)
             .disposed(by: disposeBag)
         
         passwordTextField.rx.text.orEmpty
-            .bind(to: signInViewModel.passwordText)
+            .bind(to: validation.passwordText)
             .disposed(by: disposeBag)
         
         passwordEyeButton.rx.tap
@@ -57,7 +58,7 @@ extension SignInVC {
             .map { [weak self] in
                 (self?.passwordEyeButton.currentImage)!
             }
-            .bind(to: signInViewModel.eyeOnOff)
+            .bind(to: validation.eyeOnOff)
             .disposed(by: disposeBag)
         
         signInViewModel.indicatorController.asDriver()
@@ -67,7 +68,7 @@ extension SignInVC {
             })
             .disposed(by: disposeBag)
        
-        let emailValidObservable = signInViewModel.isEmailVaild
+        let emailValidObservable = validation.isEmailVaild
                         .asObservable()
                         .share()
                         .asDriver(onErrorJustReturn: false)
@@ -78,11 +79,12 @@ extension SignInVC {
         
         emailValidObservable
             .drive(onNext: { [weak self] email in
-                self?.checkIdPasswordEnable(email, (self?.emailView)!)
+                guard let self = self else { return }
+                self.checkIdPasswordEnable(email, (self.emailView)!)
             })
             .disposed(by: disposeBag)
         
-        let passwordValidObservable = signInViewModel.isPasswordValid
+        let passwordValidObservable = validation.isPasswordValid
                             .asObservable()
                             .share()
                             .asDriver(onErrorJustReturn: false)
@@ -93,21 +95,23 @@ extension SignInVC {
         
         passwordValidObservable
             .drive(onNext: { [weak self] pw in
-                self?.checkIdPasswordEnable(pw, (self?.passwordView)!)
+                guard let self = self else { return }
+                self.checkIdPasswordEnable(pw, (self.passwordView)!)
             })
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(signInViewModel.isEmailVaild,
-                                 signInViewModel.isPasswordValid) {
+        Observable.combineLatest(validation.isEmailVaild,
+                                 validation.isPasswordValid) {
             $0 && $1
         }
         .map(changeSignInButton)
         .bind(to: signInButton.rx.isEnabled)
         .disposed(by: disposeBag)
         
-        signInViewModel.isEyeOn
-            .subscribe(onNext: { [weak self] eyeStatus in
-                self?.didTapPasswordEyeButton(eyeStatus)
+        validation.isEyeOn.asDriver()
+            .drive(onNext: { [weak self] eyeStatus in
+                guard let self = self else { return }
+                self.didTapPasswordEyeButton(eyeStatus)
             })
             .disposed(by: disposeBag)
         

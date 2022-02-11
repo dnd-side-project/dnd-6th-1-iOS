@@ -64,6 +64,12 @@
 		623DE2F927B26581005E78D0 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE2F827B26581005E78D0 /* UIView+.swift */; };
 		623DE2FF27B3BA75005E78D0 /* AgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE2FE27B3BA75005E78D0 /* AgreementView.swift */; };
 		623DE30127B3BA9E005E78D0 /* AgreementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 623DE30027B3BA9E005E78D0 /* AgreementView.xib */; };
+		623DE30527B55BFD005E78D0 /* Agreement.txt in Resources */ = {isa = PBXBuildFile; fileRef = 623DE30427B55BFD005E78D0 /* Agreement.txt */; };
+		623DE30727B5603A005E78D0 /* Literal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE30627B5603A005E78D0 /* Literal.swift */; };
+		623DE30927B615EB005E78D0 /* EmailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE30827B615EB005E78D0 /* EmailVM.swift */; };
+		623DE30C27B616F7005E78D0 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE30B27B616F7005E78D0 /* Validation.swift */; };
+		623DE30F27B64F0C005E78D0 /* PasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE30E27B64F0C005E78D0 /* PasswordVM.swift */; };
+		623DE31127B65B27005E78D0 /* NicknameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE31027B65B27005E78D0 /* NicknameVM.swift */; };
 		6254618227B152E300184DA1 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6254618127B152E300184DA1 /* PasswordView.swift */; };
 		6254618427B152EF00184DA1 /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6254618327B152EF00184DA1 /* NicknameView.swift */; };
 		6254618627B152FC00184DA1 /* PasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6254618527B152FC00184DA1 /* PasswordView.xib */; };
@@ -146,6 +152,12 @@
 		623DE2F827B26581005E78D0 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		623DE2FE27B3BA75005E78D0 /* AgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementView.swift; sourceTree = "<group>"; };
 		623DE30027B3BA9E005E78D0 /* AgreementView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreementView.xib; sourceTree = "<group>"; };
+		623DE30427B55BFD005E78D0 /* Agreement.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Agreement.txt; sourceTree = "<group>"; };
+		623DE30627B5603A005E78D0 /* Literal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literal.swift; sourceTree = "<group>"; };
+		623DE30827B615EB005E78D0 /* EmailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVM.swift; sourceTree = "<group>"; };
+		623DE30B27B616F7005E78D0 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		623DE30E27B64F0C005E78D0 /* PasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordVM.swift; sourceTree = "<group>"; };
+		623DE31027B65B27005E78D0 /* NicknameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameVM.swift; sourceTree = "<group>"; };
 		6254618127B152E300184DA1 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		6254618327B152EF00184DA1 /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
 		6254618527B152FC00184DA1 /* PasswordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordView.xib; sourceTree = "<group>"; };
@@ -211,6 +223,7 @@
 		232CC02827A031E900040131 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				623DE30427B55BFD005E78D0 /* Agreement.txt */,
 				232CC01427A0317900040131 /* AppDelegate.swift */,
 				232CC01D27A0317900040131 /* Assets.xcassets */,
 				232CC02227A0317900040131 /* Info.plist */,
@@ -473,6 +486,8 @@
 		232CC06B27A0362900040131 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				623DE31227B69D2F005E78D0 /* Literal */,
+				623DE30A27B616D6005E78D0 /* Validation */,
 				62BE209727A67995001F150A /* Service */,
 				62BE208E27A66F04001F150A /* Network */,
 				232CC06F27A0364300040131 /* Factory */,
@@ -617,8 +632,27 @@
 			children = (
 				6208CFE027A2662700F17603 /* SignInVM.swift */,
 				62E2BDF927AD25CA0052DDCE /* SignUpVM.swift */,
+				623DE30827B615EB005E78D0 /* EmailVM.swift */,
+				623DE30E27B64F0C005E78D0 /* PasswordVM.swift */,
+				623DE31027B65B27005E78D0 /* NicknameVM.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		623DE30A27B616D6005E78D0 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				623DE30B27B616F7005E78D0 /* Validation.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		623DE31227B69D2F005E78D0 /* Literal */ = {
+			isa = PBXGroup;
+			children = (
+				623DE30627B5603A005E78D0 /* Literal.swift */,
+			);
+			path = Literal;
 			sourceTree = "<group>";
 		};
 		62BE208E27A66F04001F150A /* Network */ = {
@@ -749,6 +783,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				623DE30527B55BFD005E78D0 /* Agreement.txt in Resources */,
 				238CEEA427A7E6F1006BE766 /* Category.storyboard in Resources */,
 				232CC0A227A03B4100040131 /* TabBar.storyboard in Resources */,
 				232CC09727A039B700040131 /* SFPRODISPLAYMEDIUM.OTF in Resources */,
@@ -836,6 +871,7 @@
 				232CC05E27A0333500040131 /* MypageVC.swift in Sources */,
 				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,
 				62E2BDFA27AD25CA0052DDCE /* SignUpVM.swift in Sources */,
+				623DE30C27B616F7005E78D0 /* Validation.swift in Sources */,
 				623DE2F727B25367005E78D0 /* EmailView.swift in Sources */,
 				2335241F27A99392009C654F /* PostButtonsView.swift in Sources */,
 				6208CFDE27A258F600F17603 /* (null) in Sources */,
@@ -844,7 +880,9 @@
 				2335241727A98FA0009C654F /* ProfileHeaderView.swift in Sources */,
 				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,
 				62C4008727A51ADB002B3F33 /* tmp.swift in Sources */,
+				623DE31127B65B27005E78D0 /* NicknameVM.swift in Sources */,
 				232CC07527A0370D00040131 /* TypeOfViewController.swift in Sources */,
+				623DE30727B5603A005E78D0 /* Literal.swift in Sources */,
 				62E2BDFC27AD41620052DDCE /* UIImage+.swift in Sources */,
 				232CC08B27A0391F00040131 /* Notification+.swift in Sources */,
 				238EC09C27AA7295001CBB24 /* SearchPostVC.swift in Sources */,
@@ -865,6 +903,7 @@
 				232CC0A427A03B8F00040131 /* ITZZATBC.swift in Sources */,
 				62BE209427A66F60001F150A /* APIError.swift in Sources */,
 				62BE209927A679A2001F150A /* Service.swift in Sources */,
+				623DE30927B615EB005E78D0 /* EmailVM.swift in Sources */,
 				238EC09F27AA88EC001CBB24 /* ImageAddBar.swift in Sources */,
 				232CC03E27A0328600040131 /* c.swift in Sources */,
 				6270D40127ACE590004FD7A9 /* SignUpVC.swift in Sources */,
@@ -873,6 +912,7 @@
 				238CEEAA27A7EFD0006BE766 /* PostTVC.swift in Sources */,
 				232CC06227A0335500040131 /* i.swift in Sources */,
 				623DE2FF27B3BA75005E78D0 /* AgreementView.swift in Sources */,
+				623DE30F27B64F0C005E78D0 /* PasswordVM.swift in Sources */,
 				232CC03C27A0328000040131 /* b.swift in Sources */,
 				62BE208D27A590D0001F150A /* SignInVC.swift in Sources */,
 				623DE2F927B26581005E78D0 /* UIView+.swift in Sources */,
@@ -1018,7 +1058,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = U2Z5Z44P4R;
+				DEVELOPMENT_TEAM = 2SM8ZKQ56W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITZZA/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1047,7 +1087,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = U2Z5Z44P4R;
+				DEVELOPMENT_TEAM = 2SM8ZKQ56W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITZZA/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

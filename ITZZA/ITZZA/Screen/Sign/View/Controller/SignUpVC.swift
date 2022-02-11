@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import CoreMedia
+import SnapKit
 
 class SignUpVC: UIViewController {
     
@@ -22,14 +23,21 @@ class SignUpVC: UIViewController {
     var bubbleView = UIView()
     var tipView = UIView()
     var bubbleLabel = UILabel()
+    let emailView = EmailView()
+    let passwordView = PasswordView()
+    let nicknameView = NicknameView()
+    let agreementView = AgreementView()
     
-    let mainTitles = ["이메일 입력", "비밀번호 입력", "닉네임 입력", "약관 동의"]
     var fill: Float = 0.0
-    var fillTarget: Float = 0.0
-    var timer: Timer?
     var disposeBag = DisposeBag()
     let signUpVM = SignUpVM()
     var scrollTarget = 0.0
+    var emojiLeadingConstraint: Constraint!
+    var bubbleLeadingContraint: Constraint!
+    var tipLeadingContraint: Constraint!
+    let halfOfEmojiWidth: CGFloat = 15
+    let halfOfBubble: CGFloat = 45
+    let halfOfTip: CGFloat = 4
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,59 +45,22 @@ class SignUpVC: UIViewController {
         recognizeTapInScrollView()
         setStackView()
         bindUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         createEmojiAndBubble()
+        coloringTipView(color: UIColor.orange.cgColor)
         bindVM()
         fillProgressBar()
     }
-    
 }
 
 // MARK:- Change UI
 extension SignUpVC {
     func setInitialUIValue() {
-        titleLabel.text = mainTitles[0]
-        progressBar.tintColor = .orange
-        progressBar.setProgress(0.0, animated: true)
         previousButton.layer.borderWidth = 1.0
         previousButton.layer.borderColor = UIColor.black.cgColor
         previousButton.layer.cornerRadius = 5
         nextButton.layer.cornerRadius = 5
         bubbleView.layer.cornerRadius = 5
         scrollView.isPagingEnabled = false
-    }
-    
-    func createEmojiAndBubble() {
-        let point = progressBar.frame
-        
-        emojiImage.image = .coloredAngryEmoji
-        emojiImage.frame = CGRect(x: point.width * 0.25,
-                                 y: point.origin.y - 15,
-                                 width: 30, height: 30)
-        
-        bubbleView.frame = CGRect(x: point.width * 0.25 - 30,
-                              y: point.origin.y - 53,
-                              width: 89,
-                              height: 26)
-        
-        bubbleLabel.frame = CGRect(x: 7, y: 3, width: 74, height: 21)
-        bubbleLabel.textColor = .white
-        bubbleLabel.font = UIFont.SFProDisplayRegular(size: 10)
-        bubbleLabel.textAlignment = .center
-        
-        tipView.frame = CGRect(x: point.width * 0.25 + 11,
-                               y: point.origin.y - 27,
-                               width: 8,
-                               height: 8)
-
-        createBubbleTipView(color: UIColor.orange.cgColor)
-        bubbleView.addSubview(bubbleLabel)
-        view.addSubview(emojiImage)
-        view.addSubview(bubbleView)
-        view.addSubview(tipView)
     }
     
     func recognizeTapInScrollView() {
@@ -104,6 +75,91 @@ extension SignUpVC {
         self.view.endEditing(true)
     }
     
+    func changeMainTitle(_ newTitle: String) {
+        titleLabel.text = newTitle
+    }
+    
+    func createEmojiAndBubble() {
+        view.addSubview(emojiImage)
+        view.addSubview(bubbleView)
+        bubbleView.addSubview(bubbleLabel)
+        view.addSubview(tipView)
+        
+        bubbleLabel.frame = CGRect(x: 7, y: 3, width: 74, height: 21)
+        bubbleLabel.textColor = .white
+        bubbleLabel.font = UIFont.SFProDisplayRegular(size: 10)
+        bubbleLabel.textAlignment = .center
+        
+        emojiImage.snp.makeConstraints {
+            $0.centerY.equalTo(progressBar)
+            emojiLeadingConstraint = $0.leading.equalTo(progressBar).constraint
+        }
+        bubbleView.snp.makeConstraints {
+            $0.width.equalTo(89)
+            $0.height.equalTo(26)
+            $0.centerY.equalTo(progressBar).offset(-37)
+            bubbleLeadingContraint = $0.leading.equalTo(progressBar).constraint
+        }
+        tipView.snp.makeConstraints {
+            $0.width.equalTo(8)
+            $0.height.equalTo(8)
+            $0.centerY.equalTo(progressBar).offset(-21)
+            tipLeadingContraint = $0.leading.equalTo(progressBar).constraint
+        }
+    }
+    
+    func coloringTipView(color: CGColor) {
+        view.layoutIfNeeded()
+        let width = tipView.frame.size.width
+        let height = tipView.frame.size.height
+        let path = CGMutablePath()
+
+        path.move(to: CGPoint(x: 0, y: 0))
+        path.addLine(to: CGPoint(x: width/2, y: height))
+        path.addLine(to: CGPoint(x: width, y: 0))
+        path.addLine(to: CGPoint(x: 0, y: 0))
+
+        let shape = CAShapeLayer()
+        shape.path = path
+        shape.fillColor = color
+
+        tipView.layer.insertSublayer(shape, at: 0)
+    }
+    
+    func moveBubbleLocation(_ idx: CGFloat, _ isLast: Bool) {
+        if isLast {
+            bubbleLeadingContraint.update(offset: progressBar.frame.width * idx - halfOfBubble - 40)
+            tipLeadingContraint.update(offset: progressBar.frame.width * idx - halfOfTip - 7)
+        } else {
+            bubbleLeadingContraint.update(offset: progressBar.frame.width * idx - halfOfBubble)
+            tipLeadingContraint.update(offset: progressBar.frame.width * idx - halfOfTip)
+        }
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func changeBubbleInfo(to color: UIColor, _ text: String) {
+        bubbleView.backgroundColor = color
+        (tipView.layer.sublayers?.last as! CAShapeLayer).fillColor = color.cgColor
+        bubbleLabel.text = text
+    }
+    
+    func moveAndChangeEmoji(to icon: UIImage, _ idx: CGFloat, _ isLast: Bool) {
+        emojiImage.image = icon
+        
+        if isLast {
+            emojiLeadingConstraint.update(offset: progressBar.frame.width * idx - halfOfEmojiWidth - 5)
+        } else {
+            emojiLeadingConstraint.update(offset: progressBar.frame.width * idx - halfOfEmojiWidth)
+        }
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     func setStackView() {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: progressBar.bottomAnchor, constant: 40),
@@ -111,11 +167,6 @@ extension SignUpVC {
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             scrollView.bottomAnchor.constraint(equalTo: previousButton.topAnchor, constant: -20),
         ])
-        
-        let emailView = EmailView()
-        let passwordView = PasswordView()
-        let nicknameView = NicknameView()
-        let agreementView = AgreementView()
         
         emailView.emailTextField.rx.controlEvent(.editingDidEndOnExit)
             .withUnretained(self)
@@ -165,81 +216,6 @@ extension SignUpVC {
         }
     }
     
-    func createBubbleTipView(color: CGColor) {
-        let width = tipView.frame.size.width
-        let height = tipView.frame.size.height
-        let path = CGMutablePath()
-
-        path.move(to: CGPoint(x: 0, y: 0))  // 시작점
-        path.addLine(to: CGPoint(x: width/2, y: height)) // 라인 1
-        path.addLine(to: CGPoint(x: width, y: 0))   // 라인 2
-        path.addLine(to: CGPoint(x: 0, y: 0))   // 라인 3 삼각형 완성!
-
-        let shape = CAShapeLayer()
-        shape.path = path
-        shape.fillColor = color
-
-        tipView.layer.insertSublayer(shape, at: 0)
-    }
-    
-    func moveBubbleLocation(_ idx: CGFloat, _ isLast: Bool) {
-        let bubbleWidth = bubbleView.frame.width
-        let bubbleHeight = bubbleView.frame.size.height
-        let tipWidth = tipView.frame.width
-        let tipHeigt = tipView.frame.height
-        let progressWidth = progressBar.frame.size.width * idx
-        let progressY = progressBar.frame.origin.y
-        
-        UIView.animate(withDuration: 0.5, animations: { [weak self] in
-            guard let self = self else { return }
-            
-            if isLast {
-                self.bubbleView.frame = CGRect(x: progressWidth - bubbleWidth + 15,
-                                               y: progressY - 53,
-                                               width: bubbleWidth,
-                                               height: bubbleHeight)
-                self.tipView.frame = CGRect(x: progressWidth - (self.tipView.frame.size.width) / 2 + 5,
-                                            y: progressY - 27,
-                                            width: tipWidth,
-                                            height: tipHeigt)
-            } else {
-                self.bubbleView.frame = CGRect(x: progressWidth - (bubbleWidth / 2) + 15,
-                                               y: progressY - 53,
-                                               width: bubbleWidth,
-                                               height: bubbleHeight)
-                self.tipView.frame = CGRect(x: progressWidth - (self.tipView.frame.size.width) / 2 + 15,
-                                            y: progressY - 27,
-                                            width: tipWidth,
-                                            height: tipHeigt)
-            }
-        }, completion: nil)
-    }
-    
-    func changeBubbleInfo(to color: UIColor, _ text: String) {
-        bubbleView.backgroundColor = color
-        (tipView.layer.sublayers?.last as! CAShapeLayer).fillColor = color.cgColor
-        bubbleLabel.text = text
-    }
-    
-    func moveAndChangeEmoji(to icon: UIImage, _ idx: CGFloat, _ isLast: Bool) {
-        emojiImage.image = icon
-        UIView.animate(withDuration: 0.5, animations: { [weak self] in
-            guard let self = self else { return }
-            
-            if isLast {
-                self.emojiImage.frame = CGRect(x: self.progressBar.frame.size.width * idx - 10,
-                                              y: self.progressBar.frame.origin.y - 15,
-                                              width: self.emojiImage.frame.size.width,
-                                              height: self.emojiImage.frame.size.height)
-            } else {
-                self.emojiImage.frame = CGRect(x: self.progressBar.frame.size.width * idx,
-                                              y: self.progressBar.frame.origin.y - 15,
-                                              width: self.emojiImage.frame.size.width,
-                                              height: self.emojiImage.frame.size.height)
-            }
-        }, completion: nil)
-    }
-    
     func scrollToNextView() {
         var point = scrollView.contentOffset
         scrollTarget += scrollView.frame.width
@@ -253,60 +229,41 @@ extension SignUpVC {
         point.x = scrollTarget
         scrollView.setContentOffset(point, animated: true)
     }
+    
+    func changeNextButton(_ isValid: Bool) {
+        print(isValid)
+        if isValid {
+            nextButton.backgroundColor = .orange
+            nextButton.isEnabled = true
+        } else {
+            nextButton.backgroundColor = .gray
+            nextButton.isEnabled = false
+        }
+    }
 }
 
 // MARK: - ProgressBar Methods
 extension SignUpVC {
     func fillProgressBar() {
-        if fillTarget < 1 {
-            fillTarget += 0.25
-            timer?.invalidate()
-            timer = Timer.scheduledTimer(timeInterval: 0.075,
-                                         target: self,
-                                         selector: #selector(increaseProgressBar),
-                                         userInfo: nil,
-                                         repeats: true)
+        if fill < 1 {
+            fill += 0.25
+        }
+        UIView.animate(withDuration: 0.3) {
+            self.progressBar.setProgress(self.fill, animated: true)
         }
     }
     
     func withdrawProgressBar() {
-        if fillTarget > 0 {
-            fillTarget -= 0.25
-            timer?.invalidate()
-            timer = Timer.scheduledTimer(timeInterval: 0.075,
-                                         target: self,
-                                         selector: #selector(decreaseProgressBar),
-                                         userInfo: nil,
-                                         repeats: true)
-        }
-    }
-    
-    @objc func increaseProgressBar() {
-        if fill < 1 {
-            fill += 0.05
-            progressBar.setProgress(fill, animated: true)
-            if fill >= fillTarget {
-                timer?.invalidate()
-            }
-        } else {
-            timer?.invalidate()
-        }
-    }
-    
-    @objc func decreaseProgressBar() {
         if fill > 0 {
-            fill -= 0.05
-            progressBar.setProgress(fill, animated: true)
-            if fill <= fillTarget {
-                timer?.invalidate()
-            }
-        } else {
-            timer?.invalidate()
+            fill -= 0.25
+        }
+        UIView.animate(withDuration: 0.3) {
+            self.progressBar.setProgress(self.fill, animated: true)
         }
     }
 }
 
-// MARK: - Bind UI Element
+// MARK: - Bindings
 extension SignUpVC {
     func bindUI() {
         previousButton.rx.tap.asDriver()
@@ -314,6 +271,7 @@ extension SignUpVC {
                 guard let self = self else { return }
                 self.withdrawProgressBar()
                 self.scrollToPreviousView()
+                self.changeNextButton(true)
             })
             .disposed(by: disposeBag)
         
@@ -331,6 +289,7 @@ extension SignUpVC {
                 guard let self = self else { return }
                 self.fillProgressBar()
                 self.scrollToNextView()
+                self.changeNextButton(false)
             })
             .disposed(by: disposeBag)
         
@@ -348,6 +307,22 @@ extension SignUpVC {
                 self.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
+        
+        emailView.isValidEmail.asDriver()
+            .distinctUntilChanged()
+            .drive(onNext: { [weak self] isValid in
+                guard let self = self else { return }
+                self.changeNextButton(isValid)
+            })
+            .disposed(by: disposeBag)
+        
+        passwordView.isValidPassword.asDriver()
+            .distinctUntilChanged()
+            .drive(onNext: { [weak self] isValid in
+                guard let self = self else { return }
+                self.changeNextButton(isValid)
+            })
+            .disposed(by: disposeBag)
     }
     
     func bindVM() {
@@ -356,7 +331,6 @@ extension SignUpVC {
             .disposed(by: disposeBag)
         
         signUpVM.goToMain.asDriver()
-            .skip(1)
             .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.dismiss(animated: true, completion: nil)
@@ -373,9 +347,10 @@ extension SignUpVC {
         signUpVM.visualizeAngryImage.asDriver()
             .drive(onNext: { [weak self] flag in
                 guard let self = self else { return }
+                self.changeMainTitle(Literal.email.description)
                 self.moveAndChangeEmoji(to: .coloredAngryEmoji, 0.25, false)
                 self.moveBubbleLocation(0.25, false)
-                self.changeBubbleInfo(to: .orange, "시작이 반이다")
+                self.changeBubbleInfo(to: .orange, Literal.first.description)
             })
             .disposed(by: disposeBag)
         
@@ -383,9 +358,10 @@ extension SignUpVC {
             .skip(1)
             .drive(onNext: { [weak self] flag in
                 guard let self = self else { return }
+                self.changeMainTitle(Literal.password.description)
                 self.moveAndChangeEmoji(to: .coloredConfuseEmoji, 0.5, false)
                 self.moveBubbleLocation(0.5, false)
-                self.changeBubbleInfo(to: .purple, "벌써 2단계!")
+                self.changeBubbleInfo(to: .purple, Literal.second.description)
             })
             .disposed(by: disposeBag)
         
@@ -393,9 +369,10 @@ extension SignUpVC {
             .skip(1)
             .drive(onNext: { [weak self] flag in
                 guard let self = self else { return }
+                self.changeMainTitle(Literal.nickname.description)
                 self.moveAndChangeEmoji(to: .coloredSadEmoji, 0.75, false)
                 self.moveBubbleLocation(0.75, false)
-                self.changeBubbleInfo(to: .blue, "거의 다 왔어요!")
+                self.changeBubbleInfo(to: .blue, Literal.third.description)
             })
             .disposed(by: disposeBag)
         
@@ -403,9 +380,10 @@ extension SignUpVC {
             .skip(1)
             .drive(onNext: { [weak self] flag in
                 guard let self = self else { return }
+                self.changeMainTitle(Literal.agreement.description)
                 self.moveAndChangeEmoji(to: .coloredComfyEmoji, 1, true)
                 self.moveBubbleLocation(1, true)
-                self.changeBubbleInfo(to: .yellow, "이제 마지막!")
+                self.changeBubbleInfo(to: .yellow, Literal.fourth.description)
             })
             .disposed(by: disposeBag)
     }
