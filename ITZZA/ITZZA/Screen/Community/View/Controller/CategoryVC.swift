@@ -14,28 +14,28 @@ class CategoryVC: UIViewController {
     @IBOutlet weak var postListTV: UITableView!
     
     let bag = DisposeBag()
-    let dummyData = PostModel(nickName: "익명의 사용자",
+    let dummyData = PostModel(userId:0,
+                              boardId: 0,
+                              categoryName: "",
                               profileImgURL: "",
-                              likeCnt: 4,
-                              commentCnt: 1,
-                              bookmarkCnt: 2,
+                              nickName: "익명의 사용자",
+                              postTitle: "ㅁㄴㅇㄹ",
+                              postContent: "ㅁㄴㅇㄹ",
                               createdAt: "1시간 전",
-                              boardId: 0,
-                              categoryName: "",
-                              postTitle: "ㅁㄴㅇㄹ",
-                              postContent: "ㅁㄴㅇㄹ",
-                              imageCnt: 1)
-    let dummyData2 = PostModel(nickName: "익명의 사용자",
-                              profileImgURL: "",
-                              likeCnt: 14,
-                              commentCnt: 14,
-                              bookmarkCnt: 14,
-                              createdAt: "3시간 전",
-                              boardId: 0,
-                              categoryName: "",
-                              postTitle: "ㅁㄴㅇㄹ",
-                              postContent: "ㅁㄴㅇㄹ",
-                              imageCnt: 0)
+                              imageCnt: 1,
+                              commentCnt: 1,
+                              likeCnt: 4)
+    let dummyData2 = PostModel(userId:0,
+                               boardId: 0,
+                               categoryName: "",
+                               profileImgURL: "",
+                               nickName: "익명의 사용자",
+                               postTitle: "ㅁㄴㅇㄹ",
+                               postContent: "ㅁㄴㅇㄹ",
+                               createdAt: "1시간 전",
+                               imageCnt: 1,
+                               commentCnt: 1,
+                               likeCnt: 4)
     
     override func viewDidLoad() {
         super.viewDidLoad()
