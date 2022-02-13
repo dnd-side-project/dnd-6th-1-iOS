@@ -148,6 +148,7 @@
                         <outlet property="imageStackViewHeight" destination="HLY-Z3-HHa" id="xqj-2A-iDy"/>
                         <outlet property="postContents" destination="zEA-Fn-Poq" id="zNU-Uq-6D4"/>
                         <outlet property="postTitle" destination="YTn-RX-fNM" id="AkX-cg-BPe"/>
+                        <outlet property="scrollView" destination="eEK-B5-aG1" id="7uU-GE-kEd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

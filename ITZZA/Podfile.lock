@@ -1,6 +1,12 @@
 PODS:
   - Alamofire (5.5.0)
   - Differentiator (5.0.0)
+  - DynamicBottomSheet (1.0.2):
+    - RxCocoa (~> 6.0)
+    - RxGesture (~> 4.0)
+    - RxSwift (~> 6.0)
+    - SnapKit (~> 5.0)
+    - Then (~> 2.0)
   - Kingfisher (7.1.2)
   - Pageboy (3.6.2)
   - RxCocoa (6.1.0):
@@ -16,12 +22,15 @@ PODS:
   - RxRelay (6.1.0):
     - RxSwift (= 6.1.0)
   - RxSwift (6.1.0)
+  - SnapKit (5.0.1)
   - SwiftKeychainWrapper (4.0.1)
   - Tabman (2.11.1):
     - Pageboy (~> 3.6.0)
+  - Then (2.7.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.5)
+  - DynamicBottomSheet
   - Kingfisher (~> 7.0)
   - RxCocoa (< 6.2.0)
   - RxDataSources (< 5.1.0)
@@ -34,6 +43,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Differentiator
+    - DynamicBottomSheet
     - Kingfisher
     - Pageboy
     - RxCocoa
@@ -41,12 +51,15 @@ SPEC REPOS:
     - RxGesture
     - RxRelay
     - RxSwift
+    - SnapKit
     - SwiftKeychainWrapper
     - Tabman
+    - Then
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  DynamicBottomSheet: b11ead81bf8ee494b26cbd16ff2312313e90d9e3
   Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
   Pageboy: cf121b9dd48c63f3f281b2a9ec93d02e0f23879b
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
@@ -54,9 +67,11 @@ SPEC CHECKSUMS:
   RxGesture: abadd243fc36db74df43dfc893829ddde94f1a3d
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
   Tabman: 792ac76fd1ec95af175c93db880a3c47cabedc91
+  Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 082ec35f910d7d983ee730274cbc774c4a6b37d0
+PODFILE CHECKSUM: f403da3e6b1321f595a38775c3f4025be02b1d63
 
 COCOAPODS: 1.11.2

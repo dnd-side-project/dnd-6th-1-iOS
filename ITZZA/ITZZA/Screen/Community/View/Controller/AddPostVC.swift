@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 
 class AddPostVC: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var chooseCategoryButton: UIButton!
     @IBOutlet weak var addImageBar: ImageAddBar!
     @IBOutlet weak var postTitle: UITextField!
@@ -25,9 +26,10 @@ class AddPostVC: UIViewController {
         super.viewDidLoad()
 
         configureNavigationBar()
-        setAddImageBar()
-        setChooseCategoryButton()
-        setPostContentComponent()
+        configureChooseCategoryButton()
+        bindAddImageBar()
+        bindCategoryBottomSheet()
+        configurePostContentComponent()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +40,7 @@ class AddPostVC: UIViewController {
 
 //MARK: - Custom Methods
 extension AddPostVC {
+    //MARK: - configure
     func configureNavigationBar() {
         navigationController?.setSubNaviBarTitle(navigationItem: self.navigationItem, title: "게시글 작성")
         navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .black)
@@ -54,15 +57,7 @@ extension AddPostVC {
         navigationItem.rightBarButtonItem = savePost
     }
     
-    func setAddImageBar() {
-        addImageBar.addImageButton.rx.tap
-            .bind {
-                print("addImage")
-            }
-            .disposed(by: bag)
-    }
-    
-    func setChooseCategoryButton() {
+    func configureChooseCategoryButton() {
         chooseCategoryButton.backgroundColor = .systemGray6
         chooseCategoryButton.layer.cornerRadius = chooseCategoryButton.frame.height / 2
         chooseCategoryButton.layer.borderColor = UIColor.systemGray3.cgColor
@@ -78,7 +73,7 @@ extension AddPostVC {
         chooseCategoryButton.configuration = configuration
     }
     
-    func setPostContentComponent() {
+    func configurePostContentComponent() {
         postTitle.placeholder = "제목"
         
         postContents.delegate = self
@@ -93,7 +88,29 @@ extension AddPostVC {
             imageStackViewHeight.constant = CGFloat(images.count) * imageStackView.frame.width
         }
     }
+    
+    //MARK: - bind
+    func bindAddImageBar() {
+        addImageBar.addImageButton.rx.tap
+            .bind {
+                print("addImage")
+            }
+            .disposed(by: bag)
+    }
+    
+    func bindCategoryBottomSheet() {
+        chooseCategoryButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                let categoryBottomSheet = CategoryBottomSheetVC()
+
+                self.present(categoryBottomSheet, animated: true)
+            })
+            .disposed(by: bag)
+    }
 }
+
+// MARK: - UITextViewDelegate
 extension AddPostVC: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.setTextViewPlaceholder(postContentsPlaceholder)
