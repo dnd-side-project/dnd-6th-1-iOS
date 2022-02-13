@@ -11,7 +11,8 @@ import Pageboy
 import RxSwift
 
 class CommunityVC: TabmanViewController {
-    private let viewControllers = TypeOfViewController.communityCases.compactMap { ViewControllerFactory.viewController(for: $0) as? CategoryVC
+    private let viewControllers = TypeOfViewController.communityCases.compactMap {
+        ViewControllerFactory.viewController(for: $0) as? CategoryVC
     }
     
     @IBOutlet weak var categoryTB: UIView!
@@ -24,7 +25,22 @@ class CommunityVC: TabmanViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureNavigationBar()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        guard let tabBarView = categoryTB.subviews.compactMap({ $0 as? TMBar }).first,
+              let stackView = tabBarView.subviews.compactMap({ $0 as? UIStackView }).first,
+              let fadedView = stackView.arrangedSubviews.first,
+              let scrollView = fadedView.subviews.compactMap({ $0 as? UIScrollView }).first,
+              let layoutGrid = scrollView.subviews.first,
+              let verticalStackView = layoutGrid.subviews.compactMap({ $0 as? UIStackView }).first  else {
+                return
+              }
+        verticalStackView.spacing = 4.0
     }
 }
 

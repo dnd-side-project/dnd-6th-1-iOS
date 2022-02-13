@@ -12,6 +12,7 @@ struct Identifiers {
     static let homeSB = "Home"
     static let communitySB = "Community"
     static let categorySB = "Category"
+    static let postDetailSB = "PostDetail"
     static let addPostSB = "AddPost"
     static let searchPostSB = "SearchPost"
     static let mypageSB = "Mypage"
@@ -24,6 +25,7 @@ struct Identifiers {
     static let communityNC = "CommunityNC"
     static let communityVC = "CommunityVC"
     static let categoryVC = "CategoryVC"
+    static let postDetailVC = "PostDetailVC"
     static let addPostVC = "AddPostVC"
     static let searchPostVC = "SearchPostVC"
     static let mypageVC = "MypageVC"
@@ -38,9 +40,14 @@ struct Identifiers {
     static let passwordView = "PasswordView"
     static let nicknameView = "NicknameView"
     static let agreementView = "AgreementView"
+    static let postContentView = "PostContentView"
+    static let chatInputView = "ChatInputView"
+    static let postContentTableViewHeader = "PostContentTableViewHeader"
     
     //MARK: - TVC
     static let postTVC = "PostTVC"
+    static let commentTVC = "CommentTVC"
+    static let commentCountCell = "CommentCountCell"
     
     //MARK: - CVC
     

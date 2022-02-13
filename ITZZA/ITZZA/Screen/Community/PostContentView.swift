@@ -1,17 +1,15 @@
 //
-//  ImageAddBar.swift
+//  PostContentView.swift
 //  ITZZA
 //
-//  Created by 황윤경 on 2022/02/02.
+//  Created by 황윤경 on 2022/02/06.
 //
 
 import UIKit
-import RxSwift
 
-class ImageAddBar: UIView {
-    @IBOutlet weak var addImageButton: UIButton!
-    
-    let bag = DisposeBag()
+class PostContentView: UIView {
+    @IBOutlet weak var postTitle: UILabel!
+    @IBOutlet weak var postContent: UILabel!
     
     override init(frame: CGRect) {
       super.init(frame: frame)
@@ -24,7 +22,7 @@ class ImageAddBar: UIView {
     }
     
     private func setContentView() {
-        guard let view = loadViewFromNib(with: Identifiers.imageAddBar) else { return }
+        guard let view = loadViewFromNib(with: Identifiers.postContentView) else { return }
         view.backgroundColor = .clear
         self.addSubview(view)
         
@@ -36,5 +34,7 @@ class ImageAddBar: UIView {
             view.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
+        
+        postContent.setLineBreakMode()
     }
 }
