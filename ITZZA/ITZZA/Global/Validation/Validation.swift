@@ -15,7 +15,7 @@ class Validation {
     let passwordText = BehaviorRelay(value: "")
     let isEmailVaild = BehaviorRelay(value: false)
     let isPasswordValid = BehaviorRelay(value: false)
-    let eyeOnOff = BehaviorRelay(value: UIImage())
+    let eyeOnOff = BehaviorRelay(value: false)
     let isEyeOn = BehaviorRelay(value: false)
     
     init () {
@@ -34,14 +34,6 @@ class Validation {
             }
             .bind(to: isPasswordValid)
             .disposed(by: disposeBag)
-        
-        eyeOnOff
-            .withUnretained(self)
-            .map { owner, img in
-                owner.checkEyeOn(img)
-            }
-            .bind(to: isEyeOn)
-            .disposed(by: disposeBag)
     }
     
     private func checkEmailVaild(_ email: String) -> Bool {
@@ -53,13 +45,13 @@ class Validation {
     private func checkPasswordVaild(_ password: String) -> Bool {
         return password.count >= 8
     }
-    
-    private func checkEyeOn(_ eyeStatus: UIImage) -> Bool {
-        if eyeStatus.isEqual(UIImage(named: "PasswordEyeOn")) {
-            return true
+
+    func checkEyeOn(_ eyeStatus: Bool) {
+        if eyeStatus {
+            isEyeOn.accept(true)
         }
         else {
-            return false
+            isEyeOn.accept(false)
         }
     }
 }

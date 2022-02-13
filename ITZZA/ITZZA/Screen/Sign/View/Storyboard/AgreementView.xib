@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AgreementView" customModule="ITZZA" customModuleProvider="target">
             <connections>
-                <outlet property="checkBox" destination="nNp-7R-lO0" id="6fm-iw-h4R"/>
+                <outlet property="checkBoxButton" destination="nNp-7R-lO0" id="6fm-iw-h4R"/>
                 <outlet property="checkBoxView" destination="7eg-Se-sZn" id="W5H-4x-dK0"/>
                 <outlet property="checkLabel" destination="oBU-A6-0Jc" id="UIu-CA-Iyp"/>
                 <outlet property="contextTextView" destination="Sbs-aq-oQR" id="Mgr-uc-as3"/>
@@ -47,7 +47,9 @@
                                 <constraint firstAttribute="height" constant="24" id="5DH-dl-kk3"/>
                                 <constraint firstAttribute="width" constant="24" id="r9j-GY-8qs"/>
                             </constraints>
-                            <state key="normal" title="Button"/>
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Button" image="CheckBoxOutline"/>
                             <buttonConfiguration key="configuration" style="plain" image="CheckBoxOutline"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[필수] 개인정보수집 및 이용 동의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBU-A6-0Jc">
@@ -108,6 +110,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

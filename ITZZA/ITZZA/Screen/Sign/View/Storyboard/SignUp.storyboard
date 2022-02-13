@@ -111,6 +111,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonStackView" destination="xkH-nH-alf" id="WJ4-vl-fng"/>
                         <outlet property="nextButton" destination="aRA-zH-cYa" id="Qoo-JW-BVF"/>
                         <outlet property="previousButton" destination="oCf-YE-iJB" id="nNB-V5-8be"/>
                         <outlet property="progressBar" destination="oWn-wD-yat" id="MZb-CH-Xn0"/>

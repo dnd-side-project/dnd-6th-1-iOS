@@ -11,27 +11,32 @@ import RxCocoa
 class SignUpVM {
     
     var disposeBag = DisposeBag()
+    let apiSession = APISession()
     let pageCount = BehaviorRelay(value: 0)
     let previousButtonTitle = BehaviorRelay(value: "메인으로")
     let goToMain = BehaviorRelay(value: false)
     let decideProgressBarColor = BehaviorRelay(value: UIColor.orange)
-
     let visualizeAngryImage = BehaviorRelay(value: false)
     let visualizeConfuseImage = BehaviorRelay(value: true)
     let visualizeSadImage = BehaviorRelay(value: true)
     let visualizeComfyImage = BehaviorRelay(value: true)
     var checker: BehaviorRelay<Bool>?
+    let serverError = PublishSubject<APIError>()
+    let signUpSuccess = PublishSubject<String>()
+    let signUpFail = PublishSubject<String>()
 
     init() {
         checker = visualizeAngryImage
     }
     
     func increasePageCount() {
-        let num = pageCount.value + 1
-        changeButtonTitle(num)
-        pageCount.accept(num)
-        changeProgressBarColor()
-        ignoreUntilChange()
+        if pageCount.value < 3 {
+            let num = pageCount.value + 1
+            changeButtonTitle(num)
+            pageCount.accept(num)
+            changeProgressBarColor()
+            ignoreUntilChange()
+        }
     }
     
     func decreasePageCount() {
@@ -56,7 +61,7 @@ class SignUpVM {
         }
     }
     
-    func changeProgressBarColor() {
+    private func changeProgressBarColor() {
         switch pageCount.value {
         case 0:
             decideProgressBarColor.accept(UIColor.orange)
@@ -71,7 +76,7 @@ class SignUpVM {
         }
     }
     
-    func ignoreUntilChange() {
+    private func ignoreUntilChange() {
         switch pageCount.value {
         case 0:
             checker?.accept(true)
@@ -94,5 +99,34 @@ class SignUpVM {
             checker = visualizeAngryImage
             visualizeAngryImage.accept(false)
         }
+    }
+}
+
+// MARK: - Networking
+extension SignUpVM {
+    func trySignUp(with email: String, _ password: String, _ nickname: String) {
+        let signUpURL = "https://3044b01e-b59d-4905-a40d-1bef340f11ab.mock.pstmn.io/v1/signup"
+        let url = URL(string: signUpURL)!
+        let signUpModel = SignUpModel(email: email, password: password, nickname: nickname)
+        let signUpParameter = signUpModel.signUpParam
+        let resource = urlResource<SignUpResponse>(url: url)
+        
+        apiSession
+            .postRequest(with: resource, param: signUpParameter)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .failure(let error):
+                    owner.serverError.onNext(error)
+                    
+                case .success(let response):
+                    if response.flag == 1 {
+                        owner.signUpSuccess.onNext("회원가입이 완료되었습니다")
+                    } else {
+                        owner.signUpFail.onNext("닉네임 중복확인을 다시 한 번 해주세요")
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }

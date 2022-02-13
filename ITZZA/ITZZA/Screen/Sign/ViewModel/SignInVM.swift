@@ -16,7 +16,7 @@ class SignInVM {
     
     let onError = PublishSubject<APIError>()
     let signInResponseFail = PublishSubject<String>()
-    let signInResponseSuccess = PublishSubject<String>()
+    let signInResponseSuccess = PublishSubject<Int>()
     let indicatorController = BehaviorRelay(value: false)
     
     let savedStatus = BehaviorRelay(value: false)
@@ -32,26 +32,29 @@ class SignInVM {
         
         let loginURL = "https://3044b01e-b59d-4905-a40d-1bef340f11ab.mock.pstmn.io/v1/login"
         let url = URL(string: loginURL)!
-        let loginInformation = SignInModel(email: email, password: password)
+        let signInformation = SignInModel(email: email, password: password)
+        let signInParameter = signInformation.loginParam
+        let resource = urlResource<SignInResponse>(url: url)
         
-        apiSession
-            .signInRequest(with: url, info: loginInformation)
-            .subscribe(onNext: { [weak self] result in
-                guard let self = self else { return }
+        apiSession.postRequest(with: resource, param: signInParameter)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
                 switch result {
                 case .failure(let error):
-                    self.onError.onNext(error)
+                    owner.onError.onNext(error)
                     
                 case .success(let response):
-                    if response.flag == "0" {
-                        self.signInResponseFail.onNext("로그인 정보가 잘못되었습니다")
+                    guard let response = response.flag else { return }
+                    if response == 0 {
+                        owner.signInResponseFail.onNext("로그인 정보가 잘못되었습니다")
                     } else {
-                        if self.isSignInStateSelected.value {
-                            self.saveUserData(email, password)
+                        if owner.isSignInStateSelected.value {
+                            owner.saveUserData(email, password)
                         }
-                        self.signInResponseSuccess.onNext(response.flag)
+                        owner.signInResponseSuccess.onNext(response)
                     }
                 }
+                owner.indicatorController.accept(true)
             })
             .disposed(by: disposeBag)
     }

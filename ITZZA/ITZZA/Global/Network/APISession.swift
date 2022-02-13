@@ -6,22 +6,28 @@
 //
 
 import Alamofire
-import Foundation
 import RxSwift
 
+struct urlResource<T: Decodable> {
+    let url: URL
+}
+
 struct APISession: APIService {
-    func signInRequest(with url: URL, info: SignInModel) -> Observable<Result<SignInResponse, APIError>> {
-        
-        Observable<Result<SignInResponse, APIError>>.create { observer in
+    
+    func postRequest<T: Decodable>(with urlResource: urlResource<T>, param: Parameters) -> Observable<Result<T, APIError>> {
+
+        Observable<Result<T, APIError>>.create { observer in
+            // let header: HTTPHeaders = ["Content-Type": "application/json"]
             
-            let header : HTTPHeaders = ["Content-Type": "application/json"]
-            let task = AF.request(url, method: .post,
-                                  parameters: info.loginParam,
+            // postman mock server 사용을 위한 임시 헤더, 위에 헤더로 바꿔야할 것
+            let header: HTTPHeaders = ["x-mock-match-request-body": "true"]
+            let task = AF.request(urlResource.url,
+                                  method: .post,
+                                  parameters: param,
                                   encoding: JSONEncoding.default,
                                   headers: header)
                 .validate(statusCode: 200...399)
-                .responseDecodable(of: SignInResponse.self) { response in
-                    
+                .responseDecodable(of: T.self) { response in
                     switch response.result {
                     case .failure(let error):
                         print("Unknown HTTP Response Error!!!: \(error.localizedDescription)")
@@ -36,5 +42,6 @@ struct APISession: APIService {
                 task.cancel()
             }
         }
+
     }
 }

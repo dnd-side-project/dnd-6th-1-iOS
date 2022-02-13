@@ -41,7 +41,6 @@ class PasswordView: UIView {
     func setContentView() {
         insertXibView(with: Identifiers.passwordView)
     }
-    
 }
 
 // MARK: - Change UI
@@ -70,13 +69,18 @@ extension PasswordView {
         passwordTextField.rx.text.orEmpty
             .bind(to: validation.passwordText)
             .disposed(by: disposeBag)
-        
+ 
         passwordEyeButton.rx.tap
             .asObservable()
-            .map { [weak self] in
-                (self?.passwordEyeButton.currentImage)!
+            .withUnretained(self)
+            .map { owner, _ in
+                owner.passwordEyeButton.currentImage?
+                    .isEqual(UIImage(named: "PasswordEyeOn")) ?? false
             }
-            .bind(to: validation.eyeOnOff)
+            .bind(onNext: { [weak self] status in
+                guard let self = self else { return }
+                self.validation.checkEyeOn(status)
+            })
             .disposed(by: disposeBag)
         
         confirmPasswordTextField.rx.text.orEmpty

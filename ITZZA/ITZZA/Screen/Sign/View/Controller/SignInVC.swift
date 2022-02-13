@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SwiftKeychainWrapper
+import SnapKit
 
 class SignInVC: UIViewController {
     
@@ -55,10 +56,15 @@ extension SignInVC {
         
         passwordEyeButton.rx.tap
             .asObservable()
-            .map { [weak self] in
-                (self?.passwordEyeButton.currentImage)!
+            .withUnretained(self)
+            .map { owner, _ in
+                owner.passwordEyeButton.currentImage?
+                    .isEqual(UIImage(named: "PasswordEyeOn")) ?? false
             }
-            .bind(to: validation.eyeOnOff)
+            .bind(onNext: { [weak self] status in
+                guard let self = self else { return }
+                self.validation.checkEyeOn(status)
+            })
             .disposed(by: disposeBag)
         
         signInViewModel.indicatorController.asDriver()
@@ -213,7 +219,7 @@ extension SignInVC {
     }
     
     func signInResponseSuccess() {
-        signInViewModel.signInResponseSuccess.asDriver(onErrorJustReturn: "1")
+        signInViewModel.signInResponseSuccess.asDriver(onErrorJustReturn: 1)
             .drive { [weak self] response in
                 guard let self = self else { return }
                 let tabBarVC = ViewControllerFactory.viewController(for: .tabBar)
@@ -270,5 +276,41 @@ extension SignInVC {
         saveSignInStateButton.isSelected = false
         saveSignInStateButton.layer.cornerRadius = 20
         signInIndicatorView.isHidden = true
+    }
+    
+    func showSignUpSuccessView() {
+        let signUpSuccessView = UIView()
+        let signUpSuccessLabel = UILabel()
+        
+        view.addSubview(signUpSuccessView)
+        signUpSuccessView.addSubview(signUpSuccessLabel)
+        
+        signUpSuccessView.isHidden = false
+        signUpSuccessView.layer.borderColor = UIColor.orange.cgColor
+        signUpSuccessView.layer.borderWidth = 1.0
+        signUpSuccessView.layer.cornerRadius = 5
+        
+        signUpSuccessLabel.textColor = .orange
+        signUpSuccessLabel.font = UIFont.SFProDisplayRegular(size: 13)
+        signUpSuccessLabel.text = "회원가입이 완료되었습니다"
+        signUpSuccessLabel.textAlignment = .center
+        
+        signUpSuccessView.snp.makeConstraints {
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(52)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-52)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-67)
+            $0.height.equalTo(44)
+        }
+        
+        signUpSuccessLabel.snp.makeConstraints {
+            $0.leading.equalTo(signUpSuccessView.snp.leading).offset(14)
+            $0.trailing.equalTo(signUpSuccessView.snp.trailing).offset(-14)
+            $0.top.equalTo(signUpSuccessView.snp.top).offset(16)
+            $0.bottom.equalTo(signUpSuccessView.snp.bottom).offset(-16)
+        }
+        
+        UIView.animate(withDuration: 1.5) {
+            signUpSuccessView.alpha = 0
+        }
     }
 }

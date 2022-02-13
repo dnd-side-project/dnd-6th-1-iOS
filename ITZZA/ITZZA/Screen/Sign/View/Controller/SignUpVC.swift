@@ -19,15 +19,17 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var buttonStackView: UIStackView!
     var emojiImage = UIImageView()
     var bubbleView = UIView()
     var tipView = UIView()
     var bubbleLabel = UILabel()
+    let indicatorView = UIActivityIndicatorView()
+    
     let emailView = EmailView()
     let passwordView = PasswordView()
     let nicknameView = NicknameView()
     let agreementView = AgreementView()
-    
     var fill: Float = 0.0
     var disposeBag = DisposeBag()
     let signUpVM = SignUpVM()
@@ -231,13 +233,37 @@ extension SignUpVC {
     }
     
     func changeNextButton(_ isValid: Bool) {
-        print(isValid)
         if isValid {
             nextButton.backgroundColor = .orange
             nextButton.isEnabled = true
         } else {
             nextButton.backgroundColor = .gray
             nextButton.isEnabled = false
+        }
+    }
+    
+    func changeNextToComplete(_ isValid: Bool) {
+        if isValid {
+            nextButton.setTitle("회원가입", for: .normal)
+        } else {
+            nextButton.setTitle("다음단계", for: .normal)
+        }
+    }
+    
+    func startSignUpProcess() {
+        let email = emailView.emailTextField.text!
+        let password = passwordView.confirmPasswordTextField.text!
+        let nickname = nicknameView.nicknameTextField.text!
+        signUpVM.trySignUp(with: email, password, nickname)
+    }
+    
+    func checkButtonTitle(_ buttonTitle: String) {
+        if buttonTitle == "다음단계" {
+            fillProgressBar()
+            scrollToNextView()
+            changeNextButton(false)
+        } else {
+            startSignUpProcess()
         }
     }
 }
@@ -272,6 +298,7 @@ extension SignUpVC {
                 self.withdrawProgressBar()
                 self.scrollToPreviousView()
                 self.changeNextButton(true)
+                self.changeNextToComplete(false)
             })
             .disposed(by: disposeBag)
         
@@ -281,15 +308,15 @@ extension SignUpVC {
                 guard let self = self else { return }
                 self.signUpVM.decreasePageCount()
                 self.signUpVM.checkGoToMain()
+                self.nicknameView.checkDupliacteAgain()
+                self.agreementView.setAsOutlineStatusFromPrevious()
             })
             .disposed(by: disposeBag)
         
         nextButton.rx.tap.asDriver()
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.fillProgressBar()
-                self.scrollToNextView()
-                self.changeNextButton(false)
+                self.checkButtonTitle(self.nextButton.currentTitle ?? "다음단계")
             })
             .disposed(by: disposeBag)
         
@@ -321,6 +348,21 @@ extension SignUpVC {
             .drive(onNext: { [weak self] isValid in
                 guard let self = self else { return }
                 self.changeNextButton(isValid)
+            })
+            .disposed(by: disposeBag)
+        
+        nicknameView.isValidNickname.asDriver()
+            .drive(onNext: { [weak self] isValid in
+                guard let self = self else { return }
+                self.changeNextButton(isValid)
+            })
+            .disposed(by: disposeBag)
+        
+        agreementView.isValidAgreement.asDriver()
+            .drive(onNext: { [weak self] isValid in
+                guard let self = self else { return }
+                self.changeNextButton(isValid)
+                self.changeNextToComplete(isValid)
             })
             .disposed(by: disposeBag)
     }
@@ -384,6 +426,30 @@ extension SignUpVC {
                 self.moveAndChangeEmoji(to: .coloredComfyEmoji, 1, true)
                 self.moveBubbleLocation(1, true)
                 self.changeBubbleInfo(to: .yellow, Literal.fourth.description)
+            })
+            .disposed(by: disposeBag)
+        
+        signUpVM.signUpSuccess.asDriver(onErrorJustReturn: "회원가입이 완료되었습니다")
+            .drive(onNext: { [weak self] response in
+                guard let self = self else { return }
+                let signInVC = self.presentingViewController as! SignInVC
+                self.dismiss(animated: true) {
+                    signInVC.showSignUpSuccessView()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        signUpVM.signUpFail.asDriver(onErrorJustReturn: "닉네임 중복확인을 다시 한 번 해주세요")
+            .drive(onNext: { [weak self] response in
+                guard let self = self else { return }
+                self.showSignUpErrorAlert(response)
+            })
+            .disposed(by: disposeBag)
+        
+        signUpVM.serverError.asDriver(onErrorJustReturn: .unknown)
+            .drive(onNext: { [weak self] error in
+                guard let self = self else { return }
+                self.showSignUpErrorAlert(error.description)
             })
             .disposed(by: disposeBag)
     }
