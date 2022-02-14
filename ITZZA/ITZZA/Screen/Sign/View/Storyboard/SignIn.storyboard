@@ -20,7 +20,7 @@
                                 <rect key="frame" x="142.66666666666666" y="164" width="90" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1KW-oF-2mC"/>
-                                    <constraint firstAttribute="width" constant="90" id="Oug-IL-zFf"/>
+                                    <constraint firstAttribute="width" secondItem="FnX-5F-4jk" secondAttribute="height" multiplier="9:4" id="hrO-7T-RrY"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFn-wL-ncK">

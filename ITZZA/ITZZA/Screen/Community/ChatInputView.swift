@@ -26,7 +26,7 @@ class ChatInputView: UIView {
     }
     
     private func setContentView() {
-        guard let view = loadViewFromNib(with: Identifiers.chatInputView) else { return }
+        guard let view = loadXibView(with: Identifiers.chatInputView) else { return }
         view.backgroundColor = .clear
         self.addSubview(view)
         

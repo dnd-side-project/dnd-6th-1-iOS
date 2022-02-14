@@ -24,7 +24,7 @@ class ImageAddBar: UIView {
     }
     
     private func setContentView() {
-        guard let view = loadViewFromNib(with: Identifiers.imageAddBar) else { return }
+        guard let view = loadXibView(with: Identifiers.imageAddBar) else { return }
         view.backgroundColor = .clear
         self.addSubview(view)
         
