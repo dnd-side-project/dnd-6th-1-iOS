@@ -15,6 +15,7 @@ class CategoryVC: UIViewController {
     
     let bag = DisposeBag()
     var postListVM: PostListVM!
+    var communityType: CommunityType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +66,9 @@ extension CategoryVC {
     }
     
     func setPost() {
-        PostManager().getPost { posts in
+        guard let type = communityType else { return }
+        
+        PostManager().getPost(type.apiQuery) { posts in
             if let posts = posts {
                 self.postListVM = PostListVM(posts: posts)
                 

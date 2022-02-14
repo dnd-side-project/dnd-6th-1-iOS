@@ -11,13 +11,20 @@ import Pageboy
 import RxSwift
 
 class CommunityVC: TabmanViewController {
-    private let viewControllers = TypeOfViewController.communityCases.compactMap {
-        ViewControllerFactory.viewController(for: $0) as? CategoryVC
-    }
-    
     @IBOutlet weak var categoryTB: UIView!
     
     let bag = DisposeBag()
+    
+    private let viewControllers: [CategoryVC] = CommunityType.allCases
+        .compactMap { type in
+            let vc = ViewControllerFactory.viewController(for: type.viewControllerType) as? CategoryVC
+            vc?.communityType = type
+            return vc
+        }
+    
+    private var communityTypes: [CommunityType] {
+        viewControllers.compactMap(\.communityType)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,23 +140,7 @@ extension CommunityVC {
 //MARK: TMBarDataSource
 extension CommunityVC: TMBarDataSource {
     func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
-        switch index {
-        case 0:
-            return TMBarItem(title: "전체")
-        case 1:
-            return TMBarItem(title: "부정")
-        case 2:
-            return TMBarItem(title: "분노")
-        case 3:
-            return TMBarItem(title: "타협")
-        case 4:
-            return TMBarItem(title: "슬픔")
-        case 5:
-            return TMBarItem(title: "수용")
-        default:
-            let title = "Page \(index)"
-            return TMBarItem(title: title)
-        }
+        TMBarItem(title: communityTypes[index].description)
     }
 }
 

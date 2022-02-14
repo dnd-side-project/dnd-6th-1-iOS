@@ -10,8 +10,8 @@ import Foundation
 struct PostManager {
     let baseURL = "http://13.125.239.189:3000/boards"
     
-    func getPost(completion: @escaping ([PostModel]?) -> ()) {
-        guard let url = URL(string: baseURL) else { return }
+    func getPost(_ apiQuery: String, _ completion: @escaping ([PostModel]?) -> ()) {
+        guard let url = URL(string: baseURL + apiQuery) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoidGVzdDFAbmF2ZXIuY29uIiwiaWF0IjoxNjQ0ODI5NjE5LCJleHAiOjE2NDY1NTc2MTl9.HCcaScltLW3aT6N-slhejlE7jmucYDbjcLjIgc6mm-I", forHTTPHeaderField: "Authorization")
