@@ -26,7 +26,7 @@ class SignInVC: UIViewController {
     @IBOutlet weak var passwordEyeButton: UIButton!
     @IBOutlet weak var signInIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var saveSignInStateButton: UIButton!
-    
+
     var disposeBag = DisposeBag()
     var signInViewModel = SignInVM()
     var validation = Validation()
@@ -266,6 +266,7 @@ extension SignInVC {
 // MARK: - Set Initial UI Value
 extension SignInVC {
     func setInitialUIValue() {
+        appLogoImage.image = UIImage(named: "Logo")
         emailView.layer.cornerRadius = 3
         passwordView.layer.cornerRadius = 3
         signInButton.layer.cornerRadius = 3
