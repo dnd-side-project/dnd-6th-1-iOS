@@ -5,10 +5,10 @@
 //  Created by InJe Choi on 2022/01/30.
 //
 
-import Foundation
+import Alamofire
 import RxSwift
 
 protocol APIService {
-    func signInRequest(with url: URL, info: SignInModel) -> Observable<Result<SignInResponse, APIError>>
+    func postRequest<T: Decodable>(with urlResource: urlResource<T>, param: Parameters) -> Observable<Result<T, APIError>>
 }
 

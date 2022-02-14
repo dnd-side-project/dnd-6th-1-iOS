@@ -9,7 +9,7 @@ import UIKit
 
 extension UIViewController {
     func showSignInErrorAlert(_ message: String?) {
-        let alertController = UIAlertController(title: "Login Error",
+        let alertController = UIAlertController(title: "로그인 에러",
                                                 message: message,
                                                 preferredStyle: .alert)
         
@@ -19,5 +19,22 @@ extension UIViewController {
         alertController.addAction(action)
 
         present(alertController, animated: true)
+    }
+    
+    func showSignUpErrorAlert(_ message: String?) {
+        let alertController = UIAlertController(title: "회원가입 에러",
+                                                message: message,
+                                                preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "확인",
+                                   style: .default)
+
+        alertController.addAction(action)
+
+        present(alertController, animated: true)
+    }
+    
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmailView" customModule="ITZZA" customModuleProvider="target">
+            <connections>
+                <outlet property="emailTextField" destination="ifV-sf-vK1" id="bfM-9H-NJl"/>
+                <outlet property="emailValidLabel" destination="WGJ-L7-ajB" id="NAH-OJ-H5K"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="335" height="344"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ifV-sf-vK1">
+                    <rect key="frame" x="0.0" y="65.5" width="335" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="cb9-RA-TDM"/>
+                    </constraints>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                </textField>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="woM-Kp-ZVh">
+                    <rect key="frame" x="0.0" y="0.0" width="335" height="46.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STEP1." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vlf-RO-ozl">
+                            <rect key="frame" x="0.0" y="0.0" width="335" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRU-gz-Y5J">
+                            <rect key="frame" x="0.0" y="26" width="335" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="유효하지 않은 이메일입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGJ-L7-ajB">
+                    <rect key="frame" x="0.0" y="125.5" width="335" height="13.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XD7-DX-Bio">
+                    <rect key="frame" x="0.0" y="121.5" width="335" height="1"/>
+                    <color key="backgroundColor" red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="T3q-Gm-QRY"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="ifV-sf-vK1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="3nh-vI-ax6"/>
+                <constraint firstItem="XD7-DX-Bio" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="8Dr-re-FoR"/>
+                <constraint firstItem="woM-Kp-ZVh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="91y-vl-QQA"/>
+                <constraint firstItem="WGJ-L7-ajB" firstAttribute="top" secondItem="ifV-sf-vK1" secondAttribute="bottom" constant="4" id="ECP-rD-FJU"/>
+                <constraint firstItem="WGJ-L7-ajB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="KDb-4z-Vk8"/>
+                <constraint firstItem="woM-Kp-ZVh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="MeC-l1-rY6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="woM-Kp-ZVh" secondAttribute="trailing" id="PVn-HZ-Qbd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XD7-DX-Bio" secondAttribute="trailing" id="RXP-rY-mxb"/>
+                <constraint firstItem="ifV-sf-vK1" firstAttribute="top" secondItem="woM-Kp-ZVh" secondAttribute="bottom" constant="19" id="cbQ-r2-XWF"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ifV-sf-vK1" secondAttribute="trailing" id="ePg-3i-VQs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WGJ-L7-ajB" secondAttribute="trailing" id="nDg-SB-Dh7"/>
+                <constraint firstItem="XD7-DX-Bio" firstAttribute="top" secondItem="woM-Kp-ZVh" secondAttribute="bottom" constant="75" id="vU1-WN-lvP"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="138.40579710144928" y="139.95535714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
