@@ -66,7 +66,7 @@ extension PostTVC {
                                             .scaleFactor(UIScreen.main.scale),
                                             .cacheOriginalImage
                                           ])
-        headerView.userName.text = post.nickName
+        headerView.userName.text = post.nickname
         headerView.createAt.text = post.createdAt
         
         postContentView.postTitle.text = post.postTitle
@@ -80,5 +80,8 @@ extension PostTVC {
         
         footerView.likeCnt.text = String(describing: post.likeCnt!)
         footerView.commentCnt.text = String(describing: post.commentCnt!)
+        
+        footerView.likeButton.setImageToggle(post.likeStatus!, UIImage(systemName: "heart")!, UIImage(systemName: "heart.fill")!)
+        footerView.bookmarkButton.setImageToggle(post.bookmarkStatus!, UIImage(systemName: "bookmark")!, UIImage(systemName: "bookmark.fill")!)
     }
 }

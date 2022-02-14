@@ -25,6 +25,7 @@ enum TypeOfViewController {
             .communityCategory,
             .communityCategory,
             .communityCategory,
+            .communityCategory,
             .communityCategory
         ]
     }

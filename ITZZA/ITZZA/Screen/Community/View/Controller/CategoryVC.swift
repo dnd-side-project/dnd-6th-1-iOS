@@ -14,33 +14,13 @@ class CategoryVC: UIViewController {
     @IBOutlet weak var postListTV: UITableView!
     
     let bag = DisposeBag()
-    let dummyData = PostModel(nickName: "익명의 사용자",
-                              profileImgURL: "",
-                              likeCnt: 4,
-                              commentCnt: 1,
-                              bookmarkCnt: 2,
-                              createdAt: "1시간 전",
-                              boardId: 0,
-                              categoryName: "",
-                              postTitle: "ㅁㄴㅇㄹ",
-                              postContent: "ㅁㄴㅇㄹ",
-                              imageCnt: 1)
-    let dummyData2 = PostModel(nickName: "익명의 사용자",
-                              profileImgURL: "",
-                              likeCnt: 14,
-                              commentCnt: 14,
-                              bookmarkCnt: 14,
-                              createdAt: "3시간 전",
-                              boardId: 0,
-                              categoryName: "",
-                              postTitle: "ㅁㄴㅇㄹ",
-                              postContent: "ㅁㄴㅇㄹ",
-                              imageCnt: 0)
+    var postListVM: PostListVM!
+    var communityType: CommunityType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bindTV()
+        setPost()
         setPostTV()
     }
 }
@@ -69,7 +49,6 @@ extension CategoryVC {
     }
     
     func bindTV() {
-
         let dataSource = RxTableViewSectionedReloadDataSource<PostDataSource>(
           configureCell: { dataSource, tableView, indexPath, item in
               let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.postTVC, for: indexPath) as! PostTVC
@@ -78,12 +57,26 @@ extension CategoryVC {
         })
         
         let sections = [
-            PostDataSource(section: 0, items: [dummyData, dummyData2])
+            PostDataSource(section: 0, items: self.postListVM.posts.reversed())
         ]
 
         Observable.just(sections)
           .bind(to: postListTV.rx.items(dataSource: dataSource))
           .disposed(by: bag)
+    }
+    
+    func setPost() {
+        guard let type = communityType else { return }
+        
+        PostManager().getPost(type.apiQuery) { posts in
+            if let posts = posts {
+                self.postListVM = PostListVM(posts: posts)
+                
+                DispatchQueue.main.async {
+                    self.bindTV()
+                }
+            }
+        }
     }
 }
 

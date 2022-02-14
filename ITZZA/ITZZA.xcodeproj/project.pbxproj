@@ -57,6 +57,7 @@
 		2368021127B2965B00A4392B /* PostContentTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */; };
 		2368021327B2966800A4392B /* PostContentTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2368021227B2966800A4392B /* PostContentTableViewHeader.xib */; };
 		236C98DE27B239C200CE1EFD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236C98DD27B239C200CE1EFD /* UIView+.swift */; };
+		2376DA7627BA850700E4A0E8 /* CommunityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2376DA7527BA850700E4A0E8 /* CommunityType.swift */; };
 		238CEEA027A7DEA0006BE766 /* CommunityNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */; };
 		238CEEA227A7DFCF006BE766 /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEEA127A7DFCF006BE766 /* NavigationController+.swift */; };
 		238CEEA427A7E6F1006BE766 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 238CEEA327A7E6F1006BE766 /* Category.storyboard */; };
@@ -70,6 +71,8 @@
 		238EC09F27AA88EC001CBB24 /* ImageAddBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */; };
 		238EC0A027AA88EC001CBB24 /* ImageAddBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */; };
 		23A56BDA27B3F8BA00959269 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A56BD927B3F8BA00959269 /* UILabel+.swift */; };
+		23DC8F9327B8E35400F79EF4 /* CommunityVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC8F9227B8E35400F79EF4 /* CommunityVM.swift */; };
+		23DC8FA027B95F3C00F79EF4 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC8F9F27B95F3C00F79EF4 /* PostManager.swift */; };
 		6208CFDB27A254B900F17603 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6208CFDA27A254B900F17603 /* SignIn.storyboard */; };
 		6208CFDE27A258F600F17603 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6208CFE127A2662700F17603 /* SignInVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CFE027A2662700F17603 /* SignInVM.swift */; };
@@ -162,6 +165,7 @@
 		2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentTableViewHeader.swift; sourceTree = "<group>"; };
 		2368021227B2966800A4392B /* PostContentTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostContentTableViewHeader.xib; sourceTree = "<group>"; };
 		236C98DD27B239C200CE1EFD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		2376DA7527BA850700E4A0E8 /* CommunityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityType.swift; sourceTree = "<group>"; };
 		238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNC.swift; sourceTree = "<group>"; };
 		238CEEA127A7DFCF006BE766 /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
 		238CEEA327A7E6F1006BE766 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 		238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAddBar.swift; sourceTree = "<group>"; };
 		238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageAddBar.xib; sourceTree = "<group>"; };
 		23A56BD927B3F8BA00959269 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		23DC8F9227B8E35400F79EF4 /* CommunityVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommunityVM.swift; path = ITZZA/Screen/Community/CommunityVM.swift; sourceTree = SOURCE_ROOT; };
+		23DC8F9F27B95F3C00F79EF4 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		31D68BDCB09FB35125D965C7 /* Pods-ITZZA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.release.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.release.xcconfig"; sourceTree = "<group>"; };
 		557F2FCE2D67BC938F058D88 /* Pods-ITZZA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.debug.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.debug.xcconfig"; sourceTree = "<group>"; };
 		6208CFDA27A254B900F17603 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
@@ -410,6 +416,8 @@
 			children = (
 				238CEEAD27A7F577006BE766 /* PostModel.swift */,
 				2335241227A98D57009C654F /* PostDataSource.swift */,
+				23DC8F9F27B95F3C00F79EF4 /* PostManager.swift */,
+				2376DA7527BA850700E4A0E8 /* CommunityType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -417,6 +425,7 @@
 		232CC04527A032A600040131 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				23DC8F9227B8E35400F79EF4 /* CommunityVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -966,11 +975,13 @@
 				238CEEA027A7DEA0006BE766 /* CommunityNC.swift in Sources */,
 				6254618427B152EF00184DA1 /* NicknameView.swift in Sources */,
 				232CC06427A0335C00040131 /* j.swift in Sources */,
+				2376DA7627BA850700E4A0E8 /* CommunityType.swift in Sources */,
 				232CC08727A038FB00040131 /* UIColor+.swift in Sources */,
 				232CC07727A0372300040131 /* ViewControllerFactory.swift in Sources */,
 				232CC0A427A03B8F00040131 /* ITZZATBC.swift in Sources */,
 				62BE209427A66F60001F150A /* APIError.swift in Sources */,
 				62BE209927A679A2001F150A /* Service.swift in Sources */,
+				23DC8F9327B8E35400F79EF4 /* CommunityVM.swift in Sources */,
 				62B0F55227B8090E008F8922 /* AgreementVM.swift in Sources */,
 				62A855E427B6AECD007BA12B /* NicknameModel.swift in Sources */,
 				62183E2827B8E70A00F83815 /* SignUpModel.swift in Sources */,
@@ -987,6 +998,7 @@
 				623DE30F27B64F0C005E78D0 /* PasswordVM.swift in Sources */,
 				232CC03C27A0328000040131 /* b.swift in Sources */,
 				62BE208D27A590D0001F150A /* SignInVC.swift in Sources */,
+				23DC8FA027B95F3C00F79EF4 /* PostManager.swift in Sources */,
 				623DE2F927B26581005E78D0 /* UIView+.swift in Sources */,
 				232CC04027A0328B00040131 /* d.swift in Sources */,
 			);

@@ -11,13 +11,20 @@ import Pageboy
 import RxSwift
 
 class CommunityVC: TabmanViewController {
-    private let viewControllers = TypeOfViewController.communityCases.compactMap {
-        ViewControllerFactory.viewController(for: $0) as? CategoryVC
-    }
-    
     @IBOutlet weak var categoryTB: UIView!
     
     let bag = DisposeBag()
+    
+    private let viewControllers: [CategoryVC] = CommunityType.allCases
+        .compactMap { type in
+            let vc = ViewControllerFactory.viewController(for: type.viewControllerType) as? CategoryVC
+            vc?.communityType = type
+            return vc
+        }
+    
+    private var communityTypes: [CommunityType] {
+        viewControllers.compactMap(\.communityType)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,8 +115,8 @@ extension CommunityVC {
             button.tintColor = .darkGray
             button.selectedTintColor = .white
             
-            button.layer.cornerRadius = 7
-            button.contentInset = UIEdgeInsets(top: 0.0, left: 17.0, bottom: 0.0, right: 17.0)
+            button.layer.cornerRadius = 4
+            button.contentInset = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
             
             button.font = UIFont.SFProDisplayMedium(size: 16)
             button.selectedFont = UIFont.SFProDisplayBold(size: 16)
@@ -133,21 +140,7 @@ extension CommunityVC {
 //MARK: TMBarDataSource
 extension CommunityVC: TMBarDataSource {
     func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
-        switch index {
-        case 0:
-            return TMBarItem(title: "전체")
-        case 1:
-            return TMBarItem(title: "털어놓자")
-        case 2:
-            return TMBarItem(title: "화내자")
-        case 3:
-            return TMBarItem(title: "타협하자")
-        case 4:
-            return TMBarItem(title: "물어보자")
-        default:
-            let title = "Page \(index)"
-            return TMBarItem(title: title)
-        }
+        TMBarItem(title: communityTypes[index].description)
     }
 }
 
