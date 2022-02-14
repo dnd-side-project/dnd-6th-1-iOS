@@ -9,22 +9,23 @@ import Foundation
 import UIKit
 
 struct PostModel: Decodable {
-    var userId: Int?
     var boardId: Int?
-    var categoryName: String?
-    var profileImgURL: String?
-    var nickName: String?
+    var categoryId: Int?
+    var profileImage: String?
+    var nickname: String?
     var postTitle: String?
     var postContent: String?
     var createdAt: String?
     var imageCnt: Int?
     var commentCnt: Int?
     var likeCnt: Int?
+    var bookmarkStatus: Bool?
+    var likeStatus: Bool?
 }
 
 extension PostModel {
     var profileimgURL: URL? {
-      guard let profileImgURL = profileImgURL else { return nil }
+      guard let profileImgURL = profileImage else { return nil }
       return URL(string: profileImgURL)
     }
 }
