@@ -30,7 +30,7 @@ class PostContentTableViewHeader: UITableViewHeaderFooterView {
     }
     
     private func setContentView() {
-        guard let view = loadViewFromNib(with: Identifiers.postContentTableViewHeader) else { return }
+        guard let view = loadXibView(with: Identifiers.postContentTableViewHeader) else { return }
         self.addSubview(view)
 
         view.translatesAutoresizingMaskIntoConstraints = false

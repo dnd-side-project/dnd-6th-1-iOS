@@ -23,7 +23,7 @@ class ProfileHeaderView: UIView {
     }
     
     private func setContentView() {
-        guard let view = loadViewFromNib(with: Identifiers.profileHeaderView) else { return }
+        guard let view = loadXibView(with: Identifiers.profileHeaderView) else { return }
         view.backgroundColor = .clear
         self.addSubview(view)
         
