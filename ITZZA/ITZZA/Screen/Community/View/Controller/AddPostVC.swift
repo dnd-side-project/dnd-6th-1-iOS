@@ -9,6 +9,8 @@ import UIKit
 import RxSwift
 import BSImagePicker
 import Photos
+import Then
+import SnapKit
 
 class AddPostVC: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
@@ -18,6 +20,11 @@ class AddPostVC: UIViewController {
     @IBOutlet weak var postContents: UITextView!
     @IBOutlet weak var imageStackView: UIStackView!
     @IBOutlet weak var imageStackViewHeight: NSLayoutConstraint!
+    
+    var categoryLabel = UILabel()
+        .then {
+            $0.text = "감정을 선택해주세요"
+        }
     
     let postContentsPlaceholder = "글쓰기"
     let maxImageSelectionCount = 3
@@ -58,19 +65,26 @@ extension AddPostVC {
     }
     
     func configureChooseCategoryButton() {
+        scrollView.subviews.first?.addSubview(categoryLabel)
+        
         chooseCategoryButton.backgroundColor = .systemGray6
         chooseCategoryButton.layer.cornerRadius = chooseCategoryButton.frame.height / 2
         chooseCategoryButton.layer.borderColor = UIColor.systemGray3.cgColor
         chooseCategoryButton.layer.borderWidth = 1
-        
-        let space = (view.frame.width - 20 - 20) - chooseCategoryButton.frame.height - chooseCategoryButton.intrinsicContentSize.width
-        
+
+        let space = chooseCategoryButton.frame.height / 2
         var configuration = UIButton.Configuration.plain()
-        
-        configuration.titlePadding = space
-        configuration.imagePadding = space
-        
+
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                              leading: space,
+                                                              bottom: 0,
+                                                              trailing: 0)
         chooseCategoryButton.configuration = configuration
+        
+        categoryLabel.snp.makeConstraints {
+            $0.leading.equalTo(chooseCategoryButton.snp.leading).offset(space)
+            $0.centerY.equalTo(chooseCategoryButton.snp.centerY)
+        }
     }
     
     func configureImageStackView() {
@@ -154,7 +168,7 @@ extension AddPostVC {
             .asDriver()
             .drive(onNext: {
                 let categoryBottomSheet = CategoryBottomSheetVC()
-
+                categoryBottomSheet.delegate = self
                 self.present(categoryBottomSheet, animated: true)
             })
             .disposed(by: bag)
@@ -171,5 +185,11 @@ extension AddPostVC: UITextViewDelegate {
         if textView.text == "" {
             textView.setTextViewPlaceholder(postContentsPlaceholder)
         }
+    }
+}
+// MARK: - Protocol
+extension AddPostVC: CategoryTitleDelegate {
+    func getCategoryTitle(_ title: String) {
+        self.categoryLabel.text = title
     }
 }

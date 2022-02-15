@@ -24,6 +24,7 @@ class CategoryBottomSheetVC: DynamicBottomSheetViewController {
     
     let bag = DisposeBag()
     let categoryName = CategoryName.allCases
+    var delegate: CategoryTitleDelegate?
     
     // MARK: - Private Properties
     
@@ -34,6 +35,10 @@ class CategoryBottomSheetVC: DynamicBottomSheetViewController {
             $0.alignment = .fill
             $0.distribution = .fillEqually
         }
+}
+// MARK: - Protocol
+protocol CategoryTitleDelegate {
+    func getCategoryTitle(_ title: String)
 }
 
 // MARK: - Layout
@@ -74,6 +79,9 @@ extension CategoryBottomSheetVC {
                 .asDriver()
                 .drive(onNext: {
                     //TODO: - VM에 값 전달, AddPost의 button title 수정
+//                    guard let addPostVC = ViewControllerFactory.viewController(for: .addPost) as? AddPostVC else { return }
+//                    addPostVC.categoryLabel.text = button.titleLabel?.text ?? "감정을 선택해주세요"
+                    self.delegate?.getCategoryTitle(button.currentTitle ?? "감정을 선택해주세요")
                     self.dismiss(animated: true, completion: nil)
                 })
                 .disposed(by: bag)
