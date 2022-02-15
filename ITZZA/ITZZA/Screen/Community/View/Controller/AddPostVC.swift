@@ -21,6 +21,7 @@ class AddPostVC: UIViewController {
     
     let postContentsPlaceholder = "글쓰기"
     let maxImageSelectionCount = 3
+    let imageStackViewSpacing: CGFloat = 20
     var images: [UIImage] = []
     
     let bag = DisposeBag()
@@ -30,14 +31,10 @@ class AddPostVC: UIViewController {
 
         configureNavigationBar()
         configureChooseCategoryButton()
+        configureImageStackView()
         bindAddImageBar()
         bindCategoryBottomSheet()
         configurePostContentComponent()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setImageStackViewHeight()
     }
 }
 
@@ -76,6 +73,11 @@ extension AddPostVC {
         chooseCategoryButton.configuration = configuration
     }
     
+    func configureImageStackView() {
+        setImageStackViewHeight()
+        imageStackView.spacing = imageStackViewSpacing
+    }
+    
     func configurePostContentComponent() {
         postTitle.placeholder = "제목"
         
@@ -88,7 +90,7 @@ extension AddPostVC {
         if images.count == 0 {
             imageStackViewHeight.constant = 0
         } else {
-            imageStackViewHeight.constant = CGFloat(images.count) * imageStackView.frame.width
+            imageStackViewHeight.constant = CGFloat(images.count) * (imageStackView.frame.width + imageStackViewSpacing)
         }
     }
     
@@ -106,10 +108,45 @@ extension AddPostVC {
                 }, deselect: { (asset) in
                 }, cancel: { (assets) in
                 }, finish: { (assets) in
+                    self.convertAssetToImages(assets)
+                    self.addImageToStackView(self.images)
+                    self.setImageStackViewHeight()
+                    self.view.layoutIfNeeded()
                 }, completion: {
                 })
             }
             .disposed(by: bag)
+    }
+    
+    func addImageToStackView(_ images: [UIImage]) {
+        images.forEach {
+            let imageView = UIImageView(image: $0)
+            imageView.contentMode = .scaleAspectFit
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
+            imageView.backgroundColor = .black
+            self.imageStackView.addArrangedSubview(imageView)
+        }
+    }
+    
+    func convertAssetToImages(_ selectedAssets: [PHAsset]) {
+        images = selectedAssets.map {
+            let imageManager = PHImageManager.default()
+            let option = PHImageRequestOptions()
+            option.isSynchronous = true
+            var image = UIImage()
+            
+            imageManager.requestImage(for: $0,
+                                         targetSize: CGSize(width:300, height: 300),
+                                         contentMode: .aspectFit,
+                                         options: option) { (result, info) in
+                image = result!
+            }
+            
+            let data = image.jpegData(compressionQuality: 0.7)
+            let newImage = UIImage(data: data!)!
+            
+            return newImage
+        }
     }
     
     func bindCategoryBottomSheet() {
