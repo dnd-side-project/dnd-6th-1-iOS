@@ -277,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				62C4008527A51AC3002B3F33 /* Share */,
+				2371332327BB997E0045AA75 /* Enum */,
 				6208CFD727A2539700F17603 /* Sign */,
 				232CC09E27A03B1900040131 /* TabBar */,
 				232CC02C27A0320E00040131 /* Home */,
@@ -417,7 +418,6 @@
 				238CEEAD27A7F577006BE766 /* PostModel.swift */,
 				2335241227A98D57009C654F /* PostDataSource.swift */,
 				23DC8F9F27B95F3C00F79EF4 /* PostManager.swift */,
-				2376DA7527BA850700E4A0E8 /* CommunityType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -534,8 +534,6 @@
 		232CC06B27A0362900040131 /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				623DE31227B69D2F005E78D0 /* Literal */,
-				623DE30A27B616D6005E78D0 /* Validation */,
 				62BE209727A67995001F150A /* Service */,
 				62BE208E27A66F04001F150A /* Network */,
 				232CC06F27A0364300040131 /* Factory */,
@@ -642,6 +640,15 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		2371332327BB997E0045AA75 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				623DE30627B5603A005E78D0 /* Literal.swift */,
+				2376DA7527BA850700E4A0E8 /* CommunityType.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		6208CFD727A2539700F17603 /* Sign */ = {
 			isa = PBXGroup;
 			children = (
@@ -708,14 +715,6 @@
 			path = Validation;
 			sourceTree = "<group>";
 		};
-		623DE31227B69D2F005E78D0 /* Literal */ = {
-			isa = PBXGroup;
-			children = (
-				623DE30627B5603A005E78D0 /* Literal.swift */,
-			);
-			path = Literal;
-			sourceTree = "<group>";
-		};
 		62BE208E27A66F04001F150A /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -747,6 +746,7 @@
 		62C4008527A51AC3002B3F33 /* Share */ = {
 			isa = PBXGroup;
 			children = (
+				623DE30A27B616D6005E78D0 /* Validation */,
 				62C4008927A51AFC002B3F33 /* Storyboard */,
 				62C4008827A51AF2002B3F33 /* Controllers */,
 			);
