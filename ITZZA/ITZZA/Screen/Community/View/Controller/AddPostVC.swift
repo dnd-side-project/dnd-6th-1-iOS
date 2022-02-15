@@ -7,6 +7,8 @@
 
 import UIKit
 import RxSwift
+import BSImagePicker
+import Photos
 
 class AddPostVC: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
@@ -18,6 +20,7 @@ class AddPostVC: UIViewController {
     @IBOutlet weak var imageStackViewHeight: NSLayoutConstraint!
     
     let postContentsPlaceholder = "글쓰기"
+    let maxImageSelectionCount = 3
     var images: [UIImage] = []
     
     let bag = DisposeBag()
@@ -91,9 +94,20 @@ extension AddPostVC {
     
     //MARK: - bind
     func bindAddImageBar() {
+        let imagePicker = ImagePickerController()
+        
+        imagePicker.settings.selection.max = self.maxImageSelectionCount
+        imagePicker.settings.fetch.assets.supportedMediaTypes = [.image, .video]
+        imagePicker.settings.theme.selectionStyle = .numbered
+        
         addImageBar.addImageButton.rx.tap
             .bind {
-                print("addImage")
+                self.presentImagePicker(imagePicker, select: { (asset) in
+                }, deselect: { (asset) in
+                }, cancel: { (assets) in
+                }, finish: { (assets) in
+                }, completion: {
+                })
             }
             .disposed(by: bag)
     }
