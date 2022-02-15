@@ -44,14 +44,17 @@ class SignInVM {
                     owner.onError.onNext(error)
                     
                 case .success(let response):
-                    guard let response = response.flag else { return }
-                    if response == 0 {
+                    guard let flag = response.flag,
+                          let accessToken = response.accessToken
+                    else { return }
+                    
+                    if flag == 0 {
                         owner.signInResponseFail.onNext("로그인 정보가 잘못되었습니다")
                     } else {
                         if owner.isSignInStateSelected.value {
-                            owner.saveUserData(email, password)
+                            owner.saveUserData(email, password, accessToken)
                         }
-                        owner.signInResponseSuccess.onNext(response)
+                        owner.signInResponseSuccess.onNext(flag)
                     }
                 }
                 owner.indicatorController.accept(true)
@@ -59,9 +62,10 @@ class SignInVM {
             .disposed(by: disposeBag)
     }
     
-    func saveUserData(_ email: String, _ password: String) {
+    func saveUserData(_ email: String, _ password: String, _ token: String) {
         UserDefaults.standard.set(email, forKey: "email")
-        KeychainWrapper.standard[.myKey] = password
+        KeychainWrapper.standard[.myPassword] = password
+        KeychainWrapper.standard[.myToken] = token
     }
 
 }
