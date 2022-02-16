@@ -27,6 +27,7 @@ class AddPostVC: UIViewController {
         }
     
     let postContentsPlaceholder = "글쓰기"
+    let categoryTitlePlaceholder = "감정을 선택해주세요"
     let maxImageSelectionCount = 3
     let imageStackViewSpacing: CGFloat = 20
     var images: [UIImage] = []
@@ -57,7 +58,7 @@ extension AddPostVC {
         savePost.title = "저장"
         savePost.rx.tap
             .bind {
-                print("Post article")
+                self.checkInputValid()
             }
             .disposed(by: bag)
         
@@ -172,6 +173,22 @@ extension AddPostVC {
                 self.present(categoryBottomSheet, animated: true)
             })
             .disposed(by: bag)
+    }
+    
+    func checkInputValid() {
+        if postTitle.text!.isEmpty
+            || postContents.textColor == .systemGray3
+            || categoryLabel.text! == categoryTitlePlaceholder {
+            let alert = UIAlertController(title: "필수 입력란을 채워주세요!", message: "", preferredStyle: UIAlertController.Style.alert)
+            alert.view.tintColor = .black
+            alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
+            let defaultAction = UIAlertAction(title: "확인", style: .default, handler : nil)
+            alert.addAction(defaultAction)
+            present(alert, animated: false, completion: nil)
+        } else {
+            // TODO: - 게시글 post
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
