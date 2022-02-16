@@ -52,17 +52,25 @@ extension AddPostVC {
     func configureNavigationBar() {
         navigationController?.setSubNaviBarTitle(navigationItem: self.navigationItem, title: "게시글 작성")
         navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .black)
-        navigationController?.setBackButtonOnlyTitle(navigationController: self.navigationController, title: "취소")
         
-        let savePost = UIBarButtonItem()
-        savePost.title = "저장"
-        savePost.rx.tap
+        let savePostButton = UIBarButtonItem()
+        savePostButton.title = "저장"
+        savePostButton.rx.tap
             .bind {
                 self.checkInputValid()
             }
             .disposed(by: bag)
         
-        navigationItem.rightBarButtonItem = savePost
+        let backButton = UIBarButtonItem()
+               backButton.image = UIImage(systemName: "chevron.backward")
+               backButton.rx.tap
+                   .bind {
+                       self.checkWrittenState()
+                   }
+                   .disposed(by: bag)
+        
+        navigationItem.rightBarButtonItem = savePostButton
+        navigationItem.leftBarButtonItem = backButton
     }
     
     func configureChooseCategoryButton() {
@@ -187,6 +195,26 @@ extension AddPostVC {
             present(alert, animated: false, completion: nil)
         } else {
             // TODO: - 게시글 post
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func checkWrittenState(){
+        if !postTitle.text!.isEmpty
+            || postContents.textColor != .systemGray3
+            || categoryLabel.text! != categoryTitlePlaceholder {
+            let alert = UIAlertController(title: "게시글이 저장되지 않았습니다.\n나가시겠어요?", message: "", preferredStyle: UIAlertController.Style.alert)
+            alert.view.tintColor = .black
+            alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
+            let ok = UIAlertAction(title: "네", style: .destructive) { _ in
+                self.navigationController?.popViewController(animated: true)
+            }
+            let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            
+            alert.addAction(ok)
+            alert.addAction(cancel)
+            present(alert, animated: false, completion: nil)
+        } else {
             self.navigationController?.popViewController(animated: true)
         }
     }
