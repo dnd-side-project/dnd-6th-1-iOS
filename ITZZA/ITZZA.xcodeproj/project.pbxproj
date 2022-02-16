@@ -20,8 +20,8 @@
 		232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232CC01F27A0317900040131 /* LaunchScreen.storyboard */; };
 		232CC03627A0326500040131 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC03527A0326500040131 /* HomeVC.swift */; };
 		232CC03827A0326C00040131 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232CC03727A0326C00040131 /* Home.storyboard */; };
-		232CC03A27A0327B00040131 /* a.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC03927A0327B00040131 /* a.swift */; };
-		232CC03C27A0328000040131 /* b.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC03B27A0328000040131 /* b.swift */; };
+		232CC03A27A0327B00040131 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC03927A0327B00040131 /* HomeVM.swift */; };
+		232CC03C27A0328000040131 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC03B27A0328000040131 /* HomeModel.swift */; };
 		232CC03E27A0328600040131 /* c.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC03D27A0328600040131 /* c.swift */; };
 		232CC04027A0328B00040131 /* d.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC03F27A0328B00040131 /* d.swift */; };
 		232CC04A27A032CF00040131 /* CommunityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC04927A032CF00040131 /* CommunityVC.swift */; };
@@ -89,6 +89,12 @@
 		623DE30C27B616F7005E78D0 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE30B27B616F7005E78D0 /* Validation.swift */; };
 		623DE30F27B64F0C005E78D0 /* PasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE30E27B64F0C005E78D0 /* PasswordVM.swift */; };
 		623DE31127B65B27005E78D0 /* NicknameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE31027B65B27005E78D0 /* NicknameVM.swift */; };
+		624C457E27BCDA24000A37DF /* DiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624C457D27BCDA24000A37DF /* DiaryVC.swift */; };
+		624C458027BCDA30000A37DF /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624C457F27BCDA30000A37DF /* Diary.storyboard */; };
+		624C458427BD0E55000A37DF /* EmptyDiaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 624C458327BD0E55000A37DF /* EmptyDiaryView.xib */; };
+		624C458A27BD1221000A37DF /* EmptyDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624C458927BD1221000A37DF /* EmptyDiaryView.swift */; };
+		624C458C27BD1D80000A37DF /* WriteDiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624C458B27BD1D80000A37DF /* WriteDiaryVC.swift */; };
+		624C458E27BD1DA2000A37DF /* WriteDiary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624C458D27BD1DA2000A37DF /* WriteDiary.storyboard */; };
 		6254618227B152E300184DA1 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6254618127B152E300184DA1 /* PasswordView.swift */; };
 		6254618427B152EF00184DA1 /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6254618327B152EF00184DA1 /* NicknameView.swift */; };
 		6254618627B152FC00184DA1 /* PasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6254618527B152FC00184DA1 /* PasswordView.xib */; };
@@ -128,8 +134,8 @@
 		232CC02227A0317900040131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		232CC03527A0326500040131 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		232CC03727A0326C00040131 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
-		232CC03927A0327B00040131 /* a.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = a.swift; sourceTree = "<group>"; };
-		232CC03B27A0328000040131 /* b.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = b.swift; sourceTree = "<group>"; };
+		232CC03927A0327B00040131 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		232CC03B27A0328000040131 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		232CC03D27A0328600040131 /* c.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = c.swift; sourceTree = "<group>"; };
 		232CC03F27A0328B00040131 /* d.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = d.swift; sourceTree = "<group>"; };
 		232CC04927A032CF00040131 /* CommunityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityVC.swift; sourceTree = "<group>"; };
@@ -198,6 +204,12 @@
 		623DE30B27B616F7005E78D0 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		623DE30E27B64F0C005E78D0 /* PasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordVM.swift; sourceTree = "<group>"; };
 		623DE31027B65B27005E78D0 /* NicknameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameVM.swift; sourceTree = "<group>"; };
+		624C457D27BCDA24000A37DF /* DiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryVC.swift; sourceTree = "<group>"; };
+		624C457F27BCDA30000A37DF /* Diary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Diary.storyboard; sourceTree = "<group>"; };
+		624C458327BD0E55000A37DF /* EmptyDiaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyDiaryView.xib; sourceTree = "<group>"; };
+		624C458927BD1221000A37DF /* EmptyDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDiaryView.swift; sourceTree = "<group>"; };
+		624C458B27BD1D80000A37DF /* WriteDiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteDiaryVC.swift; sourceTree = "<group>"; };
+		624C458D27BD1DA2000A37DF /* WriteDiary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WriteDiary.storyboard; sourceTree = "<group>"; };
 		6254618127B152E300184DA1 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		6254618327B152EF00184DA1 /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
 		6254618527B152FC00184DA1 /* PasswordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordView.xib; sourceTree = "<group>"; };
@@ -311,9 +323,9 @@
 		232CC02C27A0320E00040131 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				232CC03227A0324000040131 /* View */,
-				232CC03127A0323B00040131 /* ViewModel */,
 				232CC03027A0322200040131 /* Model */,
+				232CC03127A0323B00040131 /* ViewModel */,
+				232CC03227A0324000040131 /* View */,
 				232CC02D27A0321500040131 /* Cell */,
 			);
 			path = Home;
@@ -347,7 +359,7 @@
 		232CC03027A0322200040131 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				232CC03B27A0328000040131 /* b.swift */,
+				232CC03B27A0328000040131 /* HomeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -355,7 +367,7 @@
 		232CC03127A0323B00040131 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				232CC03927A0327B00040131 /* a.swift */,
+				232CC03927A0327B00040131 /* HomeVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -363,8 +375,9 @@
 		232CC03227A0324000040131 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				232CC03427A0324D00040131 /* Storyboard */,
+				624C458727BD11A6000A37DF /* Shared */,
 				232CC03327A0324800040131 /* Controller */,
+				232CC03427A0324D00040131 /* Storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -373,6 +386,8 @@
 			isa = PBXGroup;
 			children = (
 				232CC03527A0326500040131 /* HomeVC.swift */,
+				624C457D27BCDA24000A37DF /* DiaryVC.swift */,
+				624C458B27BD1D80000A37DF /* WriteDiaryVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -381,6 +396,8 @@
 			isa = PBXGroup;
 			children = (
 				232CC03727A0326C00040131 /* Home.storyboard */,
+				624C457F27BCDA30000A37DF /* Diary.storyboard */,
+				624C458D27BD1DA2000A37DF /* WriteDiary.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -657,10 +674,6 @@
 			children = (
 				6208CFDA27A254B900F17603 /* SignIn.storyboard */,
 				62E2BDF727ACFBD80052DDCE /* SignUp.storyboard */,
-				6254618527B152FC00184DA1 /* PasswordView.xib */,
-				6254618727B1530500184DA1 /* NicknameView.xib */,
-				623DE2F427B25225005E78D0 /* EmailView.xib */,
-				623DE30027B3BA9E005E78D0 /* AgreementView.xib */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -670,10 +683,6 @@
 			children = (
 				62BE208C27A590D0001F150A /* SignInVC.swift */,
 				6270D40027ACE590004FD7A9 /* SignUpVC.swift */,
-				6254618127B152E300184DA1 /* PasswordView.swift */,
-				6254618327B152EF00184DA1 /* NicknameView.swift */,
-				623DE2F627B25367005E78D0 /* EmailView.swift */,
-				623DE2FE27B3BA75005E78D0 /* AgreementView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -681,6 +690,7 @@
 		6208CFDC27A258DE00F17603 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				624C458527BD1169000A37DF /* Shared */,
 				6208CFD927A254A800F17603 /* Controller */,
 				6208CFD827A2549B00F17603 /* Storyboard */,
 			);
@@ -714,6 +724,62 @@
 				623DE30627B5603A005E78D0 /* Literal.swift */,
 			);
 			path = Literal;
+			sourceTree = "<group>";
+		};
+		624C458127BD0DC9000A37DF /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				6254618527B152FC00184DA1 /* PasswordView.xib */,
+				6254618727B1530500184DA1 /* NicknameView.xib */,
+				623DE2F427B25225005E78D0 /* EmailView.xib */,
+				623DE30027B3BA9E005E78D0 /* AgreementView.xib */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
+		624C458227BD0DEB000A37DF /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				624C458327BD0E55000A37DF /* EmptyDiaryView.xib */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
+		624C458527BD1169000A37DF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				624C458627BD117F000A37DF /* XibController */,
+				624C458127BD0DC9000A37DF /* Xib */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		624C458627BD117F000A37DF /* XibController */ = {
+			isa = PBXGroup;
+			children = (
+				6254618127B152E300184DA1 /* PasswordView.swift */,
+				6254618327B152EF00184DA1 /* NicknameView.swift */,
+				623DE2F627B25367005E78D0 /* EmailView.swift */,
+				623DE2FE27B3BA75005E78D0 /* AgreementView.swift */,
+			);
+			path = XibController;
+			sourceTree = "<group>";
+		};
+		624C458727BD11A6000A37DF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				624C458827BD11B4000A37DF /* XibController */,
+				624C458227BD0DEB000A37DF /* Xib */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		624C458827BD11B4000A37DF /* XibController */ = {
+			isa = PBXGroup;
+			children = (
+				624C458927BD1221000A37DF /* EmptyDiaryView.swift */,
+			);
+			path = XibController;
 			sourceTree = "<group>";
 		};
 		62BE208E27A66F04001F150A /* Network */ = {
@@ -860,6 +926,8 @@
 				2335241827A98FA0009C654F /* ProfileHeaderView.xib in Resources */,
 				6254618827B1530500184DA1 /* NicknameView.xib in Resources */,
 				232CC01E27A0317900040131 /* Assets.xcassets in Resources */,
+				624C458427BD0E55000A37DF /* EmptyDiaryView.xib in Resources */,
+				624C458027BCDA30000A37DF /* Diary.storyboard in Resources */,
 				238EC0A027AA88EC001CBB24 /* ImageAddBar.xib in Resources */,
 				2368021327B2966800A4392B /* PostContentTableViewHeader.xib in Resources */,
 				232302FD27AFC13200E20078 /* CommentTVC.xib in Resources */,
@@ -869,6 +937,7 @@
 				232CC09527A039B700040131 /* SFPRODISPLAYBOLD.OTF in Resources */,
 				232CC03827A0326C00040131 /* Home.storyboard in Resources */,
 				232CC09D27A039B700040131 /* SFPRODISPLAYREGULAR.OTF in Resources */,
+				624C458E27BD1DA2000A37DF /* WriteDiary.storyboard in Resources */,
 				233B636F27AFAE3100914F60 /* PostContentView.xib in Resources */,
 				2335242027A99392009C654F /* PostButtonsView.xib in Resources */,
 				623DE2F527B25225005E78D0 /* EmailView.xib in Resources */,
@@ -928,6 +997,7 @@
 			files = (
 				233B636D27AFAE2400914F60 /* PostContentView.swift in Sources */,
 				238CEEA627A7E705006BE766 /* CategoryVC.swift in Sources */,
+				624C458C27BD1D80000A37DF /* WriteDiaryVC.swift in Sources */,
 				6254618227B152E300184DA1 /* PasswordView.swift in Sources */,
 				2305120D27AEE52100CF7FCF /* UIButton+.swift in Sources */,
 				232CC03627A0326500040131 /* HomeVC.swift in Sources */,
@@ -969,9 +1039,11 @@
 				62BE209027A66F34001F150A /* APISession.swift in Sources */,
 				2335241327A98D57009C654F /* PostDataSource.swift in Sources */,
 				232CC08927A0390B00040131 /* UIFont+.swift in Sources */,
+				624C458A27BD1221000A37DF /* EmptyDiaryView.swift in Sources */,
 				238CEEA227A7DFCF006BE766 /* NavigationController+.swift in Sources */,
 				238CEEAE27A7F577006BE766 /* PostModel.swift in Sources */,
 				232CC01527A0317900040131 /* AppDelegate.swift in Sources */,
+				624C457E27BCDA24000A37DF /* DiaryVC.swift in Sources */,
 				238CEEA027A7DEA0006BE766 /* CommunityNC.swift in Sources */,
 				6254618427B152EF00184DA1 /* NicknameView.swift in Sources */,
 				232CC06427A0335C00040131 /* j.swift in Sources */,
@@ -991,12 +1063,12 @@
 				6270D40127ACE590004FD7A9 /* SignUpVC.swift in Sources */,
 				62BE20A027A8F1A0001F150A /* UIViewController+.swift in Sources */,
 				232302FF27AFD18000E20078 /* UITextView+.swift in Sources */,
-				232CC03A27A0327B00040131 /* a.swift in Sources */,
+				232CC03A27A0327B00040131 /* HomeVM.swift in Sources */,
 				238CEEAA27A7EFD0006BE766 /* PostTVC.swift in Sources */,
 				232CC06227A0335500040131 /* i.swift in Sources */,
 				623DE2FF27B3BA75005E78D0 /* AgreementView.swift in Sources */,
 				623DE30F27B64F0C005E78D0 /* PasswordVM.swift in Sources */,
-				232CC03C27A0328000040131 /* b.swift in Sources */,
+				232CC03C27A0328000040131 /* HomeModel.swift in Sources */,
 				62BE208D27A590D0001F150A /* SignInVC.swift in Sources */,
 				23DC8FA027B95F3C00F79EF4 /* PostManager.swift in Sources */,
 				623DE2F927B26581005E78D0 /* UIView+.swift in Sources */,

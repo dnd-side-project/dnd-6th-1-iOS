@@ -18,6 +18,8 @@ enum TypeOfViewController {
     case postDetail
     case addPost
     case searchPost
+    case diary
+    case writeDiary
     
     static var communityCases: [TypeOfViewController] {
         [
@@ -54,6 +56,10 @@ extension TypeOfViewController {
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.addPostSB, storyboardId: Identifiers.addPostVC)
         case .searchPost:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.searchPostSB, storyboardId: Identifiers.searchPostVC)
+        case .diary:
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.diarySB, storyboardId: Identifiers.diaryVC)
+        case .writeDiary:
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.writeDiarySB, storyboardId: Identifiers.writeDiaryVC)
         }
     }
 }

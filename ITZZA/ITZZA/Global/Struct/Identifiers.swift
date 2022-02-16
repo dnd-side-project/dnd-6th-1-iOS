@@ -18,6 +18,8 @@ struct Identifiers {
     static let mypageSB = "Mypage"
     static let signInSB = "SignIn"
     static let signUpSB = "SignUp"
+    static let diarySB = "Diary"
+    static let writeDiarySB = "WriteDiary"
     
     //MARK: - Controller
     static let itzzaTBC = "ITZZATBC"
@@ -31,6 +33,8 @@ struct Identifiers {
     static let mypageVC = "MypageVC"
     static let signInVC = "SignInVC"
     static let signUpVC = "SignUpVC"
+    static let diaryVC = "DiaryVC"
+    static let writeDiaryVC = "WriteDiaryVC"
     
     //MARK: - View
     static let profileHeaderView = "ProfileHeaderView"
@@ -43,6 +47,7 @@ struct Identifiers {
     static let postContentView = "PostContentView"
     static let chatInputView = "ChatInputView"
     static let postContentTableViewHeader = "PostContentTableViewHeader"
+    static let emptyDiaryView = "EmptyDiaryView"
     
     //MARK: - TVC
     static let postTVC = "PostTVC"
