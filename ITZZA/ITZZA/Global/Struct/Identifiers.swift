@@ -20,10 +20,12 @@ struct Identifiers {
     static let signUpSB = "SignUp"
     static let diarySB = "Diary"
     static let writeDiarySB = "WriteDiary"
+    static let homeAlarmSB = "HomeAlarm"
     
     //MARK: - Controller
     static let itzzaTBC = "ITZZATBC"
     static let homeVC = "HomeVC"
+    static let homeNC = "HomeNC"
     static let communityNC = "CommunityNC"
     static let communityVC = "CommunityVC"
     static let categoryVC = "CategoryVC"
@@ -35,6 +37,7 @@ struct Identifiers {
     static let signUpVC = "SignUpVC"
     static let diaryVC = "DiaryVC"
     static let writeDiaryVC = "WriteDiaryVC"
+    static let homeAlarmTVC = "HomeAlarmTVC"
     
     //MARK: - View
     static let profileHeaderView = "ProfileHeaderView"
@@ -48,6 +51,7 @@ struct Identifiers {
     static let chatInputView = "ChatInputView"
     static let postContentTableViewHeader = "PostContentTableViewHeader"
     static let emptyDiaryView = "EmptyDiaryView"
+    static let emotionButtonView = "EmotionButtonView"
     
     //MARK: - TVC
     static let postTVC = "PostTVC"

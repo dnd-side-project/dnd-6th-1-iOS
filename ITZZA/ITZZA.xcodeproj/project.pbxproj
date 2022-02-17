@@ -78,6 +78,11 @@
 		6208CFE127A2662700F17603 /* SignInVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CFE027A2662700F17603 /* SignInVM.swift */; };
 		62183E2827B8E70A00F83815 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62183E2727B8E70A00F83815 /* SignUpModel.swift */; };
 		622D07C027ABF12E00707E47 /* KeychainWrapper+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */; };
+		622D51CB27BEB54400F59679 /* HomeNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D51CA27BEB54400F59679 /* HomeNC.swift */; };
+		622D51CD27BEBC7000F59679 /* HomeAlarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 622D51CC27BEBC7000F59679 /* HomeAlarm.storyboard */; };
+		622D51CF27BEBC8700F59679 /* HomeAlarmTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D51CE27BEBC8700F59679 /* HomeAlarmTVC.swift */; };
+		623356A027BE673D00158359 /* EmotionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6233569F27BE673C00158359 /* EmotionButtonView.swift */; };
+		623356A227BE675200158359 /* EmotionButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 623356A127BE675200158359 /* EmotionButtonView.xib */; };
 		623DE2F527B25225005E78D0 /* EmailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 623DE2F427B25225005E78D0 /* EmailView.xib */; };
 		623DE2F727B25367005E78D0 /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE2F627B25367005E78D0 /* EmailView.swift */; };
 		623DE2F927B26581005E78D0 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE2F827B26581005E78D0 /* UIView+.swift */; };
@@ -193,6 +198,11 @@
 		6208CFE027A2662700F17603 /* SignInVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVM.swift; sourceTree = "<group>"; };
 		62183E2727B8E70A00F83815 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeychainWrapper+.swift"; sourceTree = "<group>"; };
+		622D51CA27BEB54400F59679 /* HomeNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNC.swift; sourceTree = "<group>"; };
+		622D51CC27BEBC7000F59679 /* HomeAlarm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeAlarm.storyboard; sourceTree = "<group>"; };
+		622D51CE27BEBC8700F59679 /* HomeAlarmTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAlarmTVC.swift; sourceTree = "<group>"; };
+		6233569F27BE673C00158359 /* EmotionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionButtonView.swift; sourceTree = "<group>"; };
+		623356A127BE675200158359 /* EmotionButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmotionButtonView.xib; sourceTree = "<group>"; };
 		623DE2F427B25225005E78D0 /* EmailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmailView.xib; sourceTree = "<group>"; };
 		623DE2F627B25367005E78D0 /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
 		623DE2F827B26581005E78D0 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -388,6 +398,8 @@
 				232CC03527A0326500040131 /* HomeVC.swift */,
 				624C457D27BCDA24000A37DF /* DiaryVC.swift */,
 				624C458B27BD1D80000A37DF /* WriteDiaryVC.swift */,
+				622D51CA27BEB54400F59679 /* HomeNC.swift */,
+				622D51CE27BEBC8700F59679 /* HomeAlarmTVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -398,6 +410,7 @@
 				232CC03727A0326C00040131 /* Home.storyboard */,
 				624C457F27BCDA30000A37DF /* Diary.storyboard */,
 				624C458D27BD1DA2000A37DF /* WriteDiary.storyboard */,
+				622D51CC27BEBC7000F59679 /* HomeAlarm.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -741,6 +754,7 @@
 			isa = PBXGroup;
 			children = (
 				624C458327BD0E55000A37DF /* EmptyDiaryView.xib */,
+				623356A127BE675200158359 /* EmotionButtonView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -778,6 +792,7 @@
 			isa = PBXGroup;
 			children = (
 				624C458927BD1221000A37DF /* EmptyDiaryView.swift */,
+				6233569F27BE673C00158359 /* EmotionButtonView.swift */,
 			);
 			path = XibController;
 			sourceTree = "<group>";
@@ -928,6 +943,7 @@
 				232CC01E27A0317900040131 /* Assets.xcassets in Resources */,
 				624C458427BD0E55000A37DF /* EmptyDiaryView.xib in Resources */,
 				624C458027BCDA30000A37DF /* Diary.storyboard in Resources */,
+				622D51CD27BEBC7000F59679 /* HomeAlarm.storyboard in Resources */,
 				238EC0A027AA88EC001CBB24 /* ImageAddBar.xib in Resources */,
 				2368021327B2966800A4392B /* PostContentTableViewHeader.xib in Resources */,
 				232302FD27AFC13200E20078 /* CommentTVC.xib in Resources */,
@@ -936,6 +952,7 @@
 				232CC04C27A032D700040131 /* Community.storyboard in Resources */,
 				232CC09527A039B700040131 /* SFPRODISPLAYBOLD.OTF in Resources */,
 				232CC03827A0326C00040131 /* Home.storyboard in Resources */,
+				623356A227BE675200158359 /* EmotionButtonView.xib in Resources */,
 				232CC09D27A039B700040131 /* SFPRODISPLAYREGULAR.OTF in Resources */,
 				624C458E27BD1DA2000A37DF /* WriteDiary.storyboard in Resources */,
 				233B636F27AFAE3100914F60 /* PostContentView.xib in Resources */,
@@ -1016,10 +1033,12 @@
 				2335241F27A99392009C654F /* PostButtonsView.swift in Sources */,
 				236C98DE27B239C200CE1EFD /* UIView+.swift in Sources */,
 				6208CFDE27A258F600F17603 /* (null) in Sources */,
+				622D51CF27BEBC8700F59679 /* HomeAlarmTVC.swift in Sources */,
 				627E1A8F27AEAD7D005C1777 /* Array+.swift in Sources */,
 				238EC09827AA4C4A001CBB24 /* AddPostVC.swift in Sources */,
 				2335241727A98FA0009C654F /* ProfileHeaderView.swift in Sources */,
 				233B636B27AF9D9D00914F60 /* PostDetailVC.swift in Sources */,
+				623356A027BE673D00158359 /* EmotionButtonView.swift in Sources */,
 				232302FC27AFC13200E20078 /* CommentTVC.swift in Sources */,
 				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,
 				62C4008727A51ADB002B3F33 /* tmp.swift in Sources */,
@@ -1027,6 +1046,7 @@
 				23A56BDA27B3F8BA00959269 /* UILabel+.swift in Sources */,
 				2368021127B2965B00A4392B /* PostContentTableViewHeader.swift in Sources */,
 				2323030927B035ED00E20078 /* UITextField+.swift in Sources */,
+				622D51CB27BEB54400F59679 /* HomeNC.swift in Sources */,
 				232CC07527A0370D00040131 /* TypeOfViewController.swift in Sources */,
 				623DE30727B5603A005E78D0 /* Literal.swift in Sources */,
 				62E2BDFC27AD41620052DDCE /* UIImage+.swift in Sources */,

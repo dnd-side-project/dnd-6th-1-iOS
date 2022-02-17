@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K3c-6t-OR5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -16,30 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTS-de-jHF" userLabel="Alarm View">
-                                <rect key="frame" x="0.0" y="44" width="414" height="68"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHL-U8-B5M">
-                                        <rect key="frame" x="368" y="22" width="24" height="24"/>
-                                        <color key="backgroundColor" red="0.38823529410000002" green="0.38823529410000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="zHL-U8-B5M" secondAttribute="height" multiplier="1:1" id="geh-LN-8iS"/>
-                                            <constraint firstAttribute="width" constant="24" id="pZR-fn-h8B"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="zHL-U8-B5M" secondAttribute="trailing" constant="22" id="8xF-Rz-5oX"/>
-                                    <constraint firstAttribute="height" constant="68" id="EmK-mt-MgL"/>
-                                    <constraint firstItem="zHL-U8-B5M" firstAttribute="centerY" secondItem="UTS-de-jHF" secondAttribute="centerY" id="mmN-kP-641"/>
-                                    <constraint firstAttribute="trailing" secondItem="zHL-U8-B5M" secondAttribute="trailing" constant="22" id="rgR-Vj-48H"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이별 후 마음을 들려주세요!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y41-lo-197">
-                                <rect key="frame" x="20" y="132" width="134" height="53"/>
+                                <rect key="frame" x="20" y="176" width="134" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="134" id="toW-hb-N63"/>
                                 </constraints>
@@ -48,13 +26,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘은 어떤 하루였나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6x8-Vy-RGt">
-                                <rect key="frame" x="20" y="192" width="117" height="14.5"/>
+                                <rect key="frame" x="20" y="236" width="117" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEz-hS-IRb">
-                                <rect key="frame" x="20" y="226.5" width="81" height="25"/>
+                                <rect key="frame" x="20" y="270.5" width="81" height="25"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="kEz-hS-IRb" secondAttribute="height" multiplier="81:25" id="X3x-gj-JW9"/>
@@ -67,7 +45,7 @@
                                 </buttonConfiguration>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2J-7g-ohw" customClass="FSCalendar">
-                                <rect key="frame" x="20" y="331.5" width="374" height="505.5"/>
+                                <rect key="frame" x="20" y="375.5" width="374" height="461.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="weekdayTextSize">
@@ -78,7 +56,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnd-CV-gh9">
-                                <rect key="frame" x="88.5" y="367.5" width="20" height="20"/>
+                                <rect key="frame" x="88.5" y="411.5" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="WSL-sz-9Zh"/>
                                     <constraint firstAttribute="width" secondItem="cnd-CV-gh9" secondAttribute="height" multiplier="1:1" id="lFB-Pb-lU0"/>
@@ -87,7 +65,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="Next_Arrow"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00월" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdx-Kf-UP0">
-                                <rect key="frame" x="49" y="367.5" width="35.5" height="20"/>
+                                <rect key="frame" x="49" y="411.5" width="35.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35.5" id="GG7-o7-x5P"/>
                                     <constraint firstAttribute="width" secondItem="xdx-Kf-UP0" secondAttribute="height" multiplier="7:4" id="hul-Wz-l7s"/>
@@ -97,7 +75,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HbX-qR-YHY">
-                                <rect key="frame" x="25" y="367.5" width="20" height="20"/>
+                                <rect key="frame" x="25" y="411.5" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="jHX-cv-X9O"/>
                                     <constraint firstAttribute="width" secondItem="HbX-qR-YHY" secondAttribute="height" multiplier="1:1" id="vBA-tq-JdN"/>
@@ -106,7 +84,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="Previous_Arrow"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9o-Vd-B3K">
-                                <rect key="frame" x="331" y="367.5" width="45" height="20"/>
+                                <rect key="frame" x="331" y="411.5" width="45" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="gOf-Jd-goY"/>
                                     <constraint firstAttribute="width" secondItem="D9o-Vd-B3K" secondAttribute="height" multiplier="9:4" id="tcC-qD-WHr"/>
@@ -127,21 +105,19 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="b2J-7g-ohw" secondAttribute="trailing" constant="20" id="Ldc-s8-HAh"/>
                             <constraint firstItem="xdx-Kf-UP0" firstAttribute="leading" secondItem="HbX-qR-YHY" secondAttribute="trailing" constant="4" id="Qvj-Sj-Xse"/>
                             <constraint firstItem="cnd-CV-gh9" firstAttribute="leading" secondItem="xdx-Kf-UP0" secondAttribute="trailing" constant="4" id="V5f-mJ-OUE"/>
+                            <constraint firstItem="y41-lo-197" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="88" id="W6F-jY-ZiS"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="b2J-7g-ohw" secondAttribute="bottom" constant="25" id="Wsb-x7-PAs"/>
                             <constraint firstItem="cnd-CV-gh9" firstAttribute="centerY" secondItem="xdx-Kf-UP0" secondAttribute="centerY" id="bnC-OD-k00"/>
                             <constraint firstItem="HbX-qR-YHY" firstAttribute="top" secondItem="kEz-hS-IRb" secondAttribute="bottom" constant="116" id="eDa-46-HO3"/>
                             <constraint firstItem="b2J-7g-ohw" firstAttribute="top" secondItem="kEz-hS-IRb" secondAttribute="bottom" constant="80" id="ebV-Yy-Z76"/>
-                            <constraint firstItem="UTS-de-jHF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fe3-Ob-NLD"/>
-                            <constraint firstItem="UTS-de-jHF" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hX3-3X-lC8"/>
-                            <constraint firstItem="y41-lo-197" firstAttribute="top" secondItem="UTS-de-jHF" secondAttribute="bottom" constant="20" id="k56-Tu-Rgz"/>
                             <constraint firstItem="b2J-7g-ohw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="kCA-g3-504"/>
                             <constraint firstItem="6x8-Vy-RGt" firstAttribute="top" secondItem="y41-lo-197" secondAttribute="bottom" constant="7" id="kiB-sb-ErQ"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="UTS-de-jHF" secondAttribute="trailing" id="msd-Mp-GSj"/>
                             <constraint firstItem="y41-lo-197" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="nFP-ut-ubL"/>
                             <constraint firstItem="kEz-hS-IRb" firstAttribute="top" secondItem="6x8-Vy-RGt" secondAttribute="bottom" constant="20" id="qYj-uy-oXa"/>
                             <constraint firstItem="HbX-qR-YHY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="yKj-gb-46E"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ZLq-4u-Oak"/>
                     <connections>
                         <outlet property="calendarMonthLabel" destination="xdx-Kf-UP0" id="ej3-u6-nww"/>
                         <outlet property="calendarNextPageButton" destination="cnd-CV-gh9" id="mZ6-6B-v9f"/>
@@ -152,6 +128,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944.92753623188412" y="93.75"/>
+        </scene>
+        <!--HomeNC-->
+        <scene sceneID="zGl-gb-9Xv">
+            <objects>
+                <navigationController storyboardIdentifier="HomeNC" automaticallyAdjustsScrollViewInsets="NO" id="K3c-6t-OR5" customClass="HomeNC" customModule="ITZZA" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6WE-sz-3X0">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="437-os-Zkr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l9h-zr-Tj0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="34.782608695652179" y="93.75"/>
         </scene>

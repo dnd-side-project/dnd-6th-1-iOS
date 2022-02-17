@@ -20,6 +20,7 @@ enum TypeOfViewController {
     case searchPost
     case diary
     case writeDiary
+    case homeAlarm
     
     static var communityCases: [TypeOfViewController] {
         [
@@ -39,7 +40,7 @@ extension TypeOfViewController {
         case .tabBar:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.tabBarSB, storyboardId: Identifiers.itzzaTBC)
         case .home:
-            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.homeSB, storyboardId: Identifiers.homeVC)
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.homeSB, storyboardId: Identifiers.homeNC)
         case .community:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.communitySB, storyboardId: Identifiers.communityNC)
         case .mypage:
@@ -60,6 +61,8 @@ extension TypeOfViewController {
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.diarySB, storyboardId: Identifiers.diaryVC)
         case .writeDiary:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.writeDiarySB, storyboardId: Identifiers.writeDiaryVC)
+        case .homeAlarm:
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.homeAlarmSB, storyboardId: Identifiers.homeAlarmTVC)
         }
     }
 }

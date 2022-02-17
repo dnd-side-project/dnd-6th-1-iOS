@@ -16,11 +16,11 @@ class DiaryVC: UIViewController {
     @IBOutlet weak var dateTitle: UILabel!
     @IBOutlet weak var dateTitleView: UIView!
     @IBOutlet weak var writeDiaryButton: UIButton!
+    @IBOutlet weak var menuButton: UIButton!
     
     var seletedDate: String!
     var disposeBag = DisposeBag()
     let emptyDiaryView = EmptyDiaryView()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +28,6 @@ class DiaryVC: UIViewController {
         setInitialUIValue()
         bindUI()
     }
-    
-    
 }
 
 // MARK: - Change UI
@@ -74,8 +72,10 @@ extension DiaryVC {
             .asDriver()
             .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                guard let writeDiaryVC = ViewControllerFactory.viewController(for: .writeDiary) as? WriteDiaryVC else { return }
+                guard let writeDiaryVC = ViewControllerFactory.viewController(for: .writeDiary)
+                                            as? WriteDiaryVC else { return }
                 
+                writeDiaryVC.selectedDate = self.seletedDate
                 writeDiaryVC.modalPresentationStyle = .fullScreen
                 self.present(writeDiaryVC, animated: true, completion: nil)
             })

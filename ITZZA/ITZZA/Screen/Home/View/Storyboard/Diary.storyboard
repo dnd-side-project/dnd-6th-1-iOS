@@ -38,12 +38,20 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkD-9s-RXH">
+                                        <rect key="frame" x="370" y="22" width="24" height="24"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="Menu_Horizontal"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="vkD-9s-RXH" firstAttribute="centerY" secondItem="XsB-lh-Qt7" secondAttribute="centerY" id="35e-gD-5iw"/>
                                     <constraint firstItem="yEK-W0-yBL" firstAttribute="leading" secondItem="dzt-cC-Dsf" secondAttribute="leading" constant="20" id="7cs-1o-qDb"/>
                                     <constraint firstAttribute="height" constant="68" id="9DD-zT-xfU"/>
                                     <constraint firstItem="yEK-W0-yBL" firstAttribute="centerY" secondItem="dzt-cC-Dsf" secondAttribute="centerY" id="9l0-Yy-pqQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="vkD-9s-RXH" secondAttribute="trailing" constant="20" id="aYc-vm-lfe"/>
                                     <constraint firstItem="XsB-lh-Qt7" firstAttribute="centerX" secondItem="dzt-cC-Dsf" secondAttribute="centerX" id="gCB-V3-CjD"/>
                                     <constraint firstItem="XsB-lh-Qt7" firstAttribute="centerY" secondItem="dzt-cC-Dsf" secondAttribute="centerY" id="jig-Cc-MbD"/>
                                 </constraints>
@@ -76,6 +84,7 @@
                         <outlet property="cancelButton" destination="yEK-W0-yBL" id="wId-wl-ox2"/>
                         <outlet property="dateTitle" destination="XsB-lh-Qt7" id="Dk0-VV-ULA"/>
                         <outlet property="dateTitleView" destination="dzt-cC-Dsf" id="08R-5y-qCZ"/>
+                        <outlet property="menuButton" destination="vkD-9s-RXH" id="THt-ty-joO"/>
                         <outlet property="writeDiaryButton" destination="GcR-rx-Due" id="Jlo-GC-GLn"/>
                     </connections>
                 </viewController>
@@ -85,6 +94,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Menu_Horizontal" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

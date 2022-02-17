@@ -28,7 +28,6 @@ class EmptyDiaryView: UIView {
     private func setContentView() {
         insertXibView(with: Identifiers.emptyDiaryView)
     }
-    
 }
 
 // MARK: - Change UI

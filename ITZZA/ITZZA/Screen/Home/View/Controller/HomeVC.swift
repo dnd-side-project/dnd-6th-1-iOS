@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 import FSCalendar
 import RxSwift
 import RxCocoa
@@ -18,6 +19,8 @@ class HomeVC: UIViewController {
     @IBOutlet weak var calendarMonthLabel: UILabel!
     @IBOutlet weak var calendarYearLabel: UILabel!
     @IBOutlet weak var writeTodayDiaryButton: UIButton!
+    private var homeAlarmButton: UIBarButtonItem!
+    private var showNewAlarmView = UIView()
     
     var disposeBag = DisposeBag()
     let homeVM = HomeVM()
@@ -41,8 +44,17 @@ class HomeVC: UIViewController {
         return df
     }()
     
+    private lazy var dateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.locale = Locale(identifier: "en_US")
+        df.dateFormat = "yyyy.MM.dd"
+        return df
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationBar()
+        setShowNewAlarmView()
         setInitialUIValue()
         calendarDefaultState()
         setDate()
@@ -52,12 +64,37 @@ class HomeVC: UIViewController {
 
 // MARK: - Change UI
 extension HomeVC {
+    private func configureNavigationBar() {
+        setNaviBarView()
+        setNaviBarItem()
+    }
+    private func setNaviBarView() {
+        navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .black)
+    }
+    
+    private func setNaviBarItem() {
+        homeAlarmButton = UIBarButtonItem()
+        homeAlarmButton.image = UIImage(named: "Home_Alarm")
+        navigationItem.rightBarButtonItem = homeAlarmButton
+    }
+    
     private func setInitialUIValue() {
         writeTodayDiaryButton.layer.cornerRadius = 5
         calendarView.layer.shadowOpacity = 0.1
         calendarView.layer.shadowOffset = CGSize(width: 0, height: -1)
         calendarView.layer.shadowRadius = 5
         calendarView.layer.masksToBounds = false
+    }
+    
+    private func setShowNewAlarmView() {
+        view.addSubview(showNewAlarmView)
+        showNewAlarmView.backgroundColor = .orange
+        showNewAlarmView.layer.cornerRadius = 3.5
+        showNewAlarmView.snp.makeConstraints {
+            $0.width.height.equalTo(7)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(-33)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-23)
+        }
     }
     
     private func calendarDefaultState() {
@@ -88,6 +125,21 @@ extension HomeVC {
         currentPage = current.date(byAdding: dateComponents, to: currentPage ?? self.today)
         calendarView.setCurrentPage(currentPage!, animated: true)
     }
+    
+    private func moveToWriteDiaryView() {
+        guard let writeDiaryVC = ViewControllerFactory.viewController(for: .writeDiary) as? WriteDiaryVC else { return }
+        
+        writeDiaryVC.selectedDate = dateFormatter.string(from: today)
+        writeDiaryVC.modalPresentationStyle = .fullScreen
+        self.present(writeDiaryVC, animated: true, completion: nil)
+    }
+    
+    private func moveToHomeAlarmView() {
+        guard let homeAlarmTVC = ViewControllerFactory.viewController(for: .homeAlarm) as? HomeAlarmTVC else { return }
+        
+        homeAlarmTVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(homeAlarmTVC, animated: true)
+    }
 }
 
 // MARK: - Calendar Delegates
@@ -103,9 +155,6 @@ extension HomeVC: FSCalendarDelegate {
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         guard let diaryVC = ViewControllerFactory.viewController(for: .diary) as? DiaryVC else { return }
         diaryVC.modalPresentationStyle = .fullScreen
@@ -140,6 +189,22 @@ extension HomeVC {
             .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.scrollCurrentPage(false)
+            })
+            .disposed(by: disposeBag)
+        
+        writeTodayDiaryButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.moveToWriteDiaryView()
+            })
+            .disposed(by: disposeBag)
+        
+        homeAlarmButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.moveToHomeAlarmView()
             })
             .disposed(by: disposeBag)
     }

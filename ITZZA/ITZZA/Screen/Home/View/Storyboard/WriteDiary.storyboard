@@ -15,9 +15,59 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p3M-va-4ta">
+                                <rect key="frame" x="0.0" y="44" width="414" height="68"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000.00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0v-Cn-Jef">
+                                        <rect key="frame" x="150" y="22" width="114" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwe-gZ-xc0">
+                                        <rect key="frame" x="20" y="19" width="30" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="취소">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kTp-2P-uZz">
+                                        <rect key="frame" x="364" y="19" width="30" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="저장">
+                                            <color key="titleColor" systemColor="systemOrangeColor"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="j0v-Cn-Jef" firstAttribute="centerY" secondItem="p3M-va-4ta" secondAttribute="centerY" id="2ZT-gu-rFl"/>
+                                    <constraint firstAttribute="trailing" secondItem="kTp-2P-uZz" secondAttribute="trailing" constant="20" id="4h4-H8-D6v"/>
+                                    <constraint firstItem="j0v-Cn-Jef" firstAttribute="centerX" secondItem="p3M-va-4ta" secondAttribute="centerX" id="K3o-jv-bux"/>
+                                    <constraint firstItem="kTp-2P-uZz" firstAttribute="centerY" secondItem="j0v-Cn-Jef" secondAttribute="centerY" id="XUy-gE-LQ8"/>
+                                    <constraint firstItem="Gwe-gZ-xc0" firstAttribute="leading" secondItem="p3M-va-4ta" secondAttribute="leading" constant="20" id="aTW-O5-KOm"/>
+                                    <constraint firstItem="Gwe-gZ-xc0" firstAttribute="centerY" secondItem="j0v-Cn-Jef" secondAttribute="centerY" id="fpW-E2-b9B"/>
+                                    <constraint firstAttribute="height" constant="68" id="gLf-jX-kWT"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="p3M-va-4ta" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="9q0-4h-Sov"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="p3M-va-4ta" secondAttribute="trailing" id="QLi-qK-ShV"/>
+                            <constraint firstItem="p3M-va-4ta" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="oeI-o2-3Qf"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="Gwe-gZ-xc0" id="jOe-Zi-bHa"/>
+                        <outlet property="dateLabel" destination="j0v-Cn-Jef" id="IrB-0V-RZg"/>
+                        <outlet property="dateTitleView" destination="p3M-va-4ta" id="vOQ-GC-3PC"/>
+                        <outlet property="saveButton" destination="kTp-2P-uZz" id="Zgj-3v-f5E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -27,6 +77,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
