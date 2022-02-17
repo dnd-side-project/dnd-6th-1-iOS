@@ -46,5 +46,5 @@ struct Identifiers {
     static let commentCountCell = "CommentCountCell"
     
     //MARK: - CVC
-    
+    static let addedImageCVC = "AddedImageCVC"
 }

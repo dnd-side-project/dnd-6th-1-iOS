@@ -18,8 +18,8 @@ class AddPostVC: UIViewController {
     @IBOutlet weak var addImageBar: ImageAddBar!
     @IBOutlet weak var postTitle: UITextField!
     @IBOutlet weak var postContents: UITextView!
-    @IBOutlet weak var imageStackView: UIStackView!
-    @IBOutlet weak var imageStackViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var imageCV: UICollectionView!
+    @IBOutlet weak var imageCVHeight: NSLayoutConstraint!
     
     var categoryLabel = UILabel()
         .then {
@@ -29,7 +29,7 @@ class AddPostVC: UIViewController {
     let postContentsPlaceholder = "글쓰기"
     let categoryTitlePlaceholder = "감정을 선택해주세요"
     let maxImageSelectionCount = 3
-    let imageStackViewSpacing: CGFloat = 20
+    let minimumLineSpacing: CGFloat = 20
     var images: [UIImage] = []
     
     let bag = DisposeBag()
@@ -39,7 +39,7 @@ class AddPostVC: UIViewController {
 
         configureNavigationBar()
         configureChooseCategoryButton()
-        configureImageStackView()
+        configureImageCV()
         bindAddImageBar()
         bindCategoryBottomSheet()
         configurePostContentComponent()
@@ -96,9 +96,11 @@ extension AddPostVC {
         }
     }
     
-    func configureImageStackView() {
-        setImageStackViewHeight()
-        imageStackView.spacing = imageStackViewSpacing
+    func configureImageCV() {
+        imageCV.dataSource = self
+        imageCV.delegate = self
+        imageCV.isScrollEnabled = false
+        setImageCVHeight()
     }
     
     func configurePostContentComponent() {
@@ -109,11 +111,11 @@ extension AddPostVC {
         postContents.setTextViewPlaceholder(postContentsPlaceholder)
     }
     
-    func setImageStackViewHeight() {
+    func setImageCVHeight() {
         if images.count == 0 {
-            imageStackViewHeight.constant = 0
+            imageCVHeight.constant = 0
         } else {
-            imageStackViewHeight.constant = CGFloat(images.count) * (imageStackView.frame.width + imageStackViewSpacing)
+            imageCVHeight.constant = CGFloat(images.count) * (imageCV.frame.width + minimumLineSpacing) - minimumLineSpacing
         }
     }
     
@@ -132,23 +134,22 @@ extension AddPostVC {
                 }, cancel: { (assets) in
                 }, finish: { (assets) in
                     self.convertAssetToImages(assets)
-                    self.addImageToStackView(self.images)
-                    self.setImageStackViewHeight()
-                    self.view.layoutIfNeeded()
+                    self.addImageToCollectionView(self.images)
+                    self.setImageCVHeight()
                 }, completion: {
                 })
             }
             .disposed(by: bag)
     }
     
-    func addImageToStackView(_ images: [UIImage]) {
+    func addImageToCollectionView(_ images: [UIImage]) {
         images.forEach {
             let imageView = UIImageView(image: $0)
             imageView.contentMode = .scaleAspectFit
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
             imageView.backgroundColor = .black
-            self.imageStackView.addArrangedSubview(imageView)
         }
+        imageCV.reloadData()
     }
     
     func convertAssetToImages(_ selectedAssets: [PHAsset]) {
@@ -236,5 +237,29 @@ extension AddPostVC: UITextViewDelegate {
 extension AddPostVC: CategoryTitleDelegate {
     func getCategoryTitle(_ title: String) {
         self.categoryLabel.text = title
+    }
+}
+
+extension AddPostVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        images.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.addedImageCVC, for: indexPath) as! AddedImageCVC
+
+        cell.backgroundColor = .black
+        cell.imageView.image = images[indexPath.row]
+        
+        cell.imageView.snp.makeConstraints {
+            $0.height.width.equalTo(view.frame.width - minimumLineSpacing * 2)
+        }
+        return cell
+    }
+}
+
+extension AddPostVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        minimumLineSpacing
     }
 }

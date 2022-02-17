@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -87,28 +88,63 @@
                                                     <constraint firstAttribute="height" constant="1" id="GfN-Ik-qdy"/>
                                                 </constraints>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="R3k-Vy-STu">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2MV-tY-gVi">
                                                 <rect key="frame" x="25" y="253" width="325" height="325"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="325" id="HLY-Z3-HHa"/>
+                                                    <constraint firstAttribute="height" constant="325" id="LIw-Xg-oMH"/>
                                                 </constraints>
-                                            </stackView>
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ENM-Tk-6kR">
+                                                    <size key="itemSize" width="325" height="325"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddedImageCVC" id="rbW-Ue-PRR" customClass="AddedImageCVC" customModule="ITZZA" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="325" height="325"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uVN-YN-PJe">
+                                                            <rect key="frame" x="0.0" y="0.0" width="325" height="325"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2tG-oU-xji">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="325" height="325"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="2tG-oU-xji" secondAttribute="height" multiplier="1:1" id="jO7-Vr-jjk"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="2tG-oU-xji" firstAttribute="leading" secondItem="uVN-YN-PJe" secondAttribute="leading" id="Kge-sk-8J1"/>
+                                                                <constraint firstAttribute="bottom" secondItem="2tG-oU-xji" secondAttribute="bottom" id="bkE-Ue-KxQ"/>
+                                                                <constraint firstItem="2tG-oU-xji" firstAttribute="top" secondItem="uVN-YN-PJe" secondAttribute="top" id="fZ5-zd-f6N"/>
+                                                                <constraint firstAttribute="trailing" secondItem="2tG-oU-xji" secondAttribute="trailing" id="rEi-TF-uyf"/>
+                                                            </constraints>
+                                                        </collectionViewCellContentView>
+                                                        <size key="customSize" width="325" height="325"/>
+                                                        <connections>
+                                                            <outlet property="imageView" destination="2tG-oU-xji" id="90r-oo-fAj"/>
+                                                        </connections>
+                                                    </collectionViewCell>
+                                                </cells>
+                                            </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="SQx-rR-1cV" firstAttribute="top" secondItem="kQq-3B-tif" secondAttribute="top" constant="32" id="2Nn-yi-Qmv"/>
                                             <constraint firstAttribute="trailing" secondItem="1Su-hS-akh" secondAttribute="trailing" constant="25" id="DO9-xD-XEZ"/>
-                                            <constraint firstItem="R3k-Vy-STu" firstAttribute="top" secondItem="1Su-hS-akh" secondAttribute="bottom" constant="30" id="KNX-xT-ylz"/>
-                                            <constraint firstItem="R3k-Vy-STu" firstAttribute="leading" secondItem="kQq-3B-tif" secondAttribute="leading" constant="25" id="LT9-7V-wpB"/>
                                             <constraint firstItem="SQx-rR-1cV" firstAttribute="leading" secondItem="kQq-3B-tif" secondAttribute="leading" constant="20" id="MB3-hx-lu5"/>
                                             <constraint firstAttribute="trailing" secondItem="IeY-Zk-i2L" secondAttribute="trailing" constant="20" id="WLu-yp-Z7q"/>
+                                            <constraint firstAttribute="trailing" secondItem="2MV-tY-gVi" secondAttribute="trailing" constant="25" id="Yls-Ek-r06"/>
+                                            <constraint firstItem="2MV-tY-gVi" firstAttribute="top" secondItem="1Su-hS-akh" secondAttribute="bottom" constant="30" id="bPL-OW-80w"/>
+                                            <constraint firstItem="2MV-tY-gVi" firstAttribute="leading" secondItem="kQq-3B-tif" secondAttribute="leading" constant="25" id="bh6-z9-N4j"/>
+                                            <constraint firstAttribute="bottom" secondItem="2MV-tY-gVi" secondAttribute="bottom" constant="35" id="c4h-2p-m9T"/>
                                             <constraint firstItem="IeY-Zk-i2L" firstAttribute="top" secondItem="SQx-rR-1cV" secondAttribute="bottom" constant="30" id="eMX-eA-eXZ"/>
                                             <constraint firstItem="1Su-hS-akh" firstAttribute="leading" secondItem="kQq-3B-tif" secondAttribute="leading" constant="25" id="fux-98-fgc"/>
-                                            <constraint firstAttribute="bottom" secondItem="R3k-Vy-STu" secondAttribute="bottom" constant="35" id="hfL-z0-WHK"/>
                                             <constraint firstAttribute="trailing" secondItem="SQx-rR-1cV" secondAttribute="trailing" constant="20" id="n4a-be-gHH"/>
                                             <constraint firstItem="IeY-Zk-i2L" firstAttribute="leading" secondItem="kQq-3B-tif" secondAttribute="leading" constant="20" id="nJD-1O-6Ps"/>
                                             <constraint firstItem="1Su-hS-akh" firstAttribute="top" secondItem="IeY-Zk-i2L" secondAttribute="bottom" constant="29" id="rXh-w8-1yb"/>
-                                            <constraint firstAttribute="trailing" secondItem="R3k-Vy-STu" secondAttribute="trailing" constant="25" id="xJK-Te-OSc"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -142,8 +178,8 @@
                     <connections>
                         <outlet property="addImageBar" destination="CHq-Ju-mYJ" id="SQu-z9-pFX"/>
                         <outlet property="chooseCategoryButton" destination="SQx-rR-1cV" id="eAj-qQ-d93"/>
-                        <outlet property="imageStackView" destination="R3k-Vy-STu" id="Pty-66-cUS"/>
-                        <outlet property="imageStackViewHeight" destination="HLY-Z3-HHa" id="xqj-2A-iDy"/>
+                        <outlet property="imageCV" destination="2MV-tY-gVi" id="kbD-F3-MWa"/>
+                        <outlet property="imageCVHeight" destination="LIw-Xg-oMH" id="22f-dB-LDp"/>
                         <outlet property="postContents" destination="zEA-Fn-Poq" id="zNU-Uq-6D4"/>
                         <outlet property="postTitle" destination="YTn-RX-fNM" id="AkX-cg-BPe"/>
                         <outlet property="scrollView" destination="eEK-B5-aG1" id="7uU-GE-kEd"/>
