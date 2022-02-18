@@ -39,9 +39,6 @@
 		232CC08727A038FB00040131 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC08627A038FB00040131 /* UIColor+.swift */; };
 		232CC08927A0390B00040131 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC08827A0390B00040131 /* UIFont+.swift */; };
 		232CC08B27A0391F00040131 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC08A27A0391F00040131 /* Notification+.swift */; };
-		232CC09527A039B700040131 /* SFPRODISPLAYBOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 232CC08C27A039B700040131 /* SFPRODISPLAYBOLD.OTF */; };
-		232CC09727A039B700040131 /* SFPRODISPLAYMEDIUM.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 232CC08E27A039B700040131 /* SFPRODISPLAYMEDIUM.OTF */; };
-		232CC09D27A039B700040131 /* SFPRODISPLAYREGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 232CC09427A039B700040131 /* SFPRODISPLAYREGULAR.OTF */; };
 		232CC0A227A03B4100040131 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232CC0A127A03B4100040131 /* TabBar.storyboard */; };
 		232CC0A427A03B8F00040131 /* ITZZATBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC0A327A03B8F00040131 /* ITZZATBC.swift */; };
 		2335241327A98D57009C654F /* PostDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2335241227A98D57009C654F /* PostDataSource.swift */; };
@@ -53,6 +50,11 @@
 		233B636B27AF9D9D00914F60 /* PostDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B636A27AF9D9D00914F60 /* PostDetailVC.swift */; };
 		233B636D27AFAE2400914F60 /* PostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B636C27AFAE2400914F60 /* PostContentView.swift */; };
 		233B636F27AFAE3100914F60 /* PostContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 233B636E27AFAE3100914F60 /* PostContentView.xib */; };
+		2356305627BFA1D10032E520 /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2356305127BFA1CC0032E520 /* SpoqaHanSansNeo-Bold.otf */; };
+		2356305727BFA1D10032E520 /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2356305427BFA1CC0032E520 /* SpoqaHanSansNeo-Regular.otf */; };
+		2356305827BFA1D10032E520 /* SpoqaHanSansNeo-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2356305527BFA1CC0032E520 /* SpoqaHanSansNeo-Medium.otf */; };
+		2356305927BFA1D10032E520 /* SpoqaHanSansNeo-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2356305327BFA1CC0032E520 /* SpoqaHanSansNeo-Thin.otf */; };
+		2356305A27BFA1D10032E520 /* SpoqaHanSansNeo-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2356305227BFA1CC0032E520 /* SpoqaHanSansNeo-Light.otf */; };
 		2368021127B2965B00A4392B /* PostContentTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */; };
 		2368021327B2966800A4392B /* PostContentTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2368021227B2966800A4392B /* PostContentTableViewHeader.xib */; };
 		236C98DE27B239C200CE1EFD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236C98DD27B239C200CE1EFD /* UIView+.swift */; };
@@ -71,9 +73,9 @@
 		238EC0A027AA88EC001CBB24 /* ImageAddBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */; };
 		23A56BDA27B3F8BA00959269 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A56BD927B3F8BA00959269 /* UILabel+.swift */; };
 		23B66EBC27B813A500FC477D /* CategoryBottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B66EBB27B813A500FC477D /* CategoryBottomSheetVC.swift */; };
-		23EA4E3527BEB5BD0027E4DB /* AddedImageCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA4E3427BEB5BD0027E4DB /* AddedImageCVC.swift */; };
 		23DC8F9327B8E35400F79EF4 /* CommunityVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC8F9227B8E35400F79EF4 /* CommunityVM.swift */; };
 		23DC8FA027B95F3C00F79EF4 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC8F9F27B95F3C00F79EF4 /* PostManager.swift */; };
+		23EA4E3527BEB5BD0027E4DB /* AddedImageCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA4E3427BEB5BD0027E4DB /* AddedImageCVC.swift */; };
 		6208CFDB27A254B900F17603 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6208CFDA27A254B900F17603 /* SignIn.storyboard */; };
 		6208CFDE27A258F600F17603 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6208CFE127A2662700F17603 /* SignInVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CFE027A2662700F17603 /* SignInVM.swift */; };
@@ -148,9 +150,6 @@
 		232CC08627A038FB00040131 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		232CC08827A0390B00040131 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		232CC08A27A0391F00040131 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
-		232CC08C27A039B700040131 /* SFPRODISPLAYBOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBOLD.OTF; sourceTree = "<group>"; };
-		232CC08E27A039B700040131 /* SFPRODISPLAYMEDIUM.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYMEDIUM.OTF; sourceTree = "<group>"; };
-		232CC09427A039B700040131 /* SFPRODISPLAYREGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYREGULAR.OTF; sourceTree = "<group>"; };
 		232CC0A127A03B4100040131 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		232CC0A327A03B8F00040131 /* ITZZATBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITZZATBC.swift; sourceTree = "<group>"; };
 		2335241227A98D57009C654F /* PostDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDataSource.swift; sourceTree = "<group>"; };
@@ -162,6 +161,11 @@
 		233B636A27AF9D9D00914F60 /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVC.swift; sourceTree = "<group>"; };
 		233B636C27AFAE2400914F60 /* PostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentView.swift; sourceTree = "<group>"; };
 		233B636E27AFAE3100914F60 /* PostContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostContentView.xib; sourceTree = "<group>"; };
+		2356305127BFA1CC0032E520 /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
+		2356305227BFA1CC0032E520 /* SpoqaHanSansNeo-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Light.otf"; sourceTree = "<group>"; };
+		2356305327BFA1CC0032E520 /* SpoqaHanSansNeo-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Thin.otf"; sourceTree = "<group>"; };
+		2356305427BFA1CC0032E520 /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
+		2356305527BFA1CC0032E520 /* SpoqaHanSansNeo-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.otf"; sourceTree = "<group>"; };
 		2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentTableViewHeader.swift; sourceTree = "<group>"; };
 		2368021227B2966800A4392B /* PostContentTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostContentTableViewHeader.xib; sourceTree = "<group>"; };
 		236C98DD27B239C200CE1EFD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -180,9 +184,9 @@
 		238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageAddBar.xib; sourceTree = "<group>"; };
 		23A56BD927B3F8BA00959269 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		23B66EBB27B813A500FC477D /* CategoryBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBottomSheetVC.swift; sourceTree = "<group>"; };
-		23EA4E3427BEB5BD0027E4DB /* AddedImageCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedImageCVC.swift; sourceTree = "<group>"; };
 		23DC8F9227B8E35400F79EF4 /* CommunityVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommunityVM.swift; path = ITZZA/Screen/Community/CommunityVM.swift; sourceTree = SOURCE_ROOT; };
 		23DC8F9F27B95F3C00F79EF4 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
+		23EA4E3427BEB5BD0027E4DB /* AddedImageCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedImageCVC.swift; sourceTree = "<group>"; };
 		31D68BDCB09FB35125D965C7 /* Pods-ITZZA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.release.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.release.xcconfig"; sourceTree = "<group>"; };
 		557F2FCE2D67BC938F058D88 /* Pods-ITZZA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.debug.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.debug.xcconfig"; sourceTree = "<group>"; };
 		6208CFDA27A254B900F17603 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
@@ -549,9 +553,11 @@
 		232CC06C27A0363200040131 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				232CC08C27A039B700040131 /* SFPRODISPLAYBOLD.OTF */,
-				232CC08E27A039B700040131 /* SFPRODISPLAYMEDIUM.OTF */,
-				232CC09427A039B700040131 /* SFPRODISPLAYREGULAR.OTF */,
+				2356305127BFA1CC0032E520 /* SpoqaHanSansNeo-Bold.otf */,
+				2356305227BFA1CC0032E520 /* SpoqaHanSansNeo-Light.otf */,
+				2356305527BFA1CC0032E520 /* SpoqaHanSansNeo-Medium.otf */,
+				2356305427BFA1CC0032E520 /* SpoqaHanSansNeo-Regular.otf */,
+				2356305327BFA1CC0032E520 /* SpoqaHanSansNeo-Thin.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -852,12 +858,13 @@
 				623DE30527B55BFD005E78D0 /* Agreement.txt in Resources */,
 				238CEEA427A7E6F1006BE766 /* Category.storyboard in Resources */,
 				232CC0A227A03B4100040131 /* TabBar.storyboard in Resources */,
-				232CC09727A039B700040131 /* SFPRODISPLAYMEDIUM.OTF in Resources */,
 				6254618627B152FC00184DA1 /* PasswordView.xib in Resources */,
+				2356305727BFA1D10032E520 /* SpoqaHanSansNeo-Regular.otf in Resources */,
 				2323030527B02D9200E20078 /* ChatInputView.xib in Resources */,
 				62E2BDF827ACFBD80052DDCE /* SignUp.storyboard in Resources */,
 				232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */,
 				6208CFDB27A254B900F17603 /* SignIn.storyboard in Resources */,
+				2356305827BFA1D10032E520 /* SpoqaHanSansNeo-Medium.otf in Resources */,
 				233B636927AF9D8C00914F60 /* PostDetail.storyboard in Resources */,
 				232CC06027A0334100040131 /* Mypage.storyboard in Resources */,
 				2335241827A98FA0009C654F /* ProfileHeaderView.xib in Resources */,
@@ -865,14 +872,15 @@
 				232CC01E27A0317900040131 /* Assets.xcassets in Resources */,
 				238EC0A027AA88EC001CBB24 /* ImageAddBar.xib in Resources */,
 				2368021327B2966800A4392B /* PostContentTableViewHeader.xib in Resources */,
+				2356305627BFA1D10032E520 /* SpoqaHanSansNeo-Bold.otf in Resources */,
 				232302FD27AFC13200E20078 /* CommentTVC.xib in Resources */,
 				238EC09A27AA7288001CBB24 /* SearchPost.storyboard in Resources */,
+				2356305927BFA1D10032E520 /* SpoqaHanSansNeo-Thin.otf in Resources */,
 				623DE30127B3BA9E005E78D0 /* AgreementView.xib in Resources */,
 				232CC04C27A032D700040131 /* Community.storyboard in Resources */,
-				232CC09527A039B700040131 /* SFPRODISPLAYBOLD.OTF in Resources */,
 				232CC03827A0326C00040131 /* Home.storyboard in Resources */,
-				232CC09D27A039B700040131 /* SFPRODISPLAYREGULAR.OTF in Resources */,
 				233B636F27AFAE3100914F60 /* PostContentView.xib in Resources */,
+				2356305A27BFA1D10032E520 /* SpoqaHanSansNeo-Light.otf in Resources */,
 				2335242027A99392009C654F /* PostButtonsView.xib in Resources */,
 				623DE2F527B25225005E78D0 /* EmailView.xib in Resources */,
 				238EC09627AA4C3B001CBB24 /* AddPost.storyboard in Resources */,

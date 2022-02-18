@@ -13,7 +13,7 @@ extension UINavigationController {
         let naviTitle = UILabel()
         naviTitle.textColor = .label
         naviTitle.text = title
-        naviTitle.font = UIFont.SFProDisplayBold(size: 22)
+        naviTitle.font = UIFont.SpoqaHanSansNeoBold(size: 22)
         navigationItem?.title = ""
         
         navigationItem!.leftBarButtonItem = UIBarButtonItem.init(customView: naviTitle)

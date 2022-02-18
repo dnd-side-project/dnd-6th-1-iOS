@@ -118,8 +118,8 @@ extension CommunityVC {
             button.layer.cornerRadius = 4
             button.contentInset = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
             
-            button.font = UIFont.SFProDisplayMedium(size: 16)
-            button.selectedFont = UIFont.SFProDisplayBold(size: 16)
+            button.font = UIFont.SpoqaHanSansNeoMedium(size: 16)
+            button.selectedFont = UIFont.SpoqaHanSansNeoBold(size: 16)
         }
     
         bar.indicator.cornerStyle = .eliptical

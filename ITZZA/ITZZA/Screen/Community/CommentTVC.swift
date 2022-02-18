@@ -34,7 +34,7 @@ class CommentTVC: UITableViewCell {
     
     func setCreateCommentButton() {
         createCommentButton.setTitle("답글 달기", for: .normal)
-        createCommentButton.titleLabel?.font = UIFont.SFProDisplayRegular(size: 10)
+        createCommentButton.titleLabel?.font = UIFont.SpoqaHanSansNeoRegular(size: 10)
         createCommentButton.tintColor = .systemGray
     }
     

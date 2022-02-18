@@ -65,7 +65,7 @@ extension CategoryBottomSheetVC {
             let button = UIButton(type: .system)
                 .then {
                     $0.setTitle("\(title)", for: .normal)
-                    $0.titleLabel?.font = UIFont.SFProDisplayRegular(size: 17)
+                    $0.titleLabel?.font = UIFont.SpoqaHanSansNeoRegular(size: 17)
                     $0.tintColor = .black
                     $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
                 }

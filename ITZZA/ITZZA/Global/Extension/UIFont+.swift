@@ -8,13 +8,19 @@
 import UIKit
 extension UIFont {
     // MARK: AppleSDGothic Font
-    class func SFProDisplayRegular(size: CGFloat) -> UIFont {
-        return UIFont(name: "SFProDisplay-Regular", size: size)!
+    class func SpoqaHanSansNeoRegular(size: CGFloat) -> UIFont {
+        return UIFont(name: "SpoqaHanSansNeo-Regular", size: size)!
     }
-    class func SFProDisplayMedium(size: CGFloat) -> UIFont {
-        return UIFont(name: "SFProDisplay-Medium", size: size)!
+    class func SpoqaHanSansNeoMedium(size: CGFloat) -> UIFont {
+        return UIFont(name: "SpoqaHanSansNeo-Medium", size: size)!
     }
-    class func SFProDisplayBold(size: CGFloat) -> UIFont {
-        return UIFont(name: "SFProDisplay-Bold", size: size)!
+    class func SpoqaHanSansNeoBold(size: CGFloat) -> UIFont {
+        return UIFont(name: "SpoqaHanSansNeo-Bold", size: size)!
+    }
+    class func SpoqaHanSansNeoLight(size: CGFloat) -> UIFont {
+        return UIFont(name: "SpoqaHanSansNeo-Light", size: size)!
+    }
+    class func SpoqaHanSansNeoThin(size: CGFloat) -> UIFont {
+        return UIFont(name: "SpoqaHanSansNeo-Thin", size: size)!
     }
 }

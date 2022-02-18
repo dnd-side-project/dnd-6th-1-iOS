@@ -292,7 +292,7 @@ extension SignInVC {
         signUpSuccessView.layer.cornerRadius = 5
         
         signUpSuccessLabel.textColor = .orange
-        signUpSuccessLabel.font = UIFont.SFProDisplayRegular(size: 13)
+        signUpSuccessLabel.font = UIFont.SpoqaHanSansNeoRegular(size: 13)
         signUpSuccessLabel.text = "회원가입이 완료되었습니다"
         signUpSuccessLabel.textAlignment = .center
         
