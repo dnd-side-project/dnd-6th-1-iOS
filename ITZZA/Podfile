@@ -17,5 +17,7 @@ target 'ITZZA' do
   pod 'SwiftKeychainWrapper'
   pod 'Tabman', '~> 2.9'
   pod 'Kingfisher', '~> 7.0'
+  pod 'DynamicBottomSheet'
+  pod "BSImagePicker", "~> 3.1"
   pod 'SnapKit'
 end

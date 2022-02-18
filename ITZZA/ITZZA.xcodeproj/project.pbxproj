@@ -26,7 +26,6 @@
 		232CC04027A0328B00040131 /* d.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC03F27A0328B00040131 /* d.swift */; };
 		232CC04A27A032CF00040131 /* CommunityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC04927A032CF00040131 /* CommunityVC.swift */; };
 		232CC04C27A032D700040131 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232CC04B27A032D700040131 /* Community.storyboard */; };
-		232CC05227A032F400040131 /* g.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC05127A032F400040131 /* g.swift */; };
 		232CC05E27A0333500040131 /* MypageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC05D27A0333500040131 /* MypageVC.swift */; };
 		232CC06027A0334100040131 /* Mypage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232CC05F27A0334100040131 /* Mypage.storyboard */; };
 		232CC06227A0335500040131 /* i.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC06127A0335500040131 /* i.swift */; };
@@ -71,6 +70,8 @@
 		238EC09F27AA88EC001CBB24 /* ImageAddBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */; };
 		238EC0A027AA88EC001CBB24 /* ImageAddBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */; };
 		23A56BDA27B3F8BA00959269 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A56BD927B3F8BA00959269 /* UILabel+.swift */; };
+		23B66EBC27B813A500FC477D /* CategoryBottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B66EBB27B813A500FC477D /* CategoryBottomSheetVC.swift */; };
+		23EA4E3527BEB5BD0027E4DB /* AddedImageCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA4E3427BEB5BD0027E4DB /* AddedImageCVC.swift */; };
 		23DC8F9327B8E35400F79EF4 /* CommunityVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC8F9227B8E35400F79EF4 /* CommunityVM.swift */; };
 		23DC8FA027B95F3C00F79EF4 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC8F9F27B95F3C00F79EF4 /* PostManager.swift */; };
 		6208CFDB27A254B900F17603 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6208CFDA27A254B900F17603 /* SignIn.storyboard */; };
@@ -134,7 +135,6 @@
 		232CC03F27A0328B00040131 /* d.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = d.swift; sourceTree = "<group>"; };
 		232CC04927A032CF00040131 /* CommunityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityVC.swift; sourceTree = "<group>"; };
 		232CC04B27A032D700040131 /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
-		232CC05127A032F400040131 /* g.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = g.swift; sourceTree = "<group>"; };
 		232CC05D27A0333500040131 /* MypageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageVC.swift; sourceTree = "<group>"; };
 		232CC05F27A0334100040131 /* Mypage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mypage.storyboard; sourceTree = "<group>"; };
 		232CC06127A0335500040131 /* i.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = i.swift; sourceTree = "<group>"; };
@@ -179,6 +179,8 @@
 		238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAddBar.swift; sourceTree = "<group>"; };
 		238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageAddBar.xib; sourceTree = "<group>"; };
 		23A56BD927B3F8BA00959269 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		23B66EBB27B813A500FC477D /* CategoryBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBottomSheetVC.swift; sourceTree = "<group>"; };
+		23EA4E3427BEB5BD0027E4DB /* AddedImageCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedImageCVC.swift; sourceTree = "<group>"; };
 		23DC8F9227B8E35400F79EF4 /* CommunityVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommunityVM.swift; path = ITZZA/Screen/Community/CommunityVM.swift; sourceTree = SOURCE_ROOT; };
 		23DC8F9F27B95F3C00F79EF4 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		31D68BDCB09FB35125D965C7 /* Pods-ITZZA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.release.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.release.xcconfig"; sourceTree = "<group>"; };
@@ -407,7 +409,7 @@
 		232CC04327A0329C00040131 /* CVC */ = {
 			isa = PBXGroup;
 			children = (
-				232CC05127A032F400040131 /* g.swift */,
+				23EA4E3427BEB5BD0027E4DB /* AddedImageCVC.swift */,
 			);
 			path = CVC;
 			sourceTree = "<group>";
@@ -635,6 +637,7 @@
 				2323030327B02D9200E20078 /* ChatInputView.xib */,
 				2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */,
 				2368021227B2966800A4392B /* PostContentTableViewHeader.xib */,
+				23B66EBB27B813A500FC477D /* CategoryBottomSheetVC.swift */,
 			);
 			name = Shared;
 			path = ..;
@@ -963,9 +966,10 @@
 				232CC08B27A0391F00040131 /* Notification+.swift in Sources */,
 				238EC09C27AA7295001CBB24 /* SearchPostVC.swift in Sources */,
 				232CC06627A0336100040131 /* k.swift in Sources */,
+				23EA4E3527BEB5BD0027E4DB /* AddedImageCVC.swift in Sources */,
 				2323030127B027CE00E20078 /* CommentCountTVC.swift in Sources */,
 				232CC06827A0336600040131 /* l.swift in Sources */,
-				232CC05227A032F400040131 /* g.swift in Sources */,
+				23B66EBC27B813A500FC477D /* CategoryBottomSheetVC.swift in Sources */,
 				62BE209027A66F34001F150A /* APISession.swift in Sources */,
 				2335241327A98D57009C654F /* PostDataSource.swift in Sources */,
 				232CC08927A0390B00040131 /* UIFont+.swift in Sources */,
