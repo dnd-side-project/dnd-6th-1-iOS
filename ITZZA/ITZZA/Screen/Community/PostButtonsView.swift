@@ -32,7 +32,7 @@ class PostButtonsView: UIView {
     }
     
     private func setContentView() {
-        guard let view = loadViewFromNib(with: Identifiers.postButtonsView) else { return }
+        guard let view = loadXibView(with: Identifiers.postButtonsView) else { return }
         view.backgroundColor = .clear
         self.addSubview(view)
         

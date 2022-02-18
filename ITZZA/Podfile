@@ -19,5 +19,5 @@ target 'ITZZA' do
   pod 'Kingfisher', '~> 7.0'
   pod 'DynamicBottomSheet'
   pod "BSImagePicker", "~> 3.1"
-
+  pod 'SnapKit'
 end

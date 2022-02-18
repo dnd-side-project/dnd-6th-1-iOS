@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SwiftKeychainWrapper
+import SnapKit
 
 class SignInVC: UIViewController {
     
@@ -25,9 +26,10 @@ class SignInVC: UIViewController {
     @IBOutlet weak var passwordEyeButton: UIButton!
     @IBOutlet weak var signInIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var saveSignInStateButton: UIButton!
-    
+
     var disposeBag = DisposeBag()
     var signInViewModel = SignInVM()
+    var validation = Validation()
 
     override func viewDidLoad() {
         bindUI()
@@ -45,19 +47,24 @@ class SignInVC: UIViewController {
 extension SignInVC {
     private func bindUI() {
         emailTextField.rx.text.orEmpty
-            .bind(to: signInViewModel.emailText)
+            .bind(to: validation.emailText)
             .disposed(by: disposeBag)
         
         passwordTextField.rx.text.orEmpty
-            .bind(to: signInViewModel.passwordText)
+            .bind(to: validation.passwordText)
             .disposed(by: disposeBag)
         
         passwordEyeButton.rx.tap
             .asObservable()
-            .map { [weak self] in
-                (self?.passwordEyeButton.currentImage)!
+            .withUnretained(self)
+            .map { owner, _ in
+                owner.passwordEyeButton.currentImage?
+                    .isEqual(UIImage(named: "PasswordEyeOn")) ?? false
             }
-            .bind(to: signInViewModel.eyeOnOff)
+            .bind(onNext: { [weak self] status in
+                guard let self = self else { return }
+                self.validation.checkEyeOn(status)
+            })
             .disposed(by: disposeBag)
         
         signInViewModel.indicatorController.asDriver()
@@ -67,7 +74,7 @@ extension SignInVC {
             })
             .disposed(by: disposeBag)
        
-        let emailValidObservable = signInViewModel.isEmailVaild
+        let emailValidObservable = validation.isEmailVaild
                         .asObservable()
                         .share()
                         .asDriver(onErrorJustReturn: false)
@@ -78,11 +85,12 @@ extension SignInVC {
         
         emailValidObservable
             .drive(onNext: { [weak self] email in
-                self?.checkIdPasswordEnable(email, (self?.emailView)!)
+                guard let self = self else { return }
+                self.checkIdPasswordEnable(email, (self.emailView)!)
             })
             .disposed(by: disposeBag)
         
-        let passwordValidObservable = signInViewModel.isPasswordValid
+        let passwordValidObservable = validation.isPasswordValid
                             .asObservable()
                             .share()
                             .asDriver(onErrorJustReturn: false)
@@ -93,21 +101,23 @@ extension SignInVC {
         
         passwordValidObservable
             .drive(onNext: { [weak self] pw in
-                self?.checkIdPasswordEnable(pw, (self?.passwordView)!)
+                guard let self = self else { return }
+                self.checkIdPasswordEnable(pw, (self.passwordView)!)
             })
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(signInViewModel.isEmailVaild,
-                                 signInViewModel.isPasswordValid) {
+        Observable.combineLatest(validation.isEmailVaild,
+                                 validation.isPasswordValid) {
             $0 && $1
         }
         .map(changeSignInButton)
         .bind(to: signInButton.rx.isEnabled)
         .disposed(by: disposeBag)
         
-        signInViewModel.isEyeOn
-            .subscribe(onNext: { [weak self] eyeStatus in
-                self?.didTapPasswordEyeButton(eyeStatus)
+        validation.isEyeOn.asDriver()
+            .drive(onNext: { [weak self] eyeStatus in
+                guard let self = self else { return }
+                self.didTapPasswordEyeButton(eyeStatus)
             })
             .disposed(by: disposeBag)
         
@@ -143,9 +153,9 @@ extension SignInVC {
     
     func didTapSaveSignInStatusButton(_ selected: Bool) {
         if selected {
-            saveSignInStateButton.setImage(UIImage(named: "SaveSignInStatusFill"), for: .normal)
+            saveSignInStateButton.setImage(UIImage(named: "CheckBoxFill"), for: .normal)
         } else {
-            saveSignInStateButton.setImage(UIImage(named: "SaveSignInStatusOutline"), for: .normal)
+            saveSignInStateButton.setImage(UIImage(named: "CheckBoxOutline"), for: .normal)
         }
     }
 }
@@ -209,7 +219,7 @@ extension SignInVC {
     }
     
     func signInResponseSuccess() {
-        signInViewModel.signInResponseSuccess.asDriver(onErrorJustReturn: "1")
+        signInViewModel.signInResponseSuccess.asDriver(onErrorJustReturn: 1)
             .drive { [weak self] response in
                 guard let self = self else { return }
                 let tabBarVC = ViewControllerFactory.viewController(for: .tabBar)
@@ -256,6 +266,7 @@ extension SignInVC {
 // MARK: - Set Initial UI Value
 extension SignInVC {
     func setInitialUIValue() {
+        appLogoImage.image = UIImage(named: "Logo")
         emailView.layer.cornerRadius = 3
         passwordView.layer.cornerRadius = 3
         signInButton.layer.cornerRadius = 3
@@ -266,5 +277,41 @@ extension SignInVC {
         saveSignInStateButton.isSelected = false
         saveSignInStateButton.layer.cornerRadius = 20
         signInIndicatorView.isHidden = true
+    }
+    
+    func showSignUpSuccessView() {
+        let signUpSuccessView = UIView()
+        let signUpSuccessLabel = UILabel()
+        
+        view.addSubview(signUpSuccessView)
+        signUpSuccessView.addSubview(signUpSuccessLabel)
+        
+        signUpSuccessView.isHidden = false
+        signUpSuccessView.layer.borderColor = UIColor.orange.cgColor
+        signUpSuccessView.layer.borderWidth = 1.0
+        signUpSuccessView.layer.cornerRadius = 5
+        
+        signUpSuccessLabel.textColor = .orange
+        signUpSuccessLabel.font = UIFont.SFProDisplayRegular(size: 13)
+        signUpSuccessLabel.text = "회원가입이 완료되었습니다"
+        signUpSuccessLabel.textAlignment = .center
+        
+        signUpSuccessView.snp.makeConstraints {
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(52)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-52)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-67)
+            $0.height.equalTo(44)
+        }
+        
+        signUpSuccessLabel.snp.makeConstraints {
+            $0.leading.equalTo(signUpSuccessView.snp.leading).offset(14)
+            $0.trailing.equalTo(signUpSuccessView.snp.trailing).offset(-14)
+            $0.top.equalTo(signUpSuccessView.snp.top).offset(16)
+            $0.bottom.equalTo(signUpSuccessView.snp.bottom).offset(-16)
+        }
+        
+        UIView.animate(withDuration: 1.5) {
+            signUpSuccessView.alpha = 0
+        }
     }
 }

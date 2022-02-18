@@ -38,6 +38,7 @@ DEPENDENCIES:
   - RxDataSources (< 5.1.0)
   - RxGesture (< 4.1.0)
   - RxSwift (< 6.2.0)
+  - SnapKit
   - SwiftKeychainWrapper
   - Tabman (~> 2.9)
 
@@ -76,6 +77,6 @@ SPEC CHECKSUMS:
   Tabman: 792ac76fd1ec95af175c93db880a3c47cabedc91
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 51601b9f62977ce1469e4b9f9618910a4a844a10
+PODFILE CHECKSUM: c94bec367b9971c97fad024facc9ec18a4c12236
 
 COCOAPODS: 1.11.2

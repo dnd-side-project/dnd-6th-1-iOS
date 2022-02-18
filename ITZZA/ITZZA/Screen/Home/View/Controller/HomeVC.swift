@@ -2,23 +2,23 @@
 //  HomeVC.swift
 //  ITZZA
 //
-//  Created by 황윤경 on 2022/01/25.
+//  Created by InJe Choi on 2022/01/25.
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class HomeVC: UIViewController {
     
-    var userEmail: String = ""
-    var userPassword: String = ""
+    var token: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        userEmail = appDelegate.email!
-        userPassword = appDelegate.password!
+        getTokenFromKeychain()
     }
-
-
-
+    
+    private func getTokenFromKeychain() {
+        guard let accessToken: String = KeychainWrapper.standard[.myToken] else { return }
+        token = accessToken
+    }
 }

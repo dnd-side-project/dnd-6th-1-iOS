@@ -22,7 +22,7 @@ class PostContentView: UIView {
     }
     
     private func setContentView() {
-        guard let view = loadViewFromNib(with: Identifiers.postContentView) else { return }
+        guard let view = loadXibView(with: Identifiers.postContentView) else { return }
         view.backgroundColor = .clear
         self.addSubview(view)
         

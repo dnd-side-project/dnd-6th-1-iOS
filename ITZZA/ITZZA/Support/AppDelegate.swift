@@ -14,12 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var email: String?
     var password: String?
+    var token: String?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
         guard let userEmail = UserDefaults.standard.string(forKey: "email"),
-              let userPassword: String = KeychainWrapper.standard[.myKey] else {
+              let userPassword: String = KeychainWrapper.standard[.myPassword],
+              let userToken: String = KeychainWrapper.standard[.myToken]
+              else {
                   let signInVC = ViewControllerFactory.viewController(for: .signIn)
                   self.window = UIWindow(frame: UIScreen.main.bounds)
                   self.window?.rootViewController = signInVC
@@ -29,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         email = userEmail
         password = userPassword
+        token = userToken
         
         let tabBarVC = ViewControllerFactory.viewController(for: .tabBar)
         self.window = UIWindow(frame: UIScreen.main.bounds)
