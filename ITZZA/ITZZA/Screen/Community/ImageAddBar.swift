@@ -10,17 +10,22 @@ import RxSwift
 
 class ImageAddBar: UIView {
     @IBOutlet weak var addImageButton: UIButton!
+    @IBOutlet weak var message: UILabel!
     
     let bag = DisposeBag()
     
     override init(frame: CGRect) {
       super.init(frame: frame)
         setContentView()
+        configureFont()
+        setViewShadow()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setContentView()
+        configureFont()
+        setViewShadow()
     }
     
     private func setContentView() {
@@ -36,5 +41,21 @@ class ImageAddBar: UIView {
             view.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    private func configureFont() {
+        message.textColor = .lightGray6
+        message.font = UIFont.SpoqaHanSansNeoRegular(size: 10)
+        
+        addImageButton.tintColor = .primary
+        addImageButton.setTitleColor(.black, for: .normal)
+        addImageButton.titleLabel?.font = UIFont.SpoqaHanSansNeoMedium(size: 13)
+    }
+    
+    func setViewShadow(){
+        layer.shadowOffset = CGSize(width: 0, height: -1)
+        layer.shadowRadius = 0.5
+        layer.shadowColor = UIColor.lightGray6.cgColor
+        layer.shadowOpacity = 1
     }
 }

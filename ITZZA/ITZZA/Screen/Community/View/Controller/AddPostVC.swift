@@ -24,6 +24,7 @@ class AddPostVC: UIViewController {
     var categoryLabel = UILabel()
         .then {
             $0.text = "감정을 선택해주세요"
+            $0.textColor = .darkGray6
         }
     
     let postContentsPlaceholder = "글쓰기"
@@ -56,6 +57,7 @@ extension AddPostVC {
         
         let savePostButton = UIBarButtonItem()
         savePostButton.title = "저장"
+        savePostButton.tintColor = .primary
         savePostButton.rx.tap
             .bind {
                 self.checkInputValid()
@@ -77,11 +79,10 @@ extension AddPostVC {
     func configureChooseCategoryButton() {
         scrollView.subviews.first?.addSubview(categoryLabel)
         
-        chooseCategoryButton.backgroundColor = .systemGray6
+        chooseCategoryButton.backgroundColor = .lightGray1
+        chooseCategoryButton.tintColor = .darkGray6
         chooseCategoryButton.layer.cornerRadius = chooseCategoryButton.frame.height / 2
-        chooseCategoryButton.layer.borderColor = UIColor.systemGray3.cgColor
-        chooseCategoryButton.layer.borderWidth = 1
-
+        
         let space = chooseCategoryButton.frame.height / 2
         var configuration = UIButton.Configuration.plain()
 
@@ -106,8 +107,10 @@ extension AddPostVC {
     
     func configurePostContentComponent() {
         postTitle.placeholder = "제목"
+        postTitle.textColor = .darkGray6
         
         postContents.delegate = self
+        postContents.textColor = .darkGray3
         postContents.setAllMarginToZero()
         postContents.setTextViewPlaceholder(postContentsPlaceholder)
     }
@@ -160,7 +163,6 @@ extension AddPostVC {
             let imageView = UIImageView(image: $0)
             imageView.contentMode = .scaleAspectFit
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
-            imageView.backgroundColor = .black
         }
         imageCV.reloadData()
     }
