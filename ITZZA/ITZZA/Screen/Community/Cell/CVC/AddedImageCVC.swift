@@ -10,4 +10,5 @@ import SnapKit
 
 class AddedImageCVC: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var deleteImageButton: UIButton!
 }

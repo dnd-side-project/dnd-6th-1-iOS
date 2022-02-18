@@ -30,7 +30,8 @@ class AddPostVC: UIViewController {
     let categoryTitlePlaceholder = "감정을 선택해주세요"
     let maxImageSelectionCount = 3
     let minimumLineSpacing: CGFloat = 20
-    var images: [UIImage] = []
+    var selectedImages: [UIImage] = []
+    var selectedAssets: [PHAsset] = []
     
     let bag = DisposeBag()
     
@@ -112,33 +113,45 @@ extension AddPostVC {
     }
     
     func setImageCVHeight() {
-        if images.count == 0 {
+        if selectedImages.count == 0 {
             imageCVHeight.constant = 0
         } else {
-            imageCVHeight.constant = CGFloat(images.count) * (imageCV.frame.width + minimumLineSpacing) - minimumLineSpacing
+            imageCVHeight.constant = CGFloat(selectedImages.count) * (imageCV.frame.width + minimumLineSpacing) - minimumLineSpacing
         }
     }
     
     //MARK: - bind
     func bindAddImageBar() {
-        let imagePicker = ImagePickerController()
-        
-        imagePicker.settings.selection.max = self.maxImageSelectionCount
-        imagePicker.settings.fetch.assets.supportedMediaTypes = [.image, .video]
-        imagePicker.settings.theme.selectionStyle = .numbered
-        
         addImageBar.addImageButton.rx.tap
             .bind {
+                let imagePicker = ImagePickerController(selectedAssets: self.selectedAssets)
+                
+                imagePicker.settings.selection.max = self.maxImageSelectionCount
+                imagePicker.settings.fetch.assets.supportedMediaTypes = [.image]
+                imagePicker.settings.theme.selectionStyle = .numbered
+                
                 self.presentImagePicker(imagePicker, select: { (asset) in
                 }, deselect: { (asset) in
                 }, cancel: { (assets) in
                 }, finish: { (assets) in
                     self.convertAssetToImages(assets)
-                    self.addImageToCollectionView(self.images)
+                    self.addImageToCollectionView(self.selectedImages)
                     self.setImageCVHeight()
+                    self.selectedAssets = assets
                 }, completion: {
                 })
             }
+            .disposed(by: bag)
+    }
+    
+    func bindCategoryBottomSheet() {
+        chooseCategoryButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                let categoryBottomSheet = CategoryBottomSheetVC()
+                categoryBottomSheet.delegate = self
+                self.present(categoryBottomSheet, animated: true)
+            })
             .disposed(by: bag)
     }
     
@@ -153,7 +166,7 @@ extension AddPostVC {
     }
     
     func convertAssetToImages(_ selectedAssets: [PHAsset]) {
-        images = selectedAssets.map {
+        selectedImages = selectedAssets.map {
             let imageManager = PHImageManager.default()
             let option = PHImageRequestOptions()
             option.isSynchronous = true
@@ -171,17 +184,6 @@ extension AddPostVC {
             
             return newImage
         }
-    }
-    
-    func bindCategoryBottomSheet() {
-        chooseCategoryButton.rx.tap
-            .asDriver()
-            .drive(onNext: {
-                let categoryBottomSheet = CategoryBottomSheetVC()
-                categoryBottomSheet.delegate = self
-                self.present(categoryBottomSheet, animated: true)
-            })
-            .disposed(by: bag)
     }
     
     func checkInputValid() {
@@ -219,6 +221,13 @@ extension AddPostVC {
             self.navigationController?.popViewController(animated: true)
         }
     }
+    
+    @objc func deleteCell(sender: UIButton) {
+        imageCV.deleteItems(at: [IndexPath.init(row: sender.tag, section: 0)])
+        selectedImages.remove(at: sender.tag)
+        selectedAssets.remove(at: sender.tag)
+        setImageCVHeight()
+    }
 }
 
 // MARK: - UITextViewDelegate
@@ -233,6 +242,7 @@ extension AddPostVC: UITextViewDelegate {
         }
     }
 }
+
 // MARK: - Protocol
 extension AddPostVC: CategoryTitleDelegate {
     func getCategoryTitle(_ title: String) {
@@ -240,24 +250,29 @@ extension AddPostVC: CategoryTitleDelegate {
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension AddPostVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        images.count
+        selectedImages.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.addedImageCVC, for: indexPath) as! AddedImageCVC
 
         cell.backgroundColor = .black
-        cell.imageView.image = images[indexPath.row]
+        cell.imageView.image = selectedImages[indexPath.row]
+        cell.deleteImageButton.tag = indexPath.row
+        cell.deleteImageButton.addTarget(self, action: #selector(deleteCell(sender:)), for: .touchUpInside)
         
         cell.imageView.snp.makeConstraints {
-            $0.height.width.equalTo(view.frame.width - minimumLineSpacing * 2)
+            $0.height.width.equalTo(view.frame.width - 25 * 2)
         }
+        
         return cell
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension AddPostVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         minimumLineSpacing
