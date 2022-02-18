@@ -18,8 +18,7 @@ class CommentTVC: UITableViewCell {
         super.awakeFromNib()
         
         setCommentContent()
-        setCreateCommentButton()
-        setCreateAtLabel()
+        configureText()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,13 +31,18 @@ class CommentTVC: UITableViewCell {
         commentContent.setTextViewToViewer()
     }
     
-    func setCreateCommentButton() {
+    private func configureText() {
+        userName.textColor = .darkGray6
+        userName.font = UIFont.SpoqaHanSansNeoMedium(size: 13)
+        
+        commentContent.textColor = .darkGray3
+        commentContent.font = UIFont.SpoqaHanSansNeoRegular(size: 12)
+        
+        createAt.textColor = .lightGray6
+        createAt.font = UIFont.SpoqaHanSansNeoRegular(size: 10)
+        
         createCommentButton.setTitle("답글 달기", for: .normal)
         createCommentButton.titleLabel?.font = UIFont.SpoqaHanSansNeoRegular(size: 10)
-        createCommentButton.tintColor = .systemGray
-    }
-    
-    func setCreateAtLabel() {
-        createAt.textColor = .systemGray
+        createCommentButton.tintColor = .lightGray6
     }
 }

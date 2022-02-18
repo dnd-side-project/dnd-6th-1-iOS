@@ -26,20 +26,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용자 닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUy-n0-BB6">
-                        <rect key="frame" x="65" y="15" width="70.5" height="16"/>
+                        <rect key="frame" x="65" y="15" width="71.5" height="16"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용댓글 내용" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ttt-1p-vgq">
-                        <rect key="frame" x="65" y="36" width="230" height="56"/>
+                        <rect key="frame" x="65" y="36" width="230" height="54"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="textColor" systemColor="labelColor"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="13"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글 작성 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fq9-W1-Px2">
-                        <rect key="frame" x="65" y="100" width="47.5" height="12"/>
+                        <rect key="frame" x="65" y="98" width="49" height="12"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -52,7 +52,7 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GmH-sc-fyT">
-                        <rect key="frame" x="122.5" y="100" width="56" height="12"/>
+                        <rect key="frame" x="124" y="98" width="56" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="zb7-U5-6VO"/>
                         </constraints>
@@ -70,14 +70,14 @@
                     <constraint firstItem="lfD-ur-noy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="d2g-qi-g1a"/>
                     <constraint firstItem="NUy-n0-BB6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="fSJ-Yv-cdf"/>
                     <constraint firstItem="lfD-ur-noy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="lLC-QG-GAw"/>
-                    <constraint firstAttribute="bottom" secondItem="GmH-sc-fyT" secondAttribute="bottom" constant="8" id="szC-0X-h6h"/>
+                    <constraint firstAttribute="bottom" secondItem="GmH-sc-fyT" secondAttribute="bottom" constant="10" id="szC-0X-h6h"/>
                     <constraint firstItem="ttt-1p-vgq" firstAttribute="top" secondItem="NUy-n0-BB6" secondAttribute="bottom" constant="5" id="ud8-hN-wFy"/>
                     <constraint firstItem="ttt-1p-vgq" firstAttribute="leading" secondItem="lfD-ur-noy" secondAttribute="trailing" constant="10" id="zog-yk-RM4"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <constraints>
-                <constraint firstItem="njF-e1-oar" firstAttribute="bottom" secondItem="fq9-W1-Px2" secondAttribute="bottom" constant="8" id="uyA-HS-rmA"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="bottom" secondItem="fq9-W1-Px2" secondAttribute="bottom" constant="10" id="uyA-HS-rmA"/>
             </constraints>
             <connections>
                 <outlet property="commentContent" destination="ttt-1p-vgq" id="r7b-4z-EnO"/>

@@ -31,7 +31,7 @@
                         <constraint firstAttribute="height" constant="24" id="VwB-W8-h0i"/>
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" image="paperplane" catalog="system"/>
+                    <state key="normal" image="Send"/>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -52,7 +52,7 @@
         </view>
     </objects>
     <resources>
-        <image name="paperplane" catalog="system" width="128" height="118"/>
+        <image name="Send" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

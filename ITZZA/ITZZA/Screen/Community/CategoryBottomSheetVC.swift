@@ -66,7 +66,7 @@ extension CategoryBottomSheetVC {
                 .then {
                     $0.setTitle("\(title)", for: .normal)
                     $0.titleLabel?.font = UIFont.SpoqaHanSansNeoRegular(size: 17)
-                    $0.tintColor = .black
+                    $0.tintColor = .darkGray6
                     $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
                 }
             
@@ -78,9 +78,6 @@ extension CategoryBottomSheetVC {
             button.rx.tap
                 .asDriver()
                 .drive(onNext: {
-                    //TODO: - VM에 값 전달, AddPost의 button title 수정
-//                    guard let addPostVC = ViewControllerFactory.viewController(for: .addPost) as? AddPostVC else { return }
-//                    addPostVC.categoryLabel.text = button.titleLabel?.text ?? "감정을 선택해주세요"
                     self.delegate?.getCategoryTitle(button.currentTitle ?? "감정을 선택해주세요")
                     self.dismiss(animated: true, completion: nil)
                 })

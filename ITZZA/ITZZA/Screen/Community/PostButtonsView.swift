@@ -55,7 +55,7 @@ extension PostButtonsView {
                  !lastState
              }
              .subscribe(onNext: {
-                 self.likeButton.setImageToggle($0, UIImage(systemName: "heart")!, UIImage(systemName: "heart.fill")!)
+                 self.likeButton.setImageToggle($0, UIImage(named: "Heart")!, UIImage(named: "Heart_selected")!)
                  self.likeCnt.text = self.setButtonCnt($0, self.likeCnt.text!)
              })
              .disposed(by: bag)
@@ -67,7 +67,7 @@ extension PostButtonsView {
                  !lastState
              }
              .subscribe(onNext: {
-                 self.bookmarkButton.setImageToggle($0, UIImage(systemName: "bookmark")!, UIImage(systemName: "bookmark.fill")!)
+                 self.bookmarkButton.setImageToggle($0, UIImage(named: "Bookmark")!, UIImage(named: "Bookmark_selected")!)
              })
              .disposed(by: bag)
     }

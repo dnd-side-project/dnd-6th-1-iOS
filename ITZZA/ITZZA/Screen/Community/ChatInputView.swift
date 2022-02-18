@@ -42,7 +42,8 @@ class ChatInputView: UIView {
     
     func setTextField() {
         textInputField.layer.cornerRadius = 4
-        textInputField.backgroundColor = .systemGray6
+        textInputField.backgroundColor = .background
+        textInputField.textColor = .lightGray6
         textInputField.addLeftPadding()
         textInputField.placeholder = "댓글을 입력해주세요"
     }

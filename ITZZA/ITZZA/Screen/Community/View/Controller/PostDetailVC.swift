@@ -30,7 +30,7 @@ class PostDetailVC: UIViewController {
 extension PostDetailVC {
     func setCommentListTV() {
         commentListTV.delegate = self
-        commentListTV.backgroundColor = .systemGray6
+        commentListTV.backgroundColor = .lightGray1
         commentListTV.separatorStyle = .none
         
         register()

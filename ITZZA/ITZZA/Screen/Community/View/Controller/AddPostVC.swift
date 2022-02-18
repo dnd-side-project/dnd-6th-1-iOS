@@ -24,6 +24,7 @@ class AddPostVC: UIViewController {
     var categoryLabel = UILabel()
         .then {
             $0.text = "감정을 선택해주세요"
+            $0.font = UIFont.SpoqaHanSansNeoMedium(size: 15)
             $0.textColor = .darkGray6
         }
     
@@ -190,10 +191,10 @@ extension AddPostVC {
     
     func checkInputValid() {
         if postTitle.text!.isEmpty
-            || postContents.textColor == .systemGray3
+            || postContents.textColor == .lightGray6
             || categoryLabel.text! == categoryTitlePlaceholder {
             let alert = UIAlertController(title: "필수 입력란을 채워주세요!", message: "", preferredStyle: UIAlertController.Style.alert)
-            alert.view.tintColor = .black
+            alert.view.tintColor = .darkGray6
             alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
             let defaultAction = UIAlertAction(title: "확인", style: .default, handler : nil)
             alert.addAction(defaultAction)
@@ -206,10 +207,10 @@ extension AddPostVC {
     
     func checkWrittenState(){
         if !postTitle.text!.isEmpty
-            || postContents.textColor != .systemGray3
+            || postContents.textColor != .lightGray6
             || categoryLabel.text! != categoryTitlePlaceholder {
             let alert = UIAlertController(title: "게시글이 저장되지 않았습니다.\n나가시겠어요?", message: "", preferredStyle: UIAlertController.Style.alert)
-            alert.view.tintColor = .black
+            alert.view.tintColor = .darkGray6
             alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
             let ok = UIAlertAction(title: "네", style: .destructive) { _ in
                 self.navigationController?.popViewController(animated: true)

@@ -12,6 +12,10 @@ extension UIColor {
         return UIColor(red: 255.0 / 255.0, green: 122.0 / 255.0, blue: 0.0 / 255.0, alpha: 1.0)
     }
     
+    @nonobjc class var background: UIColor {
+        return UIColor(red: 251.0 / 255.0, green: 248.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
+    }
+    
     @nonobjc class var textFieldBackgroundColor: UIColor {
         return UIColor(red: 245.0 / 255.0, green: 245.0 / 255.0, blue: 248.0 / 255.0, alpha: 1.0)
     }
