@@ -20,7 +20,7 @@ class PostTVC: UITableViewCell {
     
     let cellSpace = UIEdgeInsets(top: 0.0,
                                  left: 0.0,
-                                 bottom: 5.0,
+                                 bottom: 10.0,
                                  right: 0.0)
     
     override func awakeFromNib() {

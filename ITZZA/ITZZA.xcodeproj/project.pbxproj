@@ -629,24 +629,40 @@
 		2335241427A98F44009C654F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				2335241527A98FA0009C654F /* ProfileHeaderView.swift */,
-				2335241627A98FA0009C654F /* ProfileHeaderView.xib */,
-				2335241D27A99392009C654F /* PostButtonsView.swift */,
-				2335241E27A99392009C654F /* PostButtonsView.xib */,
-				238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */,
-				238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */,
-				233B636C27AFAE2400914F60 /* PostContentView.swift */,
-				233B636E27AFAE3100914F60 /* PostContentView.xib */,
-				232302FA27AFC13200E20078 /* CommentTVC.swift */,
-				232302FB27AFC13200E20078 /* CommentTVC.xib */,
-				2323030227B02D9200E20078 /* ChatInputView.swift */,
-				2323030327B02D9200E20078 /* ChatInputView.xib */,
-				2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */,
-				2368021227B2966800A4392B /* PostContentTableViewHeader.xib */,
-				23B66EBB27B813A500FC477D /* CategoryBottomSheetVC.swift */,
+				236C65D927C0C905001ABEC3 /* Xib */,
+				236C65DA27C0C90B001ABEC3 /* XibController */,
 			);
 			name = Shared;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		236C65D927C0C905001ABEC3 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				2335241627A98FA0009C654F /* ProfileHeaderView.xib */,
+				2335241E27A99392009C654F /* PostButtonsView.xib */,
+				238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */,
+				233B636E27AFAE3100914F60 /* PostContentView.xib */,
+				232302FB27AFC13200E20078 /* CommentTVC.xib */,
+				2323030327B02D9200E20078 /* ChatInputView.xib */,
+				2368021227B2966800A4392B /* PostContentTableViewHeader.xib */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
+		236C65DA27C0C90B001ABEC3 /* XibController */ = {
+			isa = PBXGroup;
+			children = (
+				2335241527A98FA0009C654F /* ProfileHeaderView.swift */,
+				2335241D27A99392009C654F /* PostButtonsView.swift */,
+				238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */,
+				233B636C27AFAE2400914F60 /* PostContentView.swift */,
+				232302FA27AFC13200E20078 /* CommentTVC.swift */,
+				2323030227B02D9200E20078 /* ChatInputView.swift */,
+				2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */,
+				23B66EBB27B813A500FC477D /* CategoryBottomSheetVC.swift */,
+			);
+			path = XibController;
 			sourceTree = "<group>";
 		};
 		2371332327BB997E0045AA75 /* Enum */ = {
