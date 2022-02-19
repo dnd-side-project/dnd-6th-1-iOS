@@ -43,6 +43,7 @@ struct Identifiers {
     static let postContentView = "PostContentView"
     static let chatInputView = "ChatInputView"
     static let postContentTableViewHeader = "PostContentTableViewHeader"
+    static let imageScrollView = "ImageScrollView"
     
     //MARK: - TVC
     static let postTVC = "PostTVC"

@@ -13,8 +13,7 @@ class PostContentTableViewHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var footerView: PostButtonsView!
     @IBOutlet weak var postContentView: PostContentView!
     @IBOutlet weak var postButtonViewTopSpace: NSLayoutConstraint!
-    @IBOutlet weak var scrollView: UIScrollView!
-    var image:[UIImage] = []
+    @IBOutlet weak var imageScrollView: ImageScrollView!
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -38,43 +37,14 @@ class PostContentTableViewHeader: UITableViewHeaderFooterView {
             $0.edges.equalToSuperview()
         }
         
-        view.addSubview(scrollView)
-    }
-    
-    func configurePost() {
-        scrollView.isScrollEnabled = false
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let imageViews = image.map { image -> UIImageView in
-            let imageView = UIImageView(image: image)
-            imageView.contentMode = .scaleAspectFit
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
-            imageView.backgroundColor = .black
-            return imageView
-        }
-        
-        let stackView = UIStackView(arrangedSubviews: imageViews)
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 20
-        scrollView.addSubview(stackView)
-
-        stackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-            $0.width.equalToSuperview()
-        }
-        
-        scrollView.snp.makeConstraints {
-            $0.height.equalTo(stackView.snp.height)
-        }
-        
-        setPostButtonViewTopSpace()
+        view.addSubview(imageScrollView)
     }
     
     func setPostButtonViewTopSpace() {
-        if image.count == 0 {
+        if imageScrollView.image.count == 0 {
             postButtonViewTopSpace.constant = 0
+        } else {
+            postButtonViewTopSpace.constant = 40
         }
     }
 }
