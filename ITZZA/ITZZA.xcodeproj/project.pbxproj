@@ -107,8 +107,6 @@
 		62BE209927A679A2001F150A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209827A679A2001F150A /* Service.swift */; };
 		62BE209E27A67F15001F150A /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209D27A67F15001F150A /* SignInModel.swift */; };
 		62BE20A027A8F1A0001F150A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209F27A8F1A0001F150A /* UIViewController+.swift */; };
-		62C4008727A51ADB002B3F33 /* tmp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C4008627A51ADB002B3F33 /* tmp.swift */; };
-		62C4008B27A51B1E002B3F33 /* tmp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C4008A27A51B1E002B3F33 /* tmp.storyboard */; };
 		62E2BDF827ACFBD80052DDCE /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E2BDF727ACFBD80052DDCE /* SignUp.storyboard */; };
 		62E2BDFA27AD25CA0052DDCE /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E2BDF927AD25CA0052DDCE /* SignUpVM.swift */; };
 		62E2BDFC27AD41620052DDCE /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E2BDFB27AD41620052DDCE /* UIImage+.swift */; };
@@ -219,8 +217,6 @@
 		62BE209827A679A2001F150A /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		62BE209D27A67F15001F150A /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		62BE209F27A8F1A0001F150A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
-		62C4008627A51ADB002B3F33 /* tmp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tmp.swift; sourceTree = "<group>"; };
-		62C4008A27A51B1E002B3F33 /* tmp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = tmp.storyboard; sourceTree = "<group>"; };
 		62E2BDF727ACFBD80052DDCE /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		62E2BDF927AD25CA0052DDCE /* SignUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
 		62E2BDFB27AD41620052DDCE /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
@@ -641,8 +637,6 @@
 			children = (
 				2335241627A98FA0009C654F /* ProfileHeaderView.xib */,
 				2335241E27A99392009C654F /* PostButtonsView.xib */,
-				238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */,
-				233B636E27AFAE3100914F60 /* PostContentView.xib */,
 				232302FB27AFC13200E20078 /* CommentTVC.xib */,
 				2323030327B02D9200E20078 /* ChatInputView.xib */,
 				2368021227B2966800A4392B /* PostContentTableViewHeader.xib */,
@@ -655,8 +649,6 @@
 			children = (
 				2335241527A98FA0009C654F /* ProfileHeaderView.swift */,
 				2335241D27A99392009C654F /* PostButtonsView.swift */,
-				238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */,
-				233B636C27AFAE2400914F60 /* PostContentView.swift */,
 				232302FA27AFC13200E20078 /* CommentTVC.swift */,
 				2323030227B02D9200E20078 /* ChatInputView.swift */,
 				2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */,
@@ -772,26 +764,28 @@
 			isa = PBXGroup;
 			children = (
 				623DE30A27B616D6005E78D0 /* Validation */,
-				62C4008927A51AFC002B3F33 /* Storyboard */,
-				62C4008827A51AF2002B3F33 /* Controllers */,
+				62C4008927A51AFC002B3F33 /* Xib */,
+				62C4008827A51AF2002B3F33 /* XibControllers */,
 			);
 			path = Share;
 			sourceTree = "<group>";
 		};
-		62C4008827A51AF2002B3F33 /* Controllers */ = {
+		62C4008827A51AF2002B3F33 /* XibControllers */ = {
 			isa = PBXGroup;
 			children = (
-				62C4008627A51ADB002B3F33 /* tmp.swift */,
+				238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */,
+				233B636C27AFAE2400914F60 /* PostContentView.swift */,
 			);
-			path = Controllers;
+			path = XibControllers;
 			sourceTree = "<group>";
 		};
-		62C4008927A51AFC002B3F33 /* Storyboard */ = {
+		62C4008927A51AFC002B3F33 /* Xib */ = {
 			isa = PBXGroup;
 			children = (
-				62C4008A27A51B1E002B3F33 /* tmp.storyboard */,
+				238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */,
+				233B636E27AFAE3100914F60 /* PostContentView.xib */,
 			);
-			path = Storyboard;
+			path = Xib;
 			sourceTree = "<group>";
 		};
 		9B55279D0715D74085818E27 /* Pods */ = {
@@ -900,7 +894,6 @@
 				2335242027A99392009C654F /* PostButtonsView.xib in Resources */,
 				623DE2F527B25225005E78D0 /* EmailView.xib in Resources */,
 				238EC09627AA4C3B001CBB24 /* AddPost.storyboard in Resources */,
-				62C4008B27A51B1E002B3F33 /* tmp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -979,7 +972,6 @@
 				233B636B27AF9D9D00914F60 /* PostDetailVC.swift in Sources */,
 				232302FC27AFC13200E20078 /* CommentTVC.swift in Sources */,
 				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,
-				62C4008727A51ADB002B3F33 /* tmp.swift in Sources */,
 				623DE31127B65B27005E78D0 /* NicknameVM.swift in Sources */,
 				23A56BDA27B3F8BA00959269 /* UILabel+.swift in Sources */,
 				2368021127B2965B00A4392B /* PostContentTableViewHeader.swift in Sources */,

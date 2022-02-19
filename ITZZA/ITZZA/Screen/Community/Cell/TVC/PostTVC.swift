@@ -69,8 +69,8 @@ extension PostTVC {
         headerView.userName.text = post.nickname
         headerView.createAt.text = post.createdAt
         
-        postContentView.postTitle.text = post.postTitle
-        postContentView.postContent.text = post.postContent
+        postContentView.title.text = post.postTitle
+        postContentView.contents.text = post.postContent
         
         if post.imageCnt == 0 {
             imageCntView.isHidden = true

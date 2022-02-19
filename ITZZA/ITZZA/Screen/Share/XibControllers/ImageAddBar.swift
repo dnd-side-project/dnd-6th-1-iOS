@@ -6,13 +6,11 @@
 //
 
 import UIKit
-import RxSwift
+import SnapKit
 
 class ImageAddBar: UIView {
     @IBOutlet weak var addImageButton: UIButton!
     @IBOutlet weak var message: UILabel!
-    
-    let bag = DisposeBag()
     
     override init(frame: CGRect) {
       super.init(frame: frame)
@@ -33,14 +31,9 @@ class ImageAddBar: UIView {
         view.backgroundColor = .clear
         self.addSubview(view)
         
-        view.translatesAutoresizingMaskIntoConstraints = false
-        let constraints = [
-            view.topAnchor.constraint(equalTo: self.topAnchor),
-            view.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            view.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ]
-        NSLayoutConstraint.activate(constraints)
+        view.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
     private func configureFont() {
