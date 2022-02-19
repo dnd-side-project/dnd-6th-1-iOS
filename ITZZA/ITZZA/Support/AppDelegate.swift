@@ -37,6 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = tabBarVC
         self.window?.makeKeyAndVisible()
+        
+        let tabBarAppearance = UITabBarItem.appearance()
+        tabBarAppearance.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.SpoqaHanSansNeoRegular(size: 11)], for: .normal)
+        
         return true
     }
 

@@ -55,7 +55,7 @@ class ImageAddBar: UIView {
     func setViewShadow(){
         layer.shadowOffset = CGSize(width: 0, height: -1)
         layer.shadowRadius = 0.5
-        layer.shadowColor = UIColor.lightGray6.cgColor
+        layer.shadowColor = UIColor.lightGray3.cgColor
         layer.shadowOpacity = 1
     }
 }
