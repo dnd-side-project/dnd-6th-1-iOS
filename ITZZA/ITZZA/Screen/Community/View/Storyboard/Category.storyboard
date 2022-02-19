@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="f6T-ia-dT7">
-                                <rect key="frame" x="0.0" y="87" width="375" height="691"/>
+                                <rect key="frame" x="0.0" y="97" width="375" height="681"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostTVC" rowHeight="250" id="xwV-L7-gDs" customClass="PostTVC" customModule="ITZZA" customModuleProvider="target">
@@ -104,7 +104,7 @@
                             <constraint firstItem="f6T-ia-dT7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="4mX-cm-aAh"/>
                             <constraint firstItem="f6T-ia-dT7" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="7r9-FX-LoM"/>
                             <constraint firstItem="f6T-ia-dT7" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="afu-Jg-fQG"/>
-                            <constraint firstItem="f6T-ia-dT7" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="43" id="fxV-KH-4SS"/>
+                            <constraint firstItem="f6T-ia-dT7" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="53" id="fxV-KH-4SS"/>
                         </constraints>
                     </view>
                     <connections>

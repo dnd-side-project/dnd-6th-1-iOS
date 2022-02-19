@@ -16,7 +16,9 @@ extension UINavigationController {
         naviTitle.font = UIFont.SpoqaHanSansNeoBold(size: 22)
         navigationItem?.title = ""
         
-        navigationItem!.leftBarButtonItem = UIBarButtonItem.init(customView: naviTitle)
+        let paddingView = UIView()
+        
+        navigationItem!.leftBarButtonItems = [UIBarButtonItem.init(customView: paddingView), UIBarButtonItem.init(customView: naviTitle)]
     }
     
     func setSubNaviBarTitle(navigationItem: UINavigationItem?, title: String) {
@@ -24,9 +26,6 @@ extension UINavigationController {
     }
     
     func setBackButtonOnlyTitle(navigationController: UINavigationController?, title: String) {
-//        let image = UIImage()
-//        navigationController?.navigationBar.backIndicatorImage = image
-//        navigationController?.navigationBar.backIndicatorTransitionMaskImage = image
         navigationController?.navigationBar.topItem?.title = title
     }
     
