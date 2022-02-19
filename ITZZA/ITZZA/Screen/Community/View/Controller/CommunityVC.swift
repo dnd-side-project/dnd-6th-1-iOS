@@ -112,19 +112,19 @@ extension CommunityVC {
                                                bottom: 0.0,
                                                right: 16.0)
         bar.buttons.customize { (button) in
-            button.tintColor = .darkGray
+            button.tintColor = .lightGray6
             button.selectedTintColor = .white
             
             button.layer.cornerRadius = 4
             button.contentInset = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
             
-            button.font = UIFont.SFProDisplayMedium(size: 16)
-            button.selectedFont = UIFont.SFProDisplayBold(size: 16)
+            button.font = UIFont.SpoqaHanSansNeoMedium(size: 16)
+            button.selectedFont = UIFont.SpoqaHanSansNeoBold(size: 16)
         }
     
         bar.indicator.cornerStyle = .eliptical
         bar.indicator.weight = .medium
-        bar.indicator.tintColor = .black
+        bar.indicator.tintColor = .primary
         bar.indicator.overscrollBehavior = .compress
         
         bar.layout.alignment = .centerDistributed
@@ -163,9 +163,9 @@ class TabPagerButton: Tabman.TMLabelBarButton {
     override func update(for selectionState: TMBarButton.SelectionState) {
         switch selectionState {
             case .selected:
-                backgroundColor = .black
+                backgroundColor = .primary
             default:
-                backgroundColor = .systemGray6
+                backgroundColor = .background
         }
 
         super.update(for: selectionState)

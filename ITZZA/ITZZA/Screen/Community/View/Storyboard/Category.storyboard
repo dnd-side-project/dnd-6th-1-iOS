@@ -8,8 +8,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="SFPRODISPLAYREGULAR.OTF">
-            <string>SFProDisplay-Regular</string>
+        <array key="SpoqaHanSansNeo-Medium.otf">
+            <string>SpoqaHanSansNeo-Medium</string>
         </array>
     </customFonts>
     <scenes>
@@ -47,19 +47,19 @@
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wZr-wd-seU">
-                                                    <rect key="frame" x="299" y="176" width="51" height="16"/>
+                                                    <rect key="frame" x="295" y="176" width="55" height="16"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.artframe" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qKu-Os-BnM">
-                                                            <rect key="frame" x="0.0" y="1.6666666666666643" width="16" height="13.000000000000004"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="qKu-Os-BnM">
+                                                            <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="RI0-HG-WHg"/>
                                                                 <constraint firstAttribute="width" constant="16" id="USG-qB-83m"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDY-Vm-K3G">
-                                                            <rect key="frame" x="21" y="0.0" width="30" height="16"/>
-                                                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="13"/>
-                                                            <nil key="textColor"/>
+                                                            <rect key="frame" x="21" y="0.0" width="34" height="16"/>
+                                                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="13"/>
+                                                            <color key="textColor" red="0.74509803921568629" green="0.72549019607843135" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -117,7 +117,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="photo.artframe" catalog="system" width="128" height="93"/>
+        <image name="Photo" width="54" height="54"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

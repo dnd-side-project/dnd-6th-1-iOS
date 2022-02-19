@@ -14,11 +14,13 @@ class PostContentView: UIView {
     override init(frame: CGRect) {
       super.init(frame: frame)
         setContentView()
+        configureText()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setContentView()
+        configureText()
     }
     
     private func setContentView() {
@@ -36,5 +38,13 @@ class PostContentView: UIView {
         NSLayoutConstraint.activate(constraints)
         
         postContent.setLineBreakMode()
+    }
+    
+    private func configureText() {
+        postTitle.textColor = .darkGray6
+        postTitle.font = UIFont.SpoqaHanSansNeoMedium(size: 15)
+        
+        postContent.textColor = .darkGray3
+        postContent.font = UIFont.SpoqaHanSansNeoRegular(size: 15)
     }
 }

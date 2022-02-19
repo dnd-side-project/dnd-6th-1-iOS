@@ -63,7 +63,7 @@ extension AgreementView {
         checkBoxView.layer.borderWidth = 1
         contextTextView.layer.cornerRadius = 5
         contextTextView.textContainerInset = UIEdgeInsets(top: 12, left: 16, bottom: 16, right: 12)
-        contextTextView.font = UIFont.SFProDisplayRegular(size: 13)
+        contextTextView.font = UIFont.SpoqaHanSansNeoRegular(size: 13)
         contextTextView.text = readTextFile()
         checkLabel.textColor = .orange
         setAsOutlineStatus()

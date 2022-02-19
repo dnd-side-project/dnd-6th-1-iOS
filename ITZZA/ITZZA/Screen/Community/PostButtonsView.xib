@@ -8,8 +8,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="SFPRODISPLAYREGULAR.OTF">
-            <string>SFProDisplay-Regular</string>
+        <array key="SpoqaHanSansNeo-Medium.otf">
+            <string>SpoqaHanSansNeo-Medium</string>
         </array>
     </customFonts>
     <objects>
@@ -35,7 +35,7 @@
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cQk-4m-dlx">
-                    <rect key="frame" x="24.999999999999996" y="13" width="45.666666666666657" height="24"/>
+                    <rect key="frame" x="24.999999999999996" y="13" width="47.666666666666657" height="24"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwe-9X-0U4">
                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -44,18 +44,18 @@
                                 <constraint firstAttribute="height" constant="24" id="jb6-Fg-j7v"/>
                             </constraints>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                            <buttonConfiguration key="configuration" style="plain" image="Heart_selected"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Y9-f3-SuG">
-                            <rect key="frame" x="32" y="0.0" width="13.666666666666664" height="24"/>
-                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="13"/>
-                            <nil key="textColor"/>
+                            <rect key="frame" x="32" y="0.0" width="15.666666666666664" height="24"/>
+                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="13"/>
+                            <color key="textColor" red="0.74509803919999995" green="0.72549019609999998" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Adu-KW-fZc">
-                    <rect key="frame" x="90.666666666666671" y="13" width="45.333333333333329" height="24"/>
+                    <rect key="frame" x="92.666666666666671" y="13" width="47.666666666666671" height="24"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sH0-pr-0RZ">
                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -64,12 +64,12 @@
                                 <constraint firstAttribute="width" constant="24" id="YsD-lk-H2p"/>
                             </constraints>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="text.bubble" catalog="system"/>
+                            <buttonConfiguration key="configuration" style="plain" image="Comment"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBj-xc-9l9">
-                            <rect key="frame" x="31.999999999999996" y="0.0" width="13.333333333333332" height="24"/>
-                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="13"/>
-                            <nil key="textColor"/>
+                            <rect key="frame" x="32" y="0.0" width="15.666666666666664" height="24"/>
+                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="13"/>
+                            <color key="textColor" red="0.74509803919999995" green="0.72549019609999998" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -81,7 +81,7 @@
                         <constraint firstAttribute="height" constant="24" id="yJx-oV-YYx"/>
                     </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="bookmark" catalog="system"/>
+                    <buttonConfiguration key="configuration" style="plain" image="Bookmark_selected"/>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -104,9 +104,9 @@
         </view>
     </objects>
     <resources>
-        <image name="bookmark" catalog="system" width="112" height="128"/>
-        <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="text.bubble" catalog="system" width="128" height="110"/>
+        <image name="Bookmark_selected" width="24" height="24"/>
+        <image name="Comment" width="24" height="24"/>
+        <image name="Heart_selected" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

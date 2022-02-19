@@ -6,9 +6,11 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SFPRODISPLAYBOLD.OTF</string>
-		<string>SFPRODISPLAYMEDIUM.OTF</string>
-		<string>SFPRODISPLAYREGULAR.OTF</string>
+		<string>SpoqaHanSansNeo-Bold.otf</string>
+		<string>SpoqaHanSansNeo-Light.otf</string>
+		<string>SpoqaHanSansNeo-Medium.otf</string>
+		<string>SpoqaHanSansNeo-Regular.otf</string>
+		<string>SpoqaHanSansNeo-Thin.otf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

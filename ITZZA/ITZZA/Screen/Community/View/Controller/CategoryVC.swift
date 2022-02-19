@@ -29,7 +29,7 @@ class CategoryVC: UIViewController {
 extension CategoryVC {
     func setPostTV() {
         postListTV.delegate = self
-        postListTV.backgroundColor = .systemGray6
+        postListTV.backgroundColor = .lightGray1
         postListTV.separatorStyle = .none
         
         bindPostListTVItemSelected()

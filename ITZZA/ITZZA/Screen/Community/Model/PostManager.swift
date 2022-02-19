@@ -14,7 +14,7 @@ struct PostManager {
         guard let url = URL(string: baseURL + apiQuery) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue("Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoidGVzdDFAbmF2ZXIuY29uIiwiaWF0IjoxNjQ0ODI5NjE5LCJleHAiOjE2NDY1NTc2MTl9.HCcaScltLW3aT6N-slhejlE7jmucYDbjcLjIgc6mm-I", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoidGVzdDFAbmF2ZXIuY29tIiwiaWF0IjoxNjQ1MTg0MzQ4LCJleHAiOjE2NDY5MTIzNDh9.QAaWbZ4-Ot8UuMNIk_jNFN39d-jyh2pypqzGMd3TKlE", forHTTPHeaderField: "Authorization")
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {

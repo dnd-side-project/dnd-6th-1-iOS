@@ -11,4 +11,14 @@ import SnapKit
 class AddedImageCVC: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var deleteImageButton: UIButton!
+    
+    override func awakeFromNib() {
+        configureButton()
+    }
+}
+
+extension AddedImageCVC {
+    func configureButton() {
+        deleteImageButton.tintColor = .primary
+    }
 }
