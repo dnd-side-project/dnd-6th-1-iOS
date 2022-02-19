@@ -1,23 +1,19 @@
 //
-//  PostContentTableViewHeader.swift
+//  ImageScrollView.swift
 //  ITZZA
 //
-//  Created by 황윤경 on 2022/02/08.
+//  Created by 황윤경 on 2022/02/19.
 //
 
 import UIKit
 import SnapKit
 
-class PostContentTableViewHeader: UITableViewHeaderFooterView {
-    @IBOutlet weak var headerView: ProfileHeaderView!
-    @IBOutlet weak var footerView: PostButtonsView!
-    @IBOutlet weak var postContentView: PostContentView!
-    @IBOutlet weak var postButtonViewTopSpace: NSLayoutConstraint!
+class ImageScrollView: UIView {
     @IBOutlet weak var scrollView: UIScrollView!
     var image:[UIImage] = []
     
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+      super.init(frame: frame)
         setContentView()
     }
     
@@ -26,19 +22,14 @@ class PostContentTableViewHeader: UITableViewHeaderFooterView {
         setContentView()
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
-    
     private func setContentView() {
-        guard let view = loadXibView(with: Identifiers.postContentTableViewHeader) else { return }
+        guard let view = loadXibView(with: Identifiers.imageAddBar) else { return }
+        view.backgroundColor = .clear
         self.addSubview(view)
-
+        
         view.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        
-        view.addSubview(scrollView)
     }
     
     func configurePost() {
@@ -67,14 +58,6 @@ class PostContentTableViewHeader: UITableViewHeaderFooterView {
         
         scrollView.snp.makeConstraints {
             $0.height.equalTo(stackView.snp.height)
-        }
-        
-        setPostButtonViewTopSpace()
-    }
-    
-    func setPostButtonViewTopSpace() {
-        if image.count == 0 {
-            postButtonViewTopSpace.constant = 0
         }
     }
 }

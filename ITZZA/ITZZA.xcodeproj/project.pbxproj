@@ -58,6 +58,8 @@
 		2368021127B2965B00A4392B /* PostContentTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */; };
 		2368021327B2966800A4392B /* PostContentTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2368021227B2966800A4392B /* PostContentTableViewHeader.xib */; };
 		236C98DE27B239C200CE1EFD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236C98DD27B239C200CE1EFD /* UIView+.swift */; };
+		236C9EA627C10D4600B0BADA /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236C9EA427C10D4600B0BADA /* ImageScrollView.swift */; };
+		236C9EA727C10D4600B0BADA /* ImageScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236C9EA527C10D4600B0BADA /* ImageScrollView.xib */; };
 		2376DA7627BA850700E4A0E8 /* CommunityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2376DA7527BA850700E4A0E8 /* CommunityType.swift */; };
 		238CEEA027A7DEA0006BE766 /* CommunityNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */; };
 		238CEEA227A7DFCF006BE766 /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEEA127A7DFCF006BE766 /* NavigationController+.swift */; };
@@ -167,6 +169,8 @@
 		2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentTableViewHeader.swift; sourceTree = "<group>"; };
 		2368021227B2966800A4392B /* PostContentTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostContentTableViewHeader.xib; sourceTree = "<group>"; };
 		236C98DD27B239C200CE1EFD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		236C9EA427C10D4600B0BADA /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
+		236C9EA527C10D4600B0BADA /* ImageScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageScrollView.xib; sourceTree = "<group>"; };
 		2376DA7527BA850700E4A0E8 /* CommunityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityType.swift; sourceTree = "<group>"; };
 		238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNC.swift; sourceTree = "<group>"; };
 		238CEEA127A7DFCF006BE766 /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
@@ -775,6 +779,7 @@
 			children = (
 				238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */,
 				233B636C27AFAE2400914F60 /* PostContentView.swift */,
+				236C9EA427C10D4600B0BADA /* ImageScrollView.swift */,
 			);
 			path = XibControllers;
 			sourceTree = "<group>";
@@ -784,6 +789,7 @@
 			children = (
 				238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */,
 				233B636E27AFAE3100914F60 /* PostContentView.xib */,
+				236C9EA527C10D4600B0BADA /* ImageScrollView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -874,6 +880,7 @@
 				62E2BDF827ACFBD80052DDCE /* SignUp.storyboard in Resources */,
 				232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */,
 				6208CFDB27A254B900F17603 /* SignIn.storyboard in Resources */,
+				236C9EA727C10D4600B0BADA /* ImageScrollView.xib in Resources */,
 				2356305827BFA1D10032E520 /* SpoqaHanSansNeo-Medium.otf in Resources */,
 				233B636927AF9D8C00914F60 /* PostDetail.storyboard in Resources */,
 				232CC06027A0334100040131 /* Mypage.storyboard in Resources */,
@@ -987,6 +994,7 @@
 				232CC06827A0336600040131 /* l.swift in Sources */,
 				23B66EBC27B813A500FC477D /* CategoryBottomSheetVC.swift in Sources */,
 				62BE209027A66F34001F150A /* APISession.swift in Sources */,
+				236C9EA627C10D4600B0BADA /* ImageScrollView.swift in Sources */,
 				2335241327A98D57009C654F /* PostDataSource.swift in Sources */,
 				232CC08927A0390B00040131 /* UIFont+.swift in Sources */,
 				238CEEA227A7DFCF006BE766 /* NavigationController+.swift in Sources */,
