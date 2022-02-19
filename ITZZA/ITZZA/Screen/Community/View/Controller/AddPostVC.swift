@@ -121,6 +121,8 @@ extension AddPostVC {
             imageCVHeight.constant = 0
         } else {
             imageCVHeight.constant = CGFloat(selectedImages.count) * (imageCV.frame.width + minimumLineSpacing) - minimumLineSpacing
+            
+            print(imageCV.frame.width)
         }
     }
     
@@ -129,6 +131,10 @@ extension AddPostVC {
         addImageBar.addImageButton.rx.tap
             .bind {
                 let imagePicker = ImagePickerController(selectedAssets: self.selectedAssets)
+                
+                imagePicker.cancelButton.tintColor = .primary
+                imagePicker.doneButton.tintColor = .primary
+                imagePicker.settings.theme.selectionFillColor = .primary
                 
                 imagePicker.settings.selection.max = self.maxImageSelectionCount
                 imagePicker.settings.fetch.assets.supportedMediaTypes = [.image]
@@ -268,7 +274,7 @@ extension AddPostVC: UICollectionViewDataSource {
         cell.deleteImageButton.addTarget(self, action: #selector(deleteCell(sender:)), for: .touchUpInside)
         
         cell.imageView.snp.makeConstraints {
-            $0.height.width.equalTo(view.frame.width - 25 * 2)
+            $0.height.width.equalTo(view.frame.width - 30 * 2)
         }
         
         return cell

@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="f6T-ia-dT7">
-                                <rect key="frame" x="0.0" y="87" width="375" height="691"/>
+                                <rect key="frame" x="0.0" y="97" width="375" height="681"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostTVC" rowHeight="250" id="xwV-L7-gDs" customClass="PostTVC" customModule="ITZZA" customModuleProvider="target">
@@ -33,7 +33,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXZ-Da-ELH" customClass="ProfileHeaderView" customModule="ITZZA" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="3" width="375" height="51"/>
+                                                    <rect key="frame" x="0.0" y="25" width="375" height="51"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="51" id="F1u-0U-del"/>
@@ -65,7 +65,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqd-co-ev6" customClass="PostContentView" customModule="ITZZA" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="54" width="375" height="102"/>
+                                                    <rect key="frame" x="0.0" y="76" width="375" height="80"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
@@ -77,7 +77,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="QXZ-Da-ELH" secondAttribute="trailing" id="UNQ-8T-ltM"/>
                                                 <constraint firstAttribute="trailing" secondItem="Yqd-co-ev6" secondAttribute="trailing" id="YSV-we-iPz"/>
                                                 <constraint firstItem="W2H-W3-njc" firstAttribute="top" secondItem="Yqd-co-ev6" secondAttribute="bottom" constant="44" id="ZP5-v1-xoh"/>
-                                                <constraint firstItem="QXZ-Da-ELH" firstAttribute="top" secondItem="ROE-hK-Gt1" secondAttribute="top" constant="3" id="d8j-v0-5CQ"/>
+                                                <constraint firstItem="QXZ-Da-ELH" firstAttribute="top" secondItem="ROE-hK-Gt1" secondAttribute="top" constant="25" id="d8j-v0-5CQ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="wZr-wd-seU" secondAttribute="trailing" id="dlN-bY-peA"/>
                                                 <constraint firstAttribute="trailing" secondItem="W2H-W3-njc" secondAttribute="trailing" id="oWP-jn-pag"/>
                                                 <constraint firstItem="Yqd-co-ev6" firstAttribute="top" secondItem="QXZ-Da-ELH" secondAttribute="bottom" id="pNs-IZ-nH2"/>
@@ -104,7 +104,7 @@
                             <constraint firstItem="f6T-ia-dT7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="4mX-cm-aAh"/>
                             <constraint firstItem="f6T-ia-dT7" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="7r9-FX-LoM"/>
                             <constraint firstItem="f6T-ia-dT7" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="afu-Jg-fQG"/>
-                            <constraint firstItem="f6T-ia-dT7" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="43" id="fxV-KH-4SS"/>
+                            <constraint firstItem="f6T-ia-dT7" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="53" id="fxV-KH-4SS"/>
                         </constraints>
                     </view>
                     <connections>

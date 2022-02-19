@@ -28,14 +28,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vx1-Tp-pwt">
-                    <rect key="frame" x="25" y="0.0" width="325" height="1"/>
+                    <rect key="frame" x="30" y="0.0" width="315" height="1"/>
                     <color key="backgroundColor" systemColor="systemGray3Color"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="3IP-G6-HbO"/>
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cQk-4m-dlx">
-                    <rect key="frame" x="24.999999999999996" y="13" width="47.666666666666657" height="24"/>
+                    <rect key="frame" x="29.999999999999996" y="13" width="47.666666666666657" height="24"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwe-9X-0U4">
                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -55,7 +55,7 @@
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Adu-KW-fZc">
-                    <rect key="frame" x="92.666666666666671" y="13" width="47.666666666666671" height="24"/>
+                    <rect key="frame" x="97.666666666666671" y="13" width="47.666666666666671" height="24"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sH0-pr-0RZ">
                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -67,7 +67,7 @@
                             <buttonConfiguration key="configuration" style="plain" image="Comment"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBj-xc-9l9">
-                            <rect key="frame" x="32" y="0.0" width="15.666666666666664" height="24"/>
+                            <rect key="frame" x="31.999999999999989" y="0.0" width="15.666666666666668" height="24"/>
                             <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="13"/>
                             <color key="textColor" red="0.74509803919999995" green="0.72549019609999998" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -75,7 +75,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fA-Ir-6P7">
-                    <rect key="frame" x="326" y="13" width="24" height="24"/>
+                    <rect key="frame" x="321" y="13" width="24" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="24" id="Rfy-6s-5Of"/>
                         <constraint firstAttribute="height" constant="24" id="yJx-oV-YYx"/>
@@ -87,10 +87,10 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="vx1-Tp-pwt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="2vu-g9-mPb"/>
-                <constraint firstAttribute="trailing" secondItem="4fA-Ir-6P7" secondAttribute="trailing" constant="25" id="4Nz-yE-HVk"/>
-                <constraint firstItem="cQk-4m-dlx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="5iH-wr-bAL"/>
-                <constraint firstAttribute="trailing" secondItem="vx1-Tp-pwt" secondAttribute="trailing" constant="25" id="INm-jx-M7d"/>
+                <constraint firstItem="vx1-Tp-pwt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="2vu-g9-mPb"/>
+                <constraint firstAttribute="trailing" secondItem="4fA-Ir-6P7" secondAttribute="trailing" constant="30" id="4Nz-yE-HVk"/>
+                <constraint firstItem="cQk-4m-dlx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="5iH-wr-bAL"/>
+                <constraint firstAttribute="trailing" secondItem="vx1-Tp-pwt" secondAttribute="trailing" constant="30" id="INm-jx-M7d"/>
                 <constraint firstItem="vx1-Tp-pwt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ot1-Lz-0Vf"/>
                 <constraint firstItem="Adu-KW-fZc" firstAttribute="leading" secondItem="cQk-4m-dlx" secondAttribute="trailing" constant="20" id="aH2-09-FGh"/>
                 <constraint firstItem="Adu-KW-fZc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="itg-sb-fMc"/>

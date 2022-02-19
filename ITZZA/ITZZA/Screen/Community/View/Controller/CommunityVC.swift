@@ -108,9 +108,9 @@ extension CommunityVC {
         
         bar.backgroundView.style = .flat(color: .white)
         bar.layout.contentInset = UIEdgeInsets(top: 0.0,
-                                               left: 16.0,
+                                               left: 25.0,
                                                bottom: 0.0,
-                                               right: 16.0)
+                                               right: 25.0)
         bar.buttons.customize { (button) in
             button.tintColor = .lightGray6
             button.selectedTintColor = .white
@@ -118,8 +118,8 @@ extension CommunityVC {
             button.layer.cornerRadius = 4
             button.contentInset = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
             
-            button.font = UIFont.SpoqaHanSansNeoMedium(size: 16)
-            button.selectedFont = UIFont.SpoqaHanSansNeoBold(size: 16)
+            button.font = UIFont.SpoqaHanSansNeoMedium(size: 15)
+            button.selectedFont = UIFont.SpoqaHanSansNeoBold(size: 15)
         }
     
         bar.indicator.cornerStyle = .eliptical
@@ -129,7 +129,7 @@ extension CommunityVC {
         
         bar.layout.alignment = .centerDistributed
         bar.layout.contentMode = .intrinsic
-        bar.layout.interButtonSpacing = 14
+        bar.layout.interButtonSpacing = 10
         bar.layout.transitionStyle = .snap
         
         addBar(bar, dataSource: self, at: .custom(view: categoryTB, layout: nil))

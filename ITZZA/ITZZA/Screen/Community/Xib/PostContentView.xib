@@ -28,7 +28,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLA-yl-A6C">
-                    <rect key="frame" x="25" y="10" width="37" height="18"/>
+                    <rect key="frame" x="30" y="10" width="37" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="BUy-ZY-A7N"/>
                     </constraints>
@@ -37,7 +37,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Itv-q2-N3h">
-                    <rect key="frame" x="25" y="36" width="325" height="46"/>
+                    <rect key="frame" x="30" y="36" width="315" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="RaG-b2-4NC"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -47,10 +50,10 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="gLA-yl-A6C" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="5Mf-G5-vBj"/>
-                <constraint firstItem="gLA-yl-A6C" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="Gtq-dL-E5U"/>
-                <constraint firstItem="Itv-q2-N3h" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="Rfp-fE-g7i"/>
+                <constraint firstItem="gLA-yl-A6C" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="Gtq-dL-E5U"/>
+                <constraint firstItem="Itv-q2-N3h" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="Rfp-fE-g7i"/>
                 <constraint firstItem="Itv-q2-N3h" firstAttribute="top" secondItem="gLA-yl-A6C" secondAttribute="bottom" constant="8" symbolic="YES" id="T1L-WJ-qnp"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Itv-q2-N3h" secondAttribute="trailing" constant="25" id="blU-DC-1WD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Itv-q2-N3h" secondAttribute="trailing" constant="30" id="blU-DC-1WD"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Itv-q2-N3h" secondAttribute="bottom" constant="20" id="dON-Gj-LzC"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
