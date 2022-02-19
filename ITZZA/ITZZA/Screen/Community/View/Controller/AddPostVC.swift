@@ -16,8 +16,7 @@ class AddPostVC: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var chooseCategoryButton: UIButton!
     @IBOutlet weak var addImageBar: ImageAddBar!
-    @IBOutlet weak var postTitle: UITextField!
-    @IBOutlet weak var postContents: UITextView!
+    @IBOutlet weak var postWriteView: PostWriteView!
     @IBOutlet weak var imageCV: UICollectionView!
     @IBOutlet weak var imageCVHeight: NSLayoutConstraint!
     
@@ -28,7 +27,9 @@ class AddPostVC: UIViewController {
             $0.textColor = .darkGray6
         }
     
+    let postTitlePlaceholder = "제목"
     let postContentsPlaceholder = "글쓰기"
+    let postContentPlaceholderColor = UIColor.lightGray5
     let categoryTitlePlaceholder = "감정을 선택해주세요"
     let maxImageSelectionCount = 3
     let minimumLineSpacing: CGFloat = 20
@@ -107,13 +108,10 @@ extension AddPostVC {
     }
     
     func configurePostContentComponent() {
-        postTitle.placeholder = "제목"
-        postTitle.textColor = .darkGray6
+        postWriteView.contents.delegate = self
         
-        postContents.delegate = self
-        postContents.textColor = .darkGray3
-        postContents.setAllMarginToZero()
-        postContents.setTextViewPlaceholder(postContentsPlaceholder)
+        postWriteView.setTitlePlaceholder(postTitlePlaceholder)
+        postWriteView.setContentsPlaceholder(postContentsPlaceholder)
     }
     
     func setImageCVHeight() {
@@ -196,8 +194,8 @@ extension AddPostVC {
     }
     
     func checkInputValid() {
-        if postTitle.text!.isEmpty
-            || postContents.textColor == .lightGray6
+        if postWriteView.title.text!.isEmpty
+            || postWriteView.contents.textColor == postContentPlaceholderColor
             || categoryLabel.text! == categoryTitlePlaceholder {
             let alert = UIAlertController(title: "필수 입력란을 채워주세요!", message: "", preferredStyle: UIAlertController.Style.alert)
             alert.view.tintColor = .darkGray6
@@ -212,8 +210,8 @@ extension AddPostVC {
     }
     
     func checkWrittenState(){
-        if !postTitle.text!.isEmpty
-            || postContents.textColor != .lightGray6
+        if !postWriteView.title.text!.isEmpty
+            || postWriteView.contents.textColor != postContentPlaceholderColor
             || categoryLabel.text! != categoryTitlePlaceholder {
             let alert = UIAlertController(title: "게시글이 저장되지 않았습니다.\n나가시겠어요?", message: "", preferredStyle: UIAlertController.Style.alert)
             alert.view.tintColor = .darkGray6

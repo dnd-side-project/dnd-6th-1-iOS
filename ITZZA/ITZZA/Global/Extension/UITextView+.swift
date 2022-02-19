@@ -19,7 +19,7 @@ extension UITextView {
     func setTextViewPlaceholder(_ placeholder: String) {
         if text == "" {
             text = placeholder
-            textColor = .lightGray6
+            textColor = .lightGray5
         } else if text == placeholder {
             text = ""
             textColor = .darkGray3

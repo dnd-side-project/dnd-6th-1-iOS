@@ -8,14 +8,6 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="SpoqaHanSansNeo-Medium.otf">
-            <string>SpoqaHanSansNeo-Medium</string>
-        </array>
-        <array key="SpoqaHanSansNeo-Regular.otf">
-            <string>SpoqaHanSansNeo-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Add PostVC-->
         <scene sceneID="s0d-6b-0kx">
@@ -32,10 +24,10 @@
                                     <constraint firstAttribute="height" constant="61" id="fVu-yN-vRs"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEK-B5-aG1">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eEK-B5-aG1">
                                 <rect key="frame" x="0.0" y="44" width="375" height="673"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kQq-3B-tif">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQq-3B-tif">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="592"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQx-rR-1cV" customClass="ChooseCategoryButton" customModule="ITZZA" customModuleProvider="target">
@@ -48,38 +40,6 @@
                                                     <color key="titleColor" systemColor="systemGrayColor"/>
                                                 </state>
                                             </button>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="1Su-hS-akh">
-                                                <rect key="frame" x="30" y="128" width="315" height="84"/>
-                                                <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="글 제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YTn-RX-fNM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="315" height="34"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="34" id="NlH-TH-wjl"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="15"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zEA-Fn-Poq">
-                                                        <rect key="frame" x="0.0" y="49" width="315" height="35"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                        <color key="textColor" systemColor="labelColor"/>
-                                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="15"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    </textView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="zEA-Fn-Poq" secondAttribute="trailing" id="1ti-eA-3yz"/>
-                                                    <constraint firstAttribute="trailing" secondItem="zEA-Fn-Poq" secondAttribute="trailing" id="5E7-aU-uXO"/>
-                                                    <constraint firstAttribute="trailing" secondItem="YTn-RX-fNM" secondAttribute="trailing" id="Bqt-uP-aCq"/>
-                                                    <constraint firstItem="YTn-RX-fNM" firstAttribute="top" secondItem="1Su-hS-akh" secondAttribute="top" id="DAJ-4U-NmT"/>
-                                                    <constraint firstItem="zEA-Fn-Poq" firstAttribute="leading" secondItem="1Su-hS-akh" secondAttribute="leading" id="Dmi-F9-eft"/>
-                                                    <constraint firstItem="zEA-Fn-Poq" firstAttribute="leading" secondItem="1Su-hS-akh" secondAttribute="leading" id="FdY-hY-Em9"/>
-                                                    <constraint firstItem="YTn-RX-fNM" firstAttribute="leading" secondItem="1Su-hS-akh" secondAttribute="leading" id="Z9V-OD-Ahw"/>
-                                                    <constraint firstItem="YTn-RX-fNM" firstAttribute="top" secondItem="1Su-hS-akh" secondAttribute="top" id="Zs2-OQ-d2z"/>
-                                                    <constraint firstItem="YTn-RX-fNM" firstAttribute="leading" secondItem="1Su-hS-akh" secondAttribute="leading" id="dzl-Nc-3vg"/>
-                                                    <constraint firstItem="zEA-Fn-Poq" firstAttribute="top" secondItem="YTn-RX-fNM" secondAttribute="bottom" constant="15" id="pW3-Hc-gDU"/>
-                                                </constraints>
-                                            </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IeY-Zk-i2L">
                                                 <rect key="frame" x="30" y="98" width="315" height="1"/>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -87,7 +47,7 @@
                                                     <constraint firstAttribute="height" constant="1" id="GfN-Ik-qdy"/>
                                                 </constraints>
                                             </view>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2MV-tY-gVi">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2MV-tY-gVi">
                                                 <rect key="frame" x="30" y="242" width="315" height="315"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -140,22 +100,26 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="37x-PN-Yof" customClass="PostWriteView" customModule="ITZZA" customModuleProvider="target">
+                                                <rect key="frame" x="30" y="124" width="315" height="83"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="SQx-rR-1cV" firstAttribute="top" secondItem="kQq-3B-tif" secondAttribute="top" constant="20" id="2Nn-yi-Qmv"/>
-                                            <constraint firstAttribute="trailing" secondItem="1Su-hS-akh" secondAttribute="trailing" constant="30" id="DO9-xD-XEZ"/>
+                                            <constraint firstItem="2MV-tY-gVi" firstAttribute="top" secondItem="37x-PN-Yof" secondAttribute="bottom" constant="35" id="M49-dF-Jzk"/>
                                             <constraint firstItem="SQx-rR-1cV" firstAttribute="leading" secondItem="kQq-3B-tif" secondAttribute="leading" constant="30" id="MB3-hx-lu5"/>
                                             <constraint firstAttribute="trailing" secondItem="IeY-Zk-i2L" secondAttribute="trailing" constant="30" id="WLu-yp-Z7q"/>
+                                            <constraint firstItem="37x-PN-Yof" firstAttribute="leading" secondItem="kQq-3B-tif" secondAttribute="leading" constant="30" id="XUD-CJ-uYB"/>
                                             <constraint firstAttribute="trailing" secondItem="2MV-tY-gVi" secondAttribute="trailing" constant="30" id="Yls-Ek-r06"/>
-                                            <constraint firstItem="2MV-tY-gVi" firstAttribute="top" secondItem="1Su-hS-akh" secondAttribute="bottom" constant="30" id="bPL-OW-80w"/>
                                             <constraint firstItem="2MV-tY-gVi" firstAttribute="leading" secondItem="kQq-3B-tif" secondAttribute="leading" constant="30" id="bh6-z9-N4j"/>
                                             <constraint firstAttribute="bottom" secondItem="2MV-tY-gVi" secondAttribute="bottom" constant="35" id="c4h-2p-m9T"/>
                                             <constraint firstItem="IeY-Zk-i2L" firstAttribute="top" secondItem="SQx-rR-1cV" secondAttribute="bottom" constant="30" id="eMX-eA-eXZ"/>
-                                            <constraint firstItem="1Su-hS-akh" firstAttribute="leading" secondItem="kQq-3B-tif" secondAttribute="leading" constant="30" id="fux-98-fgc"/>
+                                            <constraint firstItem="37x-PN-Yof" firstAttribute="top" secondItem="IeY-Zk-i2L" secondAttribute="bottom" constant="25" id="eqn-1L-kai"/>
+                                            <constraint firstAttribute="trailing" secondItem="37x-PN-Yof" secondAttribute="trailing" constant="30" id="gOQ-YY-P5W"/>
                                             <constraint firstAttribute="trailing" secondItem="SQx-rR-1cV" secondAttribute="trailing" constant="30" id="n4a-be-gHH"/>
                                             <constraint firstItem="IeY-Zk-i2L" firstAttribute="leading" secondItem="kQq-3B-tif" secondAttribute="leading" constant="30" id="nJD-1O-6Ps"/>
-                                            <constraint firstItem="1Su-hS-akh" firstAttribute="top" secondItem="IeY-Zk-i2L" secondAttribute="bottom" constant="29" id="rXh-w8-1yb"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -191,8 +155,7 @@
                         <outlet property="chooseCategoryButton" destination="SQx-rR-1cV" id="eAj-qQ-d93"/>
                         <outlet property="imageCV" destination="2MV-tY-gVi" id="kbD-F3-MWa"/>
                         <outlet property="imageCVHeight" destination="LIw-Xg-oMH" id="22f-dB-LDp"/>
-                        <outlet property="postContents" destination="zEA-Fn-Poq" id="zNU-Uq-6D4"/>
-                        <outlet property="postTitle" destination="YTn-RX-fNM" id="AkX-cg-BPe"/>
+                        <outlet property="postWriteView" destination="37x-PN-Yof" id="vuy-Cb-mFL"/>
                         <outlet property="scrollView" destination="eEK-B5-aG1" id="7uU-GE-kEd"/>
                     </connections>
                 </viewController>
@@ -204,9 +167,6 @@
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

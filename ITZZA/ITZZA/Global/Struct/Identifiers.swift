@@ -41,6 +41,7 @@ struct Identifiers {
     static let nicknameView = "NicknameView"
     static let agreementView = "AgreementView"
     static let postContentView = "PostContentView"
+    static let postWriteView = "PostWriteView"
     static let chatInputView = "ChatInputView"
     static let postContentTableViewHeader = "PostContentTableViewHeader"
     static let imageScrollView = "ImageScrollView"

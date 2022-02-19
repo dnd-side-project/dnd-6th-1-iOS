@@ -78,6 +78,8 @@
 		23DC8F9327B8E35400F79EF4 /* CommunityVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC8F9227B8E35400F79EF4 /* CommunityVM.swift */; };
 		23DC8FA027B95F3C00F79EF4 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC8F9F27B95F3C00F79EF4 /* PostManager.swift */; };
 		23EA4E3527BEB5BD0027E4DB /* AddedImageCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA4E3427BEB5BD0027E4DB /* AddedImageCVC.swift */; };
+		23F3CBF727C119D100CEDC98 /* PostWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F3CBF527C119D100CEDC98 /* PostWriteView.swift */; };
+		23F3CBF827C119D100CEDC98 /* PostWriteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F3CBF627C119D100CEDC98 /* PostWriteView.xib */; };
 		6208CFDB27A254B900F17603 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6208CFDA27A254B900F17603 /* SignIn.storyboard */; };
 		6208CFDE27A258F600F17603 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6208CFE127A2662700F17603 /* SignInVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CFE027A2662700F17603 /* SignInVM.swift */; };
@@ -189,6 +191,8 @@
 		23DC8F9227B8E35400F79EF4 /* CommunityVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommunityVM.swift; path = ITZZA/Screen/Community/CommunityVM.swift; sourceTree = SOURCE_ROOT; };
 		23DC8F9F27B95F3C00F79EF4 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		23EA4E3427BEB5BD0027E4DB /* AddedImageCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedImageCVC.swift; sourceTree = "<group>"; };
+		23F3CBF527C119D100CEDC98 /* PostWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWriteView.swift; sourceTree = "<group>"; };
+		23F3CBF627C119D100CEDC98 /* PostWriteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostWriteView.xib; sourceTree = "<group>"; };
 		31D68BDCB09FB35125D965C7 /* Pods-ITZZA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.release.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.release.xcconfig"; sourceTree = "<group>"; };
 		557F2FCE2D67BC938F058D88 /* Pods-ITZZA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITZZA.debug.xcconfig"; path = "Target Support Files/Pods-ITZZA/Pods-ITZZA.debug.xcconfig"; sourceTree = "<group>"; };
 		6208CFDA27A254B900F17603 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
@@ -780,6 +784,7 @@
 				238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */,
 				233B636C27AFAE2400914F60 /* PostContentView.swift */,
 				236C9EA427C10D4600B0BADA /* ImageScrollView.swift */,
+				23F3CBF527C119D100CEDC98 /* PostWriteView.swift */,
 			);
 			path = XibControllers;
 			sourceTree = "<group>";
@@ -790,6 +795,7 @@
 				238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */,
 				233B636E27AFAE3100914F60 /* PostContentView.xib */,
 				236C9EA527C10D4600B0BADA /* ImageScrollView.xib */,
+				23F3CBF627C119D100CEDC98 /* PostWriteView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -894,6 +900,7 @@
 				238EC09A27AA7288001CBB24 /* SearchPost.storyboard in Resources */,
 				2356305927BFA1D10032E520 /* SpoqaHanSansNeo-Thin.otf in Resources */,
 				623DE30127B3BA9E005E78D0 /* AgreementView.xib in Resources */,
+				23F3CBF827C119D100CEDC98 /* PostWriteView.xib in Resources */,
 				232CC04C27A032D700040131 /* Community.storyboard in Resources */,
 				232CC03827A0326C00040131 /* Home.storyboard in Resources */,
 				233B636F27AFAE3100914F60 /* PostContentView.xib in Resources */,
@@ -1028,6 +1035,7 @@
 				62BE208D27A590D0001F150A /* SignInVC.swift in Sources */,
 				23DC8FA027B95F3C00F79EF4 /* PostManager.swift in Sources */,
 				623DE2F927B26581005E78D0 /* UIView+.swift in Sources */,
+				23F3CBF727C119D100CEDC98 /* PostWriteView.swift in Sources */,
 				232CC04027A0328B00040131 /* d.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
