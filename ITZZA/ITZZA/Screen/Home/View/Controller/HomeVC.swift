@@ -20,7 +20,6 @@ class HomeVC: UIViewController {
     @IBOutlet weak var calendarYearLabel: UILabel!
     @IBOutlet weak var writeTodayDiaryButton: UIButton!
     private var homeAlarmButton: UIBarButtonItem!
-    private var showNewAlarmView = UIView()
     
     var disposeBag = DisposeBag()
     let homeVM = HomeVM()
@@ -54,7 +53,6 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
-        setShowNewAlarmView()
         setInitialUIValue()
         calendarDefaultState()
         setDate()
@@ -84,17 +82,6 @@ extension HomeVC {
         calendarView.layer.shadowOffset = CGSize(width: 0, height: -1)
         calendarView.layer.shadowRadius = 5
         calendarView.layer.masksToBounds = false
-    }
-    
-    private func setShowNewAlarmView() {
-        view.addSubview(showNewAlarmView)
-        showNewAlarmView.backgroundColor = .orange
-        showNewAlarmView.layer.cornerRadius = 3.5
-        showNewAlarmView.snp.makeConstraints {
-            $0.width.height.equalTo(7)
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(-33)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-23)
-        }
     }
     
     private func calendarDefaultState() {
@@ -130,7 +117,6 @@ extension HomeVC {
         guard let writeDiaryVC = ViewControllerFactory.viewController(for: .writeDiary) as? WriteDiaryVC else { return }
         
         writeDiaryVC.selectedDate = dateFormatter.string(from: today)
-        writeDiaryVC.modalPresentationStyle = .fullScreen
         self.present(writeDiaryVC, animated: true, completion: nil)
     }
     
@@ -157,7 +143,6 @@ extension HomeVC: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
         guard let diaryVC = ViewControllerFactory.viewController(for: .diary) as? DiaryVC else { return }
-        diaryVC.modalPresentationStyle = .fullScreen
         diaryVC.seletedDate = dateFormatter.string(from: date)
         
         self.present(diaryVC, animated: true, completion: nil)

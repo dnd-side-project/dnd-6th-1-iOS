@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 import RxSwift
 import RxCocoa
 
@@ -19,11 +20,13 @@ class WriteDiaryVC: UIViewController {
     var disposeBag = DisposeBag()
     var selectedDate: String!
     let emotionButtonView = EmotionButtonView()
+    let emotionView = EmotionView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setInitialUIValue()
-        addEmotionButtonView()
+        addEmotionView()
+        // addEmotionButtonView()
         bindUI()
     }
     
@@ -37,19 +40,32 @@ extension WriteDiaryVC {
         dateLabel.text = selectedDate
     }
     
-    private func addEmotionButtonView() {
-        view.addSubview(emotionButtonView)
+    private func addEmotionView() {
+        view.addSubview(emotionView)
         
-        emotionButtonView.snp.makeConstraints {
-            $0.top.equalTo(dateTitleView.snp.bottom)
-            $0.leading.equalTo(view.safeAreaLayoutGuide)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide)
+        emotionView.snp.makeConstraints {
+            $0.top.equalTo(dateTitleView.snp.bottom).offset(27)
+            $0.leading.equalToSuperview().offset(25)
+            $0.trailing.equalToSuperview().offset(-25)
+            $0.height.equalTo(view.frame.width).dividedBy(2.88)
         }
         
         view.layoutIfNeeded()
-        emotionButtonView.setButtonCornerRadius()
-        emotionButtonView.enlargeButtonImage()
     }
+    
+//    private func addEmotionButtonView() {
+//        view.addSubview(emotionButtonView)
+//
+//        emotionButtonView.snp.makeConstraints {
+//            $0.top.equalTo(dateTitleView.snp.bottom)
+//            $0.leading.equalTo(view.safeAreaLayoutGuide)
+//            $0.trailing.equalTo(view.safeAreaLayoutGuide)
+//        }
+//
+//        view.layoutIfNeeded()
+//        emotionButtonView.setButtonCornerRadius()
+//        emotionButtonView.enlargeButtonImage()
+//    }
 }
 
 // MARK: - Bindings

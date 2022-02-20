@@ -77,6 +77,10 @@
 		6208CFDE27A258F600F17603 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6208CFE127A2662700F17603 /* SignInVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CFE027A2662700F17603 /* SignInVM.swift */; };
 		62183E2827B8E70A00F83815 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62183E2727B8E70A00F83815 /* SignUpModel.swift */; };
+		622C57D427C25F8E0011D833 /* EmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622C57D327C25F8E0011D833 /* EmotionView.swift */; };
+		622C57D627C25FAF0011D833 /* EmotionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 622C57D527C25FAF0011D833 /* EmotionView.xib */; };
+		622C57D827C26A0D0011D833 /* EmotionCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 622C57D727C26A0D0011D833 /* EmotionCVC.xib */; };
+		622C57DA27C26A950011D833 /* EmotionCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622C57D927C26A950011D833 /* EmotionCVC.swift */; };
 		622D07C027ABF12E00707E47 /* KeychainWrapper+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */; };
 		622D51CB27BEB54400F59679 /* HomeNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D51CA27BEB54400F59679 /* HomeNC.swift */; };
 		622D51CD27BEBC7000F59679 /* HomeAlarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 622D51CC27BEBC7000F59679 /* HomeAlarm.storyboard */; };
@@ -197,6 +201,10 @@
 		6208CFDA27A254B900F17603 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		6208CFE027A2662700F17603 /* SignInVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVM.swift; sourceTree = "<group>"; };
 		62183E2727B8E70A00F83815 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
+		622C57D327C25F8E0011D833 /* EmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionView.swift; sourceTree = "<group>"; };
+		622C57D527C25FAF0011D833 /* EmotionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmotionView.xib; sourceTree = "<group>"; };
+		622C57D727C26A0D0011D833 /* EmotionCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmotionCVC.xib; sourceTree = "<group>"; };
+		622C57D927C26A950011D833 /* EmotionCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCVC.swift; sourceTree = "<group>"; };
 		622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeychainWrapper+.swift"; sourceTree = "<group>"; };
 		622D51CA27BEB54400F59679 /* HomeNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNC.swift; sourceTree = "<group>"; };
 		622D51CC27BEBC7000F59679 /* HomeAlarm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeAlarm.storyboard; sourceTree = "<group>"; };
@@ -746,6 +754,7 @@
 				6254618727B1530500184DA1 /* NicknameView.xib */,
 				623DE2F427B25225005E78D0 /* EmailView.xib */,
 				623DE30027B3BA9E005E78D0 /* AgreementView.xib */,
+				622C57D727C26A0D0011D833 /* EmotionCVC.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -755,6 +764,7 @@
 			children = (
 				624C458327BD0E55000A37DF /* EmptyDiaryView.xib */,
 				623356A127BE675200158359 /* EmotionButtonView.xib */,
+				622C57D527C25FAF0011D833 /* EmotionView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -775,6 +785,7 @@
 				6254618327B152EF00184DA1 /* NicknameView.swift */,
 				623DE2F627B25367005E78D0 /* EmailView.swift */,
 				623DE2FE27B3BA75005E78D0 /* AgreementView.swift */,
+				622C57D927C26A950011D833 /* EmotionCVC.swift */,
 			);
 			path = XibController;
 			sourceTree = "<group>";
@@ -793,6 +804,7 @@
 			children = (
 				624C458927BD1221000A37DF /* EmptyDiaryView.swift */,
 				6233569F27BE673C00158359 /* EmotionButtonView.swift */,
+				622C57D327C25F8E0011D833 /* EmotionView.swift */,
 			);
 			path = XibController;
 			sourceTree = "<group>";
@@ -937,6 +949,7 @@
 				232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */,
 				6208CFDB27A254B900F17603 /* SignIn.storyboard in Resources */,
 				233B636927AF9D8C00914F60 /* PostDetail.storyboard in Resources */,
+				622C57D627C25FAF0011D833 /* EmotionView.xib in Resources */,
 				232CC06027A0334100040131 /* Mypage.storyboard in Resources */,
 				2335241827A98FA0009C654F /* ProfileHeaderView.xib in Resources */,
 				6254618827B1530500184DA1 /* NicknameView.xib in Resources */,
@@ -949,6 +962,7 @@
 				232302FD27AFC13200E20078 /* CommentTVC.xib in Resources */,
 				238EC09A27AA7288001CBB24 /* SearchPost.storyboard in Resources */,
 				623DE30127B3BA9E005E78D0 /* AgreementView.xib in Resources */,
+				622C57D827C26A0D0011D833 /* EmotionCVC.xib in Resources */,
 				232CC04C27A032D700040131 /* Community.storyboard in Resources */,
 				232CC09527A039B700040131 /* SFPRODISPLAYBOLD.OTF in Resources */,
 				232CC03827A0326C00040131 /* Home.storyboard in Resources */,
@@ -1084,10 +1098,12 @@
 				62BE20A027A8F1A0001F150A /* UIViewController+.swift in Sources */,
 				232302FF27AFD18000E20078 /* UITextView+.swift in Sources */,
 				232CC03A27A0327B00040131 /* HomeVM.swift in Sources */,
+				622C57DA27C26A950011D833 /* EmotionCVC.swift in Sources */,
 				238CEEAA27A7EFD0006BE766 /* PostTVC.swift in Sources */,
 				232CC06227A0335500040131 /* i.swift in Sources */,
 				623DE2FF27B3BA75005E78D0 /* AgreementView.swift in Sources */,
 				623DE30F27B64F0C005E78D0 /* PasswordVM.swift in Sources */,
+				622C57D427C25F8E0011D833 /* EmotionView.swift in Sources */,
 				232CC03C27A0328000040131 /* HomeModel.swift in Sources */,
 				62BE208D27A590D0001F150A /* SignInVC.swift in Sources */,
 				23DC8FA027B95F3C00F79EF4 /* PostManager.swift in Sources */,

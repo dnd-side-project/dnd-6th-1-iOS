@@ -9,6 +9,14 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+//enum Emoji: String, CaseIterable {
+//    case emojiAngry = "Emoji_Angry"
+//    case comfy = "Emoji_Comfy"
+//    case confuse = "Emoji_Confuse"
+//    case sad = "Emoji_Sad"
+//    case lonely = "Emoji_Lonely"
+//}
+
 class EmotionButtonView: UIView {
     
     var disposeBag = DisposeBag()
@@ -19,7 +27,8 @@ class EmotionButtonView: UIView {
     @IBOutlet weak var lonelyButton: UIButton!
     
     var emotionButtons: Array<UIButton>?
-    
+    let emo = Emoji.allCases.map { $0.rawValue }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setContentView()
@@ -55,7 +64,7 @@ extension EmotionButtonView {
     func enlargeButtonImage() {
         if let emotionButtons = emotionButtons {
             emotionButtons.forEach { btn in
-                //btn.imageView?.contentMode = .scaleAspectFit
+                
             }
         }
     }
