@@ -34,7 +34,9 @@
                                 <constraint firstAttribute="width" constant="105" id="esV-2a-a4s"/>
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="   이미지 추가" image="Gallery"/>
+                            <state key="normal" title="   이미지 추가" image="Gallery">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진은 최대 3장 추가 가능합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOZ-ue-v3r">
                             <rect key="frame" x="110" y="0.0" width="233" height="24"/>

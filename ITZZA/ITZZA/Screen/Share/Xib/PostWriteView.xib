@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SpoqaHanSansNeo-Medium.otf">
+            <string>SpoqaHanSansNeo-Medium</string>
+        </array>
+        <array key="SpoqaHanSansNeo-Regular.otf">
+            <string>SpoqaHanSansNeo-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostWriteView" customModule="ITZZA" customModuleProvider="target">
+            <connections>
+                <outlet property="contents" destination="rOy-m5-qXl" id="6Db-lJ-vxk"/>
+                <outlet property="title" destination="C7I-At-QWc" id="54Q-Nj-c6o"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="315" height="84"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="NLu-va-mMJ">
+                    <rect key="frame" x="0.0" y="0.0" width="315" height="84"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="글 제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C7I-At-QWc">
+                            <rect key="frame" x="0.0" y="0.0" width="315" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="l0M-jI-W1O"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="15"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rOy-m5-qXl">
+                            <rect key="frame" x="0.0" y="49" width="315" height="35"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="textColor" systemColor="labelColor"/>
+                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="15"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="C7I-At-QWc" firstAttribute="top" secondItem="NLu-va-mMJ" secondAttribute="top" id="2BA-ho-Kmf"/>
+                        <constraint firstItem="C7I-At-QWc" firstAttribute="top" secondItem="NLu-va-mMJ" secondAttribute="top" id="8LP-He-C9J"/>
+                        <constraint firstItem="C7I-At-QWc" firstAttribute="leading" secondItem="NLu-va-mMJ" secondAttribute="leading" id="9dg-p4-eGi"/>
+                        <constraint firstAttribute="trailing" secondItem="rOy-m5-qXl" secondAttribute="trailing" id="Lfl-gr-O4A"/>
+                        <constraint firstItem="C7I-At-QWc" firstAttribute="leading" secondItem="NLu-va-mMJ" secondAttribute="leading" id="Svk-cR-KZg"/>
+                        <constraint firstAttribute="trailing" secondItem="rOy-m5-qXl" secondAttribute="trailing" id="XA0-la-36N"/>
+                        <constraint firstItem="rOy-m5-qXl" firstAttribute="leading" secondItem="NLu-va-mMJ" secondAttribute="leading" id="XDE-cc-nco"/>
+                        <constraint firstAttribute="trailing" secondItem="C7I-At-QWc" secondAttribute="trailing" id="pqf-nf-CxF"/>
+                        <constraint firstItem="rOy-m5-qXl" firstAttribute="leading" secondItem="NLu-va-mMJ" secondAttribute="leading" id="zXa-Kv-aKP"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="NLu-va-mMJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0mY-xK-0Jp"/>
+                <constraint firstItem="NLu-va-mMJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0o5-NG-HEj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NLu-va-mMJ" secondAttribute="trailing" id="aWM-ZM-2KH"/>
+                <constraint firstItem="NLu-va-mMJ" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="qQP-Kd-ZMv"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="132" y="109"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

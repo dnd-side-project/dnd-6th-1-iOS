@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageScrollView" customModule="ITZZA" customModuleProvider="target">
+            <connections>
+                <outlet property="scrollView" destination="dFw-3q-Rc1" id="LMZ-v5-iMr"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="315" height="526"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dFw-3q-Rc1">
+                    <rect key="frame" x="0.0" y="0.0" width="315" height="526"/>
+                    <viewLayoutGuide key="contentLayoutGuide" id="jQ0-Y2-ulN"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="G1Y-Ah-Ums"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="dFw-3q-Rc1" secondAttribute="bottom" id="1ct-cT-7hy"/>
+                <constraint firstAttribute="trailing" secondItem="dFw-3q-Rc1" secondAttribute="trailing" id="1d4-0J-kJI"/>
+                <constraint firstItem="dFw-3q-Rc1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="geJ-8n-k9x"/>
+                <constraint firstItem="dFw-3q-Rc1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gjB-I6-dHJ"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="132" y="108.62068965517241"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
