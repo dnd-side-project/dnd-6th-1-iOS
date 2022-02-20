@@ -46,23 +46,19 @@ class PostButtonsView: UIView {
 extension PostButtonsView {
     func didTapLikeButton() {
         likeButton.rx.tap
-             .scan(false) { lastState, newState in
-                 !lastState
-             }
              .subscribe(onNext: {
-                 self.likeButton.setImageToggle($0, UIImage(named: "Heart")!, UIImage(named: "Heart_selected")!)
-                 self.likeCnt.text = self.setButtonCnt($0, self.likeCnt.text!)
+                 self.likeButton.isSelected.toggle()
+                 self.likeButton.setImageToggle(self.likeButton.isSelected, UIImage(named: "Heart")!, UIImage(named: "Heart_selected")!)
+                 self.likeCnt.text = self.setButtonCnt(self.likeButton.isSelected, self.likeCnt.text!)
              })
              .disposed(by: bag)
     }
     
     func didTapBookmarkButton() {
         bookmarkButton.rx.tap
-             .scan(false) { lastState, newState in
-                 !lastState
-             }
              .subscribe(onNext: {
-                 self.bookmarkButton.setImageToggle($0, UIImage(named: "Bookmark")!, UIImage(named: "Bookmark_selected")!)
+                 self.bookmarkButton.isSelected.toggle()
+                 self.bookmarkButton.setImageToggle(self.bookmarkButton.isSelected, UIImage(named: "Bookmark")!, UIImage(named: "Bookmark_selected")!)
              })
              .disposed(by: bag)
     }
