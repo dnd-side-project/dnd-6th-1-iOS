@@ -7,6 +7,8 @@
 
 import UIKit
 import RxSwift
+import Alamofire
+import SwiftKeychainWrapper
 
 class PostButtonsView: UIView {
     @IBOutlet weak var likeButton: UIButton!
@@ -16,6 +18,9 @@ class PostButtonsView: UIView {
     @IBOutlet weak var bookmarkButton: UIButton!
     
     let bag = DisposeBag()
+    let apiSession = APISession()
+    let onError = PublishSubject<APIError>()
+    var boardId: Int?
     
     override init(frame: CGRect) {
       super.init(frame: frame)
@@ -47,9 +52,7 @@ extension PostButtonsView {
     func didTapLikeButton() {
         likeButton.rx.tap
              .subscribe(onNext: {
-                 self.likeButton.isSelected.toggle()
-                 self.likeButton.setImageToggle(self.likeButton.isSelected, UIImage(named: "Heart")!, UIImage(named: "Heart_selected")!)
-                 self.likeCnt.text = self.setButtonCnt(self.likeButton.isSelected, self.likeCnt.text!)
+                 self.postLikeStatus(self.boardId ?? 0)
              })
              .disposed(by: bag)
     }
@@ -68,6 +71,27 @@ extension PostButtonsView {
             return String(Int(lastCnt)! + 1)
         } else {
             return String(Int(lastCnt)! - 1)
+        }
+    }
+    
+    func postLikeStatus(_ boardId: Int) {
+        let baseURL = "http://13.125.239.189:3000/boards/"
+        guard let url = URL(string: baseURL + "\(boardId)" + "/likes") else { return }
+        guard let token: String = KeychainWrapper.standard[.myToken] else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        AF.request(request).responseData { response in
+            switch response.result {
+            case .success:
+                self.likeButton.isSelected.toggle()
+                self.likeButton.setImageToggle(self.likeButton.isSelected, UIImage(named: "Heart")!, UIImage(named: "Heart_selected")!)
+                self.likeCnt.text = self.setButtonCnt(self.likeButton.isSelected, self.likeCnt.text!)
+            case .failure:
+                break
+            }
         }
     }
 }

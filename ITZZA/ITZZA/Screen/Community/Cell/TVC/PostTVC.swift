@@ -78,6 +78,7 @@ extension PostTVC {
             imageCnt.text = "+" + String(post.imageCnt!)
         }
         
+        footerView.boardId = post.boardId
         footerView.likeCnt.text = String(describing: post.likeCnt!)
         footerView.commentCnt.text = String(describing: post.commentCnt!)
         
