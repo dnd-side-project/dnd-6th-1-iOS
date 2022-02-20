@@ -17,8 +17,8 @@ class AddPostVC: UIViewController {
     @IBOutlet weak var chooseCategoryButton: UIButton!
     @IBOutlet weak var addImageBar: ImageAddBar!
     @IBOutlet weak var postWriteView: PostWriteView!
-    @IBOutlet weak var imageCV: UICollectionView!
-    @IBOutlet weak var imageCVHeight: NSLayoutConstraint!
+    @IBOutlet weak var ImageListView: ImageCollectionView!
+    @IBOutlet weak var imageListHeight: NSLayoutConstraint!
     
     var categoryLabel = UILabel()
         .then {
@@ -33,8 +33,6 @@ class AddPostVC: UIViewController {
     let categoryTitlePlaceholder = "감정을 선택해주세요"
     let maxImageSelectionCount = 3
     let minimumLineSpacing: CGFloat = 20
-    var selectedImages: [UIImage] = []
-    var selectedAssets: [PHAsset] = []
     
     let bag = DisposeBag()
     
@@ -43,10 +41,11 @@ class AddPostVC: UIViewController {
 
         configureNavigationBar()
         configureChooseCategoryButton()
-        configureImageCV()
+        configurePostContentComponent()
+        setImageCVHeight()
+        setNotification()
         bindAddImageBar()
         bindCategoryBottomSheet()
-        configurePostContentComponent()
     }
 }
 
@@ -100,13 +99,6 @@ extension AddPostVC {
         }
     }
     
-    func configureImageCV() {
-        imageCV.dataSource = self
-        imageCV.delegate = self
-        imageCV.isScrollEnabled = false
-        setImageCVHeight()
-    }
-    
     func configurePostContentComponent() {
         postWriteView.contents.delegate = self
         
@@ -115,20 +107,29 @@ extension AddPostVC {
     }
     
     func setImageCVHeight() {
-        if selectedImages.count == 0 {
-            imageCVHeight.constant = 0
+        if ImageListView.selectedImages.count == 0 {
+            imageListHeight.constant = 0
         } else {
-            imageCVHeight.constant = CGFloat(selectedImages.count) * (imageCV.frame.width + minimumLineSpacing) - minimumLineSpacing
-            
-            print(imageCV.frame.width)
+            imageListHeight.constant = CGFloat(ImageListView.selectedImages.count) * (ImageListView.imageCV.frame.width + minimumLineSpacing) - minimumLineSpacing
         }
     }
     
     //MARK: - bind
+    func bindCategoryBottomSheet() {
+        chooseCategoryButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                let categoryBottomSheet = CategoryBottomSheetVC()
+                categoryBottomSheet.delegate = self
+                self.present(categoryBottomSheet, animated: true)
+            })
+            .disposed(by: bag)
+    }
+    
     func bindAddImageBar() {
         addImageBar.addImageButton.rx.tap
             .bind {
-                let imagePicker = ImagePickerController(selectedAssets: self.selectedAssets)
+                let imagePicker = ImagePickerController(selectedAssets: self.ImageListView.selectedAssets)
                 
                 imagePicker.cancelButton.tintColor = .primary
                 imagePicker.doneButton.tintColor = .primary
@@ -143,37 +144,22 @@ extension AddPostVC {
                 }, cancel: { (assets) in
                 }, finish: { (assets) in
                     self.convertAssetToImages(assets)
-                    self.addImageToCollectionView(self.selectedImages)
+                    self.addImageToCollectionView(self.ImageListView.selectedImages)
                     self.setImageCVHeight()
-                    self.selectedAssets = assets
+                    self.ImageListView.selectedAssets = assets
                 }, completion: {
                 })
             }
             .disposed(by: bag)
     }
-    
-    func bindCategoryBottomSheet() {
-        chooseCategoryButton.rx.tap
-            .asDriver()
-            .drive(onNext: {
-                let categoryBottomSheet = CategoryBottomSheetVC()
-                categoryBottomSheet.delegate = self
-                self.present(categoryBottomSheet, animated: true)
-            })
-            .disposed(by: bag)
-    }
-    
+
     func addImageToCollectionView(_ images: [UIImage]) {
-        images.forEach {
-            let imageView = UIImageView(image: $0)
-            imageView.contentMode = .scaleAspectFit
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
-        }
-        imageCV.reloadData()
+        ImageListView.selectedImages = images
+        ImageListView.imageCV.reloadData()
     }
     
     func convertAssetToImages(_ selectedAssets: [PHAsset]) {
-        selectedImages = selectedAssets.map {
+        ImageListView.selectedImages = selectedAssets.map {
             let imageManager = PHImageManager.default()
             let option = PHImageRequestOptions()
             option.isSynchronous = true
@@ -191,6 +177,14 @@ extension AddPostVC {
             
             return newImage
         }
+    }
+    
+    func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadImageCollectionView), name:.whenDeleteImageButtonTapped, object: nil)
+    }
+    
+    @objc func reloadImageCollectionView(_ notification: Notification) {
+        setImageCVHeight()
     }
     
     func checkInputValid() {
@@ -228,13 +222,6 @@ extension AddPostVC {
             self.navigationController?.popViewController(animated: true)
         }
     }
-    
-    @objc func deleteCell(sender: UIButton) {
-        imageCV.deleteItems(at: [IndexPath.init(row: sender.tag, section: 0)])
-        selectedImages.remove(at: sender.tag)
-        selectedAssets.remove(at: sender.tag)
-        setImageCVHeight()
-    }
 }
 
 // MARK: - UITextViewDelegate
@@ -254,34 +241,5 @@ extension AddPostVC: UITextViewDelegate {
 extension AddPostVC: CategoryTitleDelegate {
     func getCategoryTitle(_ title: String) {
         self.categoryLabel.text = title
-    }
-}
-
-// MARK: - UICollectionViewDataSource
-extension AddPostVC: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        selectedImages.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.addedImageCVC, for: indexPath) as! AddedImageCVC
-
-        cell.backgroundColor = .black
-        cell.imageView.image = selectedImages[indexPath.row]
-        cell.deleteImageButton.tag = indexPath.row
-        cell.deleteImageButton.addTarget(self, action: #selector(deleteCell(sender:)), for: .touchUpInside)
-        
-        cell.imageView.snp.makeConstraints {
-            $0.height.width.equalTo(view.frame.width - 30 * 2)
-        }
-        
-        return cell
-    }
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-extension AddPostVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        minimumLineSpacing
     }
 }
