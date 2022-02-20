@@ -30,7 +30,7 @@ class SignInVM {
     
     func tapSignInButton(_ email: String, _ password: String) {
         
-        let loginURL = "https://3044b01e-b59d-4905-a40d-1bef340f11ab.mock.pstmn.io/v1/login"
+        let loginURL = "http://13.125.239.189:3000/auth/signin"
         let url = URL(string: loginURL)!
         let signInformation = SignInModel(email: email, password: password)
         let signInParameter = signInformation.loginParam

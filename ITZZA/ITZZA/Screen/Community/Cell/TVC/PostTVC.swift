@@ -78,9 +78,12 @@ extension PostTVC {
             imageCnt.text = "+" + String(post.imageCnt!)
         }
         
+        footerView.boardId = post.boardId
         footerView.likeCnt.text = String(describing: post.likeCnt!)
         footerView.commentCnt.text = String(describing: post.commentCnt!)
         
+        footerView.likeButton.isSelected = post.likeStatus ?? false
+        footerView.bookmarkButton.isSelected = post.bookmarkStatus ?? false
         footerView.likeButton.setImageToggle(post.likeStatus ?? false, UIImage(named: "Heart")!, UIImage(named: "Heart_selected")!)
         footerView.bookmarkButton.setImageToggle(post.bookmarkStatus ?? false, UIImage(named: "Bookmark")!, UIImage(named: "Bookmark_selected")!)
     }
