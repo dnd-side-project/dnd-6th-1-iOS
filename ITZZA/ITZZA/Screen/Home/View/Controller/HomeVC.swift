@@ -87,6 +87,7 @@ extension HomeVC {
     }
     
     private func setLottieAnimation() {
+        animationView.clipsToBounds = false
         animationView.contentMode = .scaleAspectFill
         animationView.play()
         animationView.loopMode = .loop

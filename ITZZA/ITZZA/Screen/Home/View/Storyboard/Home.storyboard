@@ -16,17 +16,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이별 후 마음을 들려주세요!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y41-lo-197">
-                                <rect key="frame" x="20" y="142" width="134" height="58.666666666666657"/>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="501" verticalHuggingPriority="501" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="n7S-Dw-K9C" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="203" y="128" width="147" height="137"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="Animation_Main"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="이별 후 마음을 들려주세요!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y41-lo-197">
+                                <rect key="frame" x="20" y="142" width="134" height="56"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="S2i-0t-ryq"/>
                                     <constraint firstAttribute="width" constant="134" id="toW-hb-N63"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="오늘은 어떤 하루였나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6x8-Vy-RGt">
-                                <rect key="frame" x="20" y="207.66666666666666" width="117" height="14.333333333333343"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="오늘은 어떤 하루였나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6x8-Vy-RGt">
+                                <rect key="frame" x="20" y="206" width="117" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6x8-Vy-RGt" secondAttribute="height" multiplier="117:16" id="Vxd-g4-KWL"/>
+                                    <constraint firstAttribute="height" constant="16" id="m1W-vF-6E5"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -35,8 +47,8 @@
                                 <rect key="frame" x="20" y="238" width="93" height="28"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="93" id="6Lp-AJ-ond"/>
-                                    <constraint firstAttribute="width" secondItem="kEz-hS-IRb" secondAttribute="height" multiplier="93:28" id="nWe-hG-Pbs"/>
+                                    <constraint firstAttribute="width" constant="93" id="5Bn-ZZ-GfT"/>
+                                    <constraint firstAttribute="height" constant="28" id="nmk-qZ-14I"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -97,17 +109,6 @@
                                     <constraint firstAttribute="height" constant="22" id="eRM-ag-dbi"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n7S-Dw-K9C" customClass="AnimationView" customModule="Lottie">
-                                <rect key="frame" x="203" y="128" width="147" height="137"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="137" id="Pee-ww-miX"/>
-                                    <constraint firstAttribute="width" secondItem="n7S-Dw-K9C" secondAttribute="height" multiplier="147:137" id="UrE-Dm-OAh"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="Animation_Main"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -119,17 +120,17 @@
                             <constraint firstItem="6x8-Vy-RGt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="9GP-ps-j3h"/>
                             <constraint firstItem="SUr-sl-BgZ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Bac-4F-m1B"/>
                             <constraint firstItem="b2J-7g-ohw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="DRQ-l8-fwM"/>
-                            <constraint firstItem="n7S-Dw-K9C" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="40" id="E0m-sO-0a9"/>
+                            <constraint firstItem="b2J-7g-ohw" firstAttribute="top" secondItem="n7S-Dw-K9C" secondAttribute="bottom" constant="57" id="FdY-Uw-DTX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="b2J-7g-ohw" secondAttribute="trailing" constant="20" id="Fea-0Y-G02"/>
-                            <constraint firstItem="n7S-Dw-K9C" firstAttribute="leading" secondItem="y41-lo-197" secondAttribute="trailing" constant="49" id="G6I-PO-GcT"/>
+                            <constraint firstItem="n7S-Dw-K9C" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="203" id="H0X-FT-Fjy"/>
                             <constraint firstItem="kEz-hS-IRb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Heh-e0-aOB"/>
                             <constraint firstItem="HbX-qR-YHY" firstAttribute="centerY" secondItem="SUr-sl-BgZ" secondAttribute="centerY" id="LQE-tz-sqg"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="n7S-Dw-K9C" secondAttribute="trailing" constant="25" id="Loc-ir-vrt"/>
                             <constraint firstItem="cnd-CV-gh9" firstAttribute="leading" secondItem="SUr-sl-BgZ" secondAttribute="trailing" constant="12" id="NIT-xL-GkX"/>
                             <constraint firstItem="kEz-hS-IRb" firstAttribute="top" secondItem="6x8-Vy-RGt" secondAttribute="bottom" constant="16" id="UBT-gy-RDo"/>
                             <constraint firstItem="y41-lo-197" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="54" id="W6F-jY-ZiS"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="n7S-Dw-K9C" secondAttribute="trailing" constant="25" id="bPv-AN-Foi"/>
-                            <constraint firstItem="6x8-Vy-RGt" firstAttribute="top" secondItem="y41-lo-197" secondAttribute="bottom" constant="7" id="kiB-sb-ErQ"/>
-                            <constraint firstItem="b2J-7g-ohw" firstAttribute="top" secondItem="n7S-Dw-K9C" secondAttribute="bottom" constant="57" id="lZe-DN-Dvc"/>
+                            <constraint firstItem="n7S-Dw-K9C" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="40" id="XPm-SB-0z2"/>
+                            <constraint firstItem="6x8-Vy-RGt" firstAttribute="top" secondItem="y41-lo-197" secondAttribute="bottom" constant="8" id="kiB-sb-ErQ"/>
                             <constraint firstItem="y41-lo-197" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="nFP-ut-ubL"/>
                             <constraint firstItem="SUr-sl-BgZ" firstAttribute="top" secondItem="kEz-hS-IRb" secondAttribute="bottom" constant="80" id="tbh-j6-w1Z"/>
                         </constraints>
