@@ -13,21 +13,29 @@ class PostDetailVC: UIViewController {
     @IBOutlet weak var commentListTV: UITableView!
     
     let bag = DisposeBag()
-    
-    let images: [UIImage] = [
-        UIImage(named: "Emoji_Angry")!,
-        UIImage(named: "Emoji_Comfy")!,
-        UIImage(named: "Emoji_Confuse")!
-    ]
+    var post = PostModel()
+    var boardId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setCommentListTV()
+        
+        setPost()
     }
 }
 
 //MARK: - Custom Methods
 extension PostDetailVC {
+    func setPost() {
+        PostManager().getPostDetail(boardId ?? 0) { posts in
+            if let posts = posts {
+                self.post = posts
+                DispatchQueue.main.async {
+                    self.setCommentListTV()
+                }
+            }
+        }
+    }
+    
     func setCommentListTV() {
         commentListTV.delegate = self
         commentListTV.backgroundColor = .lightGray1
@@ -45,7 +53,7 @@ extension PostDetailVC {
     
     func bindPostListTVItemSelected() {
         commentListTV.rx.itemSelected
-            .subscribe(onNext: { [weak self] indexPath in
+            .subscribe(onNext: { indexPath in
                 if indexPath.row != 0 {
                     print(indexPath.row, "댓글 눌림")
                 }
@@ -60,7 +68,7 @@ extension PostDetailVC {
 
             if indexPath == [0,0] {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentCountCell, for: indexPath) as? CommentCountTVC else { return UITableViewCell() }
-                cell.setCommentCount(4)
+                cell.setCommentCount(self.post.commentCnt ?? 0)
                 cell.selectionStyle = .none
                 cell.backgroundColor = .clear
                 return cell
@@ -90,7 +98,7 @@ extension PostDetailVC {
 extension PostDetailVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: Identifiers.postContentTableViewHeader) as? PostContentTableViewHeader else { return nil }
-        headerView.imageScrollView.image = images
+        headerView.configureContents(with: post)
         headerView.imageScrollView.configurePost()
         headerView.setPostButtonViewTopSpace()
         

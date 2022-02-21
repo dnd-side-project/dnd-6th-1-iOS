@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 struct PostModel: Decodable {
     var boardId: Int?
@@ -17,16 +18,39 @@ struct PostModel: Decodable {
     var postContent: String?
     var createdAt: String?
     var imageCnt: Int?
+    var images: [String]?
     var commentCnt: Int?
+    var comments: [PostComment]?
     var likeCnt: Int?
     var bookmarkStatus: Bool?
     var likeStatus: Bool?
 }
 
+struct PostComment: Decodable {
+    var nickname: String?
+    var profileImage: String?
+    var commentContent: String?
+    var createAt: String?
+    var canEdit: Bool?
+    var writerOrNot: Bool?
+}
+
 extension PostModel {
-    var profileimgURL: URL? {
+    var profileImgURL: URL? {
       guard let profileImgURL = profileImage else { return nil }
       return URL(string: profileImgURL)
+    }
+    
+    var postImages: [UIImage]? {
+        var postImages: [UIImage] = []
+        guard let postImgURL = images else { return nil }
+
+        postImgURL.forEach { imageURL in
+            let data = try? Data(contentsOf: URL(string: imageURL)!)
+            postImages.append(UIImage(data: data!)!)
+        }
+
+        return postImages
     }
 }
 

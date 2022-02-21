@@ -60,7 +60,7 @@ extension PostTVC {
     }
 
     func configureCell(with post: PostModel) {
-        headerView.profileImg.kf.setImage(with: post.profileimgURL,
+        headerView.profileImg.kf.setImage(with: post.profileImgURL,
                                           placeholder: UIImage(systemName: "person.circle"),
                                           options: [
                                             .scaleFactor(UIScreen.main.scale),

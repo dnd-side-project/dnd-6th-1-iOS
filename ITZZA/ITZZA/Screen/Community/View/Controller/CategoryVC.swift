@@ -41,6 +41,7 @@ extension CategoryVC {
                 self?.postListTV.deselectRow(at: indexPath, animated: false)
                 
                 guard let postDetailVC = ViewControllerFactory.viewController(for: .postDetail) as? PostDetailVC else { return }
+                postDetailVC.boardId = self?.postListVM.postAtIndex(indexPath.row).post.boardId
                 postDetailVC.hidesBottomBarWhenPushed = true
                 self?.navigationController?.pushViewController(postDetailVC, animated: true)
                 
@@ -57,7 +58,7 @@ extension CategoryVC {
         })
         
         let sections = [
-            PostDataSource(section: 0, items: self.postListVM.posts.reversed())
+            PostDataSource(section: 0, items: self.postListVM.posts)
         ]
 
         Observable.just(sections)

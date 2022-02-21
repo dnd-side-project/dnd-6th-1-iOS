@@ -30,7 +30,7 @@ extension PostListVM {
 
 //MARK: - PostVM
 struct PostVM {
-    private let post: PostModel
+    let post: PostModel
 }
 
 extension PostVM {
