@@ -77,12 +77,9 @@ extension PostButtonsView {
         let baseURL = "http://13.125.239.189:3000/boards/"
         guard let url = URL(string: baseURL + "\(boardId)" + "/likes") else { return }
         guard let token: String = KeychainWrapper.standard[.myToken] else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
 
-        AF.request(request).responseData { response in
+        AF.request(url, method: .post, headers: header).responseData { response in
             switch response.result {
             case .success:
                 self.likeButton.isSelected.toggle()
@@ -98,12 +95,9 @@ extension PostButtonsView {
         let baseURL = "http://13.125.239.189:3000/boards/"
         guard let url = URL(string: baseURL + "\(boardId)" + "/bookmarks") else { return }
         guard let token: String = KeychainWrapper.standard[.myToken] else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
 
-        AF.request(request).responseData { response in
+        AF.request(url, method: .post, headers: header).responseData { response in
             switch response.result {
             case .success:
                 self.bookmarkButton.isSelected.toggle()
