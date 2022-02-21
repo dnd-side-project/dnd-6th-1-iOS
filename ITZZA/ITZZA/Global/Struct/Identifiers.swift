@@ -51,6 +51,7 @@ struct Identifiers {
     static let postTVC = "PostTVC"
     static let commentTVC = "CommentTVC"
     static let commentCountCell = "CommentCountCell"
+    static let noneCommentCell = "NoneCommentCell"
     
     //MARK: - CVC
     static let addedImageCVC = "AddedImageCVC"

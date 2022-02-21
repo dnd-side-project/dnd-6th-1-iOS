@@ -78,21 +78,36 @@ extension PostDetailVC: UITableViewDelegate {
 
 extension PostDetailVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (post.comments?.count ?? 0) + 1
+        if post.commentCnt == 0 {
+            return 1
+        } else {
+            return (post.comments?.count ?? 0) + 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath == [0,0] {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentCountCell, for: indexPath) as? CommentCountTVC else { return UITableViewCell() }
-            cell.setCommentCount(self.post.commentCnt ?? 0)
-            cell.selectionStyle = .none
+        
+        if post.commentCnt == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.noneCommentCell, for: indexPath)
+            cell.isUserInteractionEnabled = false
             cell.backgroundColor = .clear
+            
             return cell
+            
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentTVC, for: indexPath) as? CommentTVC else { return UITableViewCell() }
-            cell.selectionStyle = .none
-            cell.configureCell(self.post.comments![indexPath.row - 1].comment!)
-            return cell
+            if indexPath == [0,0] {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentCountCell, for: indexPath) as? CommentCountTVC else { return UITableViewCell() }
+                cell.setCommentCount(self.post.commentCnt ?? 0)
+                cell.isUserInteractionEnabled = false
+                cell.backgroundColor = .clear
+                
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentTVC, for: indexPath) as? CommentTVC else { return UITableViewCell() }
+                cell.selectionStyle = .none
+                cell.configureCell(self.post.comments![indexPath.row - 1].comment!)
+                return cell
+            }
         }
     }
 }
