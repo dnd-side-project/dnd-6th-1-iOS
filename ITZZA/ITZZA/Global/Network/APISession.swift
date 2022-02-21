@@ -17,10 +17,10 @@ struct APISession: APIService {
     func postRequest<T: Decodable>(with urlResource: urlResource<T>, param: Parameters) -> Observable<Result<T, APIError>> {
 
         Observable<Result<T, APIError>>.create { observer in
-            // let header: HTTPHeaders = ["Content-Type": "application/json"]
+             let header: HTTPHeaders = ["Content-Type": "application/json"]
             
             // postman mock server 사용을 위한 임시 헤더, 위에 헤더로 바꿔야할 것
-            let header: HTTPHeaders = ["x-mock-match-request-body": "true"]
+//            let header: HTTPHeaders = ["x-mock-match-request-body": "true"]
             let task = AF.request(urlResource.url,
                                   method: .post,
                                   parameters: param,

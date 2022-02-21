@@ -30,7 +30,7 @@ class PostDetailVC: UIViewController {
 extension PostDetailVC {
     func setCommentListTV() {
         commentListTV.delegate = self
-        commentListTV.backgroundColor = .systemGray6
+        commentListTV.backgroundColor = .lightGray1
         commentListTV.separatorStyle = .none
         
         register()
@@ -90,8 +90,9 @@ extension PostDetailVC {
 extension PostDetailVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: Identifiers.postContentTableViewHeader) as? PostContentTableViewHeader else { return nil }
-        headerView.image = images
-        headerView.configurePost()
+        headerView.imageScrollView.image = images
+        headerView.imageScrollView.configurePost()
+        headerView.setPostButtonViewTopSpace()
         
         return headerView
     }

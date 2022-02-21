@@ -108,28 +108,28 @@ extension CommunityVC {
         
         bar.backgroundView.style = .flat(color: .white)
         bar.layout.contentInset = UIEdgeInsets(top: 0.0,
-                                               left: 16.0,
+                                               left: 25.0,
                                                bottom: 0.0,
-                                               right: 16.0)
+                                               right: 25.0)
         bar.buttons.customize { (button) in
-            button.tintColor = .darkGray
+            button.tintColor = .lightGray6
             button.selectedTintColor = .white
             
             button.layer.cornerRadius = 4
             button.contentInset = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
             
-            button.font = UIFont.SFProDisplayMedium(size: 16)
-            button.selectedFont = UIFont.SFProDisplayBold(size: 16)
+            button.font = UIFont.SpoqaHanSansNeoMedium(size: 15)
+            button.selectedFont = UIFont.SpoqaHanSansNeoBold(size: 15)
         }
     
         bar.indicator.cornerStyle = .eliptical
         bar.indicator.weight = .medium
-        bar.indicator.tintColor = .black
+        bar.indicator.tintColor = .primary
         bar.indicator.overscrollBehavior = .compress
         
         bar.layout.alignment = .centerDistributed
         bar.layout.contentMode = .intrinsic
-        bar.layout.interButtonSpacing = 14
+        bar.layout.interButtonSpacing = 10
         bar.layout.transitionStyle = .snap
         
         addBar(bar, dataSource: self, at: .custom(view: categoryTB, layout: nil))
@@ -163,9 +163,9 @@ class TabPagerButton: Tabman.TMLabelBarButton {
     override func update(for selectionState: TMBarButton.SelectionState) {
         switch selectionState {
             case .selected:
-                backgroundColor = .black
+                backgroundColor = .primary
             default:
-                backgroundColor = .systemGray6
+                backgroundColor = .background
         }
 
         super.update(for: selectionState)

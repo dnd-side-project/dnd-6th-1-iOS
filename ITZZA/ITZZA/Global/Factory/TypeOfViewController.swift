@@ -18,20 +18,10 @@ enum TypeOfViewController {
     case postDetail
     case addPost
     case searchPost
+
     case diary
     case writeDiary
     case homeAlarm
-    
-    static var communityCases: [TypeOfViewController] {
-        [
-            .communityCategory,
-            .communityCategory,
-            .communityCategory,
-            .communityCategory,
-            .communityCategory,
-            .communityCategory
-        ]
-    }
 }
 
 extension TypeOfViewController {

@@ -16,4 +16,13 @@ extension UITextView {
         isScrollEnabled = false
         isUserInteractionEnabled = false
     }
+    func setTextViewPlaceholder(_ placeholder: String) {
+        if text == "" {
+            text = placeholder
+            textColor = .lightGray5
+        } else if text == placeholder {
+            text = ""
+            textColor = .darkGray3
+        }
+    }
 }

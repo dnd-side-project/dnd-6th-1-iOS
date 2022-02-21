@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19455"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostContentTableViewHeader" customModule="ITZZA" customModuleProvider="target">
+            <connections>
+                <outlet property="footerView" destination="JKx-gu-efv" id="uCv-OE-5uE"/>
+                <outlet property="headerView" destination="Gjo-Vc-ECo" id="0M0-QH-ghY"/>
+                <outlet property="imageScrollView" destination="kSg-28-X7a" id="Maq-Rb-Nhd"/>
+                <outlet property="postButtonViewTopSpace" destination="D8D-oR-9W5" id="QSD-iq-NU9"/>
+                <outlet property="postContentView" destination="lzN-7r-pD8" id="fXx-FJ-dIp"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gjo-Vc-ECo" customClass="ProfileHeaderView" customModule="ITZZA" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="51" id="Xz1-Q2-eDX"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JKx-gu-efv" customClass="PostButtonsView" customModule="ITZZA" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="679" width="375" height="50"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="xIK-3I-ii1"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lzN-7r-pD8" customClass="PostContentView" customModule="ITZZA" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="51" width="375" height="102"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kSg-28-X7a" customClass="ImageScrollView" customModule="ITZZA" customModuleProvider="target">
+                    <rect key="frame" x="30" y="153" width="315" height="526"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="lzN-7r-pD8" firstAttribute="top" secondItem="Gjo-Vc-ECo" secondAttribute="bottom" id="CUa-hK-lgy"/>
+                <constraint firstItem="JKx-gu-efv" firstAttribute="top" secondItem="kSg-28-X7a" secondAttribute="bottom" id="D8D-oR-9W5"/>
+                <constraint firstAttribute="trailing" secondItem="JKx-gu-efv" secondAttribute="trailing" id="EjU-TJ-uKs"/>
+                <constraint firstItem="lzN-7r-pD8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LWA-8J-Azl"/>
+                <constraint firstItem="Gjo-Vc-ECo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OZC-fr-O6V"/>
+                <constraint firstAttribute="trailing" secondItem="kSg-28-X7a" secondAttribute="trailing" constant="30" id="WE1-Pe-Ubi"/>
+                <constraint firstAttribute="trailing" secondItem="Gjo-Vc-ECo" secondAttribute="trailing" id="Xzg-ad-Fhy"/>
+                <constraint firstItem="Gjo-Vc-ECo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="b63-Q5-VVA"/>
+                <constraint firstItem="kSg-28-X7a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="crG-gh-z99"/>
+                <constraint firstItem="kSg-28-X7a" firstAttribute="top" secondItem="lzN-7r-pD8" secondAttribute="bottom" id="fIo-Or-IeP"/>
+                <constraint firstAttribute="bottom" secondItem="JKx-gu-efv" secondAttribute="bottom" id="iAw-Zl-ipJ"/>
+                <constraint firstItem="JKx-gu-efv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yf8-Cj-pcv"/>
+                <constraint firstAttribute="trailing" secondItem="lzN-7r-pD8" secondAttribute="trailing" id="zM3-n8-LKJ"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="132" y="99.384236453201979"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

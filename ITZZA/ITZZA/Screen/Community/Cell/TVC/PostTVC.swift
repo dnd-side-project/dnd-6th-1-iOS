@@ -20,7 +20,7 @@ class PostTVC: UITableViewCell {
     
     let cellSpace = UIEdgeInsets(top: 0.0,
                                  left: 0.0,
-                                 bottom: 5.0,
+                                 bottom: 10.0,
                                  right: 0.0)
     
     override func awakeFromNib() {
@@ -69,8 +69,8 @@ extension PostTVC {
         headerView.userName.text = post.nickname
         headerView.createAt.text = post.createdAt
         
-        postContentView.postTitle.text = post.postTitle
-        postContentView.postContent.text = post.postContent
+        postContentView.title.text = post.postTitle
+        postContentView.contents.text = post.postContent
         
         if post.imageCnt == 0 {
             imageCntView.isHidden = true
@@ -78,10 +78,13 @@ extension PostTVC {
             imageCnt.text = "+" + String(post.imageCnt!)
         }
         
+        footerView.boardId = post.boardId
         footerView.likeCnt.text = String(describing: post.likeCnt!)
         footerView.commentCnt.text = String(describing: post.commentCnt!)
         
-        footerView.likeButton.setImageToggle(post.likeStatus!, UIImage(systemName: "heart")!, UIImage(systemName: "heart.fill")!)
-        footerView.bookmarkButton.setImageToggle(post.bookmarkStatus!, UIImage(systemName: "bookmark")!, UIImage(systemName: "bookmark.fill")!)
+        footerView.likeButton.isSelected = post.likeStatus ?? false
+        footerView.bookmarkButton.isSelected = post.bookmarkStatus ?? false
+        footerView.likeButton.setImageToggle(post.likeStatus ?? false, UIImage(named: "Heart")!, UIImage(named: "Heart_selected")!)
+        footerView.bookmarkButton.setImageToggle(post.bookmarkStatus ?? false, UIImage(named: "Bookmark")!, UIImage(named: "Bookmark_selected")!)
     }
 }

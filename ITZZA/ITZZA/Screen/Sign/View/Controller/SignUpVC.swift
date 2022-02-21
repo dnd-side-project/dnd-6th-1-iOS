@@ -89,7 +89,7 @@ extension SignUpVC {
         
         bubbleLabel.frame = CGRect(x: 7, y: 3, width: 74, height: 21)
         bubbleLabel.textColor = .white
-        bubbleLabel.font = UIFont.SFProDisplayRegular(size: 10)
+        bubbleLabel.font = UIFont.SpoqaHanSansNeoRegular(size: 10)
         bubbleLabel.textAlignment = .center
         
         emojiImage.snp.makeConstraints {

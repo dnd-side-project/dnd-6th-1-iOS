@@ -15,7 +15,6 @@ class ITZZATBC: UITabBarController {
     }
     
     //MARK: - Custom Method
-    /// makeTabVC - 탭별 아이템 생성하는 함수
     func makeTabVC(vcType: TypeOfViewController, tabBarTitle: String, tabBarImage: String, tabBarSelectedImage: String) -> UIViewController {
         
         let tab = ViewControllerFactory.viewController(for: vcType)
@@ -24,20 +23,21 @@ class ITZZATBC: UITabBarController {
         return tab
     }
     
-    /// setTabBar - 탭바 Setting
     func setTabBar() {
-        let homeTab = makeTabVC(vcType: .home, tabBarTitle: "Home", tabBarImage: "", tabBarSelectedImage: "")
-        let communityTab = makeTabVC(vcType: .community, tabBarTitle: "Community", tabBarImage: "", tabBarSelectedImage: "")
-        let mypageTab = makeTabVC(vcType: .mypage, tabBarTitle: "Mypage", tabBarImage: "", tabBarSelectedImage: "")
+        let homeTab = makeTabVC(vcType: .home, tabBarTitle: "투데이", tabBarImage: "Tab_Home", tabBarSelectedImage: "Tab_Home")
+        let communityTab = makeTabVC(vcType: .community, tabBarTitle: "커뮤니티", tabBarImage: "Tab_Community", tabBarSelectedImage: "Tab_Community")
+        let mypageTab = makeTabVC(vcType: .mypage, tabBarTitle: "마이", tabBarImage: "Tab_Mypage", tabBarSelectedImage: "Tab_Mypage")
         
         // 탭바 스타일 설정
-        tabBar.frame.size.height = 65
-        tabBar.tintColor = .black
-        tabBar.layer.shadowOpacity = 0
+        tabBar.backgroundColor = .white
+        tabBar.isTranslucent = false
+        
+        tabBar.tintColor = .primary
+        tabBar.unselectedItemTintColor = .lightGray5
+        
+        tabBar.layer.shadowColor = UIColor.lightGray.cgColor
         tabBar.layer.shadowOffset = CGSize(width: 0, height: 0)
-        tabBar.layer.borderWidth = 0.3
-        tabBar.layer.borderColor = UIColor.lightGray.cgColor
-        tabBar.clipsToBounds = true
+        tabBar.layer.shadowOpacity = 0.5
         
         // 탭 구성
         let tabs =  [homeTab, communityTab, mypageTab]

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SpoqaHanSansNeo-Medium.otf">
+            <string>SpoqaHanSansNeo-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostButtonsView" customModule="ITZZA" customModuleProvider="target">
+            <connections>
+                <outlet property="bookmarkButton" destination="4fA-Ir-6P7" id="KIw-pF-myE"/>
+                <outlet property="commentButton" destination="sH0-pr-0RZ" id="Eha-0T-8lM"/>
+                <outlet property="commentCnt" destination="vBj-xc-9l9" id="9uM-Pg-DTE"/>
+                <outlet property="likeButton" destination="Mwe-9X-0U4" id="gUy-J3-6jG"/>
+                <outlet property="likeCnt" destination="8Y9-f3-SuG" id="ZeC-er-U6I"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vx1-Tp-pwt">
+                    <rect key="frame" x="30" y="0.0" width="315" height="1"/>
+                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="3IP-G6-HbO"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cQk-4m-dlx">
+                    <rect key="frame" x="29.999999999999996" y="13" width="47.666666666666657" height="24"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwe-9X-0U4">
+                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="bFz-BI-67S"/>
+                                <constraint firstAttribute="height" constant="24" id="jb6-Fg-j7v"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="Heart_selected"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Y9-f3-SuG">
+                            <rect key="frame" x="32" y="0.0" width="15.666666666666664" height="24"/>
+                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="13"/>
+                            <color key="textColor" red="0.74509803919999995" green="0.72549019609999998" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Adu-KW-fZc">
+                    <rect key="frame" x="97.666666666666671" y="13" width="47.666666666666671" height="24"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sH0-pr-0RZ">
+                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="GPR-fd-HPa"/>
+                                <constraint firstAttribute="width" constant="24" id="YsD-lk-H2p"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="Comment"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBj-xc-9l9">
+                            <rect key="frame" x="31.999999999999989" y="0.0" width="15.666666666666668" height="24"/>
+                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="13"/>
+                            <color key="textColor" red="0.74509803919999995" green="0.72549019609999998" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fA-Ir-6P7">
+                    <rect key="frame" x="321" y="13" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="Rfy-6s-5Of"/>
+                        <constraint firstAttribute="height" constant="24" id="yJx-oV-YYx"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="Bookmark_selected"/>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vx1-Tp-pwt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="2vu-g9-mPb"/>
+                <constraint firstAttribute="trailing" secondItem="4fA-Ir-6P7" secondAttribute="trailing" constant="30" id="4Nz-yE-HVk"/>
+                <constraint firstItem="cQk-4m-dlx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="5iH-wr-bAL"/>
+                <constraint firstAttribute="trailing" secondItem="vx1-Tp-pwt" secondAttribute="trailing" constant="30" id="INm-jx-M7d"/>
+                <constraint firstItem="vx1-Tp-pwt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ot1-Lz-0Vf"/>
+                <constraint firstItem="Adu-KW-fZc" firstAttribute="leading" secondItem="cQk-4m-dlx" secondAttribute="trailing" constant="20" id="aH2-09-FGh"/>
+                <constraint firstItem="Adu-KW-fZc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="itg-sb-fMc"/>
+                <constraint firstItem="4fA-Ir-6P7" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="tGP-VW-5bl"/>
+                <constraint firstItem="cQk-4m-dlx" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="uqp-wD-KgZ"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="138.40000000000001" y="86.453201970443359"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Bookmark_selected" width="24" height="24"/>
+        <image name="Comment" width="24" height="24"/>
+        <image name="Heart_selected" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

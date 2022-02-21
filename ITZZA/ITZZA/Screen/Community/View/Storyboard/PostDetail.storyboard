@@ -33,7 +33,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 n개의 댓글" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8m-6X-JAi">
-                                                    <rect key="frame" x="25.000000000000007" y="26" width="79.666666666666686" height="18"/>
+                                                    <rect key="frame" x="30.000000000000007" y="26" width="81.666666666666686" height="18"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -46,7 +46,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstItem="a8m-6X-JAi" firstAttribute="leading" secondItem="fs5-el-khf" secondAttribute="leading" constant="25" id="Lrt-bg-0CG"/>
+                                            <constraint firstItem="a8m-6X-JAi" firstAttribute="leading" secondItem="fs5-el-khf" secondAttribute="leading" constant="30" id="Lrt-bg-0CG"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="commentCount" destination="a8m-6X-JAi" id="yIW-On-7r1"/>
