@@ -88,7 +88,7 @@ extension PostDetailVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if post.commentCnt == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.noneCommentCell, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.noneCommentTVC, for: indexPath)
             cell.isUserInteractionEnabled = false
             cell.backgroundColor = .clear
             
@@ -96,7 +96,7 @@ extension PostDetailVC: UITableViewDataSource {
             
         } else {
             if indexPath == [0,0] {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentCountCell, for: indexPath) as? CommentCountTVC else { return UITableViewCell() }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentCountTVC, for: indexPath) as? CommentCountTVC else { return UITableViewCell() }
                 cell.setCommentCount(self.post.commentCnt ?? 0)
                 cell.isUserInteractionEnabled = false
                 cell.backgroundColor = .clear
