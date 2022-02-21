@@ -2,6 +2,7 @@ PODS:
   - Alamofire (5.5.0)
   - BSImagePicker (3.3.1)
   - Differentiator (5.0.0)
+  - FSCalendar (2.8.2)
   - DynamicBottomSheet (1.0.2):
     - RxCocoa (~> 6.0)
     - RxGesture (~> 4.0)
@@ -9,6 +10,7 @@ PODS:
     - SnapKit (~> 5.0)
     - Then (~> 2.0)
   - Kingfisher (7.1.2)
+  - lottie-ios (3.3.0)
   - Pageboy (3.6.2)
   - RxCocoa (6.1.0):
     - RxRelay (= 6.1.0)
@@ -31,9 +33,11 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.5)
+  - FSCalendar
   - BSImagePicker (~> 3.1)
   - DynamicBottomSheet
   - Kingfisher (~> 7.0)
+  - lottie-ios
   - RxCocoa (< 6.2.0)
   - RxDataSources (< 5.1.0)
   - RxGesture (< 4.1.0)
@@ -47,8 +51,10 @@ SPEC REPOS:
     - Alamofire
     - BSImagePicker
     - Differentiator
+    - FSCalendar
     - DynamicBottomSheet
     - Kingfisher
+    - lottie-ios
     - Pageboy
     - RxCocoa
     - RxDataSources
@@ -64,8 +70,10 @@ SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   BSImagePicker: 0fe04b574d4d6b81093785d2af6c26227efc8428
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   DynamicBottomSheet: b11ead81bf8ee494b26cbd16ff2312313e90d9e3
   Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
+  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   Pageboy: cf121b9dd48c63f3f281b2a9ec93d02e0f23879b
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
@@ -77,6 +85,6 @@ SPEC CHECKSUMS:
   Tabman: 792ac76fd1ec95af175c93db880a3c47cabedc91
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 812274acfbb627efde356ea27eefec08c93ad57c
+PODFILE CHECKSUM: 882247615e563cec5e680d47d39d521eaa297497
 
 COCOAPODS: 1.11.2

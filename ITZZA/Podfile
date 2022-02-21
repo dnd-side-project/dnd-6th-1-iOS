@@ -20,4 +20,7 @@ target 'ITZZA' do
   pod 'DynamicBottomSheet'
   pod "BSImagePicker", "~> 3.1"
   pod 'SnapKit'
+  pod 'FSCalendar'
+  pod 'lottie-ios'
+
 end

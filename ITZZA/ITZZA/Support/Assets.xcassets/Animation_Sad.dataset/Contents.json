@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "sad.json",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
