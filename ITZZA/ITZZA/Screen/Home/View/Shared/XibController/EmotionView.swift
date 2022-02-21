@@ -7,12 +7,12 @@
 
 import UIKit
 
-enum Emoji: String, CaseIterable {
-    case angry = "Emoji_Angry"
-    case comfy = "Emoji_Comfy"
-    case confuse = "Emoji_Confuse"
-    case sad = "Emoji_Sad"
-    case lonely = "Emoji_Lonely"
+enum GrayEmoji: String, CaseIterable {
+    case angry = "GrayEmoji_Angry"
+    case comfy = "GrayEmoji_Comfy"
+    case confuse = "GrayEmoji_Confuse"
+    case sad = "GrayEmoji_Sad"
+    case lonely = "GrayEmoji_Lonely"
 }
 
 class EmotionView: UIView {
@@ -20,10 +20,12 @@ class EmotionView: UIView {
     @IBOutlet weak var collectionView: UICollectionView!
     
     let minimumLineSpacing = CGFloat(19)
-    let emojiArray = Emoji.allCases.map {
+    let emojiArray = GrayEmoji.allCases.map {
         UIImage(named: $0.rawValue)
     }
     let emojiLabelArray = ["화남", "편안함", "혼란", "서글픔", "외로움"]
+    var emojiStatusArray = Array(repeating: false, count: 5)
+    var selectedEmojiNumber: Int?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,10 +60,12 @@ extension EmotionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmotionCell", for: indexPath) as! EmotionCVC
-        
-        cell.emojiBackground.backgroundColor = .orange
+    
         cell.emojiBackground.layer.cornerRadius = cell.frame.width / 2
-        cell.configure(with: emojiArray[indexPath.row]!, emojiLabelArray[indexPath.row])
+        
+        cell.update(GrayEmoji.allCases[indexPath.row].rawValue,
+                    emojiStatusArray[indexPath.row],
+                    emojiLabelArray[indexPath.row])
         
         return cell
     }
@@ -70,6 +74,22 @@ extension EmotionView: UICollectionViewDataSource {
 
 extension EmotionView: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        
+        guard let num = selectedEmojiNumber else {
+            emojiStatusArray[indexPath.item].toggle()
+            selectedEmojiNumber = indexPath.item
+            collectionView.reloadData()
+            return false
+        }
+        
+        emojiStatusArray[num].toggle()
+        emojiStatusArray[indexPath.item].toggle()
+        selectedEmojiNumber = indexPath.item
+        collectionView.reloadData()
+        
+        return true
+    }
 }
 
 extension EmotionView: UICollectionViewDelegateFlowLayout {
@@ -80,6 +100,4 @@ extension EmotionView: UICollectionViewDelegateFlowLayout {
         
         return CGSize(width: cellWidth, height: collectionView.frame.height)
     }
-    
-    
 }

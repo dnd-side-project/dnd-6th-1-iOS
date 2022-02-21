@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import FSCalendar
+import Lottie
 import RxSwift
 import RxCocoa
 
@@ -16,9 +17,10 @@ class HomeVC: UIViewController {
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var calendarNextPageButton: UIButton!
     @IBOutlet weak var calendarPreviousPageButton: UIButton!
-    @IBOutlet weak var calendarMonthLabel: UILabel!
-    @IBOutlet weak var calendarYearLabel: UILabel!
     @IBOutlet weak var writeTodayDiaryButton: UIButton!
+    @IBOutlet weak var calendarYearLabel: UILabel!
+    @IBOutlet weak var calendarMonthLabel: UILabel!
+    @IBOutlet weak var animationView: AnimationView!
     private var homeAlarmButton: UIBarButtonItem!
     
     var disposeBag = DisposeBag()
@@ -54,6 +56,7 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         configureNavigationBar()
         setInitialUIValue()
+        setLottieAnimation()
         calendarDefaultState()
         setDate()
         bindUI()
@@ -66,6 +69,7 @@ extension HomeVC {
         setNaviBarView()
         setNaviBarItem()
     }
+    
     private func setNaviBarView() {
         navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .black)
     }
@@ -78,10 +82,14 @@ extension HomeVC {
     
     private func setInitialUIValue() {
         writeTodayDiaryButton.layer.cornerRadius = 5
-        calendarView.layer.shadowOpacity = 0.1
-        calendarView.layer.shadowOffset = CGSize(width: 0, height: -1)
-        calendarView.layer.shadowRadius = 5
-        calendarView.layer.masksToBounds = false
+        calendarView.layer.cornerRadius = 4
+        calendarView.backgroundColor = .calendarBackgroundColor
+    }
+    
+    private func setLottieAnimation() {
+        animationView.contentMode = .scaleAspectFill
+        animationView.play()
+        animationView.loopMode = .loop
     }
     
     private func calendarDefaultState() {
@@ -92,11 +100,9 @@ extension HomeVC {
         calendarView.appearance.selectionColor = .calendarBackgroundColor
         calendarView.appearance.titleSelectionColor = .black
         
-        calendarView.layer.cornerRadius = 4
         calendarView.locale = Locale(identifier: "en_US")
-        calendarView.backgroundColor = .calendarBackgroundColor
-        
-        calendarView.headerHeight = 100
+
+        calendarView.headerHeight = 78
         calendarView.calendarHeaderView.isHidden = true
         
         calendarView.appearance.weekdayTextColor = .black
@@ -134,7 +140,7 @@ extension HomeVC: FSCalendarDelegate {
         calendarMonthLabel.text = monthDateFormatter.string(from: calendarView.currentPage)
         calendarYearLabel.text = yearDateFormatter.string(from: calendarView.currentPage)
     }
-    
+
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         calendarMonthLabel.text = monthDateFormatter.string(from: calendar.currentPage)
         calendarYearLabel.text = yearDateFormatter.string(from: calendar.currentPage)

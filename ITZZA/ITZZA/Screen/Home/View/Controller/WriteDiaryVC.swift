@@ -19,17 +19,14 @@ class WriteDiaryVC: UIViewController {
     
     var disposeBag = DisposeBag()
     var selectedDate: String!
-    let emotionButtonView = EmotionButtonView()
     let emotionView = EmotionView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setInitialUIValue()
         addEmotionView()
-        // addEmotionButtonView()
         bindUI()
     }
-    
 }
 
 // MARK: - Change UI
@@ -52,20 +49,6 @@ extension WriteDiaryVC {
         
         view.layoutIfNeeded()
     }
-    
-//    private func addEmotionButtonView() {
-//        view.addSubview(emotionButtonView)
-//
-//        emotionButtonView.snp.makeConstraints {
-//            $0.top.equalTo(dateTitleView.snp.bottom)
-//            $0.leading.equalTo(view.safeAreaLayoutGuide)
-//            $0.trailing.equalTo(view.safeAreaLayoutGuide)
-//        }
-//
-//        view.layoutIfNeeded()
-//        emotionButtonView.setButtonCornerRadius()
-//        emotionButtonView.enlargeButtonImage()
-//    }
 }
 
 // MARK: - Bindings

@@ -76,7 +76,6 @@ extension DiaryVC {
                                             as? WriteDiaryVC else { return }
                 
                 writeDiaryVC.selectedDate = self.seletedDate
-                writeDiaryVC.modalPresentationStyle = .fullScreen
                 self.present(writeDiaryVC, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)

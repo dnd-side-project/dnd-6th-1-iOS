@@ -19,5 +19,6 @@ target 'ITZZA' do
   pod 'Kingfisher', '~> 7.0'
   pod 'SnapKit'
   pod 'FSCalendar'
+  pod 'lottie-ios'
 
 end
