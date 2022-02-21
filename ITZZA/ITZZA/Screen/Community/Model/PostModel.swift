@@ -20,19 +20,10 @@ struct PostModel: Decodable {
     var imageCnt: Int?
     var images: [String]?
     var commentCnt: Int?
-    var comments: [PostComment]?
+    var comments: [CommentDataModel]?
     var likeCnt: Int?
     var bookmarkStatus: Bool?
     var likeStatus: Bool?
-}
-
-struct PostComment: Decodable {
-    var nickname: String?
-    var profileImage: String?
-    var commentContent: String?
-    var createAt: String?
-    var canEdit: Bool?
-    var writerOrNot: Bool?
 }
 
 extension PostModel {

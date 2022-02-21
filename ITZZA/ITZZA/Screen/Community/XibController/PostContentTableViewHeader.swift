@@ -37,8 +37,6 @@ class PostContentTableViewHeader: UITableViewHeaderFooterView {
         view.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        
-        view.addSubview(imageScrollView)
     }
     
     func configureContents(with post: PostModel) {
@@ -55,6 +53,7 @@ class PostContentTableViewHeader: UITableViewHeaderFooterView {
         postContentView.contents.text = post.postContent
 
         imageScrollView.image = post.postImages ?? []
+        imageScrollView.configurePost()
         
         footerView.boardId = post.boardId
         footerView.likeCnt.text = String(describing: post.likeCnt ?? 0)

@@ -50,6 +50,7 @@
 		233B636B27AF9D9D00914F60 /* PostDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B636A27AF9D9D00914F60 /* PostDetailVC.swift */; };
 		233B636D27AFAE2400914F60 /* PostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B636C27AFAE2400914F60 /* PostContentView.swift */; };
 		233B636F27AFAE3100914F60 /* PostContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 233B636E27AFAE3100914F60 /* PostContentView.xib */; };
+		233FE3D027C40AEE00A1A8C3 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233FE3CF27C40AEE00A1A8C3 /* CommentModel.swift */; };
 		2356305627BFA1D10032E520 /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2356305127BFA1CC0032E520 /* SpoqaHanSansNeo-Bold.otf */; };
 		2356305727BFA1D10032E520 /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2356305427BFA1CC0032E520 /* SpoqaHanSansNeo-Regular.otf */; };
 		2356305827BFA1D10032E520 /* SpoqaHanSansNeo-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2356305527BFA1CC0032E520 /* SpoqaHanSansNeo-Medium.otf */; };
@@ -167,6 +168,7 @@
 		233B636A27AF9D9D00914F60 /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVC.swift; sourceTree = "<group>"; };
 		233B636C27AFAE2400914F60 /* PostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentView.swift; sourceTree = "<group>"; };
 		233B636E27AFAE3100914F60 /* PostContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostContentView.xib; sourceTree = "<group>"; };
+		233FE3CF27C40AEE00A1A8C3 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		2356305127BFA1CC0032E520 /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
 		2356305227BFA1CC0032E520 /* SpoqaHanSansNeo-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Light.otf"; sourceTree = "<group>"; };
 		2356305327BFA1CC0032E520 /* SpoqaHanSansNeo-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Thin.otf"; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				238CEEAD27A7F577006BE766 /* PostModel.swift */,
+				233FE3CF27C40AEE00A1A8C3 /* CommentModel.swift */,
 				2335241227A98D57009C654F /* PostDataSource.swift */,
 				23DC8F9F27B95F3C00F79EF4 /* PostManager.swift */,
 			);
@@ -990,6 +993,7 @@
 				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,
 				62E2BDFA27AD25CA0052DDCE /* SignUpVM.swift in Sources */,
 				623DE30C27B616F7005E78D0 /* Validation.swift in Sources */,
+				233FE3D027C40AEE00A1A8C3 /* CommentModel.swift in Sources */,
 				623DE2F727B25367005E78D0 /* EmailView.swift in Sources */,
 				2335241F27A99392009C654F /* PostButtonsView.swift in Sources */,
 				236C98DE27B239C200CE1EFD /* UIView+.swift in Sources */,

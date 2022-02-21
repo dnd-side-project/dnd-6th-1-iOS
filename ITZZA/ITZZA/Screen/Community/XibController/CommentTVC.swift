@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CommentTVC: UITableViewCell {
     @IBOutlet weak var profileImg: UIImageView!
@@ -44,5 +45,17 @@ class CommentTVC: UITableViewCell {
         createCommentButton.setTitle("답글 달기", for: .normal)
         createCommentButton.titleLabel?.font = UIFont.SpoqaHanSansNeoRegular(size: 10)
         createCommentButton.tintColor = .lightGray6
+    }
+    
+    func configureCell(_ comments: CommentModel) {
+        profileImg.kf.setImage(with: URL(string: comments.profileImage!),
+                                          placeholder: UIImage(systemName: "person.circle"),
+                                          options: [
+                                            .scaleFactor(UIScreen.main.scale),
+                                            .cacheOriginalImage
+                                          ])
+        userName.text = comments.nickname
+        commentContent.text = comments.commentContent
+        createAt.text = comments.createdAt
     }
 }

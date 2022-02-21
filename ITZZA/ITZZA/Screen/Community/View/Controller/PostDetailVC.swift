@@ -37,12 +37,12 @@ extension PostDetailVC {
     }
     
     func setCommentListTV() {
+        commentListTV.dataSource = self
         commentListTV.delegate = self
         commentListTV.backgroundColor = .lightGray1
         commentListTV.separatorStyle = .none
         
         register()
-        bindTV()
         bindPostListTVItemSelected()
     }
     
@@ -62,44 +62,10 @@ extension PostDetailVC {
     }
 }
 
-extension PostDetailVC {
-    func bindTV() {
-        let configureCell: (TableViewSectionedDataSource<SectionModel<String, String>>, UITableView,IndexPath, String) -> UITableViewCell = { (datasource, tableView, indexPath,  element) in
-
-            if indexPath == [0,0] {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentCountCell, for: indexPath) as? CommentCountTVC else { return UITableViewCell() }
-                cell.setCommentCount(self.post.commentCnt ?? 0)
-                cell.selectionStyle = .none
-                cell.backgroundColor = .clear
-                return cell
-            } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentTVC, for: indexPath) as? CommentTVC else { return UITableViewCell() }
-                cell.selectionStyle = .none
-                return cell
-            }
-        }
-
-        let datasource = RxTableViewSectionedReloadDataSource<SectionModel<String, String>>.init(configureCell: configureCell)
-
-        datasource.titleForHeaderInSection = { datasource, index in
-            return datasource.sectionModels[index].model
-        }
-
-        let sections = [
-            SectionModel<String, String>(model: "", items: ["","",""])
-        ]
-
-        Observable.just(sections)
-            .bind(to: commentListTV.rx.items(dataSource: datasource))
-            .disposed(by: bag)
-    }
-}
-
 extension PostDetailVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: Identifiers.postContentTableViewHeader) as? PostContentTableViewHeader else { return nil }
         headerView.configureContents(with: post)
-        headerView.imageScrollView.configurePost()
         headerView.setPostButtonViewTopSpace()
         
         return headerView
@@ -107,5 +73,26 @@ extension PostDetailVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
+    }
+}
+
+extension PostDetailVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (post.comments?.count ?? 0) + 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath == [0,0] {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentCountCell, for: indexPath) as? CommentCountTVC else { return UITableViewCell() }
+            cell.setCommentCount(self.post.commentCnt ?? 0)
+            cell.selectionStyle = .none
+            cell.backgroundColor = .clear
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentTVC, for: indexPath) as? CommentTVC else { return UITableViewCell() }
+            cell.selectionStyle = .none
+            cell.configureCell(self.post.comments![indexPath.row - 1].comment!)
+            return cell
+        }
     }
 }
