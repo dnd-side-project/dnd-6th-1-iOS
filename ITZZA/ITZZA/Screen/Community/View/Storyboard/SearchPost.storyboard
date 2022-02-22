@@ -208,8 +208,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="divisionLine" destination="JZ8-a0-1M5" id="5y6-Ln-nw4"/>
                         <outlet property="naviBackButton" destination="1Nn-Bo-jJI" id="Pd7-QY-6Rr"/>
                         <outlet property="naviSearchButton" destination="sZ5-Zu-snt" id="NJY-sy-vgs"/>
+                        <outlet property="removeAllButton" destination="2NO-2U-oDu" id="rbe-BE-OGu"/>
                         <outlet property="searchBar" destination="dIz-DK-tE1" id="jKZ-Ap-BaG"/>
                         <outlet property="searchHistoryTV" destination="BmC-rl-L97" id="1pf-Qs-5Sn"/>
                     </connections>

@@ -12,10 +12,13 @@ class SearchPostVC: UIViewController {
     @IBOutlet weak var naviBackButton: UIButton!
     @IBOutlet weak var naviSearchButton: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var removeAllButton: UIButton!
     @IBOutlet weak var searchHistoryTV: UITableView!
+    @IBOutlet weak var divisionLine: UIView!
     
     let bag = DisposeBag()
     var isNoneData = false
+    var dummydata = [ "검색어 1", "검색어 2", "검색어 3", "검색어 4", "검색어 5"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,9 +69,11 @@ extension SearchPostVC {
                 if $0! == "" {
                     self.naviBackButton.tintColor = .darkGray6
                     self.naviSearchButton.tintColor = .darkGray6
+                    self.divisionLine.backgroundColor = .lightGray3
                 } else {
                     self.naviBackButton.tintColor = .primary
                     self.naviSearchButton.tintColor = .primary
+                    self.divisionLine.backgroundColor = .primary
                 }
             })
             .disposed(by: bag)
@@ -79,6 +84,27 @@ extension SearchPostVC {
         searchHistoryTV.delegate = self
         searchHistoryTV.separatorStyle = .none
         searchHistoryTV.isScrollEnabled = false
+        
+        didTapRemoveAllButton()
+    }
+    
+    func didTapRemoveAllButton() {
+        removeAllButton.rx.tap
+            .subscribe(onNext: {
+                self.dummydata.removeAll()
+                self.isNoneData = true
+                self.searchHistoryTV.reloadData()
+            })
+            .disposed(by: bag)
+    }
+    
+    @objc private func deleteCell(sender: UIButton) {
+        dummydata.remove(at: sender.tag)
+        searchHistoryTV.deleteRows(at: [IndexPath.init(row: sender.tag, section: 0)], with: .none)
+        if self.dummydata.count == 0 {
+            self.isNoneData = true
+        }
+        searchHistoryTV.reloadData()
     }
 }
 
@@ -88,7 +114,7 @@ extension SearchPostVC: UITableViewDataSource {
         if isNoneData {
             return 1
         } else {
-            return 5
+            return dummydata.count
         }
     }
     
@@ -100,6 +126,9 @@ extension SearchPostVC: UITableViewDataSource {
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.historyTVC, for: indexPath) as? HistoryTVC else { return UITableViewCell() }
+            cell.configureCell(dummydata[indexPath.row])
+            cell.deleteButton.tag = indexPath.row
+            cell.deleteButton.addTarget(self, action: #selector(deleteCell(sender:)), for: .touchUpInside)
             
             return cell
         }
