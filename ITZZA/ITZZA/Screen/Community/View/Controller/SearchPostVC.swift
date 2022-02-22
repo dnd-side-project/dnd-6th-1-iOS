@@ -12,14 +12,17 @@ class SearchPostVC: UIViewController {
     @IBOutlet weak var naviBackButton: UIButton!
     @IBOutlet weak var naviSearchButton: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchHistoryTV: UITableView!
     
     let bag = DisposeBag()
+    var isNoneData = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureNavigationBar()
         configureSearchBar()
+        configureSearchHistoryTV()
     }
 }
 // MARK: - Custom Methods
@@ -69,5 +72,42 @@ extension SearchPostVC {
                 }
             })
             .disposed(by: bag)
+    }
+    
+    func configureSearchHistoryTV() {
+        searchHistoryTV.dataSource = self
+        searchHistoryTV.delegate = self
+        searchHistoryTV.separatorStyle = .none
+        searchHistoryTV.isScrollEnabled = false
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension SearchPostVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isNoneData {
+            return 1
+        } else {
+            return 5
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if isNoneData {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.historyNoneTVC, for: indexPath)
+            cell.isUserInteractionEnabled = false
+            
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.historyTVC, for: indexPath) as? HistoryTVC else { return UITableViewCell() }
+            
+            return cell
+        }
+    }
+}
+// MARK: - UITableViewDelegate
+extension SearchPostVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

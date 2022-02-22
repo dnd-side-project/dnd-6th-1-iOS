@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2302A61127C4FB6200B03A49 /* HistoryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302A61027C4FB6200B03A49 /* HistoryTVC.swift */; };
 		2305120D27AEE52100CF7FCF /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2305120C27AEE52100CF7FCF /* UIButton+.swift */; };
 		232302FC27AFC13200E20078 /* CommentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232302FA27AFC13200E20078 /* CommentTVC.swift */; };
 		232302FD27AFC13200E20078 /* CommentTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232302FB27AFC13200E20078 /* CommentTVC.xib */; };
@@ -136,6 +137,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2302A61027C4FB6200B03A49 /* HistoryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTVC.swift; sourceTree = "<group>"; };
 		2305120C27AEE52100CF7FCF /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		232302FA27AFC13200E20078 /* CommentTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTVC.swift; sourceTree = "<group>"; };
 		232302FB27AFC13200E20078 /* CommentTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTVC.xib; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 			children = (
 				238CEEA927A7EFD0006BE766 /* PostTVC.swift */,
 				2323030027B027CE00E20078 /* CommentCountTVC.swift */,
+				2302A61027C4FB6200B03A49 /* HistoryTVC.swift */,
 			);
 			path = TVC;
 			sourceTree = "<group>";
@@ -778,14 +781,6 @@
 			path = Validation;
 			sourceTree = "<group>";
 		};
-		623DE31227B69D2F005E78D0 /* Literal */ = {
-			isa = PBXGroup;
-			children = (
-				623DE30627B5603A005E78D0 /* Literal.swift */,
-			);
-			path = Literal;
-			sourceTree = "<group>";
-		};
 		624C458127BD0DC9000A37DF /* Xib */ = {
 			isa = PBXGroup;
 			children = (
@@ -1020,7 +1015,6 @@
 				23F3CBF827C119D100CEDC98 /* PostWriteView.xib in Resources */,
 				232CC04C27A032D700040131 /* Community.storyboard in Resources */,
 				232CC03827A0326C00040131 /* Home.storyboard in Resources */,
-				232CC09D27A039B700040131 /* SFPRODISPLAYREGULAR.OTF in Resources */,
 				624C458E27BD1DA2000A37DF /* WriteDiary.storyboard in Resources */,
 				233B636F27AFAE3100914F60 /* PostContentView.xib in Resources */,
 				2356305A27BFA1D10032E520 /* SpoqaHanSansNeo-Light.otf in Resources */,
@@ -1145,6 +1139,7 @@
 				23DC8F9327B8E35400F79EF4 /* CommunityVM.swift in Sources */,
 				62B0F55227B8090E008F8922 /* AgreementVM.swift in Sources */,
 				62A855E427B6AECD007BA12B /* NicknameModel.swift in Sources */,
+				2302A61127C4FB6200B03A49 /* HistoryTVC.swift in Sources */,
 				62183E2827B8E70A00F83815 /* SignUpModel.swift in Sources */,
 				623DE30927B615EB005E78D0 /* EmailVM.swift in Sources */,
 				238EC09F27AA88EC001CBB24 /* ImageAddBar.swift in Sources */,
