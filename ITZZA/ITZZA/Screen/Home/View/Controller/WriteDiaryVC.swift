@@ -30,9 +30,6 @@ class WriteDiaryVC: UIViewController {
     var imageAddBar = ImageAddBar()
     let textViewPlaceHolder = "오늘은 어떤 하루였나요?"
     
-//    var dummyArray = [UIImage(named: "Emoji_Sad")!,
-//                      UIImage(named: "Emoji_Sad")!,
-//                      UIImage(named: "Emoji_Sad")!]
     
     override func viewDidLoad() {
         super.viewDidLoad()
