@@ -43,7 +43,6 @@ class WriteDiaryVC: UIViewController {
         configurePostWriteView()
         configureImageScrollView()
         configureImageAddBar()
-        // addImagesToImageScrollView(with: dummyArray)
         bindUI()
     }
 }
