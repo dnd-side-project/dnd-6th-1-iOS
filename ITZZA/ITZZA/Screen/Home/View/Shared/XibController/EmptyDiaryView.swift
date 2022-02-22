@@ -6,30 +6,32 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+import SnapKit
 
 class EmptyDiaryView: UIView {
     
-    @IBOutlet weak var contentView: PostWriteView!
+    @IBOutlet weak var postContentView: PostContentView!
     @IBOutlet weak var imageScrollView: ImageScrollView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var lineView: UIView!
     
-    var disposeBag = DisposeBag()
-    var dummyArray = [UIImage(named: "Emoji_Sad")!, UIImage(named: "Emoji_Sad")!, UIImage(named: "Emoji_Sad")!]
+    var dummyArray = [UIImage(named: "Emoji_Sad")!,
+                      UIImage(named: "Emoji_Sad")!,
+                      UIImage(named: "Emoji_Sad")!]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setContentView()
-        configureContentView()
-        configureImageScrollView()
+        configureScrollView()
+        addImagesToImageScrollView(with: dummyArray)
         setInitialUIValue()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setContentView()
-        configureContentView()
-        configureImageScrollView()
+        configureScrollView()
+        addImagesToImageScrollView(with: dummyArray)
         setInitialUIValue()
     }
     
@@ -43,20 +45,27 @@ extension EmptyDiaryView {
     func setInitialUIValue() {
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 3
+        postContentView.title.text = "제목"
+        postContentView.contents.text = "오늘은 어떤 하루였나요?"
+        lineView.backgroundColor = .lightGray5
     }
     
-    func configureContentView() {
-        contentView.setTitlePlaceholder("asd")
-        contentView.setContentsPlaceholder("sldkjfgbsldfgul")
+    func configureScrollView() {
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        imageScrollView.snp.makeConstraints {
+            $0.leading.equalTo(scrollView).offset(25)
+            $0.trailing.bottom.equalTo(scrollView).offset(-25)
+        }
     }
     
-    func configureImageScrollView() {
-        imageScrollView.image = dummyArray
+    func addImagesToImageScrollView(with images: [UIImage]) {
+        imageScrollView.image = images
         imageScrollView.configurePost()
     }
-}
-
-// MARK: - Bindings
-extension EmptyDiaryView {
-    
 }

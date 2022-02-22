@@ -45,7 +45,7 @@ class ImageAddBar: UIView {
         addImageButton.titleLabel?.font = UIFont.SpoqaHanSansNeoMedium(size: 13)
     }
     
-    func setViewShadow(){
+    func setViewShadow() {
         layer.shadowOffset = CGSize(width: 0, height: -1)
         layer.shadowRadius = 0.5
         layer.shadowColor = UIColor.lightGray3.cgColor

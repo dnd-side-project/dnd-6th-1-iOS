@@ -35,11 +35,11 @@ class PostContentView: UIView {
     }
     
     private func configureFont() {
-        title.textColor = .darkGray6
-        title.font = UIFont.SpoqaHanSansNeoMedium(size: 15)
+        title.textColor = .lightGray5
+        title.font = UIFont.SpoqaHanSansNeoBold(size: 15)
         
         contents.setLineBreakMode()
-        contents.textColor = .darkGray3
+        contents.textColor = .lightGray5
         contents.font = UIFont.SpoqaHanSansNeoRegular(size: 15)
     }
 }

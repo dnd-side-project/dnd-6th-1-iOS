@@ -49,7 +49,6 @@ extension DiaryVC {
             $0.top.equalTo(dateTitleView.snp.bottom).offset(20)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
             $0.trailing.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
-            $0.height.equalTo(1000)
         }
     }
     
