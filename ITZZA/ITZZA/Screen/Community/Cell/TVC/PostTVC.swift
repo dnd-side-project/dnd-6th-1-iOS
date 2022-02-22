@@ -17,6 +17,7 @@ class PostTVC: UITableViewCell {
     @IBOutlet weak var imageCntView: UIStackView!
     
     let bag = DisposeBag()
+    var communityTypes = CommunityType.allCases
     
     let cellSpace = UIEdgeInsets(top: 0.0,
                                  left: 0.0,
@@ -60,7 +61,7 @@ extension PostTVC {
     }
 
     func configureCell(with post: PostModel) {
-        headerView.profileImg.kf.setImage(with: post.profileimgURL,
+        headerView.profileImg.kf.setImage(with: post.profileImgURL,
                                           placeholder: UIImage(systemName: "person.circle"),
                                           options: [
                                             .scaleFactor(UIScreen.main.scale),
@@ -68,6 +69,8 @@ extension PostTVC {
                                           ])
         headerView.userName.text = post.nickname
         headerView.createAt.text = post.createdAt
+        
+        headerView.category.text = communityTypes[post.categoryId!].description
         
         postContentView.title.text = post.postTitle
         postContentView.contents.text = post.postContent

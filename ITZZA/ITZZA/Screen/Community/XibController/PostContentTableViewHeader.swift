@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 import SnapKit
 
 class PostContentTableViewHeader: UITableViewHeaderFooterView {
@@ -14,6 +15,8 @@ class PostContentTableViewHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var postContentView: PostContentView!
     @IBOutlet weak var postButtonViewTopSpace: NSLayoutConstraint!
     @IBOutlet weak var imageScrollView: ImageScrollView!
+    
+    let communityTypes = CommunityType.allCases
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -36,8 +39,33 @@ class PostContentTableViewHeader: UITableViewHeaderFooterView {
         view.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+    func configureContents(with post: PostModel) {
+        headerView.profileImg.kf.setImage(with: post.profileImgURL,
+                                          placeholder: UIImage(systemName: "person.circle"),
+                                          options: [
+                                            .scaleFactor(UIScreen.main.scale),
+                                            .cacheOriginalImage
+                                          ])
+        headerView.userName.text = post.nickname
+        headerView.createAt.text = post.createdAt
+        headerView.category.text = communityTypes[post.categoryId!].description
         
-        view.addSubview(imageScrollView)
+        postContentView.title.text = post.postTitle
+        postContentView.contents.text = post.postContent
+
+        imageScrollView.image = post.postImages ?? []
+        imageScrollView.configurePost()
+        
+        footerView.boardId = post.boardId
+        footerView.likeCnt.text = String(describing: post.likeCnt ?? 0)
+        footerView.commentCnt.text = String(describing: post.commentCnt ?? 0)
+        
+        footerView.likeButton.isSelected = post.likeStatus ?? false
+        footerView.bookmarkButton.isSelected = post.bookmarkStatus ?? false
+        footerView.likeButton.setImageToggle(post.likeStatus ?? false, UIImage(named: "Heart")!, UIImage(named: "Heart_selected")!)
+        footerView.bookmarkButton.setImageToggle(post.bookmarkStatus ?? false, UIImage(named: "Bookmark")!, UIImage(named: "Bookmark_selected")!)
     }
     
     func setPostButtonViewTopSpace() {

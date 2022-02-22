@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftKeychainWrapper
+import Alamofire
 
 struct PostManager {
     let baseURL = "http://13.125.239.189:3000/boards"
@@ -14,22 +15,34 @@ struct PostManager {
     func getPost(_ apiQuery: String, _ completion: @escaping ([PostModel]?) -> ()) {
         guard let url = URL(string: baseURL + apiQuery) else { return }
         guard let token: String = KeychainWrapper.standard[.myToken] else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
 
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print(error)
+        AF.request(url, method: .get, headers: header)
+            .validate(statusCode: 200...399)
+            .responseDecodable(of: [PostModel].self) { response in
+            switch response.result {
+            case .success(let decodedPost):
+                completion(decodedPost)
+            case .failure:
                 completion(nil)
-            } else if let data = data {
-                let posts = try? JSONDecoder().decode([PostModel].self, from: data)
-                
-                if let posts = posts {
-                    completion(posts)
-                }                
             }
-        }.resume()
+        }
+    }
+    
+    func getPostDetail(_ boardId: Int, _ completion: @escaping (PostModel?) -> ()) {
+        guard let url = URL(string: baseURL + "/\(boardId)") else { return }
+        guard let token: String = KeychainWrapper.standard[.myToken] else { return }
+        let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        AF.request(url, method: .get, headers: header)
+            .validate(statusCode: 200...399)
+            .responseDecodable(of: PostModel.self) { response in
+            switch response.result {
+            case .success(let decodedPost):
+                completion(decodedPost)
+            case .failure:
+                completion(nil)
+            }
+        }
     }
 }

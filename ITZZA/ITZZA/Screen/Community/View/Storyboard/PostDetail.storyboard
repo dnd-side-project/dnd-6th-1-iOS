@@ -11,6 +11,9 @@
         <array key="SFPRODISPLAYBOLD.OTF">
             <string>SFProDisplay-Bold</string>
         </array>
+        <array key="SpoqaHanSansNeo-Regular.otf">
+            <string>SpoqaHanSansNeo-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Post DetailVC-->
@@ -25,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="669"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentCountCell" rowHeight="70" id="fs5-el-khf" customClass="CommentCountTVC" customModule="ITZZA" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentCountTVC" rowHeight="70" id="fs5-el-khf" customClass="CommentCountTVC" customModule="ITZZA" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="49" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fs5-el-khf" id="CDd-ja-eov">
@@ -51,6 +54,62 @@
                                         <connections>
                                             <outlet property="commentCount" destination="a8m-6X-JAi" id="yIW-On-7r1"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoneCommentTVC" rowHeight="210" id="2Ik-GX-uIK">
+                                        <rect key="frame" x="0.0" y="119" width="375" height="210"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Ik-GX-uIK" id="NBH-x4-NsK">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUl-sT-hdb">
+                                                    <rect key="frame" x="0.0" y="10" width="375" height="200"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이 게시글의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zK-Oe-AbB">
+                                                            <rect key="frame" x="156" y="140" width="63" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="16" id="t4P-XX-CKh"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="13"/>
+                                                            <color key="textColor" red="0.74509803919999995" green="0.72549019609999998" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="첫번째 댓글을 달아보세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeY-jw-h6C">
+                                                            <rect key="frame" x="117.00000000000001" y="156" width="141.33333333333337" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="16" id="3g1-Dv-AfE"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="13"/>
+                                                            <color key="textColor" red="0.74509803919999995" green="0.72549019609999998" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Null_Comment" translatesAutoresizingMaskIntoConstraints="NO" id="2Xd-jY-zuh">
+                                                            <rect key="frame" x="147.66666666666666" y="28" width="80" height="101"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="80" id="b84-R5-tIS"/>
+                                                                <constraint firstAttribute="height" constant="80" id="hSN-II-I6Z"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="jeY-jw-h6C" firstAttribute="top" secondItem="2zK-Oe-AbB" secondAttribute="bottom" id="dPZ-KE-QOT"/>
+                                                        <constraint firstItem="2zK-Oe-AbB" firstAttribute="centerX" secondItem="mUl-sT-hdb" secondAttribute="centerX" id="e8w-Lj-E2T"/>
+                                                        <constraint firstItem="2Xd-jY-zuh" firstAttribute="centerX" secondItem="mUl-sT-hdb" secondAttribute="centerX" id="gus-nQ-OxX"/>
+                                                        <constraint firstItem="2Xd-jY-zuh" firstAttribute="top" secondItem="mUl-sT-hdb" secondAttribute="topMargin" constant="20" id="iVC-FK-4vO"/>
+                                                        <constraint firstItem="jeY-jw-h6C" firstAttribute="centerX" secondItem="mUl-sT-hdb" secondAttribute="centerX" id="o07-qb-icF"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="jeY-jw-h6C" secondAttribute="bottom" constant="20" id="pbI-in-WFe"/>
+                                                        <constraint firstItem="2zK-Oe-AbB" firstAttribute="top" secondItem="2Xd-jY-zuh" secondAttribute="bottom" constant="11" id="wkg-0M-fDN"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="mUl-sT-hdb" secondAttribute="bottom" id="4xH-Dy-aX3"/>
+                                                <constraint firstItem="mUl-sT-hdb" firstAttribute="top" secondItem="NBH-x4-NsK" secondAttribute="top" constant="10" id="Jej-6I-R33"/>
+                                                <constraint firstAttribute="trailing" secondItem="mUl-sT-hdb" secondAttribute="trailing" id="YK8-Sx-R76"/>
+                                                <constraint firstItem="mUl-sT-hdb" firstAttribute="leading" secondItem="NBH-x4-NsK" secondAttribute="leading" id="bRO-Ah-Ndx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -84,6 +143,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Null_Comment" width="60" height="60"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

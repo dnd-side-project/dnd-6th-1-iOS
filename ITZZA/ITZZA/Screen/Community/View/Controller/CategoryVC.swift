@@ -16,18 +16,19 @@ class CategoryVC: UIViewController {
     let bag = DisposeBag()
     var postListVM: PostListVM!
     var communityType: CommunityType?
+    var isNoneData = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setPost()
-        setPostTV()
     }
 }
 
 //MARK: - Custom Methods
 extension CategoryVC {
     func setPostTV() {
+        postListTV.dataSource = self
         postListTV.delegate = self
         postListTV.backgroundColor = .lightGray1
         postListTV.separatorStyle = .none
@@ -41,28 +42,12 @@ extension CategoryVC {
                 self?.postListTV.deselectRow(at: indexPath, animated: false)
                 
                 guard let postDetailVC = ViewControllerFactory.viewController(for: .postDetail) as? PostDetailVC else { return }
+                postDetailVC.boardId = self?.postListVM.postAtIndex(indexPath.row).post.boardId
                 postDetailVC.hidesBottomBarWhenPushed = true
                 self?.navigationController?.pushViewController(postDetailVC, animated: true)
                 
             })
             .disposed(by: bag)
-    }
-    
-    func bindTV() {
-        let dataSource = RxTableViewSectionedReloadDataSource<PostDataSource>(
-          configureCell: { dataSource, tableView, indexPath, item in
-              let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.postTVC, for: indexPath) as! PostTVC
-              cell.configureCell(with: item)
-              return cell
-        })
-        
-        let sections = [
-            PostDataSource(section: 0, items: self.postListVM.posts.reversed())
-        ]
-
-        Observable.just(sections)
-          .bind(to: postListTV.rx.items(dataSource: dataSource))
-          .disposed(by: bag)
     }
     
     func setPost() {
@@ -73,8 +58,11 @@ extension CategoryVC {
                 self.postListVM = PostListVM(posts: posts)
                 
                 DispatchQueue.main.async {
-                    self.bindTV()
+                    self.setPostTV()
                 }
+            } else {
+                self.isNoneData = true
+                self.setPostTV()
             }
         }
     }
@@ -82,6 +70,36 @@ extension CategoryVC {
 
 extension CategoryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        if isNoneData {
+            return tableView.frame.height
+        } else {
+            return UITableView.automaticDimension
+        }
     }
 }
+
+extension CategoryVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isNoneData {
+            return 1
+        } else {
+            return self.postListVM.posts.count
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if isNoneData {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.nonePostTVC, for: indexPath)
+            cell.isUserInteractionEnabled = false
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.postTVC, for: indexPath) as! PostTVC
+            cell.configureCell(with: postListVM.posts[indexPath.row])
+            cell.footerView.didTapCommentButton(self)
+
+            return cell
+        }
+    }
+}
+
