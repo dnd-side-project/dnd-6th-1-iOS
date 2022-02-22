@@ -36,7 +36,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3R0-2U-gd1">
-                                                    <rect key="frame" x="69" y="38.666666666666657" width="237" height="247.99999999999997"/>
+                                                    <rect key="frame" x="69" y="41" width="237" height="248"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="게시글이 없어요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7h-68-Q3X">
                                                             <rect key="frame" x="61.999999999999993" y="162" width="113.33333333333331" height="21.333333333333343"/>
@@ -51,7 +51,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="슬퍼..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1W-17-PCv">
-                                                            <rect key="frame" x="37.999999999999986" y="60" width="33" height="17"/>
+                                                            <rect key="frame" x="38" y="60" width="33" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="33" id="bgL-ks-lOl"/>
                                                                 <constraint firstAttribute="height" constant="17" id="gIY-Fd-vrL"/>
@@ -61,7 +61,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다른 분들과 소통해보세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nC-Fk-8O7">
-                                                            <rect key="frame" x="49.666666666666671" y="211.66666666666669" width="137.66666666666663" height="16.333333333333343"/>
+                                                            <rect key="frame" x="49.666666666666671" y="211.66666666666666" width="137.66666666666663" height="16.333333333333343"/>
                                                             <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="13"/>
                                                             <color key="textColor" red="0.74509803919999995" green="0.72549019609999998" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -91,9 +91,9 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="3R0-2U-gd1" firstAttribute="centerY" secondItem="ROE-hK-Gt1" secondAttribute="centerY" id="Dvq-BM-oOJ"/>
                                                 <constraint firstItem="3R0-2U-gd1" firstAttribute="leading" secondItem="ROE-hK-Gt1" secondAttribute="leadingMargin" constant="53" id="VbL-uq-Dch"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="3R0-2U-gd1" secondAttribute="trailing" constant="53" id="dmV-jp-g6F"/>
+                                                <constraint firstItem="3R0-2U-gd1" firstAttribute="top" secondItem="ROE-hK-Gt1" secondAttribute="topMargin" constant="30" id="sWv-bp-YMr"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

@@ -16,6 +16,8 @@ class PostContentTableViewHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var postButtonViewTopSpace: NSLayoutConstraint!
     @IBOutlet weak var imageScrollView: ImageScrollView!
     
+    let communityTypes = CommunityType.allCases
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setContentView()
@@ -48,6 +50,7 @@ class PostContentTableViewHeader: UITableViewHeaderFooterView {
                                           ])
         headerView.userName.text = post.nickname
         headerView.createAt.text = post.createdAt
+        headerView.category.text = communityTypes[post.categoryId!].description
         
         postContentView.title.text = post.postTitle
         postContentView.contents.text = post.postContent

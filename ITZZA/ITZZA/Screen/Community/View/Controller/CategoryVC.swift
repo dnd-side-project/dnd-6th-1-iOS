@@ -90,6 +90,7 @@ extension CategoryVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isNoneData {
             let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.nonePostTVC, for: indexPath)
+            cell.isUserInteractionEnabled = false
             
             return cell
         } else {

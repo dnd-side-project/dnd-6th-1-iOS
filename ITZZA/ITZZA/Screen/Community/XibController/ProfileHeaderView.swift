@@ -12,15 +12,18 @@ class ProfileHeaderView: UIView {
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var createAt: UILabel!
+    @IBOutlet weak var category: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setContentView()
+        configureCategoryLabel()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setContentView()
+        configureCategoryLabel()
     }
     
     private func setContentView() {
@@ -31,5 +34,12 @@ class ProfileHeaderView: UIView {
         view.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+    private func configureCategoryLabel() {
+        category.textColor = .primary
+        category.layer.borderColor = UIColor.primary.cgColor
+        category.layer.borderWidth = 0.5
+        category.layer.cornerRadius = 4
     }
 }
