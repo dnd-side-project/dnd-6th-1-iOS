@@ -15,6 +15,7 @@ class PostDetailVC: UIViewController {
     let bag = DisposeBag()
     var post = PostModel()
     var boardId: Int?
+    var isScrolled = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,22 +44,21 @@ extension PostDetailVC {
         commentListTV.separatorStyle = .none
         
         register()
-        bindPostListTVItemSelected()
+        
+        DispatchQueue.main.async {
+            self.scrollToComment()
+        }
+    }
+    
+    func scrollToComment() {
+        if isScrolled {
+            commentListTV.scrollToRow(at: [0,0], at: .bottom, animated: true)
+        }
     }
     
     func register(){
         commentListTV.register(UINib(nibName: Identifiers.commentTVC, bundle: nil), forCellReuseIdentifier: Identifiers.commentTVC)
         commentListTV.register(PostContentTableViewHeader.self, forHeaderFooterViewReuseIdentifier: Identifiers.postContentTableViewHeader)
-    }
-    
-    func bindPostListTVItemSelected() {
-        commentListTV.rx.itemSelected
-            .subscribe(onNext: { indexPath in
-                if indexPath.row != 0 {
-                    print(indexPath.row, "댓글 눌림")
-                }
-            })
-            .disposed(by: bag)
     }
 }
 
@@ -106,6 +106,7 @@ extension PostDetailVC: UITableViewDataSource {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentTVC, for: indexPath) as? CommentTVC else { return UITableViewCell() }
                 cell.selectionStyle = .none
                 cell.configureCell(self.post.comments![indexPath.row - 1].comment!)
+                
                 return cell
             }
         }

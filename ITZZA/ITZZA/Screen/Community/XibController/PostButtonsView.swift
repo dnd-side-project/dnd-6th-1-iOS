@@ -65,6 +65,18 @@ extension PostButtonsView {
              .disposed(by: bag)
     }
     
+    func didTapCommentButton(_ vc: UIViewController) {
+        commentButton.rx.tap
+             .subscribe(onNext: {
+                 guard let postDetailVC = ViewControllerFactory.viewController(for: .postDetail) as? PostDetailVC else { return }
+                 postDetailVC.boardId = self.boardId
+                 postDetailVC.isScrolled = true
+                 postDetailVC.hidesBottomBarWhenPushed = true
+                 vc.navigationController?.pushViewController(postDetailVC, animated: true)
+             })
+             .disposed(by: bag)
+    }
+    
     func setButtonCnt(_ state: Bool, _ lastCnt: String) -> String {
         if state {
             return String(Int(lastCnt)! + 1)

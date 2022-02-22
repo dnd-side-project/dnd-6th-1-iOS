@@ -23,10 +23,8 @@ struct PostManager {
             switch response.result {
             case .success(let decodedPost):
                 completion(decodedPost)
-                print(decodedPost)
-            case .failure(let error):
+            case .failure:
                 completion(nil)
-                print(error)
             }
         }
     }
@@ -42,10 +40,8 @@ struct PostManager {
             switch response.result {
             case .success(let decodedPost):
                 completion(decodedPost)
-                print(decodedPost)
-            case .failure(let error):
+            case .failure:
                 completion(nil)
-                print(error)
             }
         }
     }

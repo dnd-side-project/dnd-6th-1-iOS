@@ -96,7 +96,8 @@ extension CategoryVC: UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.postTVC, for: indexPath) as! PostTVC
             cell.configureCell(with: postListVM.posts[indexPath.row])
-            
+            cell.footerView.didTapCommentButton(self)
+
             return cell
         }
     }
