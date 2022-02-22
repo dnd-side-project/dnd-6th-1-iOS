@@ -22,4 +22,5 @@ extension SignInModel {
 struct SignInResponse: Decodable {
     let accessToken: String?
     let flag: Int?
+    let userId: Int?
 }

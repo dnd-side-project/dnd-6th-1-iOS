@@ -11,4 +11,5 @@ import SwiftKeychainWrapper
 extension KeychainWrapper.Key {
     static let myPassword: KeychainWrapper.Key = ""
     static let myToken: KeychainWrapper.Key = ""
+    static let userId: KeychainWrapper.Key = ""
 }
