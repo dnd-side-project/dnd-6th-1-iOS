@@ -45,14 +45,17 @@ class SignInVM {
                     
                 case .success(let response):
                     guard let flag = response.flag,
-                          let accessToken = response.accessToken
+                          let accessToken = response.accessToken,
+                          let userId = response.userId
                     else { return }
                     
                     if flag == 0 {
                         owner.signInResponseFail.onNext("로그인 정보가 잘못되었습니다")
                     } else {
                         if owner.isSignInStateSelected.value {
-                            owner.saveUserData(email, password, accessToken)
+                            owner.saveUserDataToKeychain(email, password, accessToken, userId)
+                        } else {
+                            owner.saveUserDataToSingleton(accessToken, userId)
                         }
                         owner.signInResponseSuccess.onNext(flag)
                     }
@@ -61,11 +64,21 @@ class SignInVM {
             })
             .disposed(by: disposeBag)
     }
+}
+
+// MARK: - Save Login Informations
+extension SignInVM {
     
-    func saveUserData(_ email: String, _ password: String, _ token: String) {
+    private func saveUserDataToKeychain(_ email: String, _ password: String, _ token: String, _ userId: Int) {
         UserDefaults.standard.set(email, forKey: "email")
         KeychainWrapper.standard[.myPassword] = password
         KeychainWrapper.standard[.myToken] = token
+        KeychainWrapper.standard[.userId] = userId
     }
-
+    
+    private func saveUserDataToSingleton(_ token: String, _ userId: Int) {
+        let userInformation = UserInformation.shared
+        userInformation.token = token
+        userInformation.userId = userId
+    }
 }

@@ -129,6 +129,7 @@
 		62BE209927A679A2001F150A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209827A679A2001F150A /* Service.swift */; };
 		62BE209E27A67F15001F150A /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209D27A67F15001F150A /* SignInModel.swift */; };
 		62BE20A027A8F1A0001F150A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209F27A8F1A0001F150A /* UIViewController+.swift */; };
+		62D3B61827C53990001593CF /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D3B61727C53990001593CF /* UserInformation.swift */; };
 		62E2BDF827ACFBD80052DDCE /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E2BDF727ACFBD80052DDCE /* SignUp.storyboard */; };
 		62E2BDFA27AD25CA0052DDCE /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E2BDF927AD25CA0052DDCE /* SignUpVM.swift */; };
 		62E2BDFC27AD41620052DDCE /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E2BDFB27AD41620052DDCE /* UIImage+.swift */; };
@@ -261,6 +262,7 @@
 		62BE209827A679A2001F150A /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		62BE209D27A67F15001F150A /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		62BE209F27A8F1A0001F150A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		62D3B61727C53990001593CF /* UserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
 		62E2BDF727ACFBD80052DDCE /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		62E2BDF927AD25CA0052DDCE /* SignUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
 		62E2BDFB27AD41620052DDCE /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
@@ -778,14 +780,6 @@
 			path = Validation;
 			sourceTree = "<group>";
 		};
-		623DE31227B69D2F005E78D0 /* Literal */ = {
-			isa = PBXGroup;
-			children = (
-				623DE30627B5603A005E78D0 /* Literal.swift */,
-			);
-			path = Literal;
-			sourceTree = "<group>";
-		};
 		624C458127BD0DC9000A37DF /* Xib */ = {
 			isa = PBXGroup;
 			children = (
@@ -870,6 +864,7 @@
 				62BE209D27A67F15001F150A /* SignInModel.swift */,
 				62A855E327B6AECD007BA12B /* NicknameModel.swift */,
 				62183E2727B8E70A00F83815 /* SignUpModel.swift */,
+				62D3B61727C53990001593CF /* UserInformation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1020,7 +1015,6 @@
 				23F3CBF827C119D100CEDC98 /* PostWriteView.xib in Resources */,
 				232CC04C27A032D700040131 /* Community.storyboard in Resources */,
 				232CC03827A0326C00040131 /* Home.storyboard in Resources */,
-				232CC09D27A039B700040131 /* SFPRODISPLAYREGULAR.OTF in Resources */,
 				624C458E27BD1DA2000A37DF /* WriteDiary.storyboard in Resources */,
 				233B636F27AFAE3100914F60 /* PostContentView.xib in Resources */,
 				2356305A27BFA1D10032E520 /* SpoqaHanSansNeo-Light.otf in Resources */,
@@ -1125,6 +1119,7 @@
 				232CC06827A0336600040131 /* l.swift in Sources */,
 				23B66EBC27B813A500FC477D /* CategoryBottomSheetVC.swift in Sources */,
 				62BE209027A66F34001F150A /* APISession.swift in Sources */,
+				62D3B61827C53990001593CF /* UserInformation.swift in Sources */,
 				236C9EA627C10D4600B0BADA /* ImageScrollView.swift in Sources */,
 				2335241327A98D57009C654F /* PostDataSource.swift in Sources */,
 				232CC08927A0390B00040131 /* UIFont+.swift in Sources */,
