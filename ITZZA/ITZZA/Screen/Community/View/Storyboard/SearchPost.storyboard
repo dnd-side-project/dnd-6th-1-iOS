@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,18 +13,79 @@
             <objects>
                 <viewController storyboardIdentifier="SearchPostVC" id="Y6W-OH-hqX" customClass="SearchPostVC" customModule="ITZZA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TaH-1f-aSc">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Nn-Bo-jJI">
+                                        <rect key="frame" x="8" y="6.6666666666666643" width="31" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="C5F-4l-29x"/>
+                                            <constraint firstAttribute="width" constant="31" id="uOc-6p-L5K"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZ5-Zu-snt">
+                                        <rect key="frame" x="336" y="6.6666666666666643" width="31" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="EUN-Ev-G4M"/>
+                                            <constraint firstAttribute="width" constant="31" id="vsE-XC-mJG"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system"/>
+                                    </button>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="dIz-DK-tE1">
+                                        <rect key="frame" x="39" y="-3.3333333333333357" width="297" height="51"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="sZ5-Zu-snt" secondAttribute="trailing" constant="8" id="0Hw-1H-rww"/>
+                                    <constraint firstItem="1Nn-Bo-jJI" firstAttribute="centerY" secondItem="TaH-1f-aSc" secondAttribute="centerY" id="6RM-CL-Hp3"/>
+                                    <constraint firstItem="sZ5-Zu-snt" firstAttribute="centerY" secondItem="TaH-1f-aSc" secondAttribute="centerY" id="7fv-Qv-Vfe"/>
+                                    <constraint firstItem="1Nn-Bo-jJI" firstAttribute="leading" secondItem="TaH-1f-aSc" secondAttribute="leading" constant="8" id="Qbf-Le-pof"/>
+                                    <constraint firstItem="sZ5-Zu-snt" firstAttribute="leading" secondItem="dIz-DK-tE1" secondAttribute="trailing" id="Sb4-hD-dew"/>
+                                    <constraint firstItem="dIz-DK-tE1" firstAttribute="centerY" secondItem="TaH-1f-aSc" secondAttribute="centerY" id="X6h-dE-Bme"/>
+                                    <constraint firstItem="dIz-DK-tE1" firstAttribute="leading" secondItem="1Nn-Bo-jJI" secondAttribute="trailing" id="sRt-r0-Xff"/>
+                                    <constraint firstAttribute="height" constant="44" id="tHa-Hr-HEC"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZ8-a0-1M5">
+                                <rect key="frame" x="0.0" y="98" width="375" height="1"/>
+                                <color key="backgroundColor" red="0.8901960784313725" green="0.87058823529411766" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="np6-BB-ugA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TaH-1f-aSc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="I4V-VM-uVg"/>
+                            <constraint firstItem="JZ8-a0-1M5" firstAttribute="top" secondItem="TaH-1f-aSc" secondAttribute="bottom" constant="10" id="Rew-d0-ILl"/>
+                            <constraint firstItem="JZ8-a0-1M5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="TFQ-VL-qZ9"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JZ8-a0-1M5" secondAttribute="trailing" id="mGM-lC-NLS"/>
+                            <constraint firstItem="TaH-1f-aSc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="nAS-Lc-Ohq"/>
+                            <constraint firstItem="TaH-1f-aSc" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="sYz-uD-u8A"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="naviBackButton" destination="1Nn-Bo-jJI" id="Pd7-QY-6Rr"/>
+                        <outlet property="naviSearchButton" destination="sZ5-Zu-snt" id="NJY-sy-vgs"/>
+                        <outlet property="searchBar" destination="dIz-DK-tE1" id="jKZ-Ap-BaG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="64" y="72"/>
+            <point key="canvasLocation" x="63.200000000000003" y="70.935960591133011"/>
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
