@@ -6,22 +6,32 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+import SnapKit
 
 class EmptyDiaryView: UIView {
     
-    var disposeBag = DisposeBag()
+    @IBOutlet weak var postContentView: PostContentView!
+    @IBOutlet weak var imageScrollView: ImageScrollView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var lineView: UIView!
+    
+    var dummyArray = [UIImage(named: "Emoji_Sad")!,
+                      UIImage(named: "Emoji_Sad")!,
+                      UIImage(named: "Emoji_Sad")!]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setContentView()
+        configureScrollView()
+        addImagesToImageScrollView(with: dummyArray)
         setInitialUIValue()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setContentView()
+        configureScrollView()
+        addImagesToImageScrollView(with: dummyArray)
         setInitialUIValue()
     }
     
@@ -35,10 +45,27 @@ extension EmptyDiaryView {
     func setInitialUIValue() {
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 3
+        postContentView.title.text = "제목"
+        postContentView.contents.text = "오늘은 어떤 하루였나요?"
+        lineView.backgroundColor = .lightGray5
     }
-}
-
-// MARK: - Bindings
-extension EmptyDiaryView {
     
+    func configureScrollView() {
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        imageScrollView.snp.makeConstraints {
+            $0.leading.equalTo(scrollView).offset(25)
+            $0.trailing.bottom.equalTo(scrollView).offset(-25)
+        }
+    }
+    
+    func addImagesToImageScrollView(with images: [UIImage]) {
+        imageScrollView.image = images
+        imageScrollView.configurePost()
+    }
 }

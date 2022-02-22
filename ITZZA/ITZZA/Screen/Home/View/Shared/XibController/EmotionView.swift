@@ -97,7 +97,8 @@ extension EmotionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let cellWidth = (collectionView.frame.width - minimumLineSpacing * 4) / 5
+        let cellHeight = cellWidth * 1.52
         
-        return CGSize(width: cellWidth, height: collectionView.frame.height)
+        return CGSize(width: cellWidth, height: cellHeight)
     }
 }
