@@ -108,7 +108,7 @@ extension HomeVC {
         
         calendarView.appearance.weekdayTextColor = .black
         calendarView.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesUpperCase
-        calendarView.appearance.weekdayFont = UIFont.SFProDisplayMedium(size: 13)
+        calendarView.appearance.weekdayFont = UIFont.SpoqaHanSansNeoMedium(size: 13)
     }
     
     private func scrollCurrentPage(_ isPrevious: Bool) {
