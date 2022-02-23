@@ -30,12 +30,22 @@ class SearchPostVC: UIViewController {
         configureSearchBar()
         configureSearchHistoryTV()
         configureTabView()
+        setNotification()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
     }
 }
 // MARK: - Configure
 extension SearchPostVC {
     func configureNavigationBar() {
-        navigationController?.isNavigationBarHidden = true
         configureButtonColor()
         didTapBackButton()
         didTapSearchButton()
@@ -118,6 +128,17 @@ extension SearchPostVC {
                 self.searchHistoryTV.reloadData()
             })
             .disposed(by: bag)
+    }
+    
+    func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(pushUserPostListView), name:.whenUserPostListTapped, object: nil)
+    }
+    
+    @objc func pushUserPostListView(_ notification: Notification) {
+        guard let userPostListVC = ViewControllerFactory.viewController(for: .userPostList) as? UserPostListVC else { return }
+        
+        userPostListVC.userName = notification.object as? String
+        navigationController?.pushViewController(userPostListVC, animated: true)
     }
     
     @objc private func deleteCell(sender: UIButton) {

@@ -67,6 +67,8 @@
 		236C9EA627C10D4600B0BADA /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236C9EA427C10D4600B0BADA /* ImageScrollView.swift */; };
 		236C9EA727C10D4600B0BADA /* ImageScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236C9EA527C10D4600B0BADA /* ImageScrollView.xib */; };
 		2376DA7627BA850700E4A0E8 /* CommunityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2376DA7527BA850700E4A0E8 /* CommunityType.swift */; };
+		2387375227C67E3F0060971E /* UserPostList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2387375127C67E3F0060971E /* UserPostList.storyboard */; };
+		2387375427C67E480060971E /* UserPostListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2387375327C67E480060971E /* UserPostListVC.swift */; };
 		238CEEA027A7DEA0006BE766 /* CommunityNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */; };
 		238CEEA227A7DFCF006BE766 /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CEEA127A7DFCF006BE766 /* NavigationController+.swift */; };
 		238CEEA427A7E6F1006BE766 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 238CEEA327A7E6F1006BE766 /* Category.storyboard */; };
@@ -209,6 +211,8 @@
 		236C9EA427C10D4600B0BADA /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		236C9EA527C10D4600B0BADA /* ImageScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageScrollView.xib; sourceTree = "<group>"; };
 		2376DA7527BA850700E4A0E8 /* CommunityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityType.swift; sourceTree = "<group>"; };
+		2387375127C67E3F0060971E /* UserPostList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserPostList.storyboard; sourceTree = "<group>"; };
+		2387375327C67E480060971E /* UserPostListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostListVC.swift; sourceTree = "<group>"; };
 		238CEE9F27A7DEA0006BE766 /* CommunityNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNC.swift; sourceTree = "<group>"; };
 		238CEEA127A7DFCF006BE766 /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
 		238CEEA327A7E6F1006BE766 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
@@ -526,6 +530,7 @@
 				238EC09727AA4C4A001CBB24 /* AddPostVC.swift */,
 				238EC09B27AA7295001CBB24 /* SearchPostVC.swift */,
 				233B636A27AF9D9D00914F60 /* PostDetailVC.swift */,
+				2387375327C67E480060971E /* UserPostListVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -538,6 +543,7 @@
 				238EC09527AA4C3B001CBB24 /* AddPost.storyboard */,
 				238EC09927AA7288001CBB24 /* SearchPost.storyboard */,
 				233B636827AF9D8C00914F60 /* PostDetail.storyboard */,
+				2387375127C67E3F0060971E /* UserPostList.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -1016,6 +1022,7 @@
 				238CEEA427A7E6F1006BE766 /* Category.storyboard in Resources */,
 				232CC0A227A03B4100040131 /* TabBar.storyboard in Resources */,
 				6254618627B152FC00184DA1 /* PasswordView.xib in Resources */,
+				2387375227C67E3F0060971E /* UserPostList.storyboard in Resources */,
 				2356305727BFA1D10032E520 /* SpoqaHanSansNeo-Regular.otf in Resources */,
 				2323030527B02D9200E20078 /* ChatInputView.xib in Resources */,
 				23D56B5B27C6327D0000D3E5 /* KeywordContentCVC.xib in Resources */,
@@ -1197,6 +1204,7 @@
 				2327FD7D27C6730B007D65F4 /* SearchedUserTVC.swift in Sources */,
 				23DC8FA027B95F3C00F79EF4 /* PostManager.swift in Sources */,
 				23AEE7B127C6481D00C79FF5 /* KeywordContentTVC.swift in Sources */,
+				2387375427C67E480060971E /* UserPostListVC.swift in Sources */,
 				623DE2F927B26581005E78D0 /* UIView+.swift in Sources */,
 				23F3CBF727C119D100CEDC98 /* PostWriteView.swift in Sources */,
 				23D56B5A27C6327D0000D3E5 /* KeywordContentCVC.swift in Sources */,

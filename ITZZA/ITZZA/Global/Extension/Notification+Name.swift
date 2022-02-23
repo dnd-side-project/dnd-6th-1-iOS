@@ -11,4 +11,5 @@ extension Notification.Name {
     static let whenDeleteImageButtonTapped = Notification.Name("whenDeleteImageButtonTapped")
     static let whenTabViewTapped = Notification.Name("whenTabViewTapped")
     static let whenKeywordContentViewScrolled = Notification.Name("WhenKeywordContentViewScrolled")
+    static let whenUserPostListTapped = Notification.Name("whenUserPostListTapped")
 }

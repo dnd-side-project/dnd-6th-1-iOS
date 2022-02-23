@@ -24,6 +24,7 @@ extension KeywordContentCVC {
         keywordContentTV.register(UINib(nibName: Identifiers.searchedUserTVC, bundle: nil), forCellReuseIdentifier: Identifiers.searchedUserTVC)
         
         keywordContentTV.dataSource = self
+        keywordContentTV.delegate = self
         keywordContentTV.showsVerticalScrollIndicator = false
         keywordContentTV.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
@@ -43,6 +44,15 @@ extension KeywordContentCVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.keywordContentTVC, for: indexPath) as? KeywordContentTVC else { return UITableViewCell() }
             
             return cell
+        }
+    }
+}
+
+extension KeywordContentCVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isUserSearchedList {
+            let cell = tableView.cellForRow(at: indexPath) as! SearchedUserTVC
+            NotificationCenter.default.post(name: .whenUserPostListTapped, object: cell.userName.text)
         }
     }
 }
