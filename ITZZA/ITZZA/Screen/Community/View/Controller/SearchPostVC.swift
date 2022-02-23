@@ -15,9 +15,11 @@ class SearchPostVC: UIViewController {
     @IBOutlet weak var removeAllButton: UIButton!
     @IBOutlet weak var searchHistoryTV: UITableView!
     @IBOutlet weak var divisionLine: UIView!
+    @IBOutlet weak var tabView: TabView!
     
     let bag = DisposeBag()
     var isNoneData = false
+    private let menu = ["내용", "사용자"]
     var dummydata = [ "검색어 1", "검색어 2", "검색어 3", "검색어 4", "검색어 5"]
     
     override func viewDidLoad() {
@@ -26,14 +28,16 @@ class SearchPostVC: UIViewController {
         configureNavigationBar()
         configureSearchBar()
         configureSearchHistoryTV()
+        configureTabView()
     }
 }
-// MARK: - Custom Methods
+// MARK: - Configure
 extension SearchPostVC {
     func configureNavigationBar() {
         navigationController?.isNavigationBarHidden = true
         configureButtonColor()
         didTapBackButton()
+        didTapSearchButton()
     }
     
     func configureSearchBar() {
@@ -54,13 +58,9 @@ extension SearchPostVC {
         }
     }
     
-    func didTapBackButton() {
-        naviBackButton.rx.tap
-            .subscribe (onNext: {
-                self.navigationController?.popViewController(animated: true)
-                self.navigationController?.isNavigationBarHidden = false
-            })
-            .disposed(by: bag)
+    func configureTabView(){
+        tabView.menu = menu
+        tabView.setContentView()
     }
     
     func configureButtonColor() {
@@ -86,6 +86,24 @@ extension SearchPostVC {
         searchHistoryTV.isScrollEnabled = false
         
         didTapRemoveAllButton()
+    }
+    // MARK: - tap event
+    func didTapBackButton() {
+        naviBackButton.rx.tap
+            .subscribe (onNext: {
+                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.isNavigationBarHidden = false
+            })
+            .disposed(by: bag)
+    }
+    
+    func didTapSearchButton() {
+        naviSearchButton.rx.tap
+            .subscribe(onNext: {
+                self.view.sendSubviewToBack(self.searchHistoryTV)
+                
+            })
+            .disposed(by: bag)
     }
     
     func didTapRemoveAllButton() {
