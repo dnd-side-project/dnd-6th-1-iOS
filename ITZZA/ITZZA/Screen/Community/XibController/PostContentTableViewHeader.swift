@@ -43,7 +43,7 @@ class PostContentTableViewHeader: UITableViewHeaderFooterView {
     
     func configureContents(with post: PostModel) {
         headerView.profileImg.kf.setImage(with: post.profileImgURL,
-                                          placeholder: UIImage(systemName: "person.circle"),
+                                          placeholder: UIImage(named: "Null_Comment"),
                                           options: [
                                             .scaleFactor(UIScreen.main.scale),
                                             .cacheOriginalImage

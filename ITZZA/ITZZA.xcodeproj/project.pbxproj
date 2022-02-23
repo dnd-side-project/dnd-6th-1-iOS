@@ -16,6 +16,8 @@
 		2323030427B02D9200E20078 /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2323030227B02D9200E20078 /* ChatInputView.swift */; };
 		2323030527B02D9200E20078 /* ChatInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2323030327B02D9200E20078 /* ChatInputView.xib */; };
 		2323030927B035ED00E20078 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2323030827B035ED00E20078 /* UITextField+.swift */; };
+		2327FD7D27C6730B007D65F4 /* SearchedUserTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2327FD7B27C6730B007D65F4 /* SearchedUserTVC.swift */; };
+		2327FD7E27C6730B007D65F4 /* SearchedUserTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2327FD7C27C6730B007D65F4 /* SearchedUserTVC.xib */; };
 		232CC01527A0317900040131 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC01427A0317900040131 /* AppDelegate.swift */; };
 		232CC01E27A0317900040131 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 232CC01D27A0317900040131 /* Assets.xcassets */; };
 		232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232CC01F27A0317900040131 /* LaunchScreen.storyboard */; };
@@ -154,6 +156,8 @@
 		2323030227B02D9200E20078 /* ChatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
 		2323030327B02D9200E20078 /* ChatInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatInputView.xib; sourceTree = "<group>"; };
 		2323030827B035ED00E20078 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		2327FD7B27C6730B007D65F4 /* SearchedUserTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedUserTVC.swift; sourceTree = "<group>"; };
+		2327FD7C27C6730B007D65F4 /* SearchedUserTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchedUserTVC.xib; sourceTree = "<group>"; };
 		232CC01127A0317900040131 /* ITZZA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITZZA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		232CC01427A0317900040131 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		232CC01D27A0317900040131 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -711,6 +715,7 @@
 				232302FB27AFC13200E20078 /* CommentTVC.xib */,
 				2323030327B02D9200E20078 /* ChatInputView.xib */,
 				2368021227B2966800A4392B /* PostContentTableViewHeader.xib */,
+				2327FD7C27C6730B007D65F4 /* SearchedUserTVC.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -724,6 +729,7 @@
 				2323030227B02D9200E20078 /* ChatInputView.swift */,
 				2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */,
 				23B66EBB27B813A500FC477D /* CategoryBottomSheetVC.swift */,
+				2327FD7B27C6730B007D65F4 /* SearchedUserTVC.swift */,
 			);
 			path = XibController;
 			sourceTree = "<group>";
@@ -1021,6 +1027,7 @@
 				23AEE7B227C6481D00C79FF5 /* KeywordContentTVC.xib in Resources */,
 				233B636927AF9D8C00914F60 /* PostDetail.storyboard in Resources */,
 				622C57D627C25FAF0011D833 /* EmotionView.xib in Resources */,
+				2327FD7E27C6730B007D65F4 /* SearchedUserTVC.xib in Resources */,
 				232CC06027A0334100040131 /* Mypage.storyboard in Resources */,
 				23D56B5127C607360000D3E5 /* TabView.xib in Resources */,
 				2335241827A98FA0009C654F /* ProfileHeaderView.xib in Resources */,
@@ -1187,6 +1194,7 @@
 				622C57D427C25F8E0011D833 /* EmotionView.swift in Sources */,
 				232CC03C27A0328000040131 /* HomeModel.swift in Sources */,
 				62BE208D27A590D0001F150A /* SignInVC.swift in Sources */,
+				2327FD7D27C6730B007D65F4 /* SearchedUserTVC.swift in Sources */,
 				23DC8FA027B95F3C00F79EF4 /* PostManager.swift in Sources */,
 				23AEE7B127C6481D00C79FF5 /* KeywordContentTVC.swift in Sources */,
 				623DE2F927B26581005E78D0 /* UIView+.swift in Sources */,

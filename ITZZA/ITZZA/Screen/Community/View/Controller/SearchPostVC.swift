@@ -103,8 +103,9 @@ extension SearchPostVC {
     func didTapSearchButton() {
         naviSearchButton.rx.tap
             .subscribe(onNext: {
-                self.view.sendSubviewToBack(self.searchHistoryTV)
-                
+                if self.naviSearchButton.tintColor == .primary {
+                    self.view.sendSubviewToBack(self.searchHistoryTV)
+                }
             })
             .disposed(by: bag)
     }
