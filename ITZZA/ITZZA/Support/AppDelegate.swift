@@ -15,12 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var email: String?
     var password: String?
     var token: String?
+    var userId: String?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         guard let userEmail = UserDefaults.standard.string(forKey: "email"),
               let userPassword: String = KeychainWrapper.standard[.myPassword],
-              let userToken: String = KeychainWrapper.standard[.myToken]
+              let userToken: String = KeychainWrapper.standard[.myToken],
+              let keychainUserId: String = KeychainWrapper.standard[.userId]
               else {
                   let signInVC = ViewControllerFactory.viewController(for: .signIn)
                   self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -28,10 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                   self.window?.makeKeyAndVisible()
                   return true
         }
-        
+                
         email = userEmail
         password = userPassword
         token = userToken
+        userId = keychainUserId
         
         let tabBarVC = ViewControllerFactory.viewController(for: .tabBar)
         self.window = UIWindow(frame: UIScreen.main.bounds)
