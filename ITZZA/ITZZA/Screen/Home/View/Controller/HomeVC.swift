@@ -52,32 +52,14 @@ class HomeVC: UIViewController {
         return df
     }()
     
-    private lazy var df: DateFormatter = {
-        let df = DateFormatter()
-        df.locale = Locale(identifier: "en_US")
-        df.dateFormat = "yyyy-MM-dd"
-        return df
-    }()
-    
-    var events: [Date]?
-    var dummyDataArray = ["2022-02-23", "2022-02-24", "2022-02-13"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        stringToDate()
-        
         configureNavigationBar()
         setInitialUIValue()
         setLottieAnimation()
         calendarDefaultState()
         setDate()
         bindUI()
-    }
-    
-    func stringToDate() {
-        dummyDataArray.forEach {
-            events?.append(df.date(from: $0)!)
-        }
     }
 }
 
@@ -176,16 +158,7 @@ extension HomeVC: FSCalendarDelegate {
 
 // MARK: - Calendar Datasource
 extension HomeVC: FSCalendarDataSource {
-    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        guard let events = events else { return 0 }
-        
-        print("here")
-        if events.contains(date) {
-            return 1
-        } else {
-            return 0
-        }
-    }
+    
 }
 
 extension HomeVC: FSCalendarDelegateAppearance {

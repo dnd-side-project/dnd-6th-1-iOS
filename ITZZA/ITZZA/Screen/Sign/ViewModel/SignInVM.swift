@@ -73,7 +73,7 @@ extension SignInVM {
         UserDefaults.standard.set(email, forKey: "email")
         KeychainWrapper.standard[.myPassword] = password
         KeychainWrapper.standard[.myToken] = token
-        KeychainWrapper.standard[.userId] = String(userId)
+        KeychainWrapper.standard[.userId] = userId
     }
     
     private func saveUserDataToSingleton(_ token: String, _ userId: Int) {
