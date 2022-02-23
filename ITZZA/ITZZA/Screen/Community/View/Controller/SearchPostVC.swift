@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class SearchPostVC: UIViewController {
     @IBOutlet weak var naviBackButton: UIButton!
@@ -25,7 +26,7 @@ class SearchPostVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configureNavigationBar()
         configureSearchBar()
         configureSearchHistoryTV()
@@ -64,7 +65,7 @@ extension SearchPostVC {
         if let clearButton = searchBar.searchTextField.value(forKey: "_clearButton") as? UIButton {
             let templateImage =  clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
             clearButton.setImage(templateImage, for: .normal)
-
+            
             clearButton.tintColor = .primary
         }
     }
@@ -78,8 +79,10 @@ extension SearchPostVC {
     
     func configureButtonColor() {
         searchBar.searchTextField.rx.text
-            .subscribe(onNext: {
-                if $0! == "" {
+            .asDriver()
+            .drive(onNext: { [weak self] text in
+                guard let self = self else { return }
+                if text == "" {
                     self.naviBackButton.tintColor = .darkGray6
                     self.naviSearchButton.tintColor = .darkGray6
                     self.divisionLine.backgroundColor = .lightGray3
@@ -103,7 +106,9 @@ extension SearchPostVC {
     // MARK: - tap event
     func didTapBackButton() {
         naviBackButton.rx.tap
-            .subscribe (onNext: {
+            .asDriver()
+            .drive(onNext: { [weak self] text in
+                guard let self = self else { return }
                 self.navigationController?.popViewController(animated: true)
                 self.navigationController?.isNavigationBarHidden = false
             })
@@ -112,7 +117,9 @@ extension SearchPostVC {
     
     func didTapSearchButton() {
         naviSearchButton.rx.tap
-            .subscribe(onNext: {
+            .asDriver()
+            .drive(onNext: { [weak self] text in
+                guard let self = self else { return }
                 if self.naviSearchButton.tintColor == .primary {
                     self.view.sendSubviewToBack(self.searchHistoryTV)
                 }
@@ -122,7 +129,9 @@ extension SearchPostVC {
     
     func didTapRemoveAllButton() {
         removeAllButton.rx.tap
-            .subscribe(onNext: {
+            .asDriver()
+            .drive(onNext: { [weak self] text in
+                guard let self = self else { return }
                 self.dummydata.removeAll()
                 self.isNoneData = true
                 self.searchHistoryTV.reloadData()
