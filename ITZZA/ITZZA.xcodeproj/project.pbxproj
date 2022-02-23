@@ -78,6 +78,8 @@
 		238EC09F27AA88EC001CBB24 /* ImageAddBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */; };
 		238EC0A027AA88EC001CBB24 /* ImageAddBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */; };
 		23A56BDA27B3F8BA00959269 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A56BD927B3F8BA00959269 /* UILabel+.swift */; };
+		23AEE7B127C6481D00C79FF5 /* KeywordContentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AEE7AF27C6481D00C79FF5 /* KeywordContentTVC.swift */; };
+		23AEE7B227C6481D00C79FF5 /* KeywordContentTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23AEE7B027C6481D00C79FF5 /* KeywordContentTVC.xib */; };
 		23B66EBC27B813A500FC477D /* CategoryBottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B66EBB27B813A500FC477D /* CategoryBottomSheetVC.swift */; };
 		23BCDC2C27C211D300054334 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BCDC2B27C211D300054334 /* Notification+Name.swift */; };
 		23D56B5027C607360000D3E5 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D56B4E27C607360000D3E5 /* TabView.swift */; };
@@ -216,6 +218,8 @@
 		238EC09D27AA88EC001CBB24 /* ImageAddBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAddBar.swift; sourceTree = "<group>"; };
 		238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageAddBar.xib; sourceTree = "<group>"; };
 		23A56BD927B3F8BA00959269 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		23AEE7AF27C6481D00C79FF5 /* KeywordContentTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordContentTVC.swift; sourceTree = "<group>"; };
+		23AEE7B027C6481D00C79FF5 /* KeywordContentTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordContentTVC.xib; sourceTree = "<group>"; };
 		23B66EBB27B813A500FC477D /* CategoryBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBottomSheetVC.swift; sourceTree = "<group>"; };
 		23BCDC2B27C211D300054334 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		23D56B4E27C607360000D3E5 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
@@ -903,6 +907,7 @@
 				23D56B5227C607B50000D3E5 /* TabCVC.swift */,
 				23D56B5427C62FC10000D3E5 /* KeywordContentView.swift */,
 				23D56B5827C6327D0000D3E5 /* KeywordContentCVC.swift */,
+				23AEE7AF27C6481D00C79FF5 /* KeywordContentTVC.swift */,
 			);
 			path = XibControllers;
 			sourceTree = "<group>";
@@ -919,6 +924,7 @@
 				23D56B4F27C607360000D3E5 /* TabView.xib */,
 				23D56B5527C62FC10000D3E5 /* KeywordContentView.xib */,
 				23D56B5927C6327D0000D3E5 /* KeywordContentCVC.xib */,
+				23AEE7B027C6481D00C79FF5 /* KeywordContentTVC.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -1012,6 +1018,7 @@
 				6208CFDB27A254B900F17603 /* SignIn.storyboard in Resources */,
 				236C9EA727C10D4600B0BADA /* ImageScrollView.xib in Resources */,
 				2356305827BFA1D10032E520 /* SpoqaHanSansNeo-Medium.otf in Resources */,
+				23AEE7B227C6481D00C79FF5 /* KeywordContentTVC.xib in Resources */,
 				233B636927AF9D8C00914F60 /* PostDetail.storyboard in Resources */,
 				622C57D627C25FAF0011D833 /* EmotionView.xib in Resources */,
 				232CC06027A0334100040131 /* Mypage.storyboard in Resources */,
@@ -1181,6 +1188,7 @@
 				232CC03C27A0328000040131 /* HomeModel.swift in Sources */,
 				62BE208D27A590D0001F150A /* SignInVC.swift in Sources */,
 				23DC8FA027B95F3C00F79EF4 /* PostManager.swift in Sources */,
+				23AEE7B127C6481D00C79FF5 /* KeywordContentTVC.swift in Sources */,
 				623DE2F927B26581005E78D0 /* UIView+.swift in Sources */,
 				23F3CBF727C119D100CEDC98 /* PostWriteView.swift in Sources */,
 				23D56B5A27C6327D0000D3E5 /* KeywordContentCVC.swift in Sources */,

@@ -66,6 +66,7 @@ struct Identifiers {
     static let nonePostTVC = "NonePostTVC"
     static let historyTVC = "HistoryTVC"
     static let historyNoneTVC = "HistoryNoneTVC"
+    static let keywordContentTVC = "KeywordContentTVC"
     
     //MARK: - CVC
     static let addedImageCVC = "AddedImageCVC"

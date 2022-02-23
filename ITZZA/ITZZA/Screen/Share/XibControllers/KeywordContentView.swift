@@ -11,6 +11,7 @@ import RxSwift
 class KeywordContentView: UIView {
     @IBOutlet weak var keywordContentCV: UICollectionView!
     let bag = DisposeBag()
+    var menu:[String] = []
     
     override init(frame: CGRect) {
       super.init(frame: frame)
@@ -42,7 +43,7 @@ extension KeywordContentView {
     }
     
     func setKeywordContentCV() {
-        keywordContentCV.register(KeywordContentCVC.self, forCellWithReuseIdentifier: Identifiers.keywordContentCVC)
+        keywordContentCV.register(UINib(nibName: Identifiers.keywordContentCVC, bundle: nil), forCellWithReuseIdentifier: Identifiers.keywordContentCVC)
 
         keywordContentCV.dataSource = self
         keywordContentCV.delegate = self
@@ -84,17 +85,12 @@ extension KeywordContentView {
 // MARK: - UICollectionViewDataSource
 extension KeywordContentView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        2
+        menu.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.keywordContentCVC, for: indexPath) as? KeywordContentCVC else { return UICollectionViewCell() }
-        
-        if indexPath == [0,0] {
-            cell.backgroundColor = .red
-        } else {
-            cell.backgroundColor = .blue
-        }
+
         return cell
     }
 }

@@ -32,6 +32,7 @@ extension CategoryVC {
         postListTV.delegate = self
         postListTV.backgroundColor = .lightGray1
         postListTV.separatorStyle = .none
+        postListTV.showsVerticalScrollIndicator = false
         
         bindPostListTVItemSelected()
     }

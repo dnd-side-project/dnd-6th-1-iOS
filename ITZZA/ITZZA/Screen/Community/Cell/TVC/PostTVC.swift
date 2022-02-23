@@ -32,13 +32,7 @@ class PostTVC: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        if selected {
-            contentView.backgroundColor = .clear
-        } else {
-            UIView.animate(withDuration: 0.7, delay: 0, options: UIView.AnimationOptions(), animations: {
-                self.contentView.backgroundColor = .white
-            }, completion: nil)
-        }
+        selectionStyle = .none
     }
     
     override func layoutSubviews() {

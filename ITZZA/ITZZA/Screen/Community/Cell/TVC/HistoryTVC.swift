@@ -11,14 +11,18 @@ class HistoryTVC: UITableViewCell {
     @IBOutlet weak var keyword: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        setContentView()
     }
 }
 
 extension HistoryTVC {
+    private func setContentView() {
+        selectionStyle = .none
+    }
+
     func configureCell(_ keyword: String) {
         self.keyword.text = keyword
     }

@@ -68,6 +68,42 @@
                                     <constraint firstAttribute="height" constant="1" id="np6-BB-ugA"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89b-Hi-DVY">
+                                <rect key="frame" x="0.0" y="99" width="375" height="679"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdE-Vs-Pyi" customClass="TabView" customModule="ITZZA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="1iQ-io-vcL"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0t-Jf-CPR">
+                                        <rect key="frame" x="0.0" y="50" width="375" height="1"/>
+                                        <color key="backgroundColor" red="0.8901960784313725" green="0.87058823529411766" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Yr4-Fc-WqE"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKG-YI-y20" customClass="KeywordContentView" customModule="ITZZA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="51" width="375" height="628"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="vdE-Vs-Pyi" firstAttribute="leading" secondItem="89b-Hi-DVY" secondAttribute="leading" id="8D9-Ph-K7c"/>
+                                    <constraint firstItem="j0t-Jf-CPR" firstAttribute="top" secondItem="vdE-Vs-Pyi" secondAttribute="bottom" id="C3w-9L-yEo"/>
+                                    <constraint firstItem="j0t-Jf-CPR" firstAttribute="leading" secondItem="89b-Hi-DVY" secondAttribute="leading" id="HRy-dJ-VZb"/>
+                                    <constraint firstItem="sKG-YI-y20" firstAttribute="top" secondItem="j0t-Jf-CPR" secondAttribute="bottom" id="IUr-0Y-uFR"/>
+                                    <constraint firstItem="sKG-YI-y20" firstAttribute="leading" secondItem="89b-Hi-DVY" secondAttribute="leading" id="d9a-fM-XSd"/>
+                                    <constraint firstAttribute="bottom" secondItem="sKG-YI-y20" secondAttribute="bottom" id="hq1-1g-96T"/>
+                                    <constraint firstItem="vdE-Vs-Pyi" firstAttribute="top" secondItem="89b-Hi-DVY" secondAttribute="top" id="ijd-8z-ICh"/>
+                                    <constraint firstAttribute="trailing" secondItem="sKG-YI-y20" secondAttribute="trailing" id="kiQ-eP-jTt"/>
+                                    <constraint firstAttribute="trailing" secondItem="j0t-Jf-CPR" secondAttribute="trailing" id="lbB-MO-jUN"/>
+                                    <constraint firstAttribute="trailing" secondItem="vdE-Vs-Pyi" secondAttribute="trailing" id="yyh-XK-0hC"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="BmC-rl-L97">
                                 <rect key="frame" x="0.0" y="99" width="375" height="679"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -191,32 +227,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89b-Hi-DVY">
-                                <rect key="frame" x="0.0" y="99" width="375" height="679"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdE-Vs-Pyi" customClass="TabView" customModule="ITZZA" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="1iQ-io-vcL"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKG-YI-y20" customClass="KeywordContentView" customModule="ITZZA" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="375" height="629"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="sKG-YI-y20" firstAttribute="top" secondItem="vdE-Vs-Pyi" secondAttribute="bottom" id="2Wl-ZL-gbx"/>
-                                    <constraint firstAttribute="trailing" secondItem="sKG-YI-y20" secondAttribute="trailing" id="JwP-5A-MkV"/>
-                                    <constraint firstItem="vdE-Vs-Pyi" firstAttribute="top" secondItem="89b-Hi-DVY" secondAttribute="top" id="PiF-Hv-ech"/>
-                                    <constraint firstItem="vdE-Vs-Pyi" firstAttribute="leading" secondItem="89b-Hi-DVY" secondAttribute="leading" id="WLz-4n-bw4"/>
-                                    <constraint firstItem="sKG-YI-y20" firstAttribute="leading" secondItem="89b-Hi-DVY" secondAttribute="leading" id="WVC-aS-23o"/>
-                                    <constraint firstAttribute="bottom" secondItem="sKG-YI-y20" secondAttribute="bottom" id="ecM-HB-CBh"/>
-                                    <constraint firstAttribute="trailing" secondItem="vdE-Vs-Pyi" secondAttribute="trailing" id="xrh-NZ-lca"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -239,6 +249,7 @@
                     </view>
                     <connections>
                         <outlet property="divisionLine" destination="JZ8-a0-1M5" id="5y6-Ln-nw4"/>
+                        <outlet property="keywordContentView" destination="sKG-YI-y20" id="zGq-lX-fOy"/>
                         <outlet property="naviBackButton" destination="1Nn-Bo-jJI" id="Pd7-QY-6Rr"/>
                         <outlet property="naviSearchButton" destination="sZ5-Zu-snt" id="NJY-sy-vgs"/>
                         <outlet property="removeAllButton" destination="2NO-2U-oDu" id="rbe-BE-OGu"/>

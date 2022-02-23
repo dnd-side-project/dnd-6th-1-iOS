@@ -16,6 +16,7 @@ class SearchPostVC: UIViewController {
     @IBOutlet weak var searchHistoryTV: UITableView!
     @IBOutlet weak var divisionLine: UIView!
     @IBOutlet weak var tabView: TabView!
+    @IBOutlet weak var keywordContentView: KeywordContentView!
     
     let bag = DisposeBag()
     var isNoneData = false
@@ -61,6 +62,8 @@ extension SearchPostVC {
     func configureTabView(){
         tabView.menu = menu
         tabView.setContentView()
+        
+        keywordContentView.menu = menu
     }
     
     func configureButtonColor() {

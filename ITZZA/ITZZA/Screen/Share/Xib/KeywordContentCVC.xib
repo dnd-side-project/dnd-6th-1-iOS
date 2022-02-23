@@ -4,21 +4,42 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="KeywordContentCVC" customModule="ITZZA" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KeywordContentCVC" id="gTV-IL-0wX" customClass="KeywordContentCVC" customModule="ITZZA" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="325" height="629"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="325" height="629"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Dsv-LM-ldU">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="629"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </tableView>
+                </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Dsv-LM-ldU" secondAttribute="bottom" id="Sx0-Dm-0LV"/>
+                <constraint firstItem="Dsv-LM-ldU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WFT-oz-0XA"/>
+                <constraint firstAttribute="trailing" secondItem="Dsv-LM-ldU" secondAttribute="trailing" id="fuc-kp-76X"/>
+                <constraint firstItem="Dsv-LM-ldU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="xWF-vJ-W3u"/>
+            </constraints>
             <size key="customSize" width="261" height="445"/>
+            <connections>
+                <outlet property="keywordContentTV" destination="Dsv-LM-ldU" id="Q8C-Al-9Ip"/>
+            </connections>
             <point key="canvasLocation" x="284.78260869565219" y="240.73660714285714"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -8,10 +8,32 @@
 import UIKit
 
 class KeywordContentCVC: UICollectionViewCell {
+    @IBOutlet weak var keywordContentTV: UITableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
+        configureTV()
+    }
+}
+
+extension KeywordContentCVC {
+    private func configureTV() {
+        keywordContentTV.register(UINib(nibName: Identifiers.keywordContentTVC, bundle: nil), forCellReuseIdentifier: Identifiers.keywordContentTVC)
+        keywordContentTV.dataSource = self
+        keywordContentTV.showsVerticalScrollIndicator = false
+        keywordContentTV.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+}
+
+extension KeywordContentCVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        4
     }
 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.keywordContentTVC, for: indexPath) as? KeywordContentTVC else { return UITableViewCell() }
+        
+        return cell
+    }
 }
