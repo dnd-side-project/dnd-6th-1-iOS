@@ -56,6 +56,7 @@ struct Identifiers {
     static let imageScrollView = "ImageScrollView"
     static let imageCollectionView = "ImageCollectionView"
     static let tabView = "TabView"
+    static let keywordContentView = "KeywordContentView"
     
     //MARK: - TVC
     static let postTVC = "PostTVC"
@@ -69,4 +70,5 @@ struct Identifiers {
     //MARK: - CVC
     static let addedImageCVC = "AddedImageCVC"
     static let tabCVC = "TabCVC"
+    static let keywordContentCVC = "KeywordContentCVC"
 }

@@ -16,7 +16,6 @@ class TabView: UIView {
               $0.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
           }
     var menu:[String] = []
-    var isScrolling: Bool = false
     
     // MARK: - Init
    
@@ -51,6 +50,7 @@ extension TabView {
         view.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        setNotification()
     }
     
     private func configureTabCV() {
@@ -67,7 +67,16 @@ extension TabView {
                                       animated: false,
                                       scrollPosition: [])
     }
+    
+    func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(scrollToTab), name:.whenKeywordContentViewScrolled, object: nil)
+    }
+    
+    @objc func scrollToTab(_ notification: Notification) {
+        tabCV.selectItem(at: notification.object as? IndexPath, animated: false, scrollPosition: [])
+    }
 }
+
 // MARK: - UICollectionViewDataSource
 extension TabView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -105,17 +114,16 @@ extension TabView: UICollectionViewDelegate {
        
         collectionView.layoutIfNeeded()
         collectionView.isPagingEnabled = false
-        isScrolling = true
         
         UIView.animate(withDuration: 0.2,
                        delay: .zero,
                        options: []) {
             self.tabCV.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+            NotificationCenter.default.post(name:.whenTabViewTapped, object: indexPath)
         } completion: { [weak self] _ in
             guard let self = self else { return }
             
             self.tabCV.isPagingEnabled = true
-            self.isScrolling = false
         }
     }
 }

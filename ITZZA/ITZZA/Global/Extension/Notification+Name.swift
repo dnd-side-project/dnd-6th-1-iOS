@@ -9,4 +9,6 @@ import Foundation
 
 extension Notification.Name {
     static let whenDeleteImageButtonTapped = Notification.Name("whenDeleteImageButtonTapped")
+    static let whenTabViewTapped = Notification.Name("whenTabViewTapped")
+    static let whenKeywordContentViewScrolled = Notification.Name("WhenKeywordContentViewScrolled")
 }
