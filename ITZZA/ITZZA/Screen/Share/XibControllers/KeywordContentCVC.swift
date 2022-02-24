@@ -10,6 +10,7 @@ import UIKit
 class KeywordContentCVC: UICollectionViewCell {
     @IBOutlet weak var keywordContentTV: UITableView!
     var isUserSearchedList = false
+    var post = [PostModel]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +33,7 @@ extension KeywordContentCVC {
 
 extension KeywordContentCVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        post.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -42,7 +43,7 @@ extension KeywordContentCVC: UITableViewDataSource {
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.keywordContentTVC, for: indexPath) as? KeywordContentTVC else { return UITableViewCell() }
-            
+            cell.configureCell(post[indexPath.row])
             return cell
         }
     }

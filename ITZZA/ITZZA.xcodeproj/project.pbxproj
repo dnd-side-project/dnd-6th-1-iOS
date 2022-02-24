@@ -54,6 +54,7 @@
 		233B636F27AFAE3100914F60 /* PostContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 233B636E27AFAE3100914F60 /* PostContentView.xib */; };
 		233FE3D027C40AEE00A1A8C3 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233FE3CF27C40AEE00A1A8C3 /* CommentModel.swift */; };
 		2343A67027C7FDBE00117742 /* SearchKeywordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2343A66F27C7FDBE00117742 /* SearchKeywordModel.swift */; };
+		2343A67227C8126600117742 /* SearchedResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2343A67127C8126600117742 /* SearchedResultModel.swift */; };
 		2356305627BFA1D10032E520 /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2356305127BFA1CC0032E520 /* SpoqaHanSansNeo-Bold.otf */; };
 		2356305727BFA1D10032E520 /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2356305427BFA1CC0032E520 /* SpoqaHanSansNeo-Regular.otf */; };
 		2356305827BFA1D10032E520 /* SpoqaHanSansNeo-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2356305527BFA1CC0032E520 /* SpoqaHanSansNeo-Medium.otf */; };
@@ -207,6 +208,7 @@
 		233B636E27AFAE3100914F60 /* PostContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostContentView.xib; sourceTree = "<group>"; };
 		233FE3CF27C40AEE00A1A8C3 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		2343A66F27C7FDBE00117742 /* SearchKeywordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchKeywordModel.swift; sourceTree = "<group>"; };
+		2343A67127C8126600117742 /* SearchedResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedResultModel.swift; sourceTree = "<group>"; };
 		2356305127BFA1CC0032E520 /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
 		2356305227BFA1CC0032E520 /* SpoqaHanSansNeo-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Light.otf"; sourceTree = "<group>"; };
 		2356305327BFA1CC0032E520 /* SpoqaHanSansNeo-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Thin.otf"; sourceTree = "<group>"; };
@@ -518,6 +520,7 @@
 				23B4DEC627C74E1A0051ED87 /* ImagesModel.swift */,
 				233FE3CF27C40AEE00A1A8C3 /* CommentModel.swift */,
 				2343A66F27C7FDBE00117742 /* SearchKeywordModel.swift */,
+				2343A67127C8126600117742 /* SearchedResultModel.swift */,
 				2335241227A98D57009C654F /* PostDataSource.swift */,
 				23DC8F9F27B95F3C00F79EF4 /* PostManager.swift */,
 			);
@@ -1237,6 +1240,7 @@
 				622C57D427C25F8E0011D833 /* EmotionView.swift in Sources */,
 				232CC03C27A0328000040131 /* HomeModel.swift in Sources */,
 				62BE208D27A590D0001F150A /* SignInVC.swift in Sources */,
+				2343A67227C8126600117742 /* SearchedResultModel.swift in Sources */,
 				2327FD7D27C6730B007D65F4 /* SearchedUserTVC.swift in Sources */,
 				23DC8FA027B95F3C00F79EF4 /* PostManager.swift in Sources */,
 				23AEE7B127C6481D00C79FF5 /* KeywordContentTVC.swift in Sources */,

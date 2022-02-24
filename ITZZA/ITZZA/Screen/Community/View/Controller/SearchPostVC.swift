@@ -22,7 +22,9 @@ class SearchPostVC: UIViewController {
     @IBOutlet weak var keywordContentView: KeywordContentView!
     
     var keywords = [SearchKeywordModel]()
+    var postListVM: PostListVM!
     let bag = DisposeBag()
+    let apiSession = APISession()
     var isNoneData = false
     private let menu = ["내용", "사용자"]
     
@@ -32,7 +34,6 @@ class SearchPostVC: UIViewController {
         setKeyword()
         configureNavigationBar()
         configureSearchBar()
-        configureTabView()
         setNotification()
     }
     
@@ -77,6 +78,8 @@ extension SearchPostVC {
         tabView.setContentView()
         
         keywordContentView.menu = menu
+        keywordContentView.setContentView()
+        keywordContentView.setKeywordContentCV()
     }
     
     func configureButtonColor() {
@@ -120,7 +123,6 @@ extension SearchPostVC {
     func getKeyword(_ userId: Int, _ completion: @escaping ([SearchKeywordModel]?) -> ()) {
         let baseURL = "http://13.125.239.189:3000/users/"
         guard let url = URL(string: baseURL + "\(userId)" + "/histories") else { return }
-        print(url)
         guard let token: String = KeychainWrapper.standard[.myToken] else { return }
         let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
@@ -129,10 +131,8 @@ extension SearchPostVC {
             .responseDecodable(of: [SearchKeywordModel].self) { response in
                 switch response.result {
                 case .success(let decodedPost):
-                    print(decodedPost)
                     completion(decodedPost)
                 case .failure(let error):
-                    print(error)
                     completion(nil)
                 }
             }
@@ -156,6 +156,22 @@ extension SearchPostVC {
             .drive(onNext: { [weak self] text in
                 guard let self = self else { return }
                 if self.naviSearchButton.tintColor == .primary {
+                    let urlString = "http://13.125.239.189:3000/boards?keyword=" + self.searchBar.text!
+                    let encodedStr = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                    let url = URL(string: encodedStr)!
+                    self.apiSession.getRequest(with: urlResource<SearchedResultModel>(url: url))
+                        .withUnretained(self)
+                        .subscribe(onNext: { owner, result in
+                            switch result {
+                            case .failure(let error):
+                                print(error)
+                            case .success(let response):
+                                self.keywordContentView.post = response.contentResult!
+                                self.configureTabView()
+                            }
+                        })
+                        .disposed(by: self.bag)
+                    
                     self.view.sendSubviewToBack(self.searchHistoryTV)
                 }
             })
