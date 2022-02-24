@@ -38,8 +38,22 @@ extension PostDetailVC {
                 DispatchQueue.main.async {
                     self.setCommentListTV()
                 }
+            } else {
+                self.showEmptyAlert()
             }
         }
+    }
+    
+    func showEmptyAlert() {
+        let alert = UIAlertController(title: "삭제된 게시글입니다", message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.view.tintColor = .darkGray6
+        alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
+        let ok = UIAlertAction(title: "확인", style: .destructive) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addAction(ok)
+        present(alert, animated: false, completion: nil)
     }
     
     func bindRefreshController() {

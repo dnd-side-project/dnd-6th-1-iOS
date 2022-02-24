@@ -64,7 +64,6 @@ extension CategoryVC {
                     self.setPostTV()
                 }
             } else {
-                print(self.isNoneData)
                 self.isNoneData = true
                 self.setPostTV()
             }
