@@ -22,7 +22,6 @@ class SearchPostVC: UIViewController {
     @IBOutlet weak var keywordContentView: KeywordContentView!
     
     var keywords = [SearchKeywordModel]()
-    var postListVM: PostListVM!
     let bag = DisposeBag()
     let apiSession = APISession()
     var isNoneData = false

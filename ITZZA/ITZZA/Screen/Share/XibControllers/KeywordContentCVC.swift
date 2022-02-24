@@ -39,7 +39,7 @@ extension KeywordContentCVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isUserSearchedList {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.searchedUserTVC, for: indexPath) as? SearchedUserTVC else { return UITableViewCell() }
-            
+            cell.configureCell(post[indexPath.row])
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.keywordContentTVC, for: indexPath) as? KeywordContentTVC else { return UITableViewCell() }

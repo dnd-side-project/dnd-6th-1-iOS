@@ -90,16 +90,10 @@ extension KeywordContentView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 1 {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.keywordContentCVC, for: indexPath) as? KeywordContentCVC else { return UICollectionViewCell() }
-            cell.isUserSearchedList = true
-            return cell
-        } else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.keywordContentCVC, for: indexPath) as? KeywordContentCVC else { return UICollectionViewCell() }
-            cell.isUserSearchedList = false
-            cell.post = post
-            return cell
-        }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.keywordContentCVC, for: indexPath) as? KeywordContentCVC else { return UICollectionViewCell() }
+        cell.post = post
+        indexPath.row == 1 ? (cell.isUserSearchedList = true) : (cell.isUserSearchedList = false)
+        return cell
     }
 }
 
