@@ -9,4 +9,5 @@ import Foundation
 
 extension Notification.Name {
     static let whenDeleteImageButtonTapped = Notification.Name("whenDeleteImageButtonTapped")
+    static let popupAlertView = Notification.Name("popupAlertView")
 }

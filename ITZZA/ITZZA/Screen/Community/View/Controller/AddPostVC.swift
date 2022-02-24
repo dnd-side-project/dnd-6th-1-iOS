@@ -239,6 +239,7 @@ extension AddPostVC {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success:
+                    NotificationCenter.default.post(name: .popupAlertView, object: nil)
                     self.navigationController?.popViewController(animated: true)
                 case .failure:
                     break
