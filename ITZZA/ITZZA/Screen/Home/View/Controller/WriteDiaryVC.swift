@@ -30,7 +30,6 @@ class WriteDiaryVC: UIViewController {
     var imageAddBar = ImageAddBar()
     let textViewPlaceHolder = "오늘은 어떤 하루였나요?"
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setInitialUIValue()
@@ -165,7 +164,6 @@ extension WriteDiaryVC {
 
 // MARK: - Set Image
 extension WriteDiaryVC {
-    
     func addImagesToImageScrollView(with images: [UIImage]) {
         imageScrollView.image = images
         imageScrollView.configurePost()
@@ -174,7 +172,6 @@ extension WriteDiaryVC {
 
 // MARK: - TextView Delegate
 extension WriteDiaryVC: UITextViewDelegate {
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.setTextViewPlaceholder(textViewPlaceHolder)
     }

@@ -186,9 +186,7 @@ extension HomeVC: FSCalendarDelegate {
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-        guard let diaryVC = ViewControllerFactory.viewController(for: .diary) as? DiaryVC else { return }
-        diaryVC.seletedDate = dotDateFormatter.string(from: date)
-        
+        let diaryVC = homeVM.distinguishViewToShow(date)
         self.present(diaryVC, animated: true, completion: nil)
     }
 }

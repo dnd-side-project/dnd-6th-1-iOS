@@ -15,6 +15,7 @@ class HomeVM {
     let getDiarySuccess = PublishSubject<[Date: Int]>()
     var monthlyDiaryData: [HomeModel] = []
     var events: [Date: Int] = [:]
+    var parsedDiaryData: [Date: HomeModel] = [:]
     
     private lazy var dashDateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -22,11 +23,21 @@ class HomeVM {
         df.dateFormat = "yyyy-MM-dd"
         return df
     }()
+    
+    private lazy var dotDateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.locale = Locale(identifier: "en_US")
+        df.dateFormat = "yyyy.MM.dd"
+        return df
+    }()
   
     private func extractDateFromData() {
         events = [:]
+        parsedDiaryData = [:]
+        
         monthlyDiaryData.forEach {
             events[dashDateFormatter.date(from: $0.date!)!] = $0.categoryId
+            parsedDiaryData[dashDateFormatter.date(from: $0.date!)!] = $0
         }
     }
     
@@ -41,6 +52,36 @@ class HomeVM {
             return [UIColor.seconSorrow]
         } else {
             return [UIColor.seconLonely]
+        }
+    }
+    
+    func distinguishViewToShow(_ date: Date) -> DiaryVC {
+        guard let diaryVC = ViewControllerFactory.viewController(for: .diary) as? DiaryVC else {
+            return DiaryVC()
+        }
+        
+        diaryVC.seletedDate = dotDateFormatter.string(from: date)
+        
+        if events.keys.contains(date) {
+            let temporalView = EmptyDiaryView()
+            let parsedData = parsedDiaryData[date]
+            
+            temporalView.emotionSentence.text = parsedData?.categoryReason
+            temporalView.postContentView.title.text = parsedData?.diaryTitle
+            temporalView.postContentView.contents.text = parsedData?.diaryContent
+            temporalView.addImagesToImageScrollView(with: parsedData?.diaryImages ?? [])
+            
+            temporalView.emotionSentence.textColor = .darkGray6
+            temporalView.postContentView.title.textColor = .darkGray6
+            temporalView.postContentView.contents.textColor = .darkGray6
+            
+            diaryVC.viewStatus = true
+            diaryVC.categoryId = parsedData?.categoryId
+            diaryVC.emptyDiaryView = temporalView
+            return diaryVC
+        } else {
+            diaryVC.viewStatus = false
+            return diaryVC
         }
     }
 }
