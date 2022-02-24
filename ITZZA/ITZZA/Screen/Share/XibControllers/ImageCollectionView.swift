@@ -49,8 +49,9 @@ class ImageCollectionView: UIView {
     @objc private func deleteCell(sender: UIButton) {
         imageCV.deleteItems(at: [IndexPath.init(row: sender.tag, section: 0)])
         selectedImages.remove(at: sender.tag)
-        selectedAssets.remove(at: sender.tag)
-        
+        if selectedAssets.count != 0 {
+            selectedAssets.remove(at: sender.tag)
+        }
         
         NotificationCenter.default.post(name:.whenDeleteImageButtonTapped, object: nil)
     }

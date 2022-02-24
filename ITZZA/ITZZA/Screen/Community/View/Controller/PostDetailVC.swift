@@ -18,6 +18,7 @@ class PostDetailVC: UIViewController {
     var post = PostModel()
     var boardId: Int?
     var isScrolled = false
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,21 @@ extension PostDetailVC {
                     self.setCommentListTV()
                 }
             }
+        }
+    }
+    
+    func bindRefreshController() {
+        refreshControl.addTarget(self, action: #selector(updateTV(refreshControl:)), for: .valueChanged)
+        
+        commentListTV.refreshControl = refreshControl
+    }
+    
+    @objc func updateTV(refreshControl: UIRefreshControl) {
+        self.setPost()
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) { [weak self] in
+            guard let self = self else { return }
+            self.commentListTV.reloadData()
+            refreshControl.endRefreshing()
         }
     }
     
@@ -64,6 +80,7 @@ extension PostDetailVC {
         commentListTV.separatorStyle = .none
         
         register()
+        bindRefreshController()
         
         DispatchQueue.main.async {
             self.scrollToComment()
@@ -83,6 +100,15 @@ extension PostDetailVC {
     
     func setNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(popupDeleteAlert), name: .whenDeletePostMenuTapped, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pushEditPostView), name: .whenEditPostMenuTapped, object: nil)
+    }
+    
+    @objc func pushEditPostView() {
+        guard let editPostVC = ViewControllerFactory.viewController(for: .addPost) as? AddPostVC else { return }
+        editPostVC.boardId = self.boardId!
+        editPostVC.isEditingView = true
+        editPostVC.post = self.post
+        self.navigationController?.pushViewController(editPostVC, animated: true)
     }
     
     @objc func popupDeleteAlert() {

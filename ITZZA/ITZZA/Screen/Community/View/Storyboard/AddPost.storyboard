@@ -104,10 +104,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ImageListView" destination="mU9-fB-xWn" id="SqA-vL-LeH"/>
                         <outlet property="addImageBar" destination="CHq-Ju-mYJ" id="SQu-z9-pFX"/>
                         <outlet property="chooseCategoryButton" destination="SQx-rR-1cV" id="eAj-qQ-d93"/>
                         <outlet property="imageListHeight" destination="H13-WS-WLc" id="ViT-xp-drZ"/>
+                        <outlet property="imageListView" destination="mU9-fB-xWn" id="SqA-vL-LeH"/>
                         <outlet property="postWriteView" destination="37x-PN-Yof" id="vuy-Cb-mFL"/>
                         <outlet property="scrollView" destination="eEK-B5-aG1" id="7uU-GE-kEd"/>
                     </connections>

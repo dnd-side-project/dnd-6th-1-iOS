@@ -67,7 +67,12 @@ extension MenuBottomSheet {
                 .drive(onNext: { [weak self] _ in
                     guard let self = self else { return }
                     self.dismiss(animated: true, completion: nil)
-                    NotificationCenter.default.post(name: .whenDeletePostMenuTapped, object: nil)
+                    
+                    if title == self.menu.first {
+                        NotificationCenter.default.post(name: .whenEditPostMenuTapped, object: nil)
+                    } else {
+                        NotificationCenter.default.post(name: .whenDeletePostMenuTapped, object: nil)
+                    }
                 })
                 .disposed(by: bag)
         }
