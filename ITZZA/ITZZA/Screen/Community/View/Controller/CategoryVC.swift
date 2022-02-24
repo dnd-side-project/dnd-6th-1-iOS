@@ -75,7 +75,7 @@ extension CategoryVC {
 extension CategoryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if postListVM?.posts.count == 0
-        || isNoneData {
+            || isNoneData {
             return tableView.frame.height
         } else {
             return UITableView.automaticDimension
