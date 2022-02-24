@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import Alamofire
 import SwiftKeychainWrapper
 
@@ -23,7 +24,7 @@ class PostButtonsView: UIView {
     var boardId: Int?
     
     override init(frame: CGRect) {
-      super.init(frame: frame)
+        super.init(frame: frame)
         setContentView()
         didTapLikeButton()
         didTapBookmarkButton()
@@ -51,30 +52,37 @@ class PostButtonsView: UIView {
 extension PostButtonsView {
     func didTapLikeButton() {
         likeButton.rx.tap
-             .subscribe(onNext: {
-                 self.postLikeStatus(self.boardId ?? 0)
-             })
-             .disposed(by: bag)
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.postLikeStatus(self.boardId ?? 0)
+            })
+            .disposed(by: bag)
     }
     
     func didTapBookmarkButton() {
         bookmarkButton.rx.tap
-             .subscribe(onNext: {
-                 self.postBookmarkStatus(self.boardId ?? 0)
-             })
-             .disposed(by: bag)
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.postBookmarkStatus(self.boardId ?? 0)
+            })
+            .disposed(by: bag)
+
     }
     
     func didTapCommentButton(_ vc: UIViewController) {
         commentButton.rx.tap
-             .subscribe(onNext: {
-                 guard let postDetailVC = ViewControllerFactory.viewController(for: .postDetail) as? PostDetailVC else { return }
-                 postDetailVC.boardId = self.boardId
-                 postDetailVC.isScrolled = true
-                 postDetailVC.hidesBottomBarWhenPushed = true
-                 vc.navigationController?.pushViewController(postDetailVC, animated: true)
-             })
-             .disposed(by: bag)
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                guard let postDetailVC = ViewControllerFactory.viewController(for: .postDetail) as? PostDetailVC else { return }
+                postDetailVC.boardId = self.boardId
+                postDetailVC.isScrolled = true
+                postDetailVC.hidesBottomBarWhenPushed = true
+                vc.navigationController?.pushViewController(postDetailVC, animated: true)
+            })
+            .disposed(by: bag)
     }
     
     func setButtonCnt(_ state: Bool, _ lastCnt: String) -> String {
@@ -90,7 +98,7 @@ extension PostButtonsView {
         guard let url = URL(string: baseURL + "\(boardId)" + "/likes") else { return }
         guard let token: String = KeychainWrapper.standard[.myToken] else { return }
         let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
-
+        
         AF.request(url, method: .post, headers: header).responseData { response in
             switch response.result {
             case .success:
@@ -108,7 +116,7 @@ extension PostButtonsView {
         guard let url = URL(string: baseURL + "\(boardId)" + "/bookmarks") else { return }
         guard let token: String = KeychainWrapper.standard[.myToken] else { return }
         let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
-
+        
         AF.request(url, method: .post, headers: header).responseData { response in
             switch response.result {
             case .success:

@@ -7,10 +7,13 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import BSImagePicker
 import Photos
 import Then
 import SnapKit
+import Alamofire
+import SwiftKeychainWrapper
 
 class AddPostVC: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
@@ -26,6 +29,7 @@ class AddPostVC: UIViewController {
             $0.font = UIFont.SpoqaHanSansNeoMedium(size: 15)
             $0.textColor = .darkGray6
         }
+    var categoryIndex: Int?
     
     let postTitlePlaceholder = "제목"
     let postContentsPlaceholder = "글쓰기"
@@ -35,10 +39,11 @@ class AddPostVC: UIViewController {
     let minimumLineSpacing: CGFloat = 20
     
     let bag = DisposeBag()
+    let apiSession = APISession()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configureNavigationBar()
         configureChooseCategoryButton()
         configurePostContentComponent()
@@ -60,18 +65,22 @@ extension AddPostVC {
         savePostButton.title = "저장"
         savePostButton.tintColor = .primary
         savePostButton.rx.tap
-            .bind {
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
                 self.checkInputValid()
-            }
+            })
             .disposed(by: bag)
         
         let backButton = UIBarButtonItem()
-               backButton.image = UIImage(systemName: "chevron.backward")
-               backButton.rx.tap
-                   .bind {
-                       self.checkWrittenState()
-                   }
-                   .disposed(by: bag)
+        backButton.image = UIImage(systemName: "chevron.backward")
+        backButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.checkWrittenState()
+            })
+            .disposed(by: bag)
         
         navigationItem.rightBarButtonItem = savePostButton
         navigationItem.leftBarButtonItem = backButton
@@ -86,7 +95,7 @@ extension AddPostVC {
         
         let space = chooseCategoryButton.frame.height / 2
         var configuration = UIButton.Configuration.plain()
-
+        
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 0,
                                                               leading: space,
                                                               bottom: 0,
@@ -118,7 +127,8 @@ extension AddPostVC {
     func bindCategoryBottomSheet() {
         chooseCategoryButton.rx.tap
             .asDriver()
-            .drive(onNext: {
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
                 let categoryBottomSheet = CategoryBottomSheetVC()
                 categoryBottomSheet.delegate = self
                 self.present(categoryBottomSheet, animated: true)
@@ -128,7 +138,9 @@ extension AddPostVC {
     
     func bindAddImageBar() {
         addImageBar.addImageButton.rx.tap
-            .bind {
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
                 let imagePicker = ImagePickerController(selectedAssets: self.ImageListView.selectedAssets)
                 
                 imagePicker.cancelButton.tintColor = .primary
@@ -149,10 +161,10 @@ extension AddPostVC {
                     self.ImageListView.selectedAssets = assets
                 }, completion: {
                 })
-            }
+            })
             .disposed(by: bag)
     }
-
+    
     func addImageToCollectionView(_ images: [UIImage]) {
         ImageListView.selectedImages = images
         ImageListView.imageCV.reloadData()
@@ -198,8 +210,7 @@ extension AddPostVC {
             alert.addAction(defaultAction)
             present(alert, animated: false, completion: nil)
         } else {
-            // TODO: - 게시글 post
-            self.navigationController?.popViewController(animated: true)
+            postPost()
         }
     }
     
@@ -222,6 +233,28 @@ extension AddPostVC {
             self.navigationController?.popViewController(animated: true)
         }
     }
+    
+    func postPost() {
+        let postURL = "http://13.125.239.189:3000/boards"
+        let url = URL(string: postURL)!
+        let postInformation = PostModel(categoryId: categoryIndex,
+                                        postTitle: postWriteView.title.text,
+                                        postContent: postWriteView.contents.text)
+        let postParameter = postInformation.postParam
+        
+        apiSession.postRequestWithImages(with: urlResource<PostModel>(url: url), param: postParameter, images: ImageListView.selectedImages)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success:
+                    NotificationCenter.default.post(name: .popupAlertView, object: nil)
+                    self.navigationController?.popViewController(animated: true)
+                case .failure:
+                    break
+                }
+            })
+            .disposed(by: bag)
+    }
 }
 
 // MARK: - UITextViewDelegate
@@ -239,7 +272,8 @@ extension AddPostVC: UITextViewDelegate {
 
 // MARK: - Protocol
 extension AddPostVC: CategoryTitleDelegate {
-    func getCategoryTitle(_ title: String) {
+    func getCategoryTitle(_ title: String, _ index: Int) {
         self.categoryLabel.text = title
+        self.categoryIndex = index
     }
 }

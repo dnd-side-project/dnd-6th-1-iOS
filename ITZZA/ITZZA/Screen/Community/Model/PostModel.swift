@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Kingfisher
+import Alamofire
 
 struct PostModel: Decodable {
     var boardId: Int?
@@ -18,7 +19,7 @@ struct PostModel: Decodable {
     var postContent: String?
     var createdAt: String?
     var imageCnt: Int?
-    var images: [String]?
+    var images: [ImagesModel]?
     var commentCnt: Int?
     var comments: [CommentDataModel]?
     var likeCnt: Int?
@@ -27,9 +28,20 @@ struct PostModel: Decodable {
 }
 
 extension PostModel {
+    var postParam: Parameters {
+        return ["categoryId": categoryId!,
+                "postTitle": postTitle!,
+                "postContent": postContent!
+        ]
+    }
+}
+
+extension PostModel {
     var profileImgURL: URL? {
-      guard let profileImgURL = profileImage else { return nil }
-      return URL(string: profileImgURL)
+        guard let profileImgURL = profileImage else { return nil }
+        let encodedStr = profileImgURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let url = URL(string: encodedStr)!
+        return url
     }
     
     var postImages: [UIImage]? {
@@ -37,7 +49,10 @@ extension PostModel {
         guard let postImgURL = images else { return nil }
 
         postImgURL.forEach { imageURL in
-            let data = try? Data(contentsOf: URL(string: imageURL)!)
+            let encodedStr = imageURL.imageUrl?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let url = URL(string: encodedStr!)!
+
+            let data = try? Data(contentsOf: url)
             postImages.append(UIImage(data: data!)!)
         }
 

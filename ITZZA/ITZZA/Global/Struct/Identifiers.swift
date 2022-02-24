@@ -15,6 +15,7 @@ struct Identifiers {
     static let postDetailSB = "PostDetail"
     static let addPostSB = "AddPost"
     static let searchPostSB = "SearchPost"
+    static let userPostListSB = "UserPostList"
     static let mypageSB = "Mypage"
     static let signInSB = "SignIn"
     static let signUpSB = "SignUp"
@@ -32,6 +33,7 @@ struct Identifiers {
     static let postDetailVC = "PostDetailVC"
     static let addPostVC = "AddPostVC"
     static let searchPostVC = "SearchPostVC"
+    static let userPostListVC = "UserPostListVC"
     static let mypageVC = "MypageVC"
     static let signInVC = "SignInVC"
     static let signUpVC = "SignUpVC"
@@ -56,6 +58,9 @@ struct Identifiers {
     static let imageScrollView = "ImageScrollView"
     static let imageCollectionView = "ImageCollectionView"
     static let emojiAnimationView = "EmojiAnimationView"
+    static let tabView = "TabView"
+    static let keywordContentView = "KeywordContentView"
+    static let alertView = "AlertView"
     
     //MARK: - TVC
     static let postTVC = "PostTVC"
@@ -63,7 +68,13 @@ struct Identifiers {
     static let commentCountTVC = "CommentCountTVC"
     static let noneCommentTVC = "NoneCommentTVC"
     static let nonePostTVC = "NonePostTVC"
+    static let historyTVC = "HistoryTVC"
+    static let historyNoneTVC = "HistoryNoneTVC"
+    static let keywordContentTVC = "KeywordContentTVC"
+    static let searchedUserTVC = "SearchedUserTVC"
     
     //MARK: - CVC
     static let addedImageCVC = "AddedImageCVC"
+    static let tabCVC = "TabCVC"
+    static let keywordContentCVC = "KeywordContentCVC"
 }
