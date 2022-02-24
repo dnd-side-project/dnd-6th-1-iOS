@@ -45,11 +45,18 @@ class PostButtonsView: UIView {
         view.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
+        setButtonColor()
     }
 }
 
 //MARK: - Button Event
 extension PostButtonsView {
+    private func setButtonColor() {
+        likeButton.tintColor = .white
+        bookmarkButton.tintColor = .white
+    }
+    
     func didTapLikeButton() {
         likeButton.rx.tap
             .asDriver()
@@ -86,6 +93,9 @@ extension PostButtonsView {
     }
     
     func setButtonCnt(_ state: Bool, _ lastCnt: String) -> String {
+        likeCnt.textColor = .lightGray5
+        commentCnt.textColor = .lightGray5
+        
         if state {
             return String(Int(lastCnt)! + 1)
         } else {

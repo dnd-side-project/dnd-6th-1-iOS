@@ -217,7 +217,8 @@ extension AddPostVC {
     func checkWrittenState(){
         if !postWriteView.title.text!.isEmpty
             || postWriteView.contents.textColor != postContentPlaceholderColor
-            || categoryLabel.text! != categoryTitlePlaceholder {
+            || categoryLabel.text! != categoryTitlePlaceholder
+            || !ImageListView.selectedImages.isEmpty {
             let alert = UIAlertController(title: "게시글이 저장되지 않았습니다.\n나가시겠어요?", message: "", preferredStyle: UIAlertController.Style.alert)
             alert.view.tintColor = .darkGray6
             alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white

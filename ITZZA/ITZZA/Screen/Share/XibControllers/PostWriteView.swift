@@ -39,7 +39,7 @@ class PostWriteView: UIView {
         title.font = UIFont.SpoqaHanSansNeoMedium(size: 15)
         title.setPlaceholderColor(.lightGray5)
         
-        contents.textColor = .darkGray3
+        contents.textColor = .darkGray6
         contents.font = UIFont.SpoqaHanSansNeoRegular(size: 15)
         contents.setAllMarginToZero()
     }

@@ -39,7 +39,7 @@ class PostContentView: UIView {
         title.font = UIFont.SpoqaHanSansNeoMedium(size: 15)
         
         contents.setLineBreakMode()
-        contents.textColor = .darkGray3
+        contents.textColor = .darkGray6
         contents.font = UIFont.SpoqaHanSansNeoRegular(size: 15)
     }
 }

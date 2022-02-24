@@ -17,13 +17,13 @@ class ProfileHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setContentView()
-        configureCategoryLabel()
+        configureText()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setContentView()
-        configureCategoryLabel()
+        configureText()
     }
     
     private func setContentView() {
@@ -36,7 +36,10 @@ class ProfileHeaderView: UIView {
         }
     }
     
-    private func configureCategoryLabel() {
+    private func configureText() {
+        userName.textColor = .darkGray6
+        createAt.textColor = .lightGray6
+        
         category.textColor = .primary
         category.layer.borderColor = UIColor.primary.cgColor
         category.layer.borderWidth = 0.5
