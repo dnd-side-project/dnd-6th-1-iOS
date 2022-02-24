@@ -135,10 +135,6 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="9b1-sz-Rnf"/>
-                                                        <constraint firstAttribute="width" constant="55" id="sDm-4O-l9x"/>
-                                                    </constraints>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMs-dJ-tVK" customClass="PostContentView" customModule="ITZZA" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="76" width="375" height="80"/>

@@ -8,6 +8,8 @@
 import UIKit
 import RxSwift
 import RxDataSources
+import Alamofire
+import SwiftKeychainWrapper
 
 class PostDetailVC: UIViewController {
     @IBOutlet weak var commentListTV: UITableView!
@@ -22,6 +24,7 @@ class PostDetailVC: UIViewController {
         
         setPost()
         configureNavigationbar()
+        setNotification()
     }
 }
 
@@ -76,6 +79,46 @@ extension PostDetailVC {
     func register(){
         commentListTV.register(UINib(nibName: Identifiers.commentTVC, bundle: nil), forCellReuseIdentifier: Identifiers.commentTVC)
         commentListTV.register(PostContentTableViewHeader.self, forHeaderFooterViewReuseIdentifier: Identifiers.postContentTableViewHeader)
+    }
+    
+    func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(popupDeleteAlert), name: .whenDeletePostMenuTapped, object: nil)
+    }
+    
+    @objc func popupDeleteAlert() {
+        let alert = UIAlertController(title: "게시글을 정말 삭제하시겠습니까?", message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.view.tintColor = .darkGray6
+        alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
+        let ok = UIAlertAction(title: "네", style: .destructive) { _ in
+            self.deletePost(self.boardId ?? 0)
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        present(alert, animated: false, completion: nil)
+    }
+    
+    func deletePost(_ boardId: Int) {
+        let baseURL = "http://13.125.239.189:3000/boards/"
+        guard let url = URL(string: baseURL + "\(boardId)") else { return }
+        guard let token: String = KeychainWrapper.standard[.myToken] else { return }
+        let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        AF.request(url, method: .delete, headers: header).responseData { response in
+            switch response.result {
+            case .success:
+                self.navigationController?.popViewController(animated: true)
+            case .failure:
+                let alert = UIAlertController(title: "네트워크 오류", message: "", preferredStyle: UIAlertController.Style.alert)
+                alert.view.tintColor = .darkGray6
+                alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
+                let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                
+                alert.addAction(cancel)
+                self.present(alert, animated: false, completion: nil)
+            }
+        }
     }
 }
 

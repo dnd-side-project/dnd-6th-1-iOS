@@ -67,6 +67,7 @@ extension MenuBottomSheet {
                 .drive(onNext: { [weak self] _ in
                     guard let self = self else { return }
                     self.dismiss(animated: true, completion: nil)
+                    NotificationCenter.default.post(name: .whenDeletePostMenuTapped, object: nil)
                 })
                 .disposed(by: bag)
         }

@@ -13,4 +13,5 @@ extension Notification.Name {
     static let whenKeywordContentViewScrolled = Notification.Name("WhenKeywordContentViewScrolled")
     static let whenUserPostListTapped = Notification.Name("whenUserPostListTapped")
     static let popupAlertView = Notification.Name("popupAlertView")
+    static let whenDeletePostMenuTapped = Notification.Name("whenDeletePostMenuTapped")
 }
