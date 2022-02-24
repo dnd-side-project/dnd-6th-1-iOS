@@ -21,6 +21,7 @@ class PostDetailVC: UIViewController {
         super.viewDidLoad()
         
         setPost()
+        configureNavigationbar()
     }
 }
 
@@ -35,6 +36,22 @@ extension PostDetailVC {
                 }
             }
         }
+    }
+    
+    func configureNavigationbar() {
+        let menuButton = UIBarButtonItem()
+        menuButton.image = UIImage(named: "Menu_Horizontal")
+        
+        navigationItem.rightBarButtonItem = menuButton
+        
+        menuButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                let menuBottomSheet = MenuBottomSheet()
+                self.present(menuBottomSheet, animated: true)
+            })
+            .disposed(by: bag)
     }
     
     func setCommentListTV() {
