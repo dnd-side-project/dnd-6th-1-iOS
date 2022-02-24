@@ -118,6 +118,8 @@
 		6254618427B152EF00184DA1 /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6254618327B152EF00184DA1 /* NicknameView.swift */; };
 		6254618627B152FC00184DA1 /* PasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6254618527B152FC00184DA1 /* PasswordView.xib */; };
 		6254618827B1530500184DA1 /* NicknameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6254618727B1530500184DA1 /* NicknameView.xib */; };
+		62654E5D27C75A3600A48363 /* EmojiAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62654E5C27C75A3600A48363 /* EmojiAnimationView.swift */; };
+		62654E5F27C75A6A00A48363 /* EmojiAnimationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62654E5E27C75A6A00A48363 /* EmojiAnimationView.xib */; };
 		6270D40127ACE590004FD7A9 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6270D40027ACE590004FD7A9 /* SignUpVC.swift */; };
 		627E1A8F27AEAD7D005C1777 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E1A8E27AEAD7D005C1777 /* Array+.swift */; };
 		62A855E427B6AECD007BA12B /* NicknameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A855E327B6AECD007BA12B /* NicknameModel.swift */; };
@@ -251,6 +253,8 @@
 		6254618327B152EF00184DA1 /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
 		6254618527B152FC00184DA1 /* PasswordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordView.xib; sourceTree = "<group>"; };
 		6254618727B1530500184DA1 /* NicknameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NicknameView.xib; sourceTree = "<group>"; };
+		62654E5C27C75A3600A48363 /* EmojiAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAnimationView.swift; sourceTree = "<group>"; };
+		62654E5E27C75A6A00A48363 /* EmojiAnimationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmojiAnimationView.xib; sourceTree = "<group>"; };
 		6270D40027ACE590004FD7A9 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		627E1A8E27AEAD7D005C1777 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		62A855E327B6AECD007BA12B /* NicknameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameModel.swift; sourceTree = "<group>"; };
@@ -795,6 +799,7 @@
 			isa = PBXGroup;
 			children = (
 				624C458327BD0E55000A37DF /* EmptyDiaryView.xib */,
+				62654E5E27C75A6A00A48363 /* EmojiAnimationView.xib */,
 				622C57D527C25FAF0011D833 /* EmotionView.xib */,
 				622C57D727C26A0D0011D833 /* EmotionCVC.xib */,
 			);
@@ -836,6 +841,7 @@
 				624C458927BD1221000A37DF /* EmptyDiaryView.swift */,
 				622C57D327C25F8E0011D833 /* EmotionView.swift */,
 				622C57D927C26A950011D833 /* EmotionCVC.swift */,
+				62654E5C27C75A3600A48363 /* EmojiAnimationView.swift */,
 			);
 			path = XibController;
 			sourceTree = "<group>";
@@ -1004,6 +1010,7 @@
 				622D51CD27BEBC7000F59679 /* HomeAlarm.storyboard in Resources */,
 				235DCED927C13E5D0034D4C1 /* AddedImageCVC.xib in Resources */,
 				238EC0A027AA88EC001CBB24 /* ImageAddBar.xib in Resources */,
+				62654E5F27C75A6A00A48363 /* EmojiAnimationView.xib in Resources */,
 				2368021327B2966800A4392B /* PostContentTableViewHeader.xib in Resources */,
 				235DCED727C13DA10034D4C1 /* ImageCollectionView.xib in Resources */,
 				2356305627BFA1D10032E520 /* SpoqaHanSansNeo-Bold.otf in Resources */,
@@ -1092,6 +1099,7 @@
 				623DE30C27B616F7005E78D0 /* Validation.swift in Sources */,
 				233FE3D027C40AEE00A1A8C3 /* CommentModel.swift in Sources */,
 				623DE2F727B25367005E78D0 /* EmailView.swift in Sources */,
+				62654E5D27C75A3600A48363 /* EmojiAnimationView.swift in Sources */,
 				2335241F27A99392009C654F /* PostButtonsView.swift in Sources */,
 				236C98DE27B239C200CE1EFD /* UIView+.swift in Sources */,
 				6208CFDE27A258F600F17603 /* (null) in Sources */,
