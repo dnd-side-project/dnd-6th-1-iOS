@@ -12,7 +12,6 @@ import Photos
 class WriteDiaryVM {
     
     var disposeBag = DisposeBag()
-    let minimumLineSpacing: CGFloat = 20
     
 }
 
