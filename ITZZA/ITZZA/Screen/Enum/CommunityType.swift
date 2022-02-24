@@ -37,6 +37,23 @@ extension CommunityType: CustomStringConvertible {
         }
     }
     
+    var index: Int {
+        switch self {
+        case .all:
+            return 0
+        case .escapism:
+            return 1
+        case .aggressive:
+            return 2
+        case .compromise:
+            return 3
+        case .sadness:
+            return 4
+        case .accept:
+            return 5
+        }
+    }
+    
     var viewControllerType: TypeOfViewController {
         .communityCategory
     }
