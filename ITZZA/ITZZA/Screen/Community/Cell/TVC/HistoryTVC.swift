@@ -23,7 +23,7 @@ extension HistoryTVC {
         selectionStyle = .none
     }
 
-    func configureCell(_ keyword: String) {
-        self.keyword.text = keyword
+    func configureCell(_ searchKeyword: SearchKeywordModel) {
+        self.keyword.text = searchKeyword.keyword
     }
 }
