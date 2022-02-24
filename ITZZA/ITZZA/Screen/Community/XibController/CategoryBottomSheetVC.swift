@@ -12,18 +12,10 @@ import DynamicBottomSheet
 import SnapKit
 import Then
 
-enum CategoryName: String, CaseIterable {
-    case 부정
-    case 분노
-    case 타협
-    case 슬픔
-    case 수용
-}
-
 class CategoryBottomSheetVC: DynamicBottomSheetViewController {
     
     let bag = DisposeBag()
-    let categoryName = CategoryName.allCases
+    let categoryName = CommunityType.allCases
     var delegate: CategoryTitleDelegate?
     
     // MARK: - Private Properties
@@ -38,7 +30,7 @@ class CategoryBottomSheetVC: DynamicBottomSheetViewController {
 }
 // MARK: - Protocol
 protocol CategoryTitleDelegate {
-    func getCategoryTitle(_ title: String)
+    func getCategoryTitle(_ title: String, _ index: Int)
 }
 
 // MARK: - Layout
@@ -61,10 +53,12 @@ extension CategoryBottomSheetVC {
     }
     
     private func setButtons() {
-        categoryName.forEach { title in
+        categoryName.filter({
+            $0.description != categoryName.first?.description
+        }).forEach { title in
             let button = UIButton(type: .system)
                 .then {
-                    $0.setTitle("\(title)", for: .normal)
+                    $0.setTitle(title.description, for: .normal)
                     $0.titleLabel?.font = UIFont.SpoqaHanSansNeoRegular(size: 17)
                     $0.tintColor = .darkGray6
                     $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
@@ -78,7 +72,8 @@ extension CategoryBottomSheetVC {
             button.rx.tap
                 .asDriver()
                 .drive(onNext: {
-                    self.delegate?.getCategoryTitle(button.currentTitle ?? "감정을 선택해주세요")
+                    self.delegate?.getCategoryTitle(button.currentTitle ?? "감정을 선택해주세요", title.index)
+                    print(title.index)
                     self.dismiss(animated: true, completion: nil)
                 })
                 .disposed(by: bag)
