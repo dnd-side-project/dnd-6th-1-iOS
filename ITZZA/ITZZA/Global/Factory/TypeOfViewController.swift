@@ -18,6 +18,7 @@ enum TypeOfViewController {
     case postDetail
     case addPost
     case searchPost
+    case userPostList
 
     case diary
     case writeDiary
@@ -47,6 +48,8 @@ extension TypeOfViewController {
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.addPostSB, storyboardId: Identifiers.addPostVC)
         case .searchPost:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.searchPostSB, storyboardId: Identifiers.searchPostVC)
+        case .userPostList:
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.userPostListSB, storyboardId: Identifiers.userPostListVC)
         case .diary:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.diarySB, storyboardId: Identifiers.diaryVC)
         case .writeDiary:

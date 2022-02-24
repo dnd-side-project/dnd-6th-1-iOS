@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import BSImagePicker
 import Photos
 import Then
@@ -42,7 +43,7 @@ class AddPostVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configureNavigationBar()
         configureChooseCategoryButton()
         configurePostContentComponent()
@@ -64,18 +65,22 @@ extension AddPostVC {
         savePostButton.title = "저장"
         savePostButton.tintColor = .primary
         savePostButton.rx.tap
-            .bind {
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
                 self.checkInputValid()
-            }
+            })
             .disposed(by: bag)
         
         let backButton = UIBarButtonItem()
-               backButton.image = UIImage(systemName: "chevron.backward")
-               backButton.rx.tap
-                   .bind {
-                       self.checkWrittenState()
-                   }
-                   .disposed(by: bag)
+        backButton.image = UIImage(systemName: "chevron.backward")
+        backButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.checkWrittenState()
+            })
+            .disposed(by: bag)
         
         navigationItem.rightBarButtonItem = savePostButton
         navigationItem.leftBarButtonItem = backButton
@@ -90,7 +95,7 @@ extension AddPostVC {
         
         let space = chooseCategoryButton.frame.height / 2
         var configuration = UIButton.Configuration.plain()
-
+        
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 0,
                                                               leading: space,
                                                               bottom: 0,
@@ -122,7 +127,8 @@ extension AddPostVC {
     func bindCategoryBottomSheet() {
         chooseCategoryButton.rx.tap
             .asDriver()
-            .drive(onNext: {
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
                 let categoryBottomSheet = CategoryBottomSheetVC()
                 categoryBottomSheet.delegate = self
                 self.present(categoryBottomSheet, animated: true)
@@ -132,7 +138,9 @@ extension AddPostVC {
     
     func bindAddImageBar() {
         addImageBar.addImageButton.rx.tap
-            .bind {
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
                 let imagePicker = ImagePickerController(selectedAssets: self.ImageListView.selectedAssets)
                 
                 imagePicker.cancelButton.tintColor = .primary
@@ -153,10 +161,10 @@ extension AddPostVC {
                     self.ImageListView.selectedAssets = assets
                 }, completion: {
                 })
-            }
+            })
             .disposed(by: bag)
     }
-
+    
     func addImageToCollectionView(_ images: [UIImage]) {
         ImageListView.selectedImages = images
         ImageListView.imageCV.reloadData()

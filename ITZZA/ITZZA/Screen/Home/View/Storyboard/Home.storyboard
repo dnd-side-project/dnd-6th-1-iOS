@@ -169,6 +169,9 @@
             <point key="canvasLocation" x="34.782608695652179" y="93.75"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="n7S-Dw-K9C"/>
+    </designables>
     <resources>
         <image name="Next_Arrow" width="20" height="20"/>
         <image name="Previous_Arrow" width="20" height="20"/>

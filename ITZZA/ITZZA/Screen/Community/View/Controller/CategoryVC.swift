@@ -32,20 +32,22 @@ extension CategoryVC {
         postListTV.delegate = self
         postListTV.backgroundColor = .lightGray1
         postListTV.separatorStyle = .none
+        postListTV.showsVerticalScrollIndicator = false
         
         bindPostListTVItemSelected()
     }
     
     func bindPostListTVItemSelected() {
         postListTV.rx.itemSelected
-            .subscribe(onNext: { [weak self] indexPath in
-                self?.postListTV.deselectRow(at: indexPath, animated: false)
+            .asDriver()
+            .drive(onNext: { [weak self] indexPath in
+                guard let self = self else { return }
+                self.postListTV.deselectRow(at: indexPath, animated: false)
                 
                 guard let postDetailVC = ViewControllerFactory.viewController(for: .postDetail) as? PostDetailVC else { return }
-                postDetailVC.boardId = self?.postListVM.postAtIndex(indexPath.row).post.boardId
+                postDetailVC.boardId = self.postListVM.postAtIndex(indexPath.row).post.boardId
                 postDetailVC.hidesBottomBarWhenPushed = true
-                self?.navigationController?.pushViewController(postDetailVC, animated: true)
-                
+                self.navigationController?.pushViewController(postDetailVC, animated: true)
             })
             .disposed(by: bag)
     }

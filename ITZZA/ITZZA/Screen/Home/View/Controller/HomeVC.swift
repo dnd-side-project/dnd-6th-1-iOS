@@ -25,16 +25,26 @@ class HomeVC: UIViewController {
     
     var disposeBag = DisposeBag()
     let homeVM = HomeVM()
-    private var currentPage: Date?
+    var currentPage: Date?
+    var events: [Date: Int] = [:]
+    var currentMonth = ""
+    var currentYear = ""
     
     private lazy var today: Date = {
         return Date()
     }()
     
-    private lazy var monthDateFormatter: DateFormatter = {
+    private lazy var koreanMonthDateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.locale = Locale(identifier: "ko_KR")
         df.dateFormat = "M월"
+        return df
+    }()
+    
+    private lazy var englishMonthDateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.locale = Locale(identifier: "en_US")
+        df.dateFormat = "M"
         return df
     }()
     
@@ -45,7 +55,7 @@ class HomeVC: UIViewController {
         return df
     }()
     
-    private lazy var dateFormatter: DateFormatter = {
+    private lazy var dotDateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.locale = Locale(identifier: "en_US")
         df.dateFormat = "yyyy.MM.dd"
@@ -56,10 +66,31 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         configureNavigationBar()
         setInitialUIValue()
-        setLottieAnimation()
         calendarDefaultState()
         setDate()
         bindUI()
+        bindVM()
+        getFirstDiaryData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setLottieAnimation()
+    }
+}
+
+// MARK: - Extra Functions
+extension HomeVC {
+    private func getFirstDiaryData() {
+        homeVM.getDiaryData(currentMonth, currentYear)
+    }
+    
+    private func checkDateAndChangeEventColor(_ date: Date) -> [UIColor] {
+        if events.keys.contains(date) {
+            return homeVM.decideEventColor(date)
+        } else {
+            return [UIColor.clear]
+        }
     }
 }
 
@@ -123,7 +154,7 @@ extension HomeVC {
     private func moveToWriteDiaryView() {
         guard let writeDiaryVC = ViewControllerFactory.viewController(for: .writeDiary) as? WriteDiaryVC else { return }
         
-        writeDiaryVC.selectedDate = dateFormatter.string(from: today)
+        writeDiaryVC.selectedDate = dotDateFormatter.string(from: today)
         self.present(writeDiaryVC, animated: true, completion: nil)
     }
     
@@ -138,19 +169,25 @@ extension HomeVC {
 // MARK: - Calendar Delegates
 extension HomeVC: FSCalendarDelegate {
     private func setDate() {
-        calendarMonthLabel.text = monthDateFormatter.string(from: calendarView.currentPage)
-        calendarYearLabel.text = yearDateFormatter.string(from: calendarView.currentPage)
+        currentMonth = englishMonthDateFormatter.string(from: calendarView.currentPage)
+        currentYear = yearDateFormatter.string(from: calendarView.currentPage)
+        
+        calendarMonthLabel.text = koreanMonthDateFormatter.string(from: calendarView.currentPage)
+        calendarYearLabel.text = currentYear
     }
 
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        calendarMonthLabel.text = monthDateFormatter.string(from: calendar.currentPage)
-        calendarYearLabel.text = yearDateFormatter.string(from: calendar.currentPage)
+        currentMonth = englishMonthDateFormatter.string(from: calendar.currentPage)
+        currentYear = yearDateFormatter.string(from: calendar.currentPage)
+        
+        calendarMonthLabel.text = koreanMonthDateFormatter.string(from: calendarView.currentPage)
+        calendarYearLabel.text = currentYear
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
         guard let diaryVC = ViewControllerFactory.viewController(for: .diary) as? DiaryVC else { return }
-        diaryVC.seletedDate = dateFormatter.string(from: date)
+        diaryVC.seletedDate = dotDateFormatter.string(from: date)
         
         self.present(diaryVC, animated: true, completion: nil)
     }
@@ -158,11 +195,20 @@ extension HomeVC: FSCalendarDelegate {
 
 // MARK: - Calendar Datasource
 extension HomeVC: FSCalendarDataSource {
-    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        events.keys.contains(date) ? 1 : 0
+    }
 }
 
+// MARK: - Calendar Appearance
 extension HomeVC: FSCalendarDelegateAppearance {
-    // calendar
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
+        checkDateAndChangeEventColor(date)
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventSelectionColorsFor date: Date) -> [UIColor]? {
+        checkDateAndChangeEventColor(date)
+    }
 }
 
 // MARK: - Bindings
@@ -173,6 +219,7 @@ extension HomeVC {
             .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.scrollCurrentPage(true)
+                self.homeVM.getDiaryData(self.currentMonth, self.currentYear)
             })
             .disposed(by: disposeBag)
         
@@ -181,6 +228,7 @@ extension HomeVC {
             .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.scrollCurrentPage(false)
+                self.homeVM.getDiaryData(self.currentMonth, self.currentYear)
             })
             .disposed(by: disposeBag)
         
@@ -202,6 +250,12 @@ extension HomeVC {
     }
     
     private func bindVM() {
-        
+        homeVM.getDiarySuccess
+            .withUnretained(self)
+            .subscribe(onNext: { owner, diaryData in
+                owner.events = diaryData
+                owner.calendarView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
 }

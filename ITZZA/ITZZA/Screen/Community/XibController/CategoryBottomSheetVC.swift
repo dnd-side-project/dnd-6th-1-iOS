@@ -71,9 +71,9 @@ extension CategoryBottomSheetVC {
             
             button.rx.tap
                 .asDriver()
-                .drive(onNext: {
+                .drive(onNext: { [weak self] _ in
+                    guard let self = self else { return }
                     self.delegate?.getCategoryTitle(button.currentTitle ?? "감정을 선택해주세요", title.index)
-                    print(title.index)
                     self.dismiss(animated: true, completion: nil)
                 })
                 .disposed(by: bag)

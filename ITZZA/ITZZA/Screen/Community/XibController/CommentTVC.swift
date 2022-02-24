@@ -49,7 +49,7 @@ class CommentTVC: UITableViewCell {
     
     func configureCell(_ comments: CommentModel) {
         profileImg.kf.setImage(with: URL(string: comments.profileImage!),
-                                          placeholder: UIImage(systemName: "person.circle"),
+                                          placeholder: UIImage(named: "Null_Comment"),
                                           options: [
                                             .scaleFactor(UIScreen.main.scale),
                                             .cacheOriginalImage
