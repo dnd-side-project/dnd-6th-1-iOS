@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gjo-Vc-ECo" customClass="ProfileHeaderView" customModule="ITZZA" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                    <rect key="frame" x="0.0" y="-40" width="375" height="51"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="51" id="Xz1-Q2-eDX"/>
@@ -50,7 +50,7 @@
                 <constraint firstItem="JKx-gu-efv" firstAttribute="top" secondItem="kSg-28-X7a" secondAttribute="bottom" id="D8D-oR-9W5"/>
                 <constraint firstAttribute="trailing" secondItem="JKx-gu-efv" secondAttribute="trailing" id="EjU-TJ-uKs"/>
                 <constraint firstItem="lzN-7r-pD8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LWA-8J-Azl"/>
-                <constraint firstItem="Gjo-Vc-ECo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OZC-fr-O6V"/>
+                <constraint firstItem="Gjo-Vc-ECo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-40" id="OZC-fr-O6V"/>
                 <constraint firstAttribute="trailing" secondItem="kSg-28-X7a" secondAttribute="trailing" constant="30" id="WE1-Pe-Ubi"/>
                 <constraint firstAttribute="trailing" secondItem="Gjo-Vc-ECo" secondAttribute="trailing" id="Xzg-ad-Fhy"/>
                 <constraint firstItem="Gjo-Vc-ECo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="b63-Q5-VVA"/>

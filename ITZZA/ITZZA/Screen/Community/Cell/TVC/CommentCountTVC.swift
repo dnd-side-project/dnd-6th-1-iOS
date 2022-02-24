@@ -29,6 +29,7 @@ class CommentCountTVC: UITableViewCell {
     }
 
     func setCommentCount(_ cnt: Int) {
+        commentCount.textColor = .darkGray6
         commentCount.text = "총 \(cnt)개의 댓글"
     }
 }

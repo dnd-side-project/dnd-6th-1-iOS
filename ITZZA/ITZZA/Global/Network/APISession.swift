@@ -72,12 +72,12 @@ struct APISession: APIService {
         }
     }
     
-    func postRequestWithImages<T: Decodable>(with urlResource: urlResource<T>, param: Parameters, images: [UIImage]) -> Observable<Result<T, APIError>> {
+    func postRequestWithImages<T: Decodable>(with urlResource: urlResource<T>, param: Parameters, images: [UIImage], method: HTTPMethod) -> Observable<Result<T, APIError>> {
         Observable<Result<T, APIError>>.create { observer in
             guard let token: String = KeychainWrapper.standard[.myToken] else { return Disposables.create{} }
             let headers: HTTPHeaders = [
                 "Authorization": "Bearer \(token)",
-                "Content-Type": "application/json"
+                "Content-Type": "multipart/form-data"
             ]
             
             let task = AF.upload(multipartFormData: { (multipart) in
@@ -89,7 +89,7 @@ struct APISession: APIService {
                         multipart.append(imageData, withName: "files", fileName: "image.png", mimeType: "image/png")
                     }
                 }
-            }, to: urlResource.url, method: .post, headers: headers)
+            }, to: urlResource.url, method: method, headers: headers)
                 .validate(statusCode: 200...399)
                 .responseDecodable(of: T.self) { response in
                     switch response.result {

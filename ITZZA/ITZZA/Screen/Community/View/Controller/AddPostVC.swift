@@ -20,8 +20,12 @@ class AddPostVC: UIViewController {
     @IBOutlet weak var chooseCategoryButton: UIButton!
     @IBOutlet weak var addImageBar: ImageAddBar!
     @IBOutlet weak var postWriteView: PostWriteView!
-    @IBOutlet weak var ImageListView: ImageCollectionView!
+    @IBOutlet weak var imageListView: ImageCollectionView!
     @IBOutlet weak var imageListHeight: NSLayoutConstraint!
+    
+    var isEditingView = false
+    var boardId = 0
+    var post: PostModel?
     
     var categoryLabel = UILabel()
         .then {
@@ -37,6 +41,7 @@ class AddPostVC: UIViewController {
     let categoryTitlePlaceholder = "감정을 선택해주세요"
     let maxImageSelectionCount = 3
     let minimumLineSpacing: CGFloat = 20
+    let communityTypes = CommunityType.allCases
     
     let bag = DisposeBag()
     let apiSession = APISession()
@@ -44,6 +49,7 @@ class AddPostVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureEditingContentView(post ?? PostModel())
         configureNavigationBar()
         configureChooseCategoryButton()
         configurePostContentComponent()
@@ -56,6 +62,18 @@ class AddPostVC: UIViewController {
 
 //MARK: - Custom Methods
 extension AddPostVC {
+    func configureEditingContentView(_ post: PostModel) {
+        guard let categoryIndex = post.categoryId else { return }
+        self.categoryIndex = categoryIndex
+        
+        let categoryTitle = communityTypes[categoryIndex].description
+        categoryLabel.text = categoryTitle
+        postWriteView.title.text = post.postTitle
+        postWriteView.contents.text = post.postContent
+        imageListView.selectedImages = post.postImages ?? []
+        setImageCVHeight()
+    }
+    
     //MARK: - configure
     func configureNavigationBar() {
         navigationController?.setSubNaviBarTitle(navigationItem: self.navigationItem, title: "게시글 작성")
@@ -116,10 +134,10 @@ extension AddPostVC {
     }
     
     func setImageCVHeight() {
-        if ImageListView.selectedImages.count == 0 {
+        if imageListView.selectedImages.count == 0 {
             imageListHeight.constant = 0
         } else {
-            imageListHeight.constant = CGFloat(ImageListView.selectedImages.count) * (ImageListView.imageCV.frame.width + minimumLineSpacing) - minimumLineSpacing
+            imageListHeight.constant = CGFloat(imageListView.selectedImages.count) * (imageListView.imageCV.frame.width + minimumLineSpacing) - minimumLineSpacing
         }
     }
     
@@ -141,7 +159,7 @@ extension AddPostVC {
             .asDriver()
             .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                let imagePicker = ImagePickerController(selectedAssets: self.ImageListView.selectedAssets)
+                let imagePicker = ImagePickerController(selectedAssets: self.imageListView.selectedAssets)
                 
                 imagePicker.cancelButton.tintColor = .primary
                 imagePicker.doneButton.tintColor = .primary
@@ -156,9 +174,9 @@ extension AddPostVC {
                 }, cancel: { (assets) in
                 }, finish: { (assets) in
                     self.convertAssetToImages(assets)
-                    self.addImageToCollectionView(self.ImageListView.selectedImages)
+                    self.addImageToCollectionView(self.imageListView.selectedImages)
                     self.setImageCVHeight()
-                    self.ImageListView.selectedAssets = assets
+                    self.imageListView.selectedAssets = assets
                 }, completion: {
                 })
             })
@@ -166,12 +184,12 @@ extension AddPostVC {
     }
     
     func addImageToCollectionView(_ images: [UIImage]) {
-        ImageListView.selectedImages = images
-        ImageListView.imageCV.reloadData()
+        imageListView.selectedImages = images
+        imageListView.imageCV.reloadData()
     }
     
     func convertAssetToImages(_ selectedAssets: [PHAsset]) {
-        ImageListView.selectedImages = selectedAssets.map {
+        imageListView.selectedImages = selectedAssets.map {
             let imageManager = PHImageManager.default()
             let option = PHImageRequestOptions()
             option.isSynchronous = true
@@ -210,14 +228,19 @@ extension AddPostVC {
             alert.addAction(defaultAction)
             present(alert, animated: false, completion: nil)
         } else {
-            postPost()
+            if isEditingView {
+                postPost(boardId: String(boardId), method: .patch)
+            } else {
+                postPost(boardId: "", method: .post)
+            }
         }
     }
     
     func checkWrittenState(){
         if !postWriteView.title.text!.isEmpty
             || postWriteView.contents.textColor != postContentPlaceholderColor
-            || categoryLabel.text! != categoryTitlePlaceholder {
+            || categoryLabel.text! != categoryTitlePlaceholder
+            || !imageListView.selectedImages.isEmpty {
             let alert = UIAlertController(title: "게시글이 저장되지 않았습니다.\n나가시겠어요?", message: "", preferredStyle: UIAlertController.Style.alert)
             alert.view.tintColor = .darkGray6
             alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
@@ -234,15 +257,15 @@ extension AddPostVC {
         }
     }
     
-    func postPost() {
-        let postURL = "http://13.125.239.189:3000/boards"
+    func postPost(boardId: String, method: HTTPMethod) {
+        let postURL = "http://13.125.239.189:3000/boards/\(boardId)"
         let url = URL(string: postURL)!
         let postInformation = PostModel(categoryId: categoryIndex,
                                         postTitle: postWriteView.title.text,
                                         postContent: postWriteView.contents.text)
         let postParameter = postInformation.postParam
         
-        apiSession.postRequestWithImages(with: urlResource<PostModel>(url: url), param: postParameter, images: ImageListView.selectedImages)
+        apiSession.postRequestWithImages(with: urlResource<PostModel>(url: url), param: postParameter, images: imageListView.selectedImages, method: method)
             .withUnretained(self)
             .subscribe(onNext: { owner, result in
                 switch result {

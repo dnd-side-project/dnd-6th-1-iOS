@@ -8,6 +8,8 @@
 import UIKit
 import RxSwift
 import RxDataSources
+import Alamofire
+import SwiftKeychainWrapper
 
 class PostDetailVC: UIViewController {
     @IBOutlet weak var commentListTV: UITableView!
@@ -16,11 +18,14 @@ class PostDetailVC: UIViewController {
     var post = PostModel()
     var boardId: Int?
     var isScrolled = false
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setPost()
+        configureNavigationbar()
+        setNotification()
     }
 }
 
@@ -33,8 +38,53 @@ extension PostDetailVC {
                 DispatchQueue.main.async {
                     self.setCommentListTV()
                 }
+            } else {
+                self.showEmptyAlert()
             }
         }
+    }
+    
+    func showEmptyAlert() {
+        let alert = UIAlertController(title: "삭제된 게시글입니다", message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.view.tintColor = .darkGray6
+        alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
+        let ok = UIAlertAction(title: "확인", style: .destructive) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addAction(ok)
+        present(alert, animated: false, completion: nil)
+    }
+    
+    func bindRefreshController() {
+        refreshControl.addTarget(self, action: #selector(updateTV(refreshControl:)), for: .valueChanged)
+        
+        commentListTV.refreshControl = refreshControl
+    }
+    
+    @objc func updateTV(refreshControl: UIRefreshControl) {
+        self.setPost()
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) { [weak self] in
+            guard let self = self else { return }
+            self.commentListTV.reloadData()
+            refreshControl.endRefreshing()
+        }
+    }
+    
+    func configureNavigationbar() {
+        let menuButton = UIBarButtonItem()
+        menuButton.image = UIImage(named: "Menu_Horizontal")
+        
+        navigationItem.rightBarButtonItem = menuButton
+        
+        menuButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                let menuBottomSheet = MenuBottomSheet()
+                self.present(menuBottomSheet, animated: true)
+            })
+            .disposed(by: bag)
     }
     
     func setCommentListTV() {
@@ -44,6 +94,7 @@ extension PostDetailVC {
         commentListTV.separatorStyle = .none
         
         register()
+        bindRefreshController()
         
         DispatchQueue.main.async {
             self.scrollToComment()
@@ -59,6 +110,55 @@ extension PostDetailVC {
     func register(){
         commentListTV.register(UINib(nibName: Identifiers.commentTVC, bundle: nil), forCellReuseIdentifier: Identifiers.commentTVC)
         commentListTV.register(PostContentTableViewHeader.self, forHeaderFooterViewReuseIdentifier: Identifiers.postContentTableViewHeader)
+    }
+    
+    func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(popupDeleteAlert), name: .whenDeletePostMenuTapped, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pushEditPostView), name: .whenEditPostMenuTapped, object: nil)
+    }
+    
+    @objc func pushEditPostView() {
+        guard let editPostVC = ViewControllerFactory.viewController(for: .addPost) as? AddPostVC else { return }
+        editPostVC.boardId = self.boardId!
+        editPostVC.isEditingView = true
+        editPostVC.post = self.post
+        self.navigationController?.pushViewController(editPostVC, animated: true)
+    }
+    
+    @objc func popupDeleteAlert() {
+        let alert = UIAlertController(title: "게시글을 정말 삭제하시겠습니까?", message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.view.tintColor = .darkGray6
+        alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
+        let ok = UIAlertAction(title: "네", style: .destructive) { _ in
+            self.deletePost(self.boardId ?? 0)
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        present(alert, animated: false, completion: nil)
+    }
+    
+    func deletePost(_ boardId: Int) {
+        let baseURL = "http://13.125.239.189:3000/boards/"
+        guard let url = URL(string: baseURL + "\(boardId)") else { return }
+        guard let token: String = KeychainWrapper.standard[.myToken] else { return }
+        let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        AF.request(url, method: .delete, headers: header).responseData { response in
+            switch response.result {
+            case .success:
+                self.navigationController?.popViewController(animated: true)
+            case .failure:
+                let alert = UIAlertController(title: "네트워크 오류", message: "", preferredStyle: UIAlertController.Style.alert)
+                alert.view.tintColor = .darkGray6
+                alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
+                let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                
+                alert.addAction(cancel)
+                self.present(alert, animated: false, completion: nil)
+            }
+        }
     }
 }
 

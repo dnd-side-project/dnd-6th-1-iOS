@@ -19,7 +19,6 @@ class ImageCollectionView: UIView {
     var selectedImages: [UIImage] = []
     var selectedAssets: [PHAsset] = []
     let minimumLineSpacing: CGFloat = 20
-    var viewWidth: CGFloat?
     
     override init(frame: CGRect) {
       super.init(frame: frame)
@@ -41,8 +40,6 @@ class ImageCollectionView: UIView {
         view.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        
-        viewWidth = view.frame.width
     }
     
     private func configureImageCV() {
@@ -56,8 +53,9 @@ class ImageCollectionView: UIView {
     @objc private func deleteCell(sender: UIButton) {
         imageCV.deleteItems(at: [IndexPath.init(row: sender.tag, section: 0)])
         selectedImages.remove(at: sender.tag)
-        selectedAssets.remove(at: sender.tag)
-        
+        if selectedAssets.count != 0 {
+            selectedAssets.remove(at: sender.tag)
+        }
         
         NotificationCenter.default.post(name:.whenDeleteImageButtonTapped, object: nil)
     }
@@ -89,6 +87,6 @@ extension ImageCollectionView: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: viewWidth ?? 0, height: viewWidth ?? 0)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.width)
     }
 }

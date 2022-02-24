@@ -53,7 +53,7 @@ extension PostModel {
             let url = URL(string: encodedStr!)!
 
             let data = try? Data(contentsOf: url)
-            postImages.append(UIImage(data: data!)!)
+            postImages.append(UIImage(data: data ?? Data()) ?? UIImage())
         }
 
         return postImages

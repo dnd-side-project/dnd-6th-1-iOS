@@ -36,7 +36,7 @@ class CommentTVC: UITableViewCell {
         userName.textColor = .darkGray6
         userName.font = UIFont.SpoqaHanSansNeoMedium(size: 13)
         
-        commentContent.textColor = .darkGray3
+        commentContent.textColor = .darkGray6
         commentContent.font = UIFont.SpoqaHanSansNeoRegular(size: 12)
         
         createAt.textColor = .lightGray6
