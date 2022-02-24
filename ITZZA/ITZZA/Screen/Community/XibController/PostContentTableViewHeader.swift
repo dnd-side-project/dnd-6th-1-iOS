@@ -57,6 +57,11 @@ class PostContentTableViewHeader: UITableViewHeaderFooterView {
 
         imageScrollView.image = post.postImages ?? []
         imageScrollView.configurePost()
+        if post.postImages?.count == 0 {
+            imageScrollView.scrollView.subviews.forEach({ view in
+                view.removeFromSuperview()
+            })
+        }
         
         footerView.boardId = post.boardId
         footerView.likeCnt.text = String(describing: post.likeCnt ?? 0)
