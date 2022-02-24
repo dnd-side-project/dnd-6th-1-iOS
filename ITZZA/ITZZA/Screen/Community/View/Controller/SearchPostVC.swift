@@ -113,7 +113,8 @@ extension SearchPostVC {
     }
     // MARK: - Network
     func setKeyword() {
-        getKeyword(1) { keyword in
+        guard let userId: String = KeychainWrapper.standard[.userId] else { return }
+        getKeyword(userId) { keyword in
             if let keyword = keyword {
                 self.keywords = keyword
                 DispatchQueue.main.async {
@@ -123,9 +124,9 @@ extension SearchPostVC {
         }
     }
     
-    func getKeyword(_ userId: Int, _ completion: @escaping ([SearchKeywordModel]?) -> ()) {
+    func getKeyword(_ userId: String, _ completion: @escaping ([SearchKeywordModel]?) -> ()) {
         let baseURL = "http://13.125.239.189:3000/users/"
-        guard let url = URL(string: baseURL + "\(userId)" + "/histories") else { return }
+        guard let url = URL(string: baseURL + userId + "/histories") else { return }
         guard let token: String = KeychainWrapper.standard[.myToken] else { return }
         let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
@@ -141,9 +142,9 @@ extension SearchPostVC {
             }
     }
     
-    func deletePost(_ userId: Int, _ historyId: Int?) {
+    func deletePost(_ userId: String, _ historyId: String?) {
         let baseURL = "http://13.125.239.189:3000/users/"
-        guard let url = URL(string: baseURL + "\(userId)/histories/\(historyId!)") else { return }
+        guard let url = URL(string: baseURL + (userId) + "/histories/" + (historyId ?? "")) else { return }
         guard let token: String = KeychainWrapper.standard[.myToken] else { return }
         let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
@@ -202,7 +203,8 @@ extension SearchPostVC {
             .asDriver()
             .drive(onNext: { [weak self] text in
                 guard let self = self else { return }
-                self.deletePost(1, nil)
+                guard let userId: String = KeychainWrapper.standard[.userId] else { return }
+                self.deletePost(userId, nil)
                 self.isNoneData = true
                 self.searchHistoryTV.reloadData()
             })
@@ -223,7 +225,8 @@ extension SearchPostVC {
     @objc private func deleteCell(sender: UIButton) {
         let indexPath = IndexPath.init(row: sender.tag, section: 0)
         let cell = searchHistoryTV.cellForRow(at: indexPath) as! HistoryTVC
-        deletePost(1, cell.historyId)
+        guard let userId: String = KeychainWrapper.standard[.userId] else { return }
+        deletePost(userId, "\(cell.historyId!)")
         keywords.remove(at: indexPath.row)
         self.searchHistoryTV.deleteRows(at: [indexPath], with: .none)
         if self.keywords.count == 0 {
