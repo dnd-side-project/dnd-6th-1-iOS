@@ -9,6 +9,7 @@ import UIKit
 import Tabman
 import Pageboy
 import RxSwift
+import RxCocoa
 
 class CommunityVC: TabmanViewController {
     @IBOutlet weak var categoryTB: UIView!
@@ -81,21 +82,25 @@ extension CommunityVC {
         navigationItem.rightBarButtonItems = [addPostBtn, searchBtn]
         
         searchBtn.rx.tap
-            .bind {
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
                 guard let searchPostVC = ViewControllerFactory.viewController(for: .searchPost) as? SearchPostVC else { return }
                 
                 searchPostVC.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(searchPostVC, animated: true)
-            }
+            })
             .disposed(by: bag)
         
         addPostBtn.rx.tap
-            .bind {
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
                 guard let addPostVC = ViewControllerFactory.viewController(for: .addPost) as? AddPostVC else { return }
                 
                 addPostVC.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(addPostVC, animated: true)
-            }
+            })
             .disposed(by: bag)
     }
     
