@@ -20,12 +20,16 @@ class DiaryVC: UIViewController {
     
     var seletedDate: String!
     var disposeBag = DisposeBag()
-    let emptyDiaryView = EmptyDiaryView()
+    var emptyDiaryView = EmptyDiaryView()
+    var viewStatus: Bool?
+    var emojiAnimationView = EmojiAnimationView()
+    var categoryId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addEmptyDiaryView()
+        decideViewToAdd(viewStatus ?? false)
         setInitialUIValue()
+        changeViewStatus(viewStatus ?? false)
         bindUI()
     }
 }
@@ -42,6 +46,27 @@ extension DiaryVC {
         view.bringSubviewToFront(writeDiaryButton)
     }
     
+    private func decideViewToAdd(_ flag: Bool) {
+        if flag {
+            addEmojiAnimationView()
+            addEmptyDiaryViewWithAnimation()
+        } else {
+            addEmptyDiaryView()
+        }
+    }
+    
+    private func addEmojiAnimationView() {
+        view.addSubview(emojiAnimationView)
+        emojiAnimationView.configureLottieAnimation(with: categoryId ?? 0)
+        
+        emojiAnimationView.snp.makeConstraints {
+            $0.top.equalTo(dateTitleView.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().offset(-20)
+            $0.height.equalTo(171)
+        }
+    }
+    
     private func addEmptyDiaryView() {
         view.addSubview(emptyDiaryView)
         
@@ -52,8 +77,26 @@ extension DiaryVC {
         }
     }
     
+    private func addEmptyDiaryViewWithAnimation() {
+        view.addSubview(emptyDiaryView)
+        
+        emptyDiaryView.snp.makeConstraints {
+            $0.top.equalTo(emojiAnimationView.snp.bottom)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
+            $0.trailing.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
+        }
+    }
+    
     private func dismissDiaryVC() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func changeViewStatus(_ status: Bool) {
+        if status {
+            writeDiaryButton.isHidden = true
+        } else {
+            menuButton.isHidden = true
+        }
     }
 }
 

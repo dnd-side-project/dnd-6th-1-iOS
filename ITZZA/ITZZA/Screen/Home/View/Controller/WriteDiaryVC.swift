@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import BSImagePicker
 
 class WriteDiaryVC: UIViewController {
     
@@ -22,14 +23,16 @@ class WriteDiaryVC: UIViewController {
     let emotionView = EmotionView()
     var postWriteView = PostWriteView()
     var scrollView = UIScrollView()
-    var imageScrollView = ImageScrollView()
     var emotionTextField = UITextField()
     var lineView = UIView()
     var stackView = UIStackView()
     var contentView = UIView()
     var imageAddBar = ImageAddBar()
     let textViewPlaceHolder = "오늘은 어떤 하루였나요?"
-    
+    let writeDirayVM = WriteDiaryVM()
+    var imageListView = ImageCollectionView()
+    let maxImageSelectionCount = 3
+    let minimumLineSpacing: CGFloat = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +47,7 @@ class WriteDiaryVC: UIViewController {
         configureImageScrollView()
         configureImageAddBar()
         bindUI()
+        bindVM()
     }
 }
 
@@ -62,7 +66,7 @@ extension WriteDiaryVC {
         contentView.addSubview(emotionTextField)
         contentView.addSubview(lineView)
         contentView.addSubview(postWriteView)
-        contentView.addSubview(imageScrollView)
+        contentView.addSubview(imageListView)
         view.addSubview(imageAddBar)
     }
     
@@ -124,7 +128,7 @@ extension WriteDiaryVC {
             $0.top.equalTo(lineView.snp.bottom).offset(25)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.bottom.equalTo(imageScrollView.snp.top).offset(-25)
+            $0.bottom.equalTo(imageListView.snp.top).offset(-25)
         }
         
         postWriteView.contents.delegate = self
@@ -133,7 +137,7 @@ extension WriteDiaryVC {
     }
     
     private func configureImageScrollView() {
-        imageScrollView.snp.makeConstraints {
+        imageListView.snp.makeConstraints {
             $0.top.equalTo(postWriteView.snp.bottom).offset(25)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
@@ -160,21 +164,67 @@ extension WriteDiaryVC {
                 self.dismiss(animated: true)
             })
             .disposed(by: disposeBag)
+        
+        imageAddBar.addImageButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.pressedAddImageButton()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindVM() {
+        imageListView.numberOfImages
+            .asDriver(onErrorJustReturn: 0)
+            .drive(onNext: { [weak self] imageCount in
+                guard let self = self else { return }
+                self.setImageCVHeight(imageCount)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
-// MARK: - Set Image
+// MARK: - Methods related to images
 extension WriteDiaryVC {
+    func pressedAddImageButton() {
+        let imagePicker = ImagePickerController(selectedAssets: imageListView.selectedAssets)
+        
+        imagePicker.cancelButton.tintColor = .primary
+        imagePicker.doneButton.tintColor = .primary
+        imagePicker.settings.theme.selectionFillColor = .primary
+        
+        imagePicker.settings.selection.max = maxImageSelectionCount
+        imagePicker.settings.fetch.assets.supportedMediaTypes = [.image]
+        imagePicker.settings.theme.selectionStyle = .numbered
+        
+        self.presentImagePicker(imagePicker, select: { (asset) in
+        }, deselect: { (asset) in
+        }, cancel: { (assets) in
+        }, finish: { (assets) in
+            self.writeDirayVM.convertAssetToImages(assets, self.imageListView)
+            self.writeDirayVM.addImageToCollectionView(self.imageListView.selectedImages, self.imageListView)
+            self.setImageCVHeight(self.imageListView.selectedImages.count)
+            self.imageListView.selectedAssets = assets
+        }, completion: {
+        })
+    }
     
-    func addImagesToImageScrollView(with images: [UIImage]) {
-        imageScrollView.image = images
-        imageScrollView.configurePost()
+    func setImageCVHeight(_ imageCount: Int) {
+        if imageCount == 0 {
+            imageListView.snp.makeConstraints {
+                $0.height.equalTo(0)
+            }
+        } else {
+            imageListView.snp.makeConstraints {
+                $0.height.equalTo(CGFloat(imageCount) * (imageListView.imageCV.frame.width + minimumLineSpacing) - minimumLineSpacing)
+            }
+        }
     }
 }
 
 // MARK: - TextView Delegate
 extension WriteDiaryVC: UITextViewDelegate {
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.setTextViewPlaceholder(textViewPlaceHolder)
     }
