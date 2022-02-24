@@ -32,13 +32,7 @@ class PostTVC: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        if selected {
-            contentView.backgroundColor = .clear
-        } else {
-            UIView.animate(withDuration: 0.7, delay: 0, options: UIView.AnimationOptions(), animations: {
-                self.contentView.backgroundColor = .white
-            }, completion: nil)
-        }
+        selectionStyle = .none
     }
     
     override func layoutSubviews() {
@@ -62,7 +56,7 @@ extension PostTVC {
 
     func configureCell(with post: PostModel) {
         headerView.profileImg.kf.setImage(with: post.profileImgURL,
-                                          placeholder: UIImage(systemName: "person.circle"),
+                                          placeholder: UIImage(named: "Null_Comment"),
                                           options: [
                                             .scaleFactor(UIScreen.main.scale),
                                             .cacheOriginalImage

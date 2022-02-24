@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var token: String?
     var userId: String?
 
+    static let shared: AppDelegate = AppDelegate()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         guard let userEmail = UserDefaults.standard.string(forKey: "email"),
@@ -30,10 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                   return true
         }
         
-        email = userEmail
-        password = userPassword
-        token = userToken
-        userId = keychainUserId
+        let userInformation = AppDelegate.shared
+        userInformation.email = userEmail
+        userInformation.password = userPassword
+        userInformation.token = userToken
+        userInformation.userId = keychainUserId
         
         let tabBarVC = ViewControllerFactory.viewController(for: .tabBar)
         self.window = UIWindow(frame: UIScreen.main.bounds)
