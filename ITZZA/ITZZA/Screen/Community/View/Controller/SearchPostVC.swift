@@ -101,6 +101,9 @@ extension SearchPostVC {
     }
     
     func configureSearchHistoryTV() {
+        if keywords.count == 0 {
+            isNoneData = true
+        }
         searchHistoryTV.dataSource = self
         searchHistoryTV.delegate = self
         searchHistoryTV.separatorStyle = .none
@@ -132,10 +135,26 @@ extension SearchPostVC {
                 switch response.result {
                 case .success(let decodedPost):
                     completion(decodedPost)
-                case .failure(let error):
+                case .failure:
                     completion(nil)
                 }
             }
+    }
+    
+    func deletePost(_ userId: Int, _ historyId: Int?) {
+        let baseURL = "http://13.125.239.189:3000/users/"
+        guard let url = URL(string: baseURL + "\(userId)/histories/\(historyId!)") else { return }
+        guard let token: String = KeychainWrapper.standard[.myToken] else { return }
+        let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        AF.request(url, method: .delete, headers: header).responseData { response in
+            switch response.result {
+            case .success:
+                break
+            case .failure:
+                break
+            }
+        }
     }
     
     // MARK: - tap event
@@ -183,7 +202,7 @@ extension SearchPostVC {
             .asDriver()
             .drive(onNext: { [weak self] text in
                 guard let self = self else { return }
-//                self.dummydata.removeAll()
+                self.deletePost(1, nil)
                 self.isNoneData = true
                 self.searchHistoryTV.reloadData()
             })
@@ -202,12 +221,15 @@ extension SearchPostVC {
     }
     
     @objc private func deleteCell(sender: UIButton) {
-//        dummydata.remove(at: sender.tag)
-        searchHistoryTV.deleteRows(at: [IndexPath.init(row: sender.tag, section: 0)], with: .none)
-//        if self.dummydata.count == 0 {
-//            self.isNoneData = true
-//        }
-        searchHistoryTV.reloadData()
+        let indexPath = IndexPath.init(row: sender.tag, section: 0)
+        let cell = searchHistoryTV.cellForRow(at: indexPath) as! HistoryTVC
+        deletePost(1, cell.historyId)
+        keywords.remove(at: indexPath.row)
+        self.searchHistoryTV.deleteRows(at: [indexPath], with: .none)
+        if self.keywords.count == 0 {
+            self.isNoneData = true
+        }
+        self.searchHistoryTV.reloadData()
     }
 }
 
