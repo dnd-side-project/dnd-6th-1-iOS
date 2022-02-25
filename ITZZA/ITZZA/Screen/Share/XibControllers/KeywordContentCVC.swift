@@ -38,7 +38,7 @@ extension KeywordContentCVC {
 extension KeywordContentCVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isMypage! {
-            return mypagePost.count
+            return (mypagePost.count == 0) ? 1 : mypagePost.count
         } else {
             if isUserSearchedList {
                 return (post.userResult?.count == 0) ? 1 : post.userResult!.count

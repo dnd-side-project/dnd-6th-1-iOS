@@ -112,7 +112,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2NO-2U-oDu">
-                                            <rect key="frame" x="308" y="12" width="47" height="28"/>
+                                            <rect key="frame" x="310" y="13" width="45" height="26"/>
                                             <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="12"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="모두 삭제">
@@ -120,7 +120,7 @@
                                             </state>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근 검색어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSL-bE-1Hp">
-                                            <rect key="frame" x="20" y="11" width="63" height="30"/>
+                                            <rect key="frame" x="20" y="11" width="60" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="AE5-Vs-eWe"/>
                                             </constraints>
@@ -179,7 +179,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpM-IL-lb2">
-                                                    <rect key="frame" x="19.999999999999996" y="11" width="41.666666666666657" height="30"/>
+                                                    <rect key="frame" x="20" y="11" width="39" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="7qV-Lb-YvL"/>
                                                     </constraints>
