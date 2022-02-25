@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class MypageVC: UIViewController {
     
@@ -19,13 +21,20 @@ class MypageVC: UIViewController {
     @IBOutlet weak var storyButton: UIButton!
     @IBOutlet weak var deleteAccountButton: UIButton!
     @IBOutlet weak var signOutButton: UIButton!
+    
+    var disposeBag = DisposeBag()
+    let mypageVM = MypageVM()
+    var myInformation: MypageModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        callMypageApi()
         configureNaviBar()
         setInitialUIValue()
         configureCV()
         configureButton()
+        bindUI()
+        bindVM()
     }
 }
 
@@ -54,6 +63,12 @@ extension MypageVC {
         checkReportButton.backgroundColor = .primary
     }
     
+    private func mappingData() {
+        profileImage.image = myInformation?.profileImageData
+        userEmail.text = myInformation?.user?.email
+        userNickname.text = myInformation?.user?.nickname
+    }
+    
     private func configureButton() {
         let buttonArray = [storyButton, deleteAccountButton, signOutButton]
         var config = UIButton.Configuration.plain()
@@ -72,6 +87,10 @@ extension MypageVC {
         myWritesCV.dataSource = self
         myWritesCV.register(MypageCVC.nib(), forCellWithReuseIdentifier: "MypageCell")
     }
+    
+    private func callMypageApi() {
+        mypageVM.getUserInformation()
+    }
 }
 
 extension MypageVC: UICollectionViewDataSource {
@@ -82,7 +101,7 @@ extension MypageVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MypageCell", for: indexPath) as! MypageCVC
         
-        cell.configure(indexPath.item, "test")
+        cell.configure(indexPath.item, myInformation ?? MypageModel())
         return cell
     }
 }
@@ -107,5 +126,24 @@ extension MypageVC: UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         .zero
+    }
+}
+
+// MARK: - Bindings
+extension MypageVC {
+    private func bindUI() {
+        
+    }
+    
+    private func bindVM() {
+        mypageVM.getMypageSuccess
+            .asDriver(onErrorJustReturn: MypageModel())
+            .drive(onNext: { [weak self] response in
+                guard let self = self else { return }
+                self.myInformation = response
+                self.mappingData()
+                self.myWritesCV.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
 }

@@ -20,18 +20,20 @@ class MypageCVC: UICollectionViewCell {
         return UINib(nibName: "MypageCVC", bundle: nil)
     }
     
-    func configure(_ index: Int, _ writeCount: String) {
+    func configure(_ index: Int, _ info: MypageModel) {
         switch index {
         case 0:
             writeType.text = "내가 쓴 글"
+            numberOfWrite.text = String(info.writeCnt ?? 0)
         case 1:
             writeType.text = "북마크"
+            numberOfWrite.text = String(info.bookmarkCnt ?? 0)
         case 2:
             writeType.text = "댓글"
+            numberOfWrite.text = String(info.commentCnt ?? 0)
         default:
             writeType.text = "내가 쓴 글"
+            numberOfWrite.text = String(info.writeCnt ?? 0)
         }
-        
-        numberOfWrite.text = writeCount
     }
 }

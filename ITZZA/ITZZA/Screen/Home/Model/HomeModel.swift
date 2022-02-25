@@ -30,7 +30,8 @@ extension HomeModel {
         guard let diaryImageURL = images else { return nil }
         
         diaryImageURL.forEach {
-            let imageData = try? Data(contentsOf: URL(string: $0)!)
+            let replacedURL = $0.replacingOccurrences(of: "//", with: "/")
+            let imageData = try? Data(contentsOf: URL(string: replacedURL)!)
             diaryImages.append(UIImage(data: imageData!)!)
         }
         
