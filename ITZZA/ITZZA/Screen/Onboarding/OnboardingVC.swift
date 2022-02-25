@@ -110,9 +110,17 @@ extension OnboardingVC {
     
     @objc func didTapButton(_ button: UIButton) {
         guard button.tag < 3 else {
-            //            Core.shared.setIsNotNewUser()
-            dismiss(animated: true, completion: nil)
+            view.subviews.forEach { view in
+                view.removeFromSuperview()
+            }
             
+            let signInVC = ViewControllerFactory.viewController(for: .signIn)
+            signInVC.modalPresentationStyle = .fullScreen
+
+            self.view.window?.rootViewController?.dismiss(animated: true) {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.window?.rootViewController?.present(signInVC, animated: true, completion: nil)
+            }
             return
         }
         
