@@ -89,10 +89,6 @@ extension CommunityVC {
                 
                 searchPostVC.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(searchPostVC, animated: true)
-//                guard let onboardingVC = ViewControllerFactory.viewController(for: .onboarding) as? OnboardingVC else { return }
-//                
-//                onboardingVC.hidesBottomBarWhenPushed = true
-//                self.navigationController?.pushViewController(onboardingVC, animated: true)
             })
             .disposed(by: bag)
         
@@ -100,10 +96,14 @@ extension CommunityVC {
             .asDriver()
             .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                guard let addPostVC = ViewControllerFactory.viewController(for: .addPost) as? AddPostVC else { return }
+//                guard let addPostVC = ViewControllerFactory.viewController(for: .addPost) as? AddPostVC else { return }
+//
+//                addPostVC.hidesBottomBarWhenPushed = true
+//                self.navigationController?.pushViewController(addPostVC, animated: true)
+                guard let onboardingVC = ViewControllerFactory.viewController(for: .onboarding) as? OnboardingVC else { return }
                 
-                addPostVC.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(addPostVC, animated: true)
+                onboardingVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(onboardingVC, animated: true)
             })
             .disposed(by: bag)
     }

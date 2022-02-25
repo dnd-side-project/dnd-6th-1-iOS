@@ -11,7 +11,8 @@ import SnapKit
 class OnboardingVC: UIViewController {
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var pageController: UIPageControl!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
     
     let scrollView = UIScrollView()
     let titles = [
@@ -26,17 +27,23 @@ class OnboardingVC: UIViewController {
         "이별 감정 5단계의 이름을 따온 카테고리를 활용해서\n비슷한 상황의 사람들과 생각을 나눠봐요"
     ]
     
+    let images = [
+        UIImage(named: "Onboarding_1"),
+        UIImage(named: "Onboarding_2"),
+        UIImage(named: "Onboarding_3")
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBar.isHidden = true
+        configure()
+        setScrollView()
+        setPageController()
+        setButtons()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        configure()
-        setScrollView()
-        setPageController()
-        setButton()
     }
 }
 //MARK: Custom Method
@@ -47,7 +54,7 @@ extension OnboardingVC {
         scrollView.frame = holderView.bounds
         scrollView.showsHorizontalScrollIndicator = false
         
-        scrollView.contentSize = CGSize(width: holderView.frame.size.width * 5, height: 0)
+        scrollView.contentSize = CGSize(width: holderView.frame.size.width * 3, height: 0)
         scrollView.isPagingEnabled = true
     }
     
@@ -58,38 +65,41 @@ extension OnboardingVC {
         pageController.currentPageIndicatorTintColor = .primary
     }
     
-    func setButton() {
-        button.layer.cornerRadius = 4
+    func setButtons() {
+        nextButton.layer.cornerRadius = 4
         
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor.primary
-        button.setTitle("다음으로", for: .normal)
+        nextButton.setTitleColor(.white, for: .normal)
+        nextButton.backgroundColor = .primary
+        nextButton.setTitle("다음으로", for: .normal)
         
-        button.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
-        button.tag = 1
+        nextButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+        nextButton.tag = 1
+        
+        skipButton.tintColor = .darkGray2
+        skipButton.titleLabel?.font = UIFont.SpoqaHanSansNeoBold(size: 12)
+        skipButton.setUnderline()
     }
     
     func configure() {
         holderView.addSubview(scrollView)
         
         for i in 0..<3 {
-            let pageView = UIView()
+            let pageView = UIView(frame: CGRect(x: CGFloat(i) * holderView.frame.size.width, y: 0, width: holderView.frame.size.width, height: holderView.frame.size.height))
             scrollView.addSubview(pageView)
-            pageView.snp.makeConstraints {
-                $0.edges.equalToSuperview()
-            }
             
-            let imageView = UIImageView()
-            let title = UILabel()
-            let explanation = UITextView()
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: pageView.frame.size.width, height: pageView.frame.size.width * 1.16))
+            let title = UILabel(frame: CGRect(x: 25, y: 440, width: pageView.frame.size.width - 50, height: 70))
+            let explanation = UITextView(frame: CGRect(x: 25, y: 440 + 70, width: pageView.frame.size.width - 50, height: 32))
             
-            title.textAlignment = .left
+            title.numberOfLines = 0
+            title.lineBreakMode = .byCharWrapping
             title.font = UIFont.SpoqaHanSansNeoBold(size: 20)
             pageView.addSubview(title)
             title.text = titles[i]
             
-            explanation.textAlignment = .left
+            explanation.setAllMarginToZero()
             explanation.font = UIFont.SpoqaHanSansNeoRegular(size: 12)
+            explanation.textColor = .lightGray6
             pageView.addSubview(explanation)
             explanation.text = explanations[i]
             
@@ -100,18 +110,9 @@ extension OnboardingVC {
     }
     
     @objc func didTapButton(_ button: UIButton) {
-        guard button.tag < 5 else {
+        guard button.tag < 3 else {
             //            Core.shared.setIsNotNewUser()
             dismiss(animated: true, completion: nil)
-            
-//            guard let pvc = self.presentingViewController else { return }
-//
-//            self.dismiss(animated: true) {
-                //                guard let vc = UIStoryboard(name: Identifiers.tabBarSB, bundle: nil).instantiateViewController(withIdentifier: Identifiers.teaKKeulTBC) as? TeaKKeulTBC else { return }
-                //                vc.modalPresentationStyle = .fullScreen
-                //
-                //                pvc.present(vc, animated: true, completion: nil)
-//            }
             
             return
         }
@@ -125,19 +126,19 @@ extension OnboardingVC {
 }
 extension OnboardingVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let currentIndex = Int(scrollView.contentOffset.x / UIScreen.main.bounds.width)
-        pageController.currentPage = currentIndex
-        button.tag = pageController.currentPage + 1
-        print(pageController.currentPage)
+        let page = round(scrollView.contentOffset.x / scrollView.frame.width)
+        if page.isNaN || page.isInfinite { return }
+        pageController.currentPage = Int(page)
+        nextButton.tag = pageController.currentPage + 1
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if button.tag == 2 {
+        if nextButton.tag == 2 {
             let btnTitle = NSAttributedString(string: "시작하기")
-            button.setAttributedTitle(btnTitle, for: .normal)
+            nextButton.setAttributedTitle(btnTitle, for: .normal)
         } else {
             let btnTitle = NSAttributedString(string: "다음으로")
-            button.setAttributedTitle(btnTitle, for: .normal)
+            nextButton.setAttributedTitle(btnTitle, for: .normal)
         }
     }
 }

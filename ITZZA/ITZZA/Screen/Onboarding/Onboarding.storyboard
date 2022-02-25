@@ -8,6 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SpoqaHanSansNeo-Bold.otf">
+            <string>SpoqaHanSansNeo-Bold</string>
+        </array>
         <array key="SpoqaHanSansNeo-Regular.otf">
             <string>SpoqaHanSansNeo-Regular</string>
         </array>
@@ -22,37 +25,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gw2-j4-JYj">
-                                <rect key="frame" x="0.0" y="44" width="375" height="567"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="586"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Wj1-xz-myn">
-                                <rect key="frame" x="37.666666666666657" y="621" width="300" height="26"/>
+                                <rect key="frame" x="37.666666666666657" y="640" width="300" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="hhM-Xp-Zwl"/>
                                     <constraint firstAttribute="height" constant="26" id="iRg-dc-HJt"/>
                                 </constraints>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rW8-j2-LuP">
-                                <rect key="frame" x="25" y="667" width="325" height="50"/>
+                                <rect key="frame" x="25" y="676" width="325" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5zl-wJ-M9D"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6y-ZO-9f6">
-                                <rect key="frame" x="111.00000000000001" y="732" width="153.33333333333337" height="31"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="b6y-ZO-9f6">
+                                <rect key="frame" x="116.33333333333333" y="733" width="142.66666666666669" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="바로 시작해볼까요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQL-dF-OFk">
-                                        <rect key="frame" x="0.0" y="0.0" width="80.666666666666671" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="80.666666666666671" height="30"/>
                                         <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="10"/>
                                         <color key="textColor" red="0.40000000000000002" green="0.38431372549019605" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8uJ-RX-dij">
-                                        <rect key="frame" x="80.666666666666657" y="0.0" width="72.666666666666657" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="건너뛰기"/>
+                                        <rect key="frame" x="90.666666666666671" y="0.0" width="52.000000000000014" height="30"/>
+                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="12"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="건너뛰기">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="건너뛰기">
+                                                    <attributes>
+                                                        <font key="NSFont" metaFont="system" size="15"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -60,10 +73,10 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rW8-j2-LuP" firstAttribute="top" secondItem="Wj1-xz-myn" secondAttribute="bottom" constant="20" id="2Co-aJ-Bdc"/>
+                            <constraint firstItem="rW8-j2-LuP" firstAttribute="top" secondItem="Wj1-xz-myn" secondAttribute="bottom" constant="10" id="2Co-aJ-Bdc"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="rW8-j2-LuP" secondAttribute="trailing" constant="25" id="3eS-dI-Sco"/>
                             <constraint firstItem="Wj1-xz-myn" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="45G-Ad-d98"/>
-                            <constraint firstItem="b6y-ZO-9f6" firstAttribute="top" secondItem="rW8-j2-LuP" secondAttribute="bottom" constant="15" id="AAN-n4-IWg"/>
+                            <constraint firstItem="b6y-ZO-9f6" firstAttribute="top" secondItem="rW8-j2-LuP" secondAttribute="bottom" constant="7" id="AAN-n4-IWg"/>
                             <constraint firstItem="Gw2-j4-JYj" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="BkJ-lO-XRV"/>
                             <constraint firstItem="b6y-ZO-9f6" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Li2-PB-6zl"/>
                             <constraint firstItem="Gw2-j4-JYj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="NCr-ss-f1g"/>
@@ -74,9 +87,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="button" destination="rW8-j2-LuP" id="n3N-TA-Aon"/>
                         <outlet property="holderView" destination="Gw2-j4-JYj" id="73z-DC-YP9"/>
+                        <outlet property="nextButton" destination="rW8-j2-LuP" id="n3N-TA-Aon"/>
                         <outlet property="pageController" destination="Wj1-xz-myn" id="YHO-ap-qWp"/>
+                        <outlet property="skipButton" destination="8uJ-RX-dij" id="Ms0-zj-T0y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
