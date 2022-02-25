@@ -8,6 +8,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Alamofire
+import SwiftKeychainWrapper
 
 class SearchPostVC: UIViewController {
     @IBOutlet weak var naviBackButton: UIButton!
@@ -19,18 +21,18 @@ class SearchPostVC: UIViewController {
     @IBOutlet weak var tabView: TabView!
     @IBOutlet weak var keywordContentView: KeywordContentView!
     
+    var keywords = [SearchKeywordModel]()
     let bag = DisposeBag()
+    let apiSession = APISession()
     var isNoneData = false
     private let menu = ["내용", "사용자"]
-    var dummydata = [ "검색어 1", "검색어 2", "검색어 3", "검색어 4", "검색어 5"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setKeyword()
         configureNavigationBar()
         configureSearchBar()
-        configureSearchHistoryTV()
-        configureTabView()
         setNotification()
     }
     
@@ -71,10 +73,13 @@ extension SearchPostVC {
     }
     
     func configureTabView(){
+        //TODO: - FIX
         tabView.menu = menu
         tabView.setContentView()
         
         keywordContentView.menu = menu
+        keywordContentView.setContentView()
+        keywordContentView.setKeywordContentCV()
     }
     
     func configureButtonColor() {
@@ -96,6 +101,9 @@ extension SearchPostVC {
     }
     
     func configureSearchHistoryTV() {
+        if keywords.count == 0 {
+            isNoneData = true
+        }
         searchHistoryTV.dataSource = self
         searchHistoryTV.delegate = self
         searchHistoryTV.separatorStyle = .none
@@ -103,6 +111,53 @@ extension SearchPostVC {
         
         didTapRemoveAllButton()
     }
+    // MARK: - Network
+    func setKeyword() {
+        guard let userId: String = KeychainWrapper.standard[.userId] else { return }
+        getKeyword(userId) { keyword in
+            if let keyword = keyword {
+                self.keywords = keyword
+                DispatchQueue.main.async {
+                    self.configureSearchHistoryTV()
+                }
+            }
+        }
+    }
+    
+    func getKeyword(_ userId: String, _ completion: @escaping ([SearchKeywordModel]?) -> ()) {
+        let baseURL = "http://13.125.239.189:3000/users/"
+        guard let url = URL(string: baseURL + userId + "/histories") else { return }
+        guard let token: String = KeychainWrapper.standard[.myToken] else { return }
+        let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        AF.request(url, method: .get, headers: header)
+            .validate(statusCode: 200...399)
+            .responseDecodable(of: [SearchKeywordModel].self) { response in
+                switch response.result {
+                case .success(let decodedPost):
+                    completion(decodedPost)
+                case .failure:
+                    completion(nil)
+                }
+            }
+    }
+    
+    func deletePost(_ userId: String, _ historyId: String?) {
+        let baseURL = "http://13.125.239.189:3000/users/"
+        guard let url = URL(string: baseURL + (userId) + "/histories/" + (historyId ?? "")) else { return }
+        guard let token: String = KeychainWrapper.standard[.myToken] else { return }
+        let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        AF.request(url, method: .delete, headers: header).responseData { response in
+            switch response.result {
+            case .success:
+                break
+            case .failure:
+                break
+            }
+        }
+    }
+    
     // MARK: - tap event
     func didTapBackButton() {
         naviBackButton.rx.tap
@@ -121,6 +176,22 @@ extension SearchPostVC {
             .drive(onNext: { [weak self] text in
                 guard let self = self else { return }
                 if self.naviSearchButton.tintColor == .primary {
+                    let urlString = "http://13.125.239.189:3000/boards?keyword=" + self.searchBar.text!
+                    let encodedStr = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                    let url = URL(string: encodedStr)!
+                    self.apiSession.getRequest(with: urlResource<SearchedResultModel>(url: url))
+                        .withUnretained(self)
+                        .subscribe(onNext: { owner, result in
+                            switch result {
+                            case .failure(let error):
+                                print(error)
+                            case .success(let response):
+                                self.keywordContentView.post = response
+                                self.configureTabView()
+                            }
+                        })
+                        .disposed(by: self.bag)
+                    
                     self.view.sendSubviewToBack(self.searchHistoryTV)
                 }
             })
@@ -132,7 +203,8 @@ extension SearchPostVC {
             .asDriver()
             .drive(onNext: { [weak self] text in
                 guard let self = self else { return }
-                self.dummydata.removeAll()
+                guard let userId: String = KeychainWrapper.standard[.userId] else { return }
+                self.deletePost(userId, nil)
                 self.isNoneData = true
                 self.searchHistoryTV.reloadData()
             })
@@ -145,18 +217,23 @@ extension SearchPostVC {
     
     @objc func pushUserPostListView(_ notification: Notification) {
         guard let userPostListVC = ViewControllerFactory.viewController(for: .userPostList) as? UserPostListVC else { return }
-        
-        userPostListVC.userName = notification.object as? String
+        guard let object = notification.object as? [String?], let userId = object[0], let userName = object[1] else { return }
+        userPostListVC.userId = Int(userId)
+        userPostListVC.userName = userName
         navigationController?.pushViewController(userPostListVC, animated: true)
     }
     
     @objc private func deleteCell(sender: UIButton) {
-        dummydata.remove(at: sender.tag)
-        searchHistoryTV.deleteRows(at: [IndexPath.init(row: sender.tag, section: 0)], with: .none)
-        if self.dummydata.count == 0 {
+        let indexPath = IndexPath.init(row: sender.tag, section: 0)
+        let cell = searchHistoryTV.cellForRow(at: indexPath) as! HistoryTVC
+        guard let userId: String = KeychainWrapper.standard[.userId] else { return }
+        deletePost(userId, "\(cell.historyId!)")
+        keywords.remove(at: indexPath.row)
+        self.searchHistoryTV.deleteRows(at: [indexPath], with: .none)
+        if self.keywords.count == 0 {
             self.isNoneData = true
         }
-        searchHistoryTV.reloadData()
+        self.searchHistoryTV.reloadData()
     }
 }
 
@@ -166,7 +243,7 @@ extension SearchPostVC: UITableViewDataSource {
         if isNoneData {
             return 1
         } else {
-            return dummydata.count
+            return keywords.count
         }
     }
     
@@ -178,7 +255,7 @@ extension SearchPostVC: UITableViewDataSource {
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.historyTVC, for: indexPath) as? HistoryTVC else { return UITableViewCell() }
-            cell.configureCell(dummydata[indexPath.row])
+            cell.configureCell(keywords[indexPath.row])
             cell.deleteButton.tag = indexPath.row
             cell.deleteButton.addTarget(self, action: #selector(deleteCell(sender:)), for: .touchUpInside)
             

@@ -10,6 +10,7 @@ import UIKit
 class HistoryTVC: UITableViewCell {
     @IBOutlet weak var keyword: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
+    var historyId: Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,7 +24,8 @@ extension HistoryTVC {
         selectionStyle = .none
     }
 
-    func configureCell(_ keyword: String) {
-        self.keyword.text = keyword
+    func configureCell(_ searchKeyword: SearchKeywordModel) {
+        self.keyword.text = searchKeyword.keyword
+        self.historyId = searchKeyword.historyId
     }
 }

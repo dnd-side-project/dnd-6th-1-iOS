@@ -12,6 +12,7 @@ import Alamofire
 
 struct PostModel: Decodable {
     var boardId: Int?
+    var userId: Int?
     var categoryId: Int?
     var profileImage: String?
     var nickname: String?

@@ -12,6 +12,7 @@ class KeywordContentView: UIView {
     @IBOutlet weak var keywordContentCV: UICollectionView!
     let bag = DisposeBag()
     var menu:[String] = []
+    var post = SearchedResultModel()
     
     override init(frame: CGRect) {
       super.init(frame: frame)
@@ -89,15 +90,17 @@ extension KeywordContentView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.keywordContentCVC, for: indexPath) as? KeywordContentCVC else { return UICollectionViewCell() }
+        cell.post = post
+        
         if indexPath.row == 1 {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.keywordContentCVC, for: indexPath) as? KeywordContentCVC else { return UICollectionViewCell() }
             cell.isUserSearchedList = true
-            return cell
+            (post.userResult?.count) == 0 ? (cell.isNoneData = true) : (cell.isNoneData = false)
         } else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.keywordContentCVC, for: indexPath) as? KeywordContentCVC else { return UICollectionViewCell() }
             cell.isUserSearchedList = false
-            return cell
+            (post.contentResult?.count) == 0 ? (cell.isNoneData = true) : (cell.isNoneData = false)
         }
+        return cell
     }
 }
 
