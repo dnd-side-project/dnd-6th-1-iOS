@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import SwiftKeychainWrapper
 
 class MyRecordVC: UIViewController {
     @IBOutlet weak var tabView: TabView!
@@ -15,22 +16,12 @@ class MyRecordVC: UIViewController {
     let apiSession = APISession()
     let bag = DisposeBag()
     private let menu = ["내가쓴 글", "댓글", "북마크"]
-    let dummyData = [
-        PostModel(
-                  userId: 1,
-                  categoryId: 1,
-                  nickname: "asdf",
-                  postTitle: "asdfasdf",
-                  postContent: "asdfasdfasdfasdf",
-                  createdAt: "1분 전",
-                  imageCnt: 1)
-    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureNavigationBar()
-        configureTabView()
+        getMyPost()
     }
 }
 
@@ -70,8 +61,28 @@ extension MyRecordVC {
         tabView.setContentView()
         
         keywordContentView.menu = menu
-        keywordContentView.mypagePost = dummyData
         keywordContentView.setContentView()
         keywordContentView.setKeywordContentCV()
+    }
+    
+    func getMyPost() {
+        guard let userId: String = KeychainWrapper.standard[.userId] else { return }
+        let urlString = "http://13.125.239.189:3000/users/\(userId)/all"
+        let url = URL(string: urlString)!
+        let resource = urlResource<MyRecordData>(url: url)
+        
+        apiSession.getRequest(with: resource)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .failure:
+                    owner.configureTabView()
+                case .success(let decodedPost):
+                    dump(decodedPost)
+                    owner.keywordContentView.mypagePost = decodedPost
+                    owner.configureTabView()
+                }
+            })
+            .disposed(by: self.bag)
     }
 }

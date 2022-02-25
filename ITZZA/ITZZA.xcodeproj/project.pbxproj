@@ -86,6 +86,7 @@
 		238EC0A027AA88EC001CBB24 /* ImageAddBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */; };
 		23A2BB6427C921620074D21C /* MyRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23A2BB6327C921620074D21C /* MyRecord.storyboard */; };
 		23A2BB6627C9216D0074D21C /* MyRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A2BB6527C9216D0074D21C /* MyRecordVC.swift */; };
+		23A2BB6827C942D80074D21C /* MyRecordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A2BB6727C942D80074D21C /* MyRecordData.swift */; };
 		23A56BDA27B3F8BA00959269 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A56BD927B3F8BA00959269 /* UILabel+.swift */; };
 		23AEE7B127C6481D00C79FF5 /* KeywordContentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AEE7AF27C6481D00C79FF5 /* KeywordContentTVC.swift */; };
 		23AEE7B227C6481D00C79FF5 /* KeywordContentTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23AEE7B027C6481D00C79FF5 /* KeywordContentTVC.xib */; };
@@ -243,6 +244,7 @@
 		238EC09E27AA88EC001CBB24 /* ImageAddBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageAddBar.xib; sourceTree = "<group>"; };
 		23A2BB6327C921620074D21C /* MyRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyRecord.storyboard; sourceTree = "<group>"; };
 		23A2BB6527C9216D0074D21C /* MyRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordVC.swift; sourceTree = "<group>"; };
+		23A2BB6727C942D80074D21C /* MyRecordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordData.swift; sourceTree = "<group>"; };
 		23A56BD927B3F8BA00959269 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		23AEE7AF27C6481D00C79FF5 /* KeywordContentTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordContentTVC.swift; sourceTree = "<group>"; };
 		23AEE7B027C6481D00C79FF5 /* KeywordContentTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordContentTVC.xib; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 				2343A67127C8126600117742 /* SearchedResultModel.swift */,
 				2335241227A98D57009C654F /* PostDataSource.swift */,
 				23DC8F9F27B95F3C00F79EF4 /* PostManager.swift */,
+				23A2BB6727C942D80074D21C /* MyRecordData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1194,6 +1197,7 @@
 				623DE31127B65B27005E78D0 /* NicknameVM.swift in Sources */,
 				23A56BDA27B3F8BA00959269 /* UILabel+.swift in Sources */,
 				2368021127B2965B00A4392B /* PostContentTableViewHeader.swift in Sources */,
+				23A2BB6827C942D80074D21C /* MyRecordData.swift in Sources */,
 				62654E6127C7825700A48363 /* WriteDiaryVM.swift in Sources */,
 				2323030927B035ED00E20078 /* UITextField+.swift in Sources */,
 				622D51CB27BEB54400F59679 /* HomeNC.swift in Sources */,

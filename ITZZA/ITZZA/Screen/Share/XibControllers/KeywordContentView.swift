@@ -13,7 +13,7 @@ class KeywordContentView: UIView {
     let bag = DisposeBag()
     var menu:[String] = []
     var post = SearchedResultModel()
-    var mypagePost = [PostModel]()
+    var mypagePost = MyRecordData()
     
     override init(frame: CGRect) {
       super.init(frame: frame)
@@ -108,8 +108,20 @@ extension KeywordContentView: UICollectionViewDataSource {
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.keywordContentCVC, for: indexPath) as? KeywordContentCVC else { return UICollectionViewCell() }
             cell.isMypage = true
-            cell.mypagePost = mypagePost
-            (mypagePost.count) == 0 ? (cell.isNoneData = true) : (cell.isNoneData = false)
+            
+            switch indexPath.row {
+            case 0:
+                cell.mypagePost = mypagePost.boards
+                (mypagePost.boards.count) == 0 ? (cell.isNoneData = true) : (cell.isNoneData = false)
+            case 1:
+                cell.mypagePost = mypagePost.comments
+                (mypagePost.comments.count) == 0 ? (cell.isNoneData = true) : (cell.isNoneData = false)
+            case 2:
+                cell.mypagePost = mypagePost.bookmarks
+                (mypagePost.bookmarks.count) == 0 ? (cell.isNoneData = true) : (cell.isNoneData = false)
+            default:
+                break
+            }
             
             return cell
         }
