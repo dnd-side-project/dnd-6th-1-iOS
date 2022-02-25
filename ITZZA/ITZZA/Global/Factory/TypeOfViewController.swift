@@ -25,6 +25,7 @@ enum TypeOfViewController {
     case homeAlarm
     
     case myRecord
+    case report
 }
 
 extension TypeOfViewController {
@@ -60,6 +61,8 @@ extension TypeOfViewController {
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.homeAlarmSB, storyboardId: Identifiers.homeAlarmTVC)
         case .myRecord:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.myRecordSB, storyboardId: Identifiers.myRecordVC)
+        case .report:
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.reportSB, storyboardId: Identifiers.reportVC)
         }
     }
 }
