@@ -36,6 +36,7 @@ struct Identifiers {
     static let searchPostVC = "SearchPostVC"
     static let userPostListVC = "UserPostListVC"
     static let mypageVC = "MypageVC"
+    static let mypageNC = "MypageNC"
     static let signInVC = "SignInVC"
     static let signUpVC = "SignUpVC"
     static let diaryVC = "DiaryVC"

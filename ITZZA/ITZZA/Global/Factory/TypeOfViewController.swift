@@ -37,7 +37,7 @@ extension TypeOfViewController {
         case .community:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.communitySB, storyboardId: Identifiers.communityNC)
         case .mypage:
-            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.mypageSB, storyboardId: Identifiers.mypageVC)
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.mypageSB, storyboardId: Identifiers.mypageNC)
         case .signIn:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.signInSB, storyboardId: Identifiers.signInVC)
         case .signUp:
