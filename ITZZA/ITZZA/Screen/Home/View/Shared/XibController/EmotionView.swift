@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 enum GrayEmoji: String, CaseIterable {
     case angry = "GrayEmoji_Angry"

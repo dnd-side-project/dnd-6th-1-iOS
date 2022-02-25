@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Alamofire
 
-struct HomeModel: Decodable {
+struct HomeModel: Codable {
     var dirayId: Int?
     var userId: Int?
     var date: String?
@@ -34,5 +35,17 @@ extension HomeModel {
         }
         
         return diaryImages
+    }
+}
+
+extension HomeModel {
+    var homeModelParam: Parameters {
+        return [
+            "date": date ?? "1970-01-01",
+            "categoryId": categoryId ?? 0,
+            "categoryReason": categoryReason ?? "Empty",
+            "diaryTitle": diaryTitle ?? "Empty",
+            "diaryContent": diaryContent ?? "Empty"
+        ]
     }
 }
