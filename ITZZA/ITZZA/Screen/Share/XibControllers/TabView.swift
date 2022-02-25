@@ -16,7 +16,8 @@ class TabView: UIView {
               $0.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
           }
     var menu:[String] = []
-    
+    var contentView: UIView?
+        
     // MARK: - Init
    
     override init(frame: CGRect) {
@@ -30,20 +31,24 @@ class TabView: UIView {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         tabCollectionViewFlowLayout.invalidateLayout()
     }
 }
 // MARK: - Configure
 extension TabView {
     func setContentView() {
+        if contentView != nil {
+            return
+        }
         guard let view = loadXibView(with: Identifiers.tabView) else { return }
+        contentView = view
         view.backgroundColor = .clear
         
         configureTabCV()
         view.addSubview(tabCV)
         tabCV.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(50.0)
+            $0.edges.equalToSuperview()
         }
         
         self.addSubview(view)

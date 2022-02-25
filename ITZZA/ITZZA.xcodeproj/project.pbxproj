@@ -69,6 +69,8 @@
 		236C98DE27B239C200CE1EFD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236C98DD27B239C200CE1EFD /* UIView+.swift */; };
 		236C9EA627C10D4600B0BADA /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236C9EA427C10D4600B0BADA /* ImageScrollView.swift */; };
 		236C9EA727C10D4600B0BADA /* ImageScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236C9EA527C10D4600B0BADA /* ImageScrollView.xib */; };
+		23765D6B27C8DCAB0001D525 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23765D6A27C8DCAB0001D525 /* OnboardingVC.swift */; };
+		23765D6D27C8DCDD0001D525 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23765D6C27C8DCDD0001D525 /* Onboarding.storyboard */; };
 		2376DA7627BA850700E4A0E8 /* CommunityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2376DA7527BA850700E4A0E8 /* CommunityType.swift */; };
 		2387375227C67E3F0060971E /* UserPostList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2387375127C67E3F0060971E /* UserPostList.storyboard */; };
 		2387375427C67E480060971E /* UserPostListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2387375327C67E480060971E /* UserPostListVC.swift */; };
@@ -224,6 +226,8 @@
 		236C98DD27B239C200CE1EFD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		236C9EA427C10D4600B0BADA /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		236C9EA527C10D4600B0BADA /* ImageScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageScrollView.xib; sourceTree = "<group>"; };
+		23765D6A27C8DCAB0001D525 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
+		23765D6C27C8DCDD0001D525 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		2376DA7527BA850700E4A0E8 /* CommunityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityType.swift; sourceTree = "<group>"; };
 		2387375127C67E3F0060971E /* UserPostList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserPostList.storyboard; sourceTree = "<group>"; };
 		2387375327C67E480060971E /* UserPostListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostListVC.swift; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 			children = (
 				62C4008527A51AC3002B3F33 /* Share */,
 				2371332327BB997E0045AA75 /* Enum */,
+				23765D6927C8DC9B0001D525 /* Onboarding */,
 				6208CFD727A2539700F17603 /* Sign */,
 				232CC09E27A03B1900040131 /* TabBar */,
 				232CC02C27A0320E00040131 /* Home */,
@@ -776,6 +781,15 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		23765D6927C8DC9B0001D525 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				23765D6C27C8DCDD0001D525 /* Onboarding.storyboard */,
+				23765D6A27C8DCAB0001D525 /* OnboardingVC.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		6208CFD727A2539700F17603 /* Sign */ = {
 			isa = PBXGroup;
 			children = (
@@ -1069,6 +1083,7 @@
 				622C57D627C25FAF0011D833 /* EmotionView.xib in Resources */,
 				2327FD7E27C6730B007D65F4 /* SearchedUserTVC.xib in Resources */,
 				232CC06027A0334100040131 /* Mypage.storyboard in Resources */,
+				23765D6D27C8DCDD0001D525 /* Onboarding.storyboard in Resources */,
 				2343A67627C8B18000117742 /* NoneSearchedContentTVC.xib in Resources */,
 				23D56B5127C607360000D3E5 /* TabView.xib in Resources */,
 				2335241827A98FA0009C654F /* ProfileHeaderView.xib in Resources */,
@@ -1189,6 +1204,7 @@
 				62654E6127C7825700A48363 /* WriteDiaryVM.swift in Sources */,
 				2323030927B035ED00E20078 /* UITextField+.swift in Sources */,
 				622D51CB27BEB54400F59679 /* HomeNC.swift in Sources */,
+				23765D6B27C8DCAB0001D525 /* OnboardingVC.swift in Sources */,
 				232CC07527A0370D00040131 /* TypeOfViewController.swift in Sources */,
 				623DE30727B5603A005E78D0 /* Literal.swift in Sources */,
 				62E2BDFC27AD41620052DDCE /* UIImage+.swift in Sources */,
@@ -1397,6 +1413,7 @@
 				DEVELOPMENT_TEAM = U2Z5Z44P4R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITZZA/Support/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = SignIn;
@@ -1426,6 +1443,7 @@
 				DEVELOPMENT_TEAM = U2Z5Z44P4R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITZZA/Support/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = SignIn;

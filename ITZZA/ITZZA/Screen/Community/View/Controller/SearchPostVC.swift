@@ -75,11 +75,10 @@ extension SearchPostVC {
     func configureTabView(){
         //TODO: - FIX
         tabView.menu = menu
-        tabView.setContentView()
+        tabView.tabCV.reloadData()
         
         keywordContentView.menu = menu
-        keywordContentView.setContentView()
-        keywordContentView.setKeywordContentCV()
+        keywordContentView.keywordContentCV.reloadData()
     }
     
     func configureButtonColor() {
@@ -188,6 +187,7 @@ extension SearchPostVC {
                             case .success(let response):
                                 self.keywordContentView.post = response
                                 self.configureTabView()
+                                self.tabView.tabCV.selectItem(at: [0,0], animated: false, scrollPosition: .left)
                             }
                         })
                         .disposed(by: self.bag)

@@ -14,6 +14,8 @@ class KeywordContentView: UIView {
     var menu:[String] = []
     var post = SearchedResultModel()
     
+    var contentView: UIView?
+    
     override init(frame: CGRect) {
       super.init(frame: frame)
         setContentView()
@@ -34,7 +36,11 @@ class KeywordContentView: UIView {
 // MARK: - Configure
 extension KeywordContentView {
     func setContentView() {
+        if contentView != nil {
+            return
+        }
         guard let view = loadXibView(with: Identifiers.keywordContentView) else { return }
+        contentView = view
         view.backgroundColor = .clear
         
         self.addSubview(view)

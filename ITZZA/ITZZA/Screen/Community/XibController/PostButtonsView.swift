@@ -18,7 +18,7 @@ class PostButtonsView: UIView {
     @IBOutlet weak var commentCnt: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
     
-    let bag = DisposeBag()
+    var bag = DisposeBag()
     let apiSession = APISession()
     let onError = PublishSubject<APIError>()
     var boardId: Int?

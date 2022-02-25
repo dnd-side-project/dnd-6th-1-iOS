@@ -137,7 +137,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMs-dJ-tVK" customClass="PostContentView" customModule="ITZZA" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="76" width="375" height="80"/>
+                                                    <rect key="frame" x="0.0" y="76" width="375" height="102"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
@@ -151,7 +151,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="pMs-dJ-tVK" secondAttribute="trailing" id="Yzs-GZ-Y4s"/>
                                                 <constraint firstAttribute="bottom" secondItem="Zad-mz-cDg" secondAttribute="bottom" id="Zbc-vG-KNV"/>
                                                 <constraint firstAttribute="trailing" secondItem="8R6-Vq-yZL" secondAttribute="trailing" id="hbu-g3-IFo"/>
-                                                <constraint firstItem="Zad-mz-cDg" firstAttribute="top" secondItem="pMs-dJ-tVK" secondAttribute="bottom" constant="44" id="rEZ-Xo-oxU"/>
+                                                <constraint firstItem="Zad-mz-cDg" firstAttribute="top" secondItem="pMs-dJ-tVK" secondAttribute="bottom" constant="22" id="rEZ-Xo-oxU"/>
                                                 <constraint firstItem="Zad-mz-cDg" firstAttribute="leading" secondItem="DmQ-cc-HQK" secondAttribute="leading" id="yWP-3M-Zc0"/>
                                             </constraints>
                                         </tableViewCellContentView>

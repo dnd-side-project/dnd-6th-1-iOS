@@ -89,6 +89,10 @@ extension CommunityVC {
                 
                 searchPostVC.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(searchPostVC, animated: true)
+//                guard let onboardingVC = ViewControllerFactory.viewController(for: .onboarding) as? OnboardingVC else { return }
+//                
+//                onboardingVC.hidesBottomBarWhenPushed = true
+//                self.navigationController?.pushViewController(onboardingVC, animated: true)
             })
             .disposed(by: bag)
         

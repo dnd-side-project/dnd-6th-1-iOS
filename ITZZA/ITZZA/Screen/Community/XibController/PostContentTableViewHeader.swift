@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import SnapKit
+import RxSwift
 
 class PostContentTableViewHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var headerView: ProfileHeaderView!
@@ -30,6 +31,7 @@ class PostContentTableViewHeader: UITableViewHeaderFooterView {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        footerView.bag = DisposeBag()
     }
     
     private func setContentView() {
