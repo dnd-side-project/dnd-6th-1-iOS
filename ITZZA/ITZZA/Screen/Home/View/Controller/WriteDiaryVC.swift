@@ -19,7 +19,6 @@ class WriteDiaryVC: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     
     var disposeBag = DisposeBag()
-    var selectedDate: String!
     let emotionView = EmotionView()
     var postWriteView = PostWriteView()
     var scrollView = UIScrollView()
@@ -33,6 +32,7 @@ class WriteDiaryVC: UIViewController {
     var imageListView = ImageCollectionView()
     let maxImageSelectionCount = 3
     let minimumLineSpacing: CGFloat = 20
+    var selectedDate: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +48,7 @@ class WriteDiaryVC: UIViewController {
         configureImageAddBar()
         bindUI()
         bindVM()
+        bindImageListView()
     }
 }
 
@@ -152,6 +153,17 @@ extension WriteDiaryVC {
             $0.height.equalTo(54)
         }
     }
+    
+    private func goBackToMain() {
+        let itzzaTBC = self.presentingViewController?
+                        .presentingViewController as! ITZZATBC
+        let homeNC = itzzaTBC.viewControllers![0] as! HomeNC
+        let homeVC = homeNC.viewControllers.first as! HomeVC
+        
+        itzzaTBC.dismiss(animated: true) {
+            homeVC.getFirstDiaryData()
+        }
+    }
 }
 
 // MARK: - Bindings
@@ -172,9 +184,32 @@ extension WriteDiaryVC {
                 self.pressedAddImageButton()
             })
             .disposed(by: disposeBag)
+        
+        saveButton.rx.tap
+            .asObservable()
+            .withUnretained(self)
+            .bind(onNext: { owner, _ in
+                owner.writeDirayVM
+                    .postDiaryDataToServer(owner.selectedDate!,
+                                           owner.emotionView,
+                                           owner.postWriteView,
+                                           owner.emotionTextField.text!,
+                                           owner.imageListView)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindVM() {
+        writeDirayVM.postResponseSuccess
+            .asDriver(onErrorJustReturn: HomeModel())
+            .drive(onNext: { [weak self] result in
+                guard let self = self else { return }
+                self.goBackToMain()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindImageListView() {
         imageListView.numberOfImages
             .asDriver(onErrorJustReturn: 0)
             .drive(onNext: { [weak self] imageCount in
@@ -182,6 +217,8 @@ extension WriteDiaryVC {
                 self.setImageCVHeight(imageCount)
             })
             .disposed(by: disposeBag)
+        
+        
     }
 }
 
