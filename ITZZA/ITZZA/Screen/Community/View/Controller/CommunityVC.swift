@@ -96,10 +96,16 @@ extension CommunityVC {
             .asDriver()
             .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                guard let addPostVC = ViewControllerFactory.viewController(for: .addPost) as? AddPostVC else { return }
+                guard let myRecordVC = ViewControllerFactory.viewController(for: .myRecord) as? MyRecordVC else { return }
                 
-                addPostVC.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(addPostVC, animated: true)
+                myRecordVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(myRecordVC, animated: true)
+                
+//                guard let self = self else { return }
+//                guard let addPostVC = ViewControllerFactory.viewController(for: .addPost) as? AddPostVC else { return }
+//
+//                addPostVC.hidesBottomBarWhenPushed = true
+//                self.navigationController?.pushViewController(addPostVC, animated: true)
             })
             .disposed(by: bag)
     }
