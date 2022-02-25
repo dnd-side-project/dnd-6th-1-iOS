@@ -11,6 +11,7 @@ import Kingfisher
 class SearchedUserTVC: UITableViewCell {
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var userName: UILabel!
+    var userId:Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,5 +32,6 @@ extension SearchedUserTVC {
                                             .cacheOriginalImage
                                           ])
         userName.text = post.nickname
+        userId = post.userId
     }
 }

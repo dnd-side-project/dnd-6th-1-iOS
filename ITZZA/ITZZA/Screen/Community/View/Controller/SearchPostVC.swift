@@ -73,6 +73,7 @@ extension SearchPostVC {
     }
     
     func configureTabView(){
+        //TODO: - FIX
         tabView.menu = menu
         tabView.setContentView()
         
@@ -185,7 +186,7 @@ extension SearchPostVC {
                             case .failure(let error):
                                 print(error)
                             case .success(let response):
-                                self.keywordContentView.post = response.contentResult!
+                                self.keywordContentView.post = response
                                 self.configureTabView()
                             }
                         })
@@ -216,8 +217,9 @@ extension SearchPostVC {
     
     @objc func pushUserPostListView(_ notification: Notification) {
         guard let userPostListVC = ViewControllerFactory.viewController(for: .userPostList) as? UserPostListVC else { return }
-        
-        userPostListVC.userName = notification.object as? String
+        guard let object = notification.object as? [String?], let userId = object[0], let userName = object[1] else { return }
+        userPostListVC.userId = Int(userId)
+        userPostListVC.userName = userName
         navigationController?.pushViewController(userPostListVC, animated: true)
     }
     
