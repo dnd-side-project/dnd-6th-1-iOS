@@ -9,9 +9,11 @@ import UIKit
 
 class KeywordContentCVC: UICollectionViewCell {
     @IBOutlet weak var keywordContentTV: UITableView!
+    var isMypage: Bool?
     var isUserSearchedList = false
     var isNoneData: Bool?
     var post = SearchedResultModel()
+    var mypagePost = [PostModel]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,10 +37,14 @@ extension KeywordContentCVC {
 
 extension KeywordContentCVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isUserSearchedList {
-            return (post.userResult?.count == 0) ? 1 : post.userResult!.count
+        if isMypage! {
+            return mypagePost.count
         } else {
-            return (post.contentResult?.count == 0) ? 1 : post.contentResult!.count
+            if isUserSearchedList {
+                return (post.userResult?.count == 0) ? 1 : post.userResult!.count
+            } else {
+                return (post.contentResult?.count == 0) ? 1 : post.contentResult!.count
+            }
         }
     }
     
@@ -48,15 +54,22 @@ extension KeywordContentCVC: UITableViewDataSource {
             return cell
         }
         
-        if isUserSearchedList {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.searchedUserTVC, for: indexPath) as? SearchedUserTVC else { return UITableViewCell() }
-            cell.configureCell(post.userResult?[indexPath.row] ?? PostModel())
+        if isMypage! {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.keywordContentTVC, for: indexPath) as? KeywordContentTVC else { return UITableViewCell() }
+            cell.configureCell(mypagePost[indexPath.row])
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.keywordContentTVC, for: indexPath) as? KeywordContentTVC else { return UITableViewCell() }
-            cell.configureCell(post.contentResult?[indexPath.row] ?? PostModel())
-            return cell
+            if isUserSearchedList {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.searchedUserTVC, for: indexPath) as? SearchedUserTVC else { return UITableViewCell() }
+                cell.configureCell(post.userResult?[indexPath.row] ?? PostModel())
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.keywordContentTVC, for: indexPath) as? KeywordContentTVC else { return UITableViewCell() }
+                cell.configureCell(post.contentResult?[indexPath.row] ?? PostModel())
+                return cell
+            }
         }
+        
     }
 }
 

@@ -22,6 +22,7 @@ struct Identifiers {
     static let diarySB = "Diary"
     static let writeDiarySB = "WriteDiary"
     static let homeAlarmSB = "HomeAlarm"
+    static let myRecordSB = "MyRecord"
     
     //MARK: - Controller
     static let itzzaTBC = "ITZZATBC"
@@ -40,6 +41,7 @@ struct Identifiers {
     static let diaryVC = "DiaryVC"
     static let writeDiaryVC = "WriteDiaryVC"
     static let homeAlarmTVC = "HomeAlarmTVC"
+    static let myRecordVC = "MyRecordVC"
     
     //MARK: - View
     static let profileHeaderView = "ProfileHeaderView"
