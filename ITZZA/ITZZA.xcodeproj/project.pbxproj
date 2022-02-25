@@ -153,6 +153,8 @@
 		62B6DC8227C92D1A00F2FED8 /* MypageNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6DC8127C92D1A00F2FED8 /* MypageNC.swift */; };
 		62B6DC8427C951E400F2FED8 /* MypageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6DC8327C951E400F2FED8 /* MypageVM.swift */; };
 		62B6DC8627C9526100F2FED8 /* MypageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6DC8527C9526100F2FED8 /* MypageModel.swift */; };
+		62B6DC8827C969A900F2FED8 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6DC8727C969A900F2FED8 /* ReportVC.swift */; };
+		62B6DC8A27C969E900F2FED8 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62B6DC8927C969E900F2FED8 /* Report.storyboard */; };
 		62BE208D27A590D0001F150A /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE208C27A590D0001F150A /* SignInVC.swift */; };
 		62BE209027A66F34001F150A /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE208F27A66F34001F150A /* APISession.swift */; };
 		62BE209227A66F52001F150A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE209127A66F52001F150A /* APIService.swift */; };
@@ -317,6 +319,8 @@
 		62B6DC8127C92D1A00F2FED8 /* MypageNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageNC.swift; sourceTree = "<group>"; };
 		62B6DC8327C951E400F2FED8 /* MypageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageVM.swift; sourceTree = "<group>"; };
 		62B6DC8527C9526100F2FED8 /* MypageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageModel.swift; sourceTree = "<group>"; };
+		62B6DC8727C969A900F2FED8 /* ReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
+		62B6DC8927C969E900F2FED8 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		62BE208C27A590D0001F150A /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		62BE208F27A66F34001F150A /* APISession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
 		62BE209127A66F52001F150A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -649,6 +653,7 @@
 				232CC05D27A0333500040131 /* MypageVC.swift */,
 				62B6DC8127C92D1A00F2FED8 /* MypageNC.swift */,
 				23A2BB6527C9216D0074D21C /* MyRecordVC.swift */,
+				62B6DC8727C969A900F2FED8 /* ReportVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -658,6 +663,7 @@
 			children = (
 				232CC05F27A0334100040131 /* Mypage.storyboard */,
 				23A2BB6327C921620074D21C /* MyRecord.storyboard */,
+				62B6DC8927C969E900F2FED8 /* Report.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -1146,6 +1152,7 @@
 				238EC09A27AA7288001CBB24 /* SearchPost.storyboard in Resources */,
 				2356305927BFA1D10032E520 /* SpoqaHanSansNeo-Thin.otf in Resources */,
 				623DE30127B3BA9E005E78D0 /* AgreementView.xib in Resources */,
+				62B6DC8A27C969E900F2FED8 /* Report.storyboard in Resources */,
 				622C57D827C26A0D0011D833 /* EmotionCVC.xib in Resources */,
 				23F3CBF827C119D100CEDC98 /* PostWriteView.xib in Resources */,
 				232CC04C27A032D700040131 /* Community.storyboard in Resources */,
@@ -1241,6 +1248,7 @@
 				23BCDC2C27C211D300054334 /* Notification+Name.swift in Sources */,
 				238EC09827AA4C4A001CBB24 /* AddPostVC.swift in Sources */,
 				2335241727A98FA0009C654F /* ProfileHeaderView.swift in Sources */,
+				62B6DC8827C969A900F2FED8 /* ReportVC.swift in Sources */,
 				233B636B27AF9D9D00914F60 /* PostDetailVC.swift in Sources */,
 				232302FC27AFC13200E20078 /* CommentTVC.swift in Sources */,
 				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,

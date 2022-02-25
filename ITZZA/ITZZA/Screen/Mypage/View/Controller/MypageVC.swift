@@ -91,6 +91,11 @@ extension MypageVC {
     private func callMypageApi() {
         mypageVM.getUserInformation()
     }
+    
+    private func showReportView() {
+        let reportView = ViewControllerFactory.viewController(for: .report)
+        navigationController?.pushViewController(reportView, animated: true)
+    }
 }
 
 extension MypageVC: UICollectionViewDataSource {
@@ -132,7 +137,13 @@ extension MypageVC: UICollectionViewDelegateFlowLayout {
 // MARK: - Bindings
 extension MypageVC {
     private func bindUI() {
-        
+        checkReportButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.showReportView()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindVM() {
