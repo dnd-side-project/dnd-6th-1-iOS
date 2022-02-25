@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Alamofire
 
-struct HomeModel: Decodable {
+struct HomeModel: Codable {
     var dirayId: Int?
     var userId: Int?
     var date: String?
@@ -29,10 +30,23 @@ extension HomeModel {
         guard let diaryImageURL = images else { return nil }
         
         diaryImageURL.forEach {
-            let imageData = try? Data(contentsOf: URL(string: $0)!)
+            let replacedURL = $0.replacingOccurrences(of: "//", with: "/")
+            let imageData = try? Data(contentsOf: URL(string: replacedURL)!)
             diaryImages.append(UIImage(data: imageData!)!)
         }
         
         return diaryImages
+    }
+}
+
+extension HomeModel {
+    var homeModelParam: Parameters {
+        return [
+            "date": date ?? "1970-01-01",
+            "categoryId": categoryId ?? 0,
+            "categoryReason": categoryReason ?? "Empty",
+            "diaryTitle": diaryTitle ?? "Empty",
+            "diaryContent": diaryContent ?? "Empty"
+        ]
     }
 }

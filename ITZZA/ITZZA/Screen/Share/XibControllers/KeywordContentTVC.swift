@@ -54,9 +54,9 @@ extension KeywordContentTVC {
         if post.imageCnt == 0 {
             imageCntView.isHidden = true
         } else {
-            imageCnt.text = "+" + String(post.imageCnt!)
+            imageCnt.text = "+" + String(post.imageCnt ?? 0)
         }
         
-        category.text = communityTypes[post.categoryId!].description
+        category.text = communityTypes[post.categoryId ?? 0].description
     }
 }

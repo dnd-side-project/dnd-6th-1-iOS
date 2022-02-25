@@ -13,6 +13,7 @@ class KeywordContentView: UIView {
     let bag = DisposeBag()
     var menu:[String] = []
     var post = SearchedResultModel()
+    var mypagePost = MyRecordData()
     
     var contentView: UIView?
     
@@ -96,17 +97,41 @@ extension KeywordContentView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.keywordContentCVC, for: indexPath) as? KeywordContentCVC else { return UICollectionViewCell() }
-        cell.post = post
         
-        if indexPath.row == 1 {
-            cell.isUserSearchedList = true
-            (post.userResult?.count) == 0 ? (cell.isNoneData = true) : (cell.isNoneData = false)
+        if menu.count == 2 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.keywordContentCVC, for: indexPath) as? KeywordContentCVC else { return UICollectionViewCell() }
+            cell.isMypage = false
+            cell.post = post
+            
+            if indexPath.row == 1 {
+                cell.isUserSearchedList = true
+                (post.userResult?.count) == 0 ? (cell.isNoneData = true) : (cell.isNoneData = false)
+            } else {
+                cell.isUserSearchedList = false
+                (post.contentResult?.count) == 0 ? (cell.isNoneData = true) : (cell.isNoneData = false)
+            }
+            return cell
         } else {
-            cell.isUserSearchedList = false
-            (post.contentResult?.count) == 0 ? (cell.isNoneData = true) : (cell.isNoneData = false)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.keywordContentCVC, for: indexPath) as? KeywordContentCVC else { return UICollectionViewCell() }
+            cell.isMypage = true
+            
+            switch indexPath.row {
+            case 0:
+                cell.mypagePost = mypagePost.boards
+                (mypagePost.boards.count) == 0 ? (cell.isNoneData = true) : (cell.isNoneData = false)
+            case 1:
+                cell.mypagePost = mypagePost.comments
+                (mypagePost.comments.count) == 0 ? (cell.isNoneData = true) : (cell.isNoneData = false)
+            case 2:
+                cell.mypagePost = mypagePost.bookmarks
+                (mypagePost.bookmarks.count) == 0 ? (cell.isNoneData = true) : (cell.isNoneData = false)
+            default:
+                break
+            }
+            
+            return cell
         }
-        return cell
+        
     }
 }
 

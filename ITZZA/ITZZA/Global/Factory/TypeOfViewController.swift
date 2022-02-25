@@ -24,6 +24,8 @@ enum TypeOfViewController {
     case diary
     case writeDiary
     case homeAlarm
+    
+    case myRecord
 }
 
 extension TypeOfViewController {
@@ -38,7 +40,7 @@ extension TypeOfViewController {
         case .community:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.communitySB, storyboardId: Identifiers.communityNC)
         case .mypage:
-            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.mypageSB, storyboardId: Identifiers.mypageVC)
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.mypageSB, storyboardId: Identifiers.mypageNC)
         case .signIn:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.signInSB, storyboardId: Identifiers.signInVC)
         case .signUp:
@@ -59,6 +61,8 @@ extension TypeOfViewController {
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.writeDiarySB, storyboardId: Identifiers.writeDiaryVC)
         case .homeAlarm:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.homeAlarmSB, storyboardId: Identifiers.homeAlarmTVC)
+        case .myRecord:
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.myRecordSB, storyboardId: Identifiers.myRecordVC)
         }
     }
 }

@@ -81,7 +81,7 @@ class HomeVC: UIViewController {
 
 // MARK: - Extra Functions
 extension HomeVC {
-    private func getFirstDiaryData() {
+    func getFirstDiaryData() {
         homeVM.getDiaryData(currentMonth, currentYear)
     }
     
