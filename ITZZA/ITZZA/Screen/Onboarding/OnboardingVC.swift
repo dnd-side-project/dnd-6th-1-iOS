@@ -35,7 +35,6 @@ class OnboardingVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
         configure()
         setScrollView()
         setPageController()
