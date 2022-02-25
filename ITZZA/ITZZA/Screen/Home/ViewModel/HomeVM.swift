@@ -70,6 +70,7 @@ class HomeVM {
             temporalView.postContentView.title.text = parsedData?.diaryTitle
             temporalView.postContentView.contents.text = parsedData?.diaryContent
             temporalView.addImagesToImageScrollView(with: parsedData?.diaryImages ?? [])
+            temporalView.addImagesToImageScrollView(with: [])
             
             temporalView.emotionSentence.textColor = .darkGray6
             temporalView.postContentView.title.textColor = .darkGray6
