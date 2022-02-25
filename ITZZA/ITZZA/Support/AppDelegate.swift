@@ -20,6 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static let shared: AppDelegate = AppDelegate()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        Thread.sleep(forTimeInterval: 1.0)
+        
+        guard let tmp = UserDefaults.standard.string(forKey: "email") else {
+            let onboardingViewController = ViewControllerFactory.viewController(for: .onboarding) as? OnboardingVC
+            self.window?.rootViewController = onboardingViewController
+            return true
+        }
         
         guard let userEmail = UserDefaults.standard.string(forKey: "email"),
               let userPassword: String = KeychainWrapper.standard[.myPassword],
@@ -30,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                   self.window?.rootViewController = signInVC
                   self.window?.makeKeyAndVisible()
                   return true
-        }
+              }
         
         let userInformation = AppDelegate.shared
         userInformation.email = userEmail

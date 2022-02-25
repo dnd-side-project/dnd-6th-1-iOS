@@ -23,6 +23,7 @@ class PostDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        register()
         setPost()
         configureNavigationbar()
         setNotification()
@@ -93,7 +94,6 @@ extension PostDetailVC {
         commentListTV.backgroundColor = .lightGray1
         commentListTV.separatorStyle = .none
         
-        register()
         bindRefreshController()
         
         DispatchQueue.main.async {
