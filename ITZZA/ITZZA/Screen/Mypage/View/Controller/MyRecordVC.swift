@@ -16,6 +16,7 @@ class MyRecordVC: UIViewController {
     let apiSession = APISession()
     let bag = DisposeBag()
     private let menu = ["내가쓴 글", "댓글", "북마크"]
+    var selectedIndex: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class MyRecordVC: UIViewController {
 
 extension MyRecordVC {
     func configureNavigationBar() {
-        navigationController?.setSubNaviBarTitle(navigationItem: self.navigationItem, title: "게시글 작성")
+        navigationController?.setSubNaviBarTitle(navigationItem: self.navigationItem, title: "나의 기록")
         navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .black)
         
         let menuButton = UIBarButtonItem()
@@ -58,11 +59,12 @@ extension MyRecordVC {
     
     func configureTabView() {
         tabView.menu = menu
-        tabView.setContentView()
-        
+        tabView.tabCV.reloadData()
+        tabView.tabCV.selectItem(at: selectedIndex ?? [0, 0], animated: false, scrollPosition: .bottom)
+
         keywordContentView.menu = menu
-        keywordContentView.setContentView()
-        keywordContentView.setKeywordContentCV()
+        keywordContentView.keywordContentCV.reloadData()
+        keywordContentView.keywordContentCV.selectItem(at: selectedIndex ?? [0, 0], animated: false, scrollPosition: .bottom)
     }
     
     func getMyPost() {

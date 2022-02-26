@@ -112,9 +112,12 @@ extension MypageVC: UICollectionViewDataSource {
 }
 
 extension MypageVC: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        
-        return true
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let myRecordVC = ViewControllerFactory.viewController(for: .myRecord) as? MyRecordVC else { return }
+
+        myRecordVC.hidesBottomBarWhenPushed = true
+        myRecordVC.selectedIndex = indexPath
+        self.navigationController?.pushViewController(myRecordVC, animated: true)
     }
 }
 
