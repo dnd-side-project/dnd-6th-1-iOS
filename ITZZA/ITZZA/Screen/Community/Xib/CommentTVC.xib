@@ -14,6 +14,9 @@
         <array key="SFPRODISPLAYREGULAR.OTF">
             <string>SFProDisplay-Regular</string>
         </array>
+        <array key="SpoqaHanSansNeo-Regular.otf">
+            <string>SpoqaHanSansNeo-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -59,16 +62,29 @@
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" title="답글 달기"/>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocL-wr-3s4">
+                        <rect key="frame" x="146.5" y="15" width="36" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="582-AE-YmN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="fq9-W1-Px2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="70" id="D03-23-vIt"/>
                     <constraint firstItem="fq9-W1-Px2" firstAttribute="top" secondItem="ttt-1p-vgq" secondAttribute="bottom" constant="8" id="E47-uC-1dr"/>
+                    <constraint firstItem="ocL-wr-3s4" firstAttribute="leading" secondItem="NUy-n0-BB6" secondAttribute="trailing" constant="5" id="H4O-LA-ZRU"/>
+                    <constraint firstItem="ocL-wr-3s4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="Ik7-kk-6PK"/>
                     <constraint firstItem="NUy-n0-BB6" firstAttribute="leading" secondItem="lfD-ur-noy" secondAttribute="trailing" constant="10" id="RW6-cZ-9kv"/>
                     <constraint firstItem="GmH-sc-fyT" firstAttribute="centerY" secondItem="fq9-W1-Px2" secondAttribute="centerY" id="UOf-xY-TAV"/>
                     <constraint firstItem="GmH-sc-fyT" firstAttribute="leading" secondItem="fq9-W1-Px2" secondAttribute="trailing" constant="10" id="YS2-Gc-QZc"/>
+                    <constraint firstItem="ttt-1p-vgq" firstAttribute="top" secondItem="ocL-wr-3s4" secondAttribute="bottom" constant="5" id="YsM-R8-prl"/>
                     <constraint firstAttribute="trailing" secondItem="ttt-1p-vgq" secondAttribute="trailing" constant="30" id="avQ-M2-zEZ"/>
                     <constraint firstItem="lfD-ur-noy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="d2g-qi-g1a"/>
                     <constraint firstItem="NUy-n0-BB6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="fSJ-Yv-cdf"/>
+                    <constraint firstItem="ocL-wr-3s4" firstAttribute="centerY" secondItem="NUy-n0-BB6" secondAttribute="centerY" id="gZ3-un-EEs"/>
                     <constraint firstItem="lfD-ur-noy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="lLC-QG-GAw"/>
                     <constraint firstAttribute="bottom" secondItem="GmH-sc-fyT" secondAttribute="bottom" constant="15" id="szC-0X-h6h"/>
                     <constraint firstItem="ttt-1p-vgq" firstAttribute="top" secondItem="NUy-n0-BB6" secondAttribute="bottom" constant="5" id="ud8-hN-wFy"/>
@@ -85,6 +101,7 @@
                 <outlet property="createCommentButton" destination="GmH-sc-fyT" id="6N7-fW-B9t"/>
                 <outlet property="profileImg" destination="lfD-ur-noy" id="vCK-o1-YeT"/>
                 <outlet property="userName" destination="NUy-n0-BB6" id="xrr-jj-oOq"/>
+                <outlet property="writer" destination="ocL-wr-3s4" id="9wP-lC-FBv"/>
             </connections>
             <point key="canvasLocation" x="134.78260869565219" y="92.410714285714278"/>
         </tableViewCell>

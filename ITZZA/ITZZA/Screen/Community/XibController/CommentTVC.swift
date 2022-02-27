@@ -14,6 +14,7 @@ class CommentTVC: UITableViewCell {
     @IBOutlet weak var commentContent: UITextView!
     @IBOutlet weak var createAt: UILabel!
     @IBOutlet weak var createCommentButton: UIButton!
+    @IBOutlet weak var writer: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +37,14 @@ class CommentTVC: UITableViewCell {
         userName.textColor = .darkGray6
         userName.font = UIFont.SpoqaHanSansNeoMedium(size: 13)
         
+        writer.textColor = .primary
+        writer.font = UIFont.SpoqaHanSansNeoRegular(size: 10)
+        writer.text = "글쓴이"
+        writer.textAlignment = .center
+        writer.layer.borderColor = UIColor.primary.cgColor
+        writer.layer.borderWidth = 0.5
+        writer.layer.cornerRadius = 4
+        
         commentContent.textColor = .darkGray6
         commentContent.font = UIFont.SpoqaHanSansNeoRegular(size: 12)
         
@@ -55,6 +64,7 @@ class CommentTVC: UITableViewCell {
                                             .cacheOriginalImage
                                           ])
         userName.text = comments.nickname
+        writer.isHidden = !(comments.writerOrNot ?? false)
         commentContent.text = comments.commentContent
         createAt.text = comments.createdAt
     }
