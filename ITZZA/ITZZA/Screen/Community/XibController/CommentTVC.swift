@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import RxSwift
 
 class CommentTVC: UITableViewCell {
     @IBOutlet weak var profileImg: UIImageView!
@@ -15,6 +16,9 @@ class CommentTVC: UITableViewCell {
     @IBOutlet weak var createAt: UILabel!
     @IBOutlet weak var createCommentButton: UIButton!
     @IBOutlet weak var writer: UILabel!
+    @IBOutlet weak var menuButton: UIButton!
+    
+    let bag = DisposeBag()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,6 +58,16 @@ class CommentTVC: UITableViewCell {
         createCommentButton.setTitle("답글 달기", for: .normal)
         createCommentButton.titleLabel?.font = UIFont.SpoqaHanSansNeoRegular(size: 10)
         createCommentButton.tintColor = .lightGray6
+    }
+    
+    func didTapMenuButton(_ vc: UIViewController) {
+        menuButton.rx.tap
+            .asDriver()
+            .drive(onNext: {
+                let menuBottomSheet = MenuBottomSheet()
+                vc.present(menuBottomSheet, animated: true)
+            })
+            .disposed(by: bag)
     }
     
     func configureCell(_ comments: CommentModel) {

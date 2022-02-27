@@ -206,6 +206,7 @@ extension PostDetailVC: UITableViewDataSource {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentTVC, for: indexPath) as? CommentTVC else { return UITableViewCell() }
                 cell.selectionStyle = .none
                 cell.configureCell(self.post.comments![indexPath.row - 1].comment!)
+                cell.didTapMenuButton(self)
                 
                 return cell
             }
