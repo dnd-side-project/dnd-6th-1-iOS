@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Then
 
 class OnboardingVC: UIViewController {
     @IBOutlet weak var holderView: UIView!
@@ -14,6 +15,7 @@ class OnboardingVC: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     
+    let onboardingCnt = 3
     let scrollView = UIScrollView()
     let titles = [
         "일기를 작성하고\n그날의 감정과 하루를 돌아봐요",
@@ -35,7 +37,7 @@ class OnboardingVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        configureLayout()
         setScrollView()
         setPageController()
         setButtons()
@@ -50,15 +52,17 @@ extension OnboardingVC {
     func setScrollView() {
         scrollView.delegate = self
         
-        scrollView.frame = holderView.bounds
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         scrollView.showsHorizontalScrollIndicator = false
         
-        scrollView.contentSize = CGSize(width: holderView.frame.size.width * 3, height: 0)
+        scrollView.contentSize = CGSize(width: holderView.frame.size.width * CGFloat(onboardingCnt), height: 0)
         scrollView.isPagingEnabled = true
     }
     
     func setPageController() {
-        pageController.numberOfPages = 3
+        pageController.numberOfPages = onboardingCnt
         pageController.currentPage = 0
         pageController.pageIndicatorTintColor = .systemGray3
         pageController.currentPageIndicatorTintColor = .primary
@@ -79,44 +83,72 @@ extension OnboardingVC {
         skipButton.setUnderline()
     }
     
-    func configure() {
+    func configureLayout() {
         holderView.addSubview(scrollView)
         
-        for i in 0..<3 {
-            let pageView = UIView(frame: CGRect(x: CGFloat(i) * holderView.frame.size.width, y: 0, width: holderView.frame.size.width, height: holderView.frame.size.height))
+        for i in 0..<onboardingCnt {
+            let pageView = UIView()
             scrollView.addSubview(pageView)
+            pageView.snp.makeConstraints {
+                $0.leading.equalToSuperview().offset(CGFloat(i) * view.frame.width)
+                $0.trailing.equalToSuperview().offset(-1 * CGFloat(onboardingCnt - 1 - i) * view.frame.width)
+                $0.top.bottom.equalToSuperview()
+                $0.width.equalTo(view.frame.width)
+            }
             
-            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: pageView.frame.size.width, height: pageView.frame.size.width * 1.16))
-            let title = UILabel(frame: CGRect(x: 25, y: 440, width: pageView.frame.size.width - 50, height: 70))
-            let explanation = UITextView(frame: CGRect(x: 25, y: 440 + 70, width: pageView.frame.size.width - 50, height: 32))
-            
-            title.numberOfLines = 0
-            title.lineBreakMode = .byCharWrapping
-            title.font = UIFont.SpoqaHanSansNeoBold(size: 20)
-            pageView.addSubview(title)
-            title.text = titles[i]
-            
-            explanation.setAllMarginToZero()
-            explanation.font = UIFont.SpoqaHanSansNeoRegular(size: 12)
-            explanation.textColor = .lightGray6
-            pageView.addSubview(explanation)
-            explanation.text = explanations[i]
-            
-            imageView.contentMode = .scaleAspectFit
-            imageView.image = UIImage(named: "Onboarding_\(i+1)")
+            let imageView = UIImageView()
+                .then {
+                    $0.contentMode = .scaleAspectFit
+                    $0.image = UIImage(named: "Onboarding_\(i+1)")
+                }
             pageView.addSubview(imageView)
+            imageView.snp.makeConstraints {
+                $0.leading.trailing.top.equalToSuperview()
+                $0.width.equalToSuperview()
+                $0.height.equalTo(pageView.snp.width).multipliedBy(1.16)
+            }
+            
+            let title = UILabel()
+                .then {
+                    $0.numberOfLines = 0
+                    $0.lineBreakMode = .byCharWrapping
+                    $0.font = UIFont.SpoqaHanSansNeoBold(size: 20)
+                    $0.text = titles[i]
+                }
+            pageView.addSubview(title)
+            title.snp.makeConstraints {
+                $0.leading.equalToSuperview().offset(25)
+                $0.trailing.equalToSuperview().offset(-25)
+                $0.top.equalTo(imageView.snp.bottom).offset(25)
+                $0.height.equalTo(55)
+            }
+            
+            let explanation = UITextView()
+                .then {
+                    $0.setAllMarginToZero()
+                    $0.font = UIFont.SpoqaHanSansNeoRegular(size: 12)
+                    $0.textColor = .lightGray6
+                    $0.text = explanations[i]
+                }
+            pageView.addSubview(explanation)
+            explanation.snp.makeConstraints {
+                $0.leading.equalToSuperview().offset(25)
+                $0.trailing.equalToSuperview().offset(-25)
+                $0.top.equalTo(title.snp.bottom).offset(10)
+                $0.height.equalTo(55)
+            }
         }
     }
     
     @objc func didTapButton(_ button: UIButton) {
-        guard button.tag < 3 else {
+        guard button.tag < onboardingCnt else {
             view.subviews.forEach { view in
                 view.removeFromSuperview()
             }
             
             let signInVC = ViewControllerFactory.viewController(for: .signIn)
             signInVC.modalPresentationStyle = .fullScreen
-
+            
             self.view.window?.rootViewController?.dismiss(animated: true) {
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.window?.rootViewController?.present(signInVC, animated: true, completion: nil)
@@ -124,13 +156,14 @@ extension OnboardingVC {
             return
         }
         
-        if button.tag == 2 {
+        if button.tag == onboardingCnt - 1 {
             let btnTitle = NSAttributedString(string: "시작하기")
             button.setAttributedTitle(btnTitle, for: .normal)
         }
         scrollView.setContentOffset(CGPoint(x: holderView.frame.size.width * CGFloat(button.tag), y: 0), animated: true)
     }
 }
+
 extension OnboardingVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let page = round(scrollView.contentOffset.x / scrollView.frame.width)
@@ -140,7 +173,7 @@ extension OnboardingVC: UIScrollViewDelegate {
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if nextButton.tag == 2 {
+        if nextButton.tag == onboardingCnt - 1 {
             let btnTitle = NSAttributedString(string: "시작하기")
             nextButton.setAttributedTitle(btnTitle, for: .normal)
         } else {
