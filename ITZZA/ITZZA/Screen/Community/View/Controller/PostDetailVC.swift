@@ -13,6 +13,7 @@ import SwiftKeychainWrapper
 
 class PostDetailVC: UIViewController {
     @IBOutlet weak var commentListTV: UITableView!
+    @IBOutlet weak var chatInputView: ChatInputView!
     
     let bag = DisposeBag()
     var post = PostModel()
@@ -115,6 +116,7 @@ extension PostDetailVC {
     func setNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(popupDeleteAlert), name: .whenDeletePostMenuTapped, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pushEditPostView), name: .whenEditPostMenuTapped, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showToast), name: .whenPostEditSaved, object: nil)
     }
     
     @objc func pushEditPostView() {
@@ -139,8 +141,21 @@ extension PostDetailVC {
         present(alert, animated: false, completion: nil)
     }
     
+    @objc func showToast() {
+        let toastView = AlertView()
+        toastView.setAlertTitle("게시글 수정이 완료되었습니다")
+        self.view.addSubview(toastView)
+        toastView.snp.makeConstraints {
+            $0.bottom.equalTo(chatInputView.snp.top).offset(-20)
+            $0.leading.equalToSuperview().offset(52)
+            $0.trailing.equalToSuperview().offset(-52)
+            $0.height.equalTo(44)
+        }
+        toastView.showToastView()
+    }
+    
     func deletePost(_ boardId: Int) {
-        let baseURL = "http://13.125.239.189:3000/boards/"
+        let baseURL = "https://www.itzza.shop/boards/"
         guard let url = URL(string: baseURL + "\(boardId)") else { return }
         guard let token: String = KeychainWrapper.standard[.myToken] else { return }
         let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]

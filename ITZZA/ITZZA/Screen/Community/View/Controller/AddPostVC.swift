@@ -229,8 +229,10 @@ extension AddPostVC {
             present(alert, animated: false, completion: nil)
         } else {
             if isEditingView {
+                NotificationCenter.default.post(name: .whenPostEditSaved, object: nil)
                 postPost(boardId: String(boardId), method: .patch)
             } else {
+                NotificationCenter.default.post(name: .whenPostSaved, object: nil)
                 postPost(boardId: "", method: .post)
             }
         }
@@ -258,7 +260,7 @@ extension AddPostVC {
     }
     
     func postPost(boardId: String, method: HTTPMethod) {
-        let postURL = "http://13.125.239.189:3000/boards/\(boardId)"
+        let postURL = "https://www.itzza.shop/boards/\(boardId)"
         let url = URL(string: postURL)!
         let postInformation = PostModel(categoryId: categoryIndex,
                                         postTitle: postWriteView.title.text,
@@ -270,7 +272,6 @@ extension AddPostVC {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success:
-                    NotificationCenter.default.post(name: .popupAlertView, object: nil)
                     self.navigationController?.popViewController(animated: true)
                 case .failure:
                     break

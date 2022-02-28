@@ -134,6 +134,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="chatInputView" destination="RUP-jd-CM7" id="8mQ-tA-cTQ"/>
                         <outlet property="commentListTV" destination="MJB-XE-rp5" id="4Ch-B1-neW"/>
                     </connections>
                 </viewController>
