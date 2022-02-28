@@ -57,7 +57,8 @@ extension CategoryVC {
     func setPost() {
         guard let type = communityType else { return }
         
-        PostManager().getPost(type.apiQuery) { posts in
+        PostManager().getPost(type.apiQuery) { [weak self] posts in
+            guard let self = self else { return }
             if let posts = posts {
                 self.postListVM = PostListVM(posts: posts)
                 self.isNoneData = false
@@ -104,12 +105,12 @@ extension CategoryVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.postListTV.deselectRow(at: indexPath, animated: false)
+        postListTV.deselectRow(at: indexPath, animated: false)
         
         guard let postDetailVC = ViewControllerFactory.viewController(for: .postDetail) as? PostDetailVC else { return }
-        postDetailVC.boardId = self.postListVM.postAtIndex(indexPath.row).post.boardId
+        postDetailVC.boardId = postListVM.postAtIndex(indexPath.row).post.boardId
         postDetailVC.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(postDetailVC, animated: true)
+        navigationController?.pushViewController(postDetailVC, animated: true)
     }
 }
 
@@ -119,7 +120,7 @@ extension CategoryVC: UITableViewDataSource {
             || isNoneData {
             return 1
         } else {
-            return self.postListVM.posts.count
+            return postListVM.posts.count
         }
     }
     

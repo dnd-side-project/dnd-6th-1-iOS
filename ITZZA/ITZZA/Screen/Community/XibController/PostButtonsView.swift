@@ -109,7 +109,8 @@ extension PostButtonsView {
         guard let token: String = KeychainWrapper.standard[.myToken] else { return }
         let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
-        AF.request(url, method: .post, headers: header).responseData { response in
+        AF.request(url, method: .post, headers: header).responseData { [weak self] response in
+            guard let self = self else { return }
             switch response.result {
             case .success:
                 self.likeButton.isSelected.toggle()
@@ -127,7 +128,8 @@ extension PostButtonsView {
         guard let token: String = KeychainWrapper.standard[.myToken] else { return }
         let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
-        AF.request(url, method: .post, headers: header).responseData { response in
+        AF.request(url, method: .post, headers: header).responseData { [weak self] response in
+            guard let self = self else { return }
             switch response.result {
             case .success:
                 self.bookmarkButton.isSelected.toggle()

@@ -113,7 +113,8 @@ extension SearchPostVC {
     // MARK: - Network
     func setKeyword() {
         guard let userId: String = KeychainWrapper.standard[.userId] else { return }
-        getKeyword(userId) { keyword in
+        getKeyword(userId) { [weak self] keyword in
+            guard let self = self else { return }
             if let keyword = keyword {
                 self.keywords = keyword
                 DispatchQueue.main.async {

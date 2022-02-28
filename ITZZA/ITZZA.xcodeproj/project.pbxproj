@@ -707,6 +707,7 @@
 				232CC07227A036FC00040131 /* StoryboardRepresentation.swift */,
 				232CC07427A0370D00040131 /* TypeOfViewController.swift */,
 				232CC07627A0372300040131 /* ViewControllerFactory.swift */,
+				627E1A8E27AEAD7D005C1777 /* Array+.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -725,7 +726,6 @@
 				236C98DD27B239C200CE1EFD /* UIView+.swift */,
 				622D07BF27ABF12E00707E47 /* KeychainWrapper+.swift */,
 				238CEEA127A7DFCF006BE766 /* NavigationController+.swift */,
-				627E1A8E27AEAD7D005C1777 /* Array+.swift */,
 				623DE2F827B26581005E78D0 /* UIView+.swift */,
 				23BCDC2B27C211D300054334 /* Notification+Name.swift */,
 			);

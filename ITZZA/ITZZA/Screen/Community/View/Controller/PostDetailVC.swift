@@ -34,7 +34,8 @@ class PostDetailVC: UIViewController {
 //MARK: - Custom Methods
 extension PostDetailVC {
     func setPost() {
-        PostManager().getPostDetail(boardId ?? 0) { posts in
+        PostManager().getPostDetail(boardId ?? 0) { [weak self] posts in
+            guard let self = self else { return }
             if let posts = posts {
                 self.post = posts
                 DispatchQueue.main.async {

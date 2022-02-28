@@ -244,7 +244,8 @@ extension AddPostVC {
             let alert = UIAlertController(title: "게시글이 저장되지 않았습니다.\n나가시겠어요?", message: "", preferredStyle: UIAlertController.Style.alert)
             alert.view.tintColor = .darkGray6
             alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
-            let ok = UIAlertAction(title: "네", style: .destructive) { _ in
+            let ok = UIAlertAction(title: "네", style: .destructive) { [weak self] _ in
+                guard let self = self else { return }
                 self.navigationController?.popViewController(animated: true)
             }
             let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
