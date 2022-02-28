@@ -26,7 +26,7 @@ class PostDetailVC: UIViewController {
         
         register()
         setPost()
-        configureNavigationbar()
+//        configureNavigationbar()
         setNotification()
     }
 }
@@ -40,6 +40,7 @@ extension PostDetailVC {
                 self.post = posts
                 DispatchQueue.main.async {
                     self.setCommentListTV()
+                    self.configureNavigationMenuButton()
                 }
             } else {
                 self.showEmptyAlert()
@@ -74,20 +75,22 @@ extension PostDetailVC {
         }
     }
     
-    func configureNavigationbar() {
+    func configureNavigationMenuButton() {
         let menuButton = UIBarButtonItem()
         menuButton.image = UIImage(named: "Menu_Horizontal")
         
         navigationItem.rightBarButtonItem = menuButton
         
-        menuButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                let menuBottomSheet = MenuBottomSheet()
-                self.present(menuBottomSheet, animated: true)
-            })
-            .disposed(by: bag)
+        if post.canEdit ?? false {
+            menuButton.rx.tap
+                .asDriver()
+                .drive(onNext: { [weak self] _ in
+                    guard let self = self else { return }
+                    let menuBottomSheet = MenuBottomSheet()
+                    self.present(menuBottomSheet, animated: true)
+                })
+                .disposed(by: bag)
+        }
     }
     
     func setCommentListTV() {
