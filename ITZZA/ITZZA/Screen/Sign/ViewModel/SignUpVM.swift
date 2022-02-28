@@ -105,7 +105,7 @@ class SignUpVM {
 // MARK: - Networking
 extension SignUpVM {
     func trySignUp(with email: String, _ password: String, _ nickname: String) {
-        let signUpURL = "https://3044b01e-b59d-4905-a40d-1bef340f11ab.mock.pstmn.io/v1/signup"
+        let signUpURL = "https://www.itzza.shop/auth/signup"
         let url = URL(string: signUpURL)!
         let signUpModel = SignUpModel(email: email, password: password, nickname: nickname)
         let signUpParameter = signUpModel.signUpParam
@@ -117,14 +117,17 @@ extension SignUpVM {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .failure(let error):
-                    owner.serverError.onNext(error)
+                    switch error {
+                    case .http(_):
+                        owner.signUpFail.onNext("중복된 닉네임이 있습니다.")
+                    case .unknown:
+                        owner.serverError.onNext(.unknown)
+                    default:
+                        owner.serverError.onNext(.unknown)
+                    }
                     
                 case .success(let response):
-                    if response.flag == 1 {
-                        owner.signUpSuccess.onNext("회원가입이 완료되었습니다")
-                    } else {
-                        owner.signUpFail.onNext("닉네임 중복확인을 다시 한 번 해주세요")
-                    }
+                    owner.signUpSuccess.onNext(response.message ?? "회원가입이 완료되었습니다")
                 }
             })
             .disposed(by: disposeBag)

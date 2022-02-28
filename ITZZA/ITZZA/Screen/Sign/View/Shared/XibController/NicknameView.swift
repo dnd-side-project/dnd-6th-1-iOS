@@ -153,14 +153,16 @@ extension NicknameView {
     }
     
     private func bindVM() {
-        nicknameVM.emptyTextField.asDriver()
+        nicknameVM.emptyTextField
+            .asDriver()
             .drive(onNext: { [weak self] flag in
                 guard let self = self else { return }
                 self.decideStatusOfDuplicateCheckButton(flag)
             })
             .disposed(by: disposeBag)
         
-        nicknameVM.availableNickname.asDriver()
+        nicknameVM.availableNickname
+            .asDriver()
             .drive(onNext: { [weak self] flag in
                 guard let self = self else { return }
                 self.availableNickname()
@@ -170,7 +172,8 @@ extension NicknameView {
             })
             .disposed(by: disposeBag)
         
-        nicknameVM.duplicateNickname.asDriver()
+        nicknameVM.duplicateNickname
+            .asDriver()
             .drive(onNext: { [weak self] flag in
                 guard let self = self else { return }
                 self.unavailableNickname()
@@ -180,7 +183,8 @@ extension NicknameView {
             })
             .disposed(by: disposeBag)
         
-        nicknameVM.serverError.asDriver()
+        nicknameVM.serverError
+            .asDriver()
             .drive(onNext: { [weak self] flag in
                 guard let self = self else { return }
                 self.serverError()

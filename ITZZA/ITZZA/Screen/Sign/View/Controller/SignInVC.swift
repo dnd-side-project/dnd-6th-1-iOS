@@ -219,7 +219,7 @@ extension SignInVC {
     }
     
     func signInResponseSuccess() {
-        signInViewModel.signInResponseSuccess.asDriver(onErrorJustReturn: 1)
+        signInViewModel.signInResponseSuccess.asDriver(onErrorJustReturn: true)
             .drive { [weak self] response in
                 guard let self = self else { return }
                 let tabBarVC = ViewControllerFactory.viewController(for: .tabBar)

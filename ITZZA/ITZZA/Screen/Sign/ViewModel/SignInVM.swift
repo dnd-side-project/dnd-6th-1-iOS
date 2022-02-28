@@ -16,7 +16,7 @@ class SignInVM {
     
     let onError = PublishSubject<APIError>()
     let signInResponseFail = PublishSubject<String>()
-    let signInResponseSuccess = PublishSubject<Int>()
+    let signInResponseSuccess = PublishSubject<Bool>()
     let indicatorController = BehaviorRelay(value: false)
     
     let savedStatus = BehaviorRelay(value: false)
@@ -30,7 +30,7 @@ class SignInVM {
     
     func tapSignInButton(_ email: String, _ password: String) {
         
-        let loginURL = "http://13.125.239.189:3000/auth/signin"
+        let loginURL = "https://www.itzza.shop/auth/signin"
         let url = URL(string: loginURL)!
         let signInformation = SignInModel(email: email, password: password)
         let signInParameter = signInformation.loginParam
@@ -41,24 +41,27 @@ class SignInVM {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .failure(let error):
-                    owner.onError.onNext(error)
+                    switch error {
+                    case .http(_):
+                        owner.signInResponseFail.onNext("로그인 정보가 잘못되었습니다.")
+                    case .unknown:
+                        owner.onError.onNext(.unknown)
+                    case .decode:
+                        owner.onError.onNext(.decode)
+                    }
                     
                 case .success(let response):
-                    guard let flag = response.flag,
+                    guard let flag = response.success,
                           let accessToken = response.accessToken,
                           let userId = response.userId
                     else { return }
                     
-                    if flag == 0 {
-                        owner.signInResponseFail.onNext("로그인 정보가 잘못되었습니다")
+                    if owner.isSignInStateSelected.value {
+                        owner.saveUserDataToKeychain(email, password, accessToken, userId)
                     } else {
-                        if owner.isSignInStateSelected.value {
-                            owner.saveUserDataToKeychain(email, password, accessToken, userId)
-                        } else {
-                            owner.saveUserDataToSingleton(accessToken, userId)
-                        }
-                        owner.signInResponseSuccess.onNext(flag)
+                        owner.saveUserDataToSingleton(accessToken, userId)
                     }
+                    owner.signInResponseSuccess.onNext(flag)
                 }
                 owner.indicatorController.accept(true)
             })
@@ -68,7 +71,6 @@ class SignInVM {
 
 // MARK: - Save Login Informations
 extension SignInVM {
-    
     private func saveUserDataToKeychain(_ email: String, _ password: String, _ token: String, _ userId: Int) {
         UserDefaults.standard.set(email, forKey: "email")
         KeychainWrapper.standard[.myPassword] = password

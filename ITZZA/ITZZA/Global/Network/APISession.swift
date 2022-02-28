@@ -14,7 +14,6 @@ struct urlResource<T: Decodable> {
 }
 
 struct APISession: APIService {
-    
     func postRequest<T: Decodable>(with urlResource: urlResource<T>, param: Parameters) -> Observable<Result<T, APIError>> {
         
         Observable<Result<T, APIError>>.create { observer in
@@ -30,7 +29,13 @@ struct APISession: APIService {
                     switch response.result {
                     case .failure(let error):
                         print("Unknown HTTP Response Error!!!: \(error.localizedDescription)")
-                        observer.onNext(.failure(.unknown))
+                        
+                        switch response.response?.statusCode {
+                        case 400:
+                            observer.onNext(.failure(.http(status: 400)))
+                        default:
+                            observer.onNext(.failure(.unknown))
+                        }
                         
                     case .success(let decodedData):
                         observer.onNext(.success(decodedData))
@@ -58,8 +63,14 @@ struct APISession: APIService {
                 .responseDecodable(of: T.self) { response in
                     switch response.result {
                     case .failure(let error):
-                        print("Unknown HTTP Response Error!!!: \(error.localizedDescription)")
-                        observer.onNext(.failure(.unknown))
+                        print(error.localizedDescription)
+                        
+                        switch response.response?.statusCode {
+                        case 409:
+                            observer.onNext(.failure(.http(status: 409)))
+                        default:
+                            observer.onNext(.failure(.unknown))
+                        }
                         
                     case .success(let decodedData):
                         observer.onNext(.success(decodedData))
