@@ -24,5 +24,16 @@ extension SignUpModel {
 }
 
 struct SignUpResponse: Decodable {
-    let flag: Int?
+    var data: DataResponse?
+    var message: String?
+}
+
+struct DataResponse: Decodable {
+    var email: String?
+    var password: String?
+    var nickname: String?
+    var profileImage: String?
+    var userId: Int?
+    var userStatus: Bool?
+    var loginStatus: Bool?
 }

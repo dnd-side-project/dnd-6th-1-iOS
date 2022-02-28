@@ -40,25 +40,28 @@ class NicknameVM {
     
     func tapCheckDuplicateButton(with nickname: String?) {
         guard let nickname = nickname else { return }
-    
-        let nicknameURL = "https://3044b01e-b59d-4905-a40d-1bef340f11ab.mock.pstmn.io/v1/nickname"
-        let url = URL(string: nicknameURL)!
-        let nicknameModel = NicknameModel(nickname: nickname)
-        let nicknameParameter = nicknameModel.nicknameParam
+        
+        let baseURL = "https://www.itzza.shop/auth/signup/\(nickname)"
+        let encodedURL = baseURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let url = URL(string: encodedURL)!
         let resource = urlResource<NicknameResponse>(url: url)
         
-        apiSession.postRequest(with: resource, param: nicknameParameter)
+        apiSession.getRequest(with: resource)
             .withUnretained(self)
             .subscribe(onNext: { owner, result in
                 switch result {
-                case .failure(_):
-                    owner.serverError.accept(false)
-                case .success(let response):
-                    if response.flag == 1 {
-                        owner.availableNickname.accept(true)
-                    } else {
-                        owner.duplicateNickname.accept(false)
+                case .failure(let error):
+                    switch error {
+                    case .http(_):
+                        owner.duplicateNickname.accept(true)
+                    case .unknown:
+                        owner.serverError.accept(false)
+                    default:
+                        owner.serverError.accept(false)
                     }
+                    
+                case .success(_):
+                    owner.availableNickname.accept(true)
                 }
             })
             .disposed(by: disposeBag)
