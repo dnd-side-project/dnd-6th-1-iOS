@@ -15,6 +15,4 @@ extension Notification.Name {
     static let popupAlertView = Notification.Name("popupAlertView")
     static let whenDeletePostMenuTapped = Notification.Name("whenDeletePostMenuTapped")
     static let whenEditPostMenuTapped = Notification.Name("whenEditPostMenuTapped")
-    static let whenPostSaved = Notification.Name("whenPostSaved")
-    static let whenPostEditSaved = Notification.Name("whenPostEditSaved")
 }

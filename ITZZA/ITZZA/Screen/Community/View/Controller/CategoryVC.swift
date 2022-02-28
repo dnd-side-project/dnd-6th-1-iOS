@@ -22,6 +22,7 @@ class CategoryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNotification()
         setPost()
     }
 }
@@ -68,6 +69,27 @@ extension CategoryVC {
                 self.setPostTV()
             }
         }
+    }
+    
+    func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(showToast), name: .popupAlertView, object: nil)
+    }
+    
+    @objc func showToast(_ notification: Notification) {
+        let toastView = AlertView()
+        if notification.object as! Bool {
+            toastView.setAlertTitle("게시글이 삭제 되었습니다")
+        } else {
+            toastView.setAlertTitle("게시글이 업로드 되었습니다")
+        }
+        self.view.addSubview(toastView)
+        toastView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().offset(-20)
+            $0.leading.equalToSuperview().offset(52)
+            $0.trailing.equalToSuperview().offset(-52)
+            $0.height.equalTo(44)
+        }
+        toastView.showToastView()
     }
 }
 

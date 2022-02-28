@@ -116,7 +116,7 @@ extension PostDetailVC {
     func setNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(popupDeleteAlert), name: .whenDeletePostMenuTapped, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pushEditPostView), name: .whenEditPostMenuTapped, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showToast), name: .whenPostEditSaved, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showToast), name: .popupAlertView, object: nil)
     }
     
     @objc func pushEditPostView() {
@@ -160,9 +160,11 @@ extension PostDetailVC {
         guard let token: String = KeychainWrapper.standard[.myToken] else { return }
         let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
-        AF.request(url, method: .delete, headers: header).responseData { response in
+        AF.request(url, method: .delete, headers: header).responseData { [weak self] response in
+            guard let self = self else { return }
             switch response.result {
             case .success:
+                NotificationCenter.default.post(name: .popupAlertView, object: true)
                 self.navigationController?.popViewController(animated: true)
             case .failure:
                 let alert = UIAlertController(title: "네트워크 오류", message: "", preferredStyle: UIAlertController.Style.alert)
