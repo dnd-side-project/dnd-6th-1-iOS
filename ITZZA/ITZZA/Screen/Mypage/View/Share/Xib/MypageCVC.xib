@@ -16,31 +16,47 @@
                 <rect key="frame" x="0.0" y="0.0" width="111" height="84"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPQ-Jt-Irq">
-                        <rect key="frame" x="40" y="22" width="31" height="14.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wa9-x9-IOo">
-                        <rect key="frame" x="44.5" y="38.5" width="22" height="21"/>
+                        <rect key="frame" x="44.5" y="36" width="22" height="21.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="zFg-1s-WwY">
+                        <rect key="frame" x="33" y="22" width="45" height="12"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uif-10-Ntd">
+                                <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="RwJ-VM-Ni2"/>
+                                    <constraint firstAttribute="width" constant="12" id="gJi-Si-7jY"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPQ-Jt-Irq">
+                                <rect key="frame" x="14" y="0.0" width="31" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="uJI-6o-apy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="pPQ-Jt-Irq" firstAttribute="centerX" secondItem="f0H-Nw-HjH" secondAttribute="centerX" id="W0a-ib-bVM"/>
-                    <constraint firstItem="pPQ-Jt-Irq" firstAttribute="top" secondItem="f0H-Nw-HjH" secondAttribute="top" constant="22" id="eqK-eV-CHF"/>
-                    <constraint firstItem="Wa9-x9-IOo" firstAttribute="centerX" secondItem="pPQ-Jt-Irq" secondAttribute="centerX" id="spo-k3-Kln"/>
-                    <constraint firstItem="Wa9-x9-IOo" firstAttribute="top" secondItem="pPQ-Jt-Irq" secondAttribute="bottom" constant="2" id="xwM-VN-hbW"/>
+                    <constraint firstItem="Wa9-x9-IOo" firstAttribute="centerX" secondItem="f0H-Nw-HjH" secondAttribute="centerX" id="Afs-bf-TcC"/>
+                    <constraint firstItem="Wa9-x9-IOo" firstAttribute="top" secondItem="zFg-1s-WwY" secondAttribute="bottom" constant="2" id="Q3d-P2-qpN"/>
+                    <constraint firstItem="zFg-1s-WwY" firstAttribute="centerX" secondItem="f0H-Nw-HjH" secondAttribute="centerX" id="fwq-rt-Rqw"/>
+                    <constraint firstItem="zFg-1s-WwY" firstAttribute="top" secondItem="f0H-Nw-HjH" secondAttribute="top" constant="22" id="ikM-2H-XsD"/>
                 </constraints>
             </collectionViewCellContentView>
             <connections>
                 <outlet property="numberOfWrite" destination="Wa9-x9-IOo" id="lKq-Bm-C7E"/>
+                <outlet property="typeImage" destination="uif-10-Ntd" id="M6n-Dh-9ip"/>
                 <outlet property="writeType" destination="pPQ-Jt-Irq" id="oA0-yg-ZnV"/>
             </connections>
-            <point key="canvasLocation" x="117" y="119"/>
+            <point key="canvasLocation" x="116.66666666666667" y="118.52678571428571"/>
         </collectionViewCell>
     </objects>
 </document>

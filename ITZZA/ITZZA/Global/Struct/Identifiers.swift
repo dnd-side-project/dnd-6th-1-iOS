@@ -68,6 +68,7 @@ struct Identifiers {
     static let tabView = "TabView"
     static let keywordContentView = "KeywordContentView"
     static let alertView = "AlertView"
+    static let profileInfoView = "ProfileInfoView"
     
     //MARK: - TVC
     static let postTVC = "PostTVC"
