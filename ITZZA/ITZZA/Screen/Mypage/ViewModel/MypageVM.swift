@@ -16,6 +16,7 @@ class MypageVM {
     let apiSession = APISession()
     let apiError = PublishSubject<APIError>()
     let getMypageSuccess = PublishSubject<MypageModel>()
+    var myInfo = MypageModel()
         
 }
 
@@ -36,6 +37,7 @@ extension MypageVM {
                     owner.apiError.onNext(error)
                     
                 case .success(let response):
+                    owner.myInfo = response
                     owner.getMypageSuccess.onNext(response)
                 }
             })

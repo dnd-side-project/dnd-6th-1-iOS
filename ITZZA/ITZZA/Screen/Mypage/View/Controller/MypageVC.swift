@@ -8,13 +8,10 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SnapKit
 
 class MypageVC: UIViewController {
     
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var userEmail: UILabel!
-    @IBOutlet weak var userNickname: UILabel!
-    @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var myWritesCV: UICollectionView!
     @IBOutlet weak var checkReportButton: UIButton!
     @IBOutlet weak var viewSeparator: UIView!
@@ -24,12 +21,13 @@ class MypageVC: UIViewController {
     
     var disposeBag = DisposeBag()
     let mypageVM = MypageVM()
-    var myInformation: MypageModel?
+    var profileInfoView = ProfileInfoView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         callMypageApi()
         configureNaviBar()
+        configureProfileInfoView()
         setInitialUIValue()
         configureCV()
         configureButton()
@@ -51,10 +49,6 @@ extension MypageVC {
     }
     
     private func setInitialUIValue() {
-        userEmail.font = UIFont.SpoqaHanSansNeoRegular(size: 12)
-        userEmail.textColor = .darkGray6
-        userNickname.font = UIFont.SpoqaHanSansNeoMedium(size: 17)
-        userNickname.textColor = .darkGray6
         viewSeparator.backgroundColor = .lightGray1
         myWritesCV.layer.cornerRadius = 5
         myWritesCV.backgroundColor = .lightGray1
@@ -63,10 +57,20 @@ extension MypageVC {
         checkReportButton.backgroundColor = .primary
     }
     
-    private func mappingData() {
-        profileImage.image = myInformation?.profileImageData
-        userEmail.text = myInformation?.user?.email
-        userNickname.text = myInformation?.user?.nickname
+    private func configureProfileInfoView() {
+        view.addSubview(profileInfoView)
+        profileInfoView.settingButton.isHidden = false
+        
+        profileInfoView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(24)
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().offset(-20)
+            $0.height.equalTo(72)
+        }
+        
+        myWritesCV.snp.makeConstraints {
+            $0.top.equalTo(profileInfoView.snp.bottom).offset(16)
+        }
     }
     
     private func configureButton() {
@@ -106,7 +110,7 @@ extension MypageVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MypageCell", for: indexPath) as! MypageCVC
         
-        cell.configure(indexPath.item, myInformation ?? MypageModel())
+        cell.configure(indexPath.item, mypageVM.myInfo)
         return cell
     }
 }
@@ -132,6 +136,7 @@ extension MypageVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         .zero
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         .zero
     }
@@ -147,6 +152,11 @@ extension MypageVC {
                 self.showReportView()
             })
             .disposed(by: disposeBag)
+        
+        profileInfoView.settingButton.rx.tap
+            .asDriver()
+            .drive()
+            .disposed(by: disposeBag)
     }
     
     private func bindVM() {
@@ -154,8 +164,9 @@ extension MypageVC {
             .asDriver(onErrorJustReturn: MypageModel())
             .drive(onNext: { [weak self] response in
                 guard let self = self else { return }
-                self.myInformation = response
-                self.mappingData()
+                self.profileInfoView.profileImage.image = response.profileImageData
+                self.profileInfoView.userEmail.text = response.user?.email
+                self.profileInfoView.userNickname.text = response.user?.nickname
                 self.myWritesCV.reloadData()
             })
             .disposed(by: disposeBag)
