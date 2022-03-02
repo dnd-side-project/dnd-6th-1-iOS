@@ -81,7 +81,7 @@
                         <constraint firstAttribute="width" constant="20" id="Fgr-OV-lXi"/>
                         <constraint firstAttribute="height" constant="20" id="HZr-dw-q8G"/>
                     </constraints>
-                    <color key="color" systemColor="systemOrangeColor"/>
+                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="kyD-61-JFN"/>
@@ -107,7 +107,7 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="138.40579710144928" y="138.61607142857142"/>
+            <point key="canvasLocation" x="138.40000000000001" y="138.17733990147784"/>
         </view>
     </objects>
     <resources>

@@ -22,7 +22,7 @@ class PasswordView: UIView {
     @IBOutlet weak var lowerLineView: UIView!
     
     var disposeBag = DisposeBag()
-    let validation = Validation()
+    var validation = Validation()
     let passwordVM = PasswordVM()
     let isValidPassword = BehaviorRelay(value: false)
     
