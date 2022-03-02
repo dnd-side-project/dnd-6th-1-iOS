@@ -32,4 +32,18 @@ class AgreementVM {
         }
     }
     
+    func getTextFile() -> String {
+        var result = ""
+        let path = Bundle.main.path(forResource: "Agreement.txt", ofType: nil)
+        guard path != nil else { return "" }
+        
+        do {
+            result = try String(contentsOfFile: path!, encoding: .utf8)
+        }
+        catch {
+            result = ""
+        }
+        return result
+    }
+    
 }

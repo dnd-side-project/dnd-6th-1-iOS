@@ -30,7 +30,7 @@ class MypageCVC: UICollectionViewCell {
         switch index {
         case 0:
             typeImage.image = UIImage(named: "Notebook")
-            writeType.text = "내가 쓴 글"
+            writeType.text = "작성글"
             numberOfWrite.text = String(info.writeCnt ?? 0)
         case 1:
             typeImage.image = UIImage(named: "Bookmark_selected")

@@ -48,7 +48,8 @@ class EmotionView: UIView {
     private func emotionViewConfigure() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(EmotionCVC.nib(), forCellWithReuseIdentifier: "EmotionCell")
+        collectionView.register(UINib(nibName: Identifiers.emotionCVC, bundle: nil),
+                                forCellWithReuseIdentifier: "EmotionCell")
     }
 }
 

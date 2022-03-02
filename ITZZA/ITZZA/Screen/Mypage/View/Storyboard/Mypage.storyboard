@@ -32,28 +32,28 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0j-Af-YJu">
-                                <rect key="frame" x="20" y="448" width="89" height="20"/>
+                                <rect key="frame" x="20" y="448" width="69" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="9gx-Rf-jhm"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="잊자 이야기" image="ITZZA_Story">
+                                <state key="normal" title="잊자 이야기">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kl-vM-YF7">
-                                <rect key="frame" x="20" y="504" width="76" height="20"/>
+                                <rect key="frame" x="20" y="504" width="56" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="계정 삭제" image="Delete_Account">
+                                <state key="normal" title="계정 삭제">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EF1-hg-mZW">
-                                <rect key="frame" x="20" y="560" width="72" height="20"/>
+                                <rect key="frame" x="20" y="560" width="52" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="로그아웃" image="Logout">
+                                <state key="normal" title="로그아웃">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
@@ -125,9 +125,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Delete_Account" width="20" height="20"/>
-        <image name="ITZZA_Story" width="20" height="20"/>
-        <image name="Logout" width="20" height="20"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

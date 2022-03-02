@@ -14,6 +14,8 @@ import RxCocoa
 
 class HomeVC: UIViewController {
     
+    @IBOutlet weak var homeTitleLabel: UILabel!
+    @IBOutlet weak var askingLabel: UILabel!
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var calendarNextPageButton: UIButton!
     @IBOutlet weak var calendarPreviousPageButton: UIButton!
@@ -115,6 +117,12 @@ extension HomeVC {
         writeTodayDiaryButton.layer.cornerRadius = 5
         calendarView.layer.cornerRadius = 4
         calendarView.backgroundColor = .calendarBackgroundColor
+        homeTitleLabel.textColor = .darkGray6
+        homeTitleLabel.font = .SpoqaHanSansNeoMedium(size: 22)
+        askingLabel.textColor = .lightGray6
+        askingLabel.font = .SpoqaHanSansNeoRegular(size: 13)
+        writeTodayDiaryButton.titleLabel?.font = .SpoqaHanSansNeoMedium(size: 12)
+        writeTodayDiaryButton.backgroundColor = .primary
     }
     
     private func setLottieAnimation() {

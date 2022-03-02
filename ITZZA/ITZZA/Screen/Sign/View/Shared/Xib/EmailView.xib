@@ -10,8 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmailView" customModule="ITZZA" customModuleProvider="target">
             <connections>
+                <outlet property="descriptionLabel" destination="qRU-gz-Y5J" id="ZZi-xI-DCr"/>
                 <outlet property="emailTextField" destination="ifV-sf-vK1" id="bfM-9H-NJl"/>
                 <outlet property="emailValidLabel" destination="WGJ-L7-ajB" id="NAH-OJ-H5K"/>
+                <outlet property="lineView" destination="XD7-DX-Bio" id="PxP-fk-5qq"/>
+                <outlet property="stepLabel" destination="Vlf-RO-ozl" id="TL5-xw-4fP"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

@@ -17,12 +17,12 @@ extension UIColor {
     }
     
     @nonobjc class var textFieldBackgroundColor: UIColor {
-        return UIColor(red: 245.0 / 255.0, green: 245.0 / 255.0, blue: 248.0 / 255.0, alpha: 1.0)
+        return UIColor(red: 247.0 / 255.0, green: 247.0 / 255.0, blue: 247.0 / 255.0, alpha: 1.0)
     }
     
-    @nonobjc class var signInButtonBackgroundColor: UIColor {
-        return UIColor(red: 142.0 / 255.0, green: 142.0 / 255.0, blue: 147.0 / 255.0, alpha: 1.0)
-    }
+//    @nonobjc class var signInButtonBackgroundColor: UIColor {
+//        return UIColor(red: 142.0 / 255.0, green: 142.0 / 255.0, blue: 147.0 / 255.0, alpha: 1.0)
+//    }
     
     @nonobjc class var calendarBackgroundColor: UIColor {
         return UIColor(red: 251.0 / 255.0, green: 248.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)

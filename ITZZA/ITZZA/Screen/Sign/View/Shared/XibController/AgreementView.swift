@@ -15,6 +15,8 @@ class AgreementView: UIView {
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var checkLabel: UILabel!
     @IBOutlet weak var contextTextView: UITextView!
+    @IBOutlet weak var stepLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     let agreementVM = AgreementVM()
     var disposeBag = DisposeBag()
@@ -39,52 +41,47 @@ class AgreementView: UIView {
     private func setContentView() {
         insertXibView(with: Identifiers.agreementView)
     }
-    
-    private func readTextFile() -> String {
-        var result = ""
-        let path = Bundle.main.path(forResource: "Agreement.txt", ofType: nil)
-        guard path != nil else { return "" }
-        
-        do {
-            result = try String(contentsOfFile: path!, encoding: .utf8)
-        }
-        catch {
-            result = ""
-        }
-        return result
-    }
 }
 
 // MARK: - Change UI
 extension AgreementView {
     private func setInitialValue() {
         checkBoxView.layer.cornerRadius = 5
-        checkBoxView.layer.borderColor = UIColor.orange.cgColor
         checkBoxView.layer.borderWidth = 1
         contextTextView.layer.cornerRadius = 5
-        contextTextView.textContainerInset = UIEdgeInsets(top: 12, left: 16, bottom: 16, right: 12)
+        contextTextView.textContainerInset = UIEdgeInsets(top: 16, left: 20, bottom: 20, right: 16)
         contextTextView.font = UIFont.SpoqaHanSansNeoRegular(size: 13)
-        contextTextView.text = readTextFile()
-        checkLabel.textColor = .orange
+        contextTextView.text = agreementVM.getTextFile()
         setAsOutlineStatus()
+        checkLabel.textColor = .darkGray3
+        checkLabel.font = .SpoqaHanSansNeoMedium(size: 15)
+        stepLabel.textColor = .primary
+        stepLabel.font = .SpoqaHanSansNeoBold(size: 15)
+        descriptionLabel.textColor = .darkGray6
+        descriptionLabel.font = .SpoqaHanSansNeoBold(size: 20)
     }
     
     func setAsOutlineStatusFromPrevious() {
+        checkBoxView.layer.borderColor = UIColor.primary.cgColor
         checkBoxButton.setImage(UIImage(named: "CheckBoxOutline"), for: .normal)
         checkBoxView.backgroundColor = .white
         checkLabel.textColor = .orange
     }
     
     private func setAsOutlineStatus() {
+        checkBoxView.layer.borderColor = UIColor.lightGray5.cgColor
         checkBoxButton.setImage(UIImage(named: "CheckBoxOutline"), for: .normal)
         checkBoxView.backgroundColor = .white
-        checkLabel.textColor = .orange
+        checkLabel.textColor = .darkGray3
         isValidAgreement.accept(false)
     }
     
     private func setAsFillStatus() {
-        checkBoxButton.setImage(UIImage(named: "CheckBoxFill"), for: .normal)
-        checkBoxView.backgroundColor = .orange
+        checkBoxView.layer.borderColor = UIColor.darkGray3.cgColor
+        let image = UIImage(named: "CheckBoxFill")?.withRenderingMode(.alwaysTemplate)
+        checkBoxButton.setImage(image, for: .normal)
+        checkBoxButton.tintColor = .white
+        checkBoxView.backgroundColor = .darkGray3
         checkLabel.textColor = .white
         isValidAgreement.accept(true)
     }

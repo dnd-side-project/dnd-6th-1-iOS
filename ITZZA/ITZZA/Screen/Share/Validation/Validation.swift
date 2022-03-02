@@ -16,7 +16,7 @@ class Validation {
     let isEmailVaild = BehaviorRelay(value: false)
     let isPasswordValid = BehaviorRelay(value: false)
     let eyeOnOff = BehaviorRelay(value: false)
-    let isEyeOn = BehaviorRelay(value: false)
+    let isEyeOn = PublishRelay<Bool>()
     
     init () {
         emailText.distinctUntilChanged()

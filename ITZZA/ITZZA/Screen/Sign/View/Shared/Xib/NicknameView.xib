@@ -11,8 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NicknameView" customModule="ITZZA" customModuleProvider="target">
             <connections>
                 <outlet property="checkDuplicateButton" destination="prN-rb-x8T" id="Lht-uw-UWG"/>
+                <outlet property="descriptionLabel" destination="r6t-oE-ASs" id="PQk-bw-wr0"/>
                 <outlet property="indicatorView" destination="1PC-bP-w83" id="4NY-fO-NCd"/>
                 <outlet property="nicknameTextField" destination="WLP-SX-YWR" id="qi2-fL-4MW"/>
+                <outlet property="stepLabel" destination="8Ml-Qh-Dbs" id="MSa-yK-JIw"/>
                 <outlet property="underlineView" destination="sYG-yj-ly8" id="IL9-Uh-Sfe"/>
                 <outlet property="validNicknameLabel" destination="vv4-Hw-NfD" id="h6L-TR-Zqa"/>
             </connections>

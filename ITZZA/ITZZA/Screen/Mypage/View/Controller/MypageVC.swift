@@ -54,7 +54,14 @@ extension MypageVC {
         myWritesCV.backgroundColor = .lightGray1
         checkReportButton.layer.cornerRadius = 5
         checkReportButton.setTitleColor(.white, for: .normal)
+        checkReportButton.titleLabel?.font = .SpoqaHanSansNeoMedium(size: 15)
         checkReportButton.backgroundColor = .primary
+        storyButton.titleLabel?.font = .SpoqaHanSansNeoRegular(size: 15)
+        storyButton.setTitleColor(.darkGray6, for: .normal)
+        deleteAccountButton.titleLabel?.font = .SpoqaHanSansNeoRegular(size: 15)
+        deleteAccountButton.setTitleColor(.darkGray6, for: .normal)
+        signOutButton.titleLabel?.font = .SpoqaHanSansNeoRegular(size: 15)
+        signOutButton.setTitleColor(.darkGray6, for: .normal)
     }
     
     private func configureProfileInfoView() {
@@ -89,7 +96,8 @@ extension MypageVC {
     private func configureCV() {
         myWritesCV.delegate = self
         myWritesCV.dataSource = self
-        myWritesCV.register(MypageCVC.nib(), forCellWithReuseIdentifier: "MypageCell")
+        myWritesCV.register(UINib(nibName: Identifiers.mypageCVC, bundle: nil),
+                            forCellWithReuseIdentifier: "MypageCell")
     }
     
     private func callMypageApi() {
@@ -167,6 +175,7 @@ extension MypageVC {
                 self.profileInfoView.profileImage.image = response.profileImageData
                 self.profileInfoView.userEmail.text = response.user?.email
                 self.profileInfoView.userNickname.text = response.user?.nickname
+                self.profileInfoView.recentConnect.text = "최근작성 \(response.user?.recentPost ?? "")"
                 self.myWritesCV.reloadData()
             })
             .disposed(by: disposeBag)

@@ -35,7 +35,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="Z7G-Hv-4MX"/>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="xkH-nH-alf">
-                                <rect key="frame" x="16" y="597" width="343" height="154"/>
+                                <rect key="frame" x="16" y="607" width="343" height="144"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCf-YE-iJB">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -59,30 +59,28 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cZf-B7-sno">
-                                        <rect key="frame" x="95" y="128" width="153" height="26"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="QJ1-6E-G0w">
+                                        <rect key="frame" x="94" y="128" width="155" height="16"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미 회원이신가요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHa-4y-bSI">
-                                                <rect key="frame" x="0.0" y="0.0" width="77.666666666666671" height="26"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                <color key="textColor" red="0.38823529411764707" green="0.38823529411764707" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDm-bw-RXw">
-                                                <rect key="frame" x="85.666666666666657" y="0.0" width="67.333333333333343" height="26"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="로그인하기">
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.38823529411764707" green="0.38823529411764707" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <font key="NSFont" size="10" name="AppleSDGothicNeo-SemiBold"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                <integer key="NSUnderline" value="1"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                </buttonConfiguration>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQw-iZ-Zs3">
+                                                <rect key="frame" x="0.0" y="0.0" width="97" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="16" id="Jnq-P5-bhO"/>
+                                                    <constraint firstAttribute="width" constant="97" id="cfm-4P-OgR"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="이미 회원이신가요?"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gli-6j-eb2">
+                                                <rect key="frame" x="99" y="0.0" width="56" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="56" id="8lD-7u-Wbb"/>
+                                                    <constraint firstAttribute="height" constant="16" id="TVe-5V-Msp"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="로그인하기"/>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -111,12 +109,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="askingSignInButton" destination="dQw-iZ-Zs3" id="0dq-Ve-oMN"/>
                         <outlet property="buttonStackView" destination="xkH-nH-alf" id="WJ4-vl-fng"/>
                         <outlet property="nextButton" destination="aRA-zH-cYa" id="Qoo-JW-BVF"/>
                         <outlet property="previousButton" destination="oCf-YE-iJB" id="nNB-V5-8be"/>
                         <outlet property="progressBar" destination="oWn-wD-yat" id="MZb-CH-Xn0"/>
                         <outlet property="scrollView" destination="kM7-qL-NRu" id="8xs-ij-eAy"/>
-                        <outlet property="signInButton" destination="dDm-bw-RXw" id="tLU-r1-EwI"/>
+                        <outlet property="signInButton" destination="gli-6j-eb2" id="IOB-Hl-e3b"/>
                         <outlet property="titleLabel" destination="1WB-u7-H4a" id="bt6-n5-7pZ"/>
                     </connections>
                 </viewController>

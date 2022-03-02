@@ -11,8 +11,11 @@ import RxCocoa
 
 class EmailView: UIView {
     
+    @IBOutlet weak var stepLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var emailValidLabel: UILabel!
+    @IBOutlet weak var lineView: UIView!
     
     var disposeBag = DisposeBag()
     let isValidEmail = BehaviorRelay(value: false)
@@ -45,6 +48,14 @@ extension EmailView {
         emailTextField.rx.text.orEmpty
             .bind(to: validation.emailText)
             .disposed(by: disposeBag)
+        
+        emailTextField.rx.controlEvent(.editingChanged)
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.emailValidLabel.isHidden = false
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindVM() {
@@ -53,7 +64,12 @@ extension EmailView {
                 guard let self = self else { return }
                 self.isValidEmail.accept(flag)
             })
-            .drive(emailValidLabel.rx.isHidden)
+            .drive(onNext: { [weak self] flag in
+                guard let self = self else { return }
+                // self.emailValidLabel.isHidden = flag
+                self.changeEmailLabel(flag)
+                self.changeLineViewColor(flag)
+            })
             .disposed(by: disposeBag)
     }
 }
@@ -66,7 +82,31 @@ extension EmailView {
         emailTextField.keyboardType = .emailAddress
         emailTextField.enablesReturnKeyAutomatically = true
         emailTextField.clearButtonMode = .whileEditing
-        emailTextField.placeholder = "이메일 입력"
+        emailTextField.placeholder = "내용넣기"
         emailValidLabel.isHidden = true
+        emailValidLabel.textColor = .lightGray5
+        emailValidLabel.font = .SpoqaHanSansNeoRegular(size: 12)
+        stepLabel.textColor = .primary
+        stepLabel.font = .SpoqaHanSansNeoBold(size: 15)
+        descriptionLabel.textColor = .darkGray6
+        descriptionLabel.font = .SpoqaHanSansNeoBold(size: 20)
+    }
+    
+    private func changeLineViewColor(_ flag: Bool) {
+        if flag {
+            lineView.backgroundColor = .primary
+        } else {
+            lineView.backgroundColor = .lightGray5
+        }
+    }
+    
+    private func changeEmailLabel(_ flag: Bool) {
+        if flag {
+            emailValidLabel.textColor = .primary
+            emailValidLabel.text = "유효한 이메일입니다."
+        } else {
+            emailValidLabel.textColor = .lightGray5
+            emailValidLabel.text = "유효하지 않은 이메일입니다."
+        }
     }
 }
