@@ -97,7 +97,7 @@ extension PostDetailVC {
         NotificationCenter.default.addObserver(self, selector: #selector(editPost), name: .whenEditPostMenuTapped, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(editComment), name: .whenEditCommentMenuTapped, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteComment), name: .whenDeleteCommentMenuTapped, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showToast), name: .popupAlertView, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(postEditCompleted), name: .popupAlertView, object: nil)
     }
     
     @objc func editPost() {
@@ -121,17 +121,8 @@ extension PostDetailVC {
         popupDeleteAlert(alertType: AlertType.shouldCommentDelete)
     }
     
-    @objc func showToast() {
-        let toastView = AlertView()
-        toastView.setAlertTitle(alertType: AlertType.postEdit)
-        self.view.addSubview(toastView)
-        toastView.snp.makeConstraints {
-            $0.bottom.equalTo(chatInputView.snp.top).offset(-20)
-            $0.leading.equalToSuperview().offset(52)
-            $0.trailing.equalToSuperview().offset(-52)
-            $0.height.equalTo(44)
-        }
-        toastView.showToastView()
+    @objc func postEditCompleted() {
+        showToast(alertType: AlertType.postEdit)
     }
     
     // MARK: - Network
@@ -211,6 +202,19 @@ extension PostDetailVC {
         
         alert.addAction(ok)
         present(alert, animated: false, completion: nil)
+    }
+    
+    func showToast(alertType: AlertType) {
+        let toastView = AlertView()
+        toastView.setAlertTitle(alertType: alertType)
+        self.view.addSubview(toastView)
+        toastView.snp.makeConstraints {
+            $0.bottom.equalTo(chatInputView.snp.top).offset(-20)
+            $0.leading.equalToSuperview().offset(52)
+            $0.trailing.equalToSuperview().offset(-52)
+            $0.height.equalTo(44)
+        }
+        toastView.showToastView()
     }
 }
 

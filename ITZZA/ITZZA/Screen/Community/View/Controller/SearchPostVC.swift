@@ -46,6 +46,7 @@ class SearchPostVC: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
 }
+
 // MARK: - Configure
 extension SearchPostVC {
     func configureNavigationBar() {
@@ -110,6 +111,7 @@ extension SearchPostVC {
         
         didTapRemoveAllButton()
     }
+    
     // MARK: - Network
     func setKeyword() {
         guard let userId: String = KeychainWrapper.standard[.userId] else { return }
@@ -212,6 +214,7 @@ extension SearchPostVC {
             .disposed(by: bag)
     }
     
+    // MARK: - Notification
     func setNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(pushUserPostListView), name:.whenUserPostListTapped, object: nil)
     }

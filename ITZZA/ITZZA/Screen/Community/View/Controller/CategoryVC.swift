@@ -27,18 +27,8 @@ class CategoryVC: UIViewController {
     }
 }
 
-//MARK: - Custom Methods
 extension CategoryVC {
-    func setPostTV() {
-        postListTV.dataSource = self
-        postListTV.delegate = self
-        postListTV.backgroundColor = .lightGray1
-        postListTV.separatorStyle = .none
-        postListTV.showsVerticalScrollIndicator = false
-        
-        bindRefreshController()
-    }
-    
+    // MARK: - Configure
     func bindRefreshController() {
         refreshControl.addTarget(self, action: #selector(updateTV(refreshControl:)), for: .valueChanged)
         
@@ -54,24 +44,17 @@ extension CategoryVC {
         }
     }
     
-    func setPost() {
-        guard let type = communityType else { return }
+    func setPostTV() {
+        postListTV.dataSource = self
+        postListTV.delegate = self
+        postListTV.backgroundColor = .lightGray1
+        postListTV.separatorStyle = .none
+        postListTV.showsVerticalScrollIndicator = false
         
-        PostManager().getPost(type.apiQuery) { [weak self] posts in
-            guard let self = self else { return }
-            if let posts = posts {
-                self.postListVM = PostListVM(posts: posts)
-                self.isNoneData = false
-                DispatchQueue.main.async {
-                    self.setPostTV()
-                }
-            } else {
-                self.isNoneData = true
-                self.setPostTV()
-            }
-        }
+        bindRefreshController()
     }
     
+    // MARK: - Notification
     func setNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(showToast), name: .popupAlertView, object: nil)
     }
@@ -92,8 +75,28 @@ extension CategoryVC {
         }
         toastView.showToastView()
     }
+    
+    // MARK: - Network
+    func setPost() {
+        guard let type = communityType else { return }
+        
+        PostManager().getPost(type.apiQuery) { [weak self] posts in
+            guard let self = self else { return }
+            if let posts = posts {
+                self.postListVM = PostListVM(posts: posts)
+                self.isNoneData = false
+                DispatchQueue.main.async {
+                    self.setPostTV()
+                }
+            } else {
+                self.isNoneData = true
+                self.setPostTV()
+            }
+        }
+    }
 }
 
+// MARK: - UITableViewDelegate
 extension CategoryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if postListVM?.posts.count == 0
@@ -114,6 +117,7 @@ extension CategoryVC: UITableViewDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension CategoryVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if postListVM?.posts.count == 0

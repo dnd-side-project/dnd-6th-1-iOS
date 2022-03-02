@@ -10,7 +10,7 @@ import SwiftKeychainWrapper
 import Alamofire
 
 struct PostManager {
-    let baseURL = "http://13.125.239.189:3000/boards"
+    let baseURL = "https://www.itzza.shop/boards"
     
     func getPost(_ apiQuery: String, _ completion: @escaping ([PostModel]?) -> ()) {
         guard let url = URL(string: baseURL + apiQuery) else { return }

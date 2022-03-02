@@ -22,8 +22,36 @@ class UserPostListVC: UIViewController {
         super.viewDidLoad()
         
         setNaviBarView()
+        setPost()
+    }
+}
+
+extension UserPostListVC {
+    // MARK: - Configure
+    func setNaviBarView() {
+        navigationItem.title = (userName ?? "") + "님의 글"
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .darkGray6)
+    }
+    
+    func configureTV() {
+        postTV.register(UINib(nibName: Identifiers.keywordContentTVC, bundle: nil), forCellReuseIdentifier: Identifiers.keywordContentTVC)
+        postTV.register(UINib(nibName: Identifiers.noneSearchedContentTVC, bundle: nil), forCellReuseIdentifier: Identifiers.noneSearchedContentTVC)
+        postTV.dataSource = self
+        postTV.delegate = self
+        postTV.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
-        let urlString = "http://13.125.239.189:3000/users/\(userId!)/boards"
+        if isNoneData! {
+            postTV.isUserInteractionEnabled = false
+            postTV.separatorStyle = .none
+        }
+    }
+    
+    // MARK: - Network
+    func setPost() {
+        let urlString = "https://www.itzza.shop/users/\(userId!)/boards"
         let encodedStr = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let url = URL(string: encodedStr)!
         apiSession.getRequest(with: urlResource<[PostModel]>(url: url))
@@ -45,29 +73,7 @@ class UserPostListVC: UIViewController {
     }
 }
 
-extension UserPostListVC {
-    func setNaviBarView() {
-        navigationItem.title = (userName ?? "") + "님의 글"
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-        navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .darkGray6)
-    }
-    
-    func configureTV() {
-        postTV.register(UINib(nibName: Identifiers.keywordContentTVC, bundle: nil), forCellReuseIdentifier: Identifiers.keywordContentTVC)
-        postTV.register(UINib(nibName: Identifiers.noneSearchedContentTVC, bundle: nil), forCellReuseIdentifier: Identifiers.noneSearchedContentTVC)
-        postTV.dataSource = self
-        postTV.delegate = self
-        postTV.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
-        if isNoneData! {
-            postTV.isUserInteractionEnabled = false
-            postTV.separatorStyle = .none
-        }
-    }
-}
-
+// MARK: - UITableViewDataSource
 extension UserPostListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         (post.count == 0) ? 1 : post.count
@@ -85,6 +91,7 @@ extension UserPostListVC: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension UserPostListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if post.count == 0
