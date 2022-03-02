@@ -26,10 +26,10 @@ class CommentTVC: UITableViewCell {
         setCommentContent()
         configureText()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
     func setCommentContent() {
@@ -60,23 +60,26 @@ class CommentTVC: UITableViewCell {
         createCommentButton.tintColor = .lightGray6
     }
     
-    func didTapMenuButton(_ vc: UIViewController) {
-        menuButton.rx.tap
-            .asDriver()
-            .drive(onNext: {
-                let menuBottomSheet = MenuBottomSheet()
-                vc.present(menuBottomSheet, animated: true)
-            })
-            .disposed(by: bag)
+    func didTapMenuButton(_ vc: UIViewController, _ canEdit: Bool) {
+        if canEdit {
+            menuButton.rx.tap
+                .asDriver()
+                .drive(onNext: {
+                    let menuBottomSheet = MenuBottomSheet()
+                    menuBottomSheet.bindButtonAction(.whenEditCommentMenuTapped, .whenDeleteCommentMenuTapped)
+                    vc.present(menuBottomSheet, animated: true)
+                })
+                .disposed(by: bag)
+        }
     }
     
     func configureCell(_ comments: CommentModel) {
         profileImg.kf.setImage(with: URL(string: comments.profileImage!),
-                                          placeholder: UIImage(named: "Null_Comment"),
-                                          options: [
-                                            .scaleFactor(UIScreen.main.scale),
-                                            .cacheOriginalImage
-                                          ])
+                               placeholder: UIImage(named: "Null_Comment"),
+                               options: [
+                                .scaleFactor(UIScreen.main.scale),
+                                .cacheOriginalImage
+                               ])
         userName.text = comments.nickname
         writer.isHidden = !(comments.writerOrNot ?? false)
         commentContent.text = comments.commentContent

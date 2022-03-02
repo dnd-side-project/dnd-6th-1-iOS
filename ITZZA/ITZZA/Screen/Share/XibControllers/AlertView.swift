@@ -50,7 +50,7 @@ class AlertView: UIView {
         }
     }
     
-    func setAlertTitle(_ title: String) {
-        alertTitle.text = title
+    func setAlertTitle(alertType: AlertType) {
+        alertTitle.text = alertType.message
     }
 }

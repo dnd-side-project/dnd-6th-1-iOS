@@ -15,7 +15,6 @@ import Then
 class MenuBottomSheet: DynamicBottomSheetViewController {
     
     let bag = DisposeBag()
-    let menu = ["수정", "삭제"]
     
     // MARK: - Private Properties
     
@@ -25,6 +24,22 @@ class MenuBottomSheet: DynamicBottomSheetViewController {
             $0.spacing = 0
             $0.alignment = .fill
             $0.distribution = .fillEqually
+        }
+    
+    private let editButton = UIButton()
+        .then {
+            $0.setTitle("수정", for: .normal)
+            $0.titleLabel?.font = UIFont.SpoqaHanSansNeoRegular(size: 17)
+            $0.setTitleColor(.darkGray6, for: .normal)
+            $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        }
+    
+    private let deleteButton = UIButton()
+        .then {
+            $0.setTitle("삭제", for: .normal)
+            $0.titleLabel?.font = UIFont.SpoqaHanSansNeoRegular(size: 17)
+            $0.setTitleColor(.darkGray6, for: .normal)
+            $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
         }
 }
 
@@ -48,33 +63,35 @@ extension MenuBottomSheet {
     }
     
     private func setButtons() {
-        menu.forEach { title in
-            let button = UIButton(type: .system)
-                .then {
-                    $0.setTitle(title.description, for: .normal)
-                    $0.titleLabel?.font = UIFont.SpoqaHanSansNeoRegular(size: 17)
-                    $0.tintColor = .darkGray6
-                    $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
-                }
-            
-            stackView.addArrangedSubview(button)
-            button.snp.makeConstraints {
-                $0.height.equalTo(62)
-            }
-            
-            button.rx.tap
-                .asDriver()
-                .drive(onNext: { [weak self] _ in
-                    guard let self = self else { return }
-                    self.dismiss(animated: true, completion: nil)
-                    
-                    if title == self.menu.first {
-                        NotificationCenter.default.post(name: .whenEditPostMenuTapped, object: nil)
-                    } else {
-                        NotificationCenter.default.post(name: .whenDeletePostMenuTapped, object: nil)
-                    }
-                })
-                .disposed(by: bag)
+        stackView.addArrangedSubview(editButton)
+        editButton.snp.makeConstraints {
+            $0.height.equalTo(62)
         }
+        stackView.addArrangedSubview(deleteButton)
+        deleteButton.snp.makeConstraints {
+            $0.height.equalTo(62)
+        }
+    }
+    
+    func bindButtonAction(_ editNotificationName: Notification.Name, _ deleteNotificationName: Notification.Name) {
+        editButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.dismiss(animated: true) {
+                    NotificationCenter.default.post(name: editNotificationName, object: nil)
+                }
+            })
+            .disposed(by: bag)
+        
+        deleteButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.dismiss(animated: true) {
+                    NotificationCenter.default.post(name: deleteNotificationName, object: nil)
+                }
+            })
+            .disposed(by: bag)
     }
 }

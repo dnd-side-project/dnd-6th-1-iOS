@@ -35,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="댓글 내용" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ttt-1p-vgq">
-                        <rect key="frame" x="70" y="36" width="220" height="49"/>
+                        <rect key="frame" x="70" y="36" width="188" height="49"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="textColor" systemColor="labelColor"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="13"/>
@@ -90,7 +90,6 @@
                     <constraint firstItem="GmH-sc-fyT" firstAttribute="centerY" secondItem="fq9-W1-Px2" secondAttribute="centerY" id="UOf-xY-TAV"/>
                     <constraint firstItem="GmH-sc-fyT" firstAttribute="leading" secondItem="fq9-W1-Px2" secondAttribute="trailing" constant="10" id="YS2-Gc-QZc"/>
                     <constraint firstItem="ttt-1p-vgq" firstAttribute="top" secondItem="ocL-wr-3s4" secondAttribute="bottom" constant="5" id="YsM-R8-prl"/>
-                    <constraint firstAttribute="trailing" secondItem="ttt-1p-vgq" secondAttribute="trailing" constant="30" id="avQ-M2-zEZ"/>
                     <constraint firstItem="lfD-ur-noy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="d2g-qi-g1a"/>
                     <constraint firstItem="NUy-n0-BB6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="fSJ-Yv-cdf"/>
                     <constraint firstItem="ehA-c4-pKg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="g2J-jH-BUn"/>
@@ -99,6 +98,7 @@
                     <constraint firstItem="lfD-ur-noy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="lLC-QG-GAw"/>
                     <constraint firstAttribute="bottom" secondItem="GmH-sc-fyT" secondAttribute="bottom" constant="15" id="szC-0X-h6h"/>
                     <constraint firstItem="ttt-1p-vgq" firstAttribute="top" secondItem="NUy-n0-BB6" secondAttribute="bottom" constant="5" id="ud8-hN-wFy"/>
+                    <constraint firstItem="ehA-c4-pKg" firstAttribute="leading" secondItem="ttt-1p-vgq" secondAttribute="trailing" constant="8" symbolic="YES" id="y4j-HT-kOR"/>
                     <constraint firstItem="ttt-1p-vgq" firstAttribute="leading" secondItem="lfD-ur-noy" secondAttribute="trailing" constant="10" id="zog-yk-RM4"/>
                 </constraints>
             </tableViewCellContentView>

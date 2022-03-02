@@ -79,9 +79,9 @@ extension CategoryVC {
     @objc func showToast(_ notification: Notification) {
         let toastView = AlertView()
         if notification.object as! Bool {
-            toastView.setAlertTitle("게시글이 삭제 되었습니다")
+            toastView.setAlertTitle(alertType: AlertType.postDeleted)
         } else {
-            toastView.setAlertTitle("게시글이 업로드 되었습니다")
+            toastView.setAlertTitle(alertType: AlertType.postPost)
         }
         self.view.addSubview(toastView)
         toastView.snp.makeConstraints {
