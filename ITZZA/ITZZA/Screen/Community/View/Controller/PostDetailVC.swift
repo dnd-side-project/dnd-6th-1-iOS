@@ -15,6 +15,7 @@ class PostDetailVC: UIViewController {
     @IBOutlet weak var commentListTV: UITableView!
     @IBOutlet weak var chatInputView: ChatInputView!
     
+    let apiSession = APISession()
     let bag = DisposeBag()
     var post = PostModel()
     var boardId: Int?
@@ -25,7 +26,7 @@ class PostDetailVC: UIViewController {
         super.viewDidLoad()
         
         register()
-        setPost()
+        getPost()
         setNotification()
     }
 }
@@ -58,7 +59,7 @@ extension PostDetailVC {
     }
     
     @objc func updateTV(refreshControl: UIRefreshControl) {
-        self.setPost()
+        self.getPost()
         DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) { [weak self] in
             guard let self = self else { return }
             self.commentListTV.reloadData()
@@ -126,39 +127,47 @@ extension PostDetailVC {
     }
     
     // MARK: - Network
-    func setPost() {
-        PostManager().getPostDetail(boardId ?? 0) { [weak self] posts in
-            guard let self = self else { return }
-            if let posts = posts {
-                self.post = posts
-                DispatchQueue.main.async {
-                    self.setCommentListTV()
-                    self.configureNavigationMenuButton()
+    private func getPost() {
+        let baseURL = "https://www.itzza.shop/boards"
+        guard let boardId = boardId else { return }
+        guard let url = URL(string: baseURL + "/\(boardId)") else { return }
+        let resource = urlResource<PostModel>(url: url)
+        
+        apiSession.getRequest(with: resource)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success(let post):
+                    self.post = post
+                    DispatchQueue.main.async {
+                        self.setCommentListTV()
+                        self.configureNavigationMenuButton()
+                    }
+                case .failure:
+                    self.showEmptyAlert()
                 }
-            } else {
-                self.showEmptyAlert()
-            }
-        }
+            })
+            .disposed(by: bag)
     }
     
-    func deleteRequest(_ boardId: Int) {
-        let baseURL = "https://www.itzza.shop/boards/"
-        guard let url = URL(string: baseURL + "\(boardId)") else { return }
-        guard let token: String = KeychainWrapper.standard[.myToken] else { return }
-        let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
-
-        AF.request(url, method: .delete, headers: header).responseData { [weak self] response in
-            guard let self = self else { return }
-            switch response.result {
-            case .success:
-                NotificationCenter.default.post(name: .popupAlertView, object: true)
-                self.navigationController?.popViewController(animated: true)
-            case .failure:
-                self.networkErrorAlert()
-            }
-        }
+    private func deleteRequest(_ boardId: Int) {
+        let baseURL = "https://www.itzza.shop/boards"
+        guard let url = URL(string: baseURL + "/\(boardId)") else { return }
+        let resource = urlResource<EmptyModel>(url: url)
+        
+        apiSession.deleteRequest(with: resource)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success:
+                    NotificationCenter.default.post(name: .popupAlertView, object: true)
+                    self.navigationController?.popViewController(animated: true)
+                case .failure:
+                    self.networkErrorAlert()
+                }
+            })
+            .disposed(by: bag)
     }
-    
     
     // MARK: - Alert
     func popupDeleteAlert(alertType: AlertType) {

@@ -22,7 +22,7 @@ class UserPostListVC: UIViewController {
         super.viewDidLoad()
         
         setNaviBarView()
-        setPost()
+        getPost()
     }
 }
 
@@ -50,10 +50,11 @@ extension UserPostListVC {
     }
     
     // MARK: - Network
-    func setPost() {
+    private func getPost() {
         let urlString = "https://www.itzza.shop/users/\(userId!)/boards"
         let encodedStr = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let url = URL(string: encodedStr)!
+        guard let url = URL(string: encodedStr) else { return }
+        
         apiSession.getRequest(with: urlResource<[PostModel]>(url: url))
             .withUnretained(self)
             .subscribe(onNext: { owner, result in

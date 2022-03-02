@@ -30,7 +30,7 @@ class SearchPostVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setKeyword()
+        getKeywordHistory()
         configureNavigationBar()
         configureSearchBar()
         setNotification()
@@ -113,51 +113,59 @@ extension SearchPostVC {
     }
     
     // MARK: - Network
-    func setKeyword() {
+    private func getKeywordHistory() {
+        let baseURL = "https://www.itzza.shop/users/"
         guard let userId: String = KeychainWrapper.standard[.userId] else { return }
-        getKeyword(userId) { [weak self] keyword in
-            guard let self = self else { return }
-            if let keyword = keyword {
-                self.keywords = keyword
-                DispatchQueue.main.async {
-                    self.configureSearchHistoryTV()
-                }
-            }
-        }
-    }
-    
-    func getKeyword(_ userId: String, _ completion: @escaping ([SearchKeywordModel]?) -> ()) {
-        let baseURL = "http://13.125.239.189:3000/users/"
         guard let url = URL(string: baseURL + userId + "/histories") else { return }
-        guard let token: String = KeychainWrapper.standard[.myToken] else { return }
-        let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        let resource = urlResource<[SearchKeywordModel]>(url: url)
         
-        AF.request(url, method: .get, headers: header)
-            .validate(statusCode: 200...399)
-            .responseDecodable(of: [SearchKeywordModel].self) { response in
-                switch response.result {
-                case .success(let decodedPost):
-                    completion(decodedPost)
+        apiSession.getRequest(with: resource)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success(let keywords):
+                    self.keywords = keywords
+                    DispatchQueue.main.async {
+                        self.configureSearchHistoryTV()
+                    }
                 case .failure:
-                    completion(nil)
+                    self.keywords = []
                 }
-            }
+            })
+            .disposed(by: bag)
     }
     
-    func deletePost(_ userId: String, _ historyId: String?) {
-        let baseURL = "http://13.125.239.189:3000/users/"
+    private func deletePost(_ historyId: String?) {
+        let baseURL = "https://www.itzza.shop/users/"
+        guard let userId: String = KeychainWrapper.standard[.userId] else { return }
         guard let url = URL(string: baseURL + (userId) + "/histories/" + (historyId ?? "")) else { return }
-        guard let token: String = KeychainWrapper.standard[.myToken] else { return }
-        let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        let resource = urlResource<EmptyModel>(url: url)
         
-        AF.request(url, method: .delete, headers: header).responseData { response in
-            switch response.result {
-            case .success:
-                break
-            case .failure:
-                break
-            }
-        }
+        apiSession.deleteRequest(with: resource)
+            .withUnretained(self)
+            .subscribe()
+            .disposed(by: bag)
+    }
+    
+    private func getSearchedList() {
+        let urlString = "https://www.itzza.shop/boards?keyword=" + self.searchBar.text!
+        let encodedStr = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        guard let url = URL(string: encodedStr) else { return }
+        let resource = urlResource<SearchedResultModel>(url: url)
+        
+        apiSession.getRequest(with: resource)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let response):
+                    self.keywordContentView.post = response
+                    self.configureTabView()
+                    self.tabView.tabCV.selectItem(at: [0,0], animated: false, scrollPosition: .left)
+                }
+            })
+            .disposed(by: self.bag)
     }
     
     // MARK: - tap event
@@ -178,23 +186,7 @@ extension SearchPostVC {
             .drive(onNext: { [weak self] text in
                 guard let self = self else { return }
                 if self.naviSearchButton.tintColor == .primary {
-                    let urlString = "http://13.125.239.189:3000/boards?keyword=" + self.searchBar.text!
-                    let encodedStr = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-                    let url = URL(string: encodedStr)!
-                    self.apiSession.getRequest(with: urlResource<SearchedResultModel>(url: url))
-                        .withUnretained(self)
-                        .subscribe(onNext: { owner, result in
-                            switch result {
-                            case .failure(let error):
-                                print(error)
-                            case .success(let response):
-                                self.keywordContentView.post = response
-                                self.configureTabView()
-                                self.tabView.tabCV.selectItem(at: [0,0], animated: false, scrollPosition: .left)
-                            }
-                        })
-                        .disposed(by: self.bag)
-                    
+                    self.getSearchedList()
                     self.view.sendSubviewToBack(self.searchHistoryTV)
                 }
             })
@@ -206,8 +198,7 @@ extension SearchPostVC {
             .asDriver()
             .drive(onNext: { [weak self] text in
                 guard let self = self else { return }
-                guard let userId: String = KeychainWrapper.standard[.userId] else { return }
-                self.deletePost(userId, nil)
+                self.deletePost(nil)
                 self.isNoneData = true
                 self.searchHistoryTV.reloadData()
             })
@@ -230,8 +221,7 @@ extension SearchPostVC {
     @objc private func deleteCell(sender: UIButton) {
         let indexPath = IndexPath.init(row: sender.tag, section: 0)
         let cell = searchHistoryTV.cellForRow(at: indexPath) as! HistoryTVC
-        guard let userId: String = KeychainWrapper.standard[.userId] else { return }
-        deletePost(userId, "\(cell.historyId!)")
+        deletePost("\(cell.historyId!)")
         keywords.remove(at: indexPath.row)
         self.searchHistoryTV.deleteRows(at: [indexPath], with: .none)
         if self.keywords.count == 0 {

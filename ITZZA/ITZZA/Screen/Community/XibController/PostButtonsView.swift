@@ -50,13 +50,25 @@ class PostButtonsView: UIView {
     }
 }
 
-//MARK: - Button Event
 extension PostButtonsView {
+    // MARK: - Configure
     private func setButtonColor() {
         likeButton.tintColor = .white
         bookmarkButton.tintColor = .white
     }
     
+    func setButtonCnt(_ state: Bool, _ lastCnt: String) -> String {
+        likeCnt.textColor = .lightGray5
+        commentCnt.textColor = .lightGray5
+        
+        if state {
+            return String(Int(lastCnt)! + 1)
+        } else {
+            return String(Int(lastCnt)! - 1)
+        }
+    }
+    
+    //MARK: - Button Event
     func didTapLikeButton() {
         likeButton.rx.tap
             .asDriver()
@@ -92,17 +104,7 @@ extension PostButtonsView {
             .disposed(by: bag)
     }
     
-    func setButtonCnt(_ state: Bool, _ lastCnt: String) -> String {
-        likeCnt.textColor = .lightGray5
-        commentCnt.textColor = .lightGray5
-        
-        if state {
-            return String(Int(lastCnt)! + 1)
-        } else {
-            return String(Int(lastCnt)! - 1)
-        }
-    }
-    
+    // MARK: - Network
     func postLikeStatus(_ boardId: Int) {
         let baseURL = "http://13.125.239.189:3000/boards/"
         guard let url = URL(string: baseURL + "\(boardId)" + "/likes") else { return }

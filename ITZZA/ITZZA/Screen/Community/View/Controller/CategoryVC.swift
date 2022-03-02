@@ -13,6 +13,7 @@ import RxDataSources
 class CategoryVC: UIViewController {
     @IBOutlet weak var postListTV: UITableView!
     
+    let apiSession = APISession()
     let bag = DisposeBag()
     var postListVM: PostListVM!
     var communityType: CommunityType?
@@ -23,7 +24,7 @@ class CategoryVC: UIViewController {
         super.viewDidLoad()
         
         setNotification()
-        setPost()
+        getPostList()
     }
 }
 
@@ -36,7 +37,7 @@ extension CategoryVC {
     }
     
     @objc func updateTV(refreshControl: UIRefreshControl) {
-        self.setPost()
+        self.getPostList()
         DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) { [weak self] in
             guard let self = self else { return }
             self.postListTV.reloadData()
@@ -77,22 +78,29 @@ extension CategoryVC {
     }
     
     // MARK: - Network
-    func setPost() {
+    private func getPostList() {
+        let baseURL = "https://www.itzza.shop/boards"
         guard let type = communityType else { return }
+        guard let url = URL(string: baseURL + type.apiQuery) else { return }
+        let resource = urlResource<[PostModel]>(url: url)
         
-        PostManager().getPost(type.apiQuery) { [weak self] posts in
-            guard let self = self else { return }
-            if let posts = posts {
-                self.postListVM = PostListVM(posts: posts)
-                self.isNoneData = false
-                DispatchQueue.main.async {
+        apiSession.getRequest(with: resource)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success(let postList):
+                    self.postListVM = PostListVM(posts: postList)
+                    self.isNoneData = false
+                    DispatchQueue.main.async {
+                        self.setPostTV()
+                    }
+                case .failure:
+                    self.isNoneData = true
                     self.setPostTV()
                 }
-            } else {
-                self.isNoneData = true
-                self.setPostTV()
-            }
-        }
+                
+            })
+            .disposed(by: bag)
     }
 }
 

@@ -206,15 +206,19 @@ extension AddPostVC {
     }
     
     // MARK: - Network
-    func postPost(boardId: String, method: HTTPMethod) {
+    private func postPost(boardId: String, method: HTTPMethod) {
         let postURL = "https://www.itzza.shop/boards/\(boardId)"
         let url = URL(string: postURL)!
         let postInformation = PostModel(categoryId: categoryIndex,
                                         postTitle: postWriteView.title.text,
                                         postContent: postWriteView.contents.text)
         let postParameter = postInformation.postParam
+        let resource = urlResource<PostModel>(url: url)
         
-        apiSession.postRequestWithImages(with: urlResource<PostModel>(url: url), param: postParameter, images: imageListView.selectedImages, method: method)
+        apiSession.postRequestWithImages(with: resource,
+                                         param: postParameter,
+                                         images: imageListView.selectedImages,
+                                         method: method)
             .withUnretained(self)
             .subscribe(onNext: { owner, result in
                 switch result {

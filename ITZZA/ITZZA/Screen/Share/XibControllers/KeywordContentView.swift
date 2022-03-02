@@ -13,7 +13,7 @@ class KeywordContentView: UIView {
     let bag = DisposeBag()
     var menu:[String] = []
     var post = SearchedResultModel()
-    var mypagePost = MyRecordData()
+    var mypagePost = MyRecordModel()
     
     var contentView: UIView?
     
@@ -34,8 +34,8 @@ class KeywordContentView: UIView {
     }
 }
 
-// MARK: - Configure
 extension KeywordContentView {
+    // MARK: - Configure
     func setContentView() {
         if contentView != nil {
             return
@@ -81,6 +81,7 @@ extension KeywordContentView {
             .disposed(by: bag)
     }
     
+    // MARK: - Notification
     func setNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(scrollToTab), name:.whenTabViewTapped, object: nil)
     }

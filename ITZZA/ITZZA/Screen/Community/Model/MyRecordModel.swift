@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MyRecordData: Decodable {
+struct MyRecordModel: Decodable {
     var boards = [PostModel]()
     var comments = [PostModel]()
     var bookmarks = [PostModel]()
