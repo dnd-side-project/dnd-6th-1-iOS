@@ -66,7 +66,6 @@ extension EmailView {
             })
             .drive(onNext: { [weak self] flag in
                 guard let self = self else { return }
-                // self.emailValidLabel.isHidden = flag
                 self.changeEmailLabel(flag)
                 self.changeLineViewColor(flag)
             })
