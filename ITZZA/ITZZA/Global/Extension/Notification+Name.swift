@@ -17,4 +17,5 @@ extension Notification.Name {
     static let whenEditPostMenuTapped = Notification.Name("whenEditPostMenuTapped")
     static let whenDeleteCommentMenuTapped = Notification.Name("whenDeleteCommentMenuTapped")
     static let whenEditCommentMenuTapped = Notification.Name("whenEditCommentMenuTapped")
+    static let whenPostComment = Notification.Name("whenPostComment")
 }

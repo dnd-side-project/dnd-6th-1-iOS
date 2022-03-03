@@ -17,13 +17,19 @@ struct APISession: APIService {
     func postRequest<T: Decodable>(with urlResource: urlResource<T>, param: Parameters) -> Observable<Result<T, APIError>> {
         
         Observable<Result<T, APIError>>.create { observer in
-            let header: HTTPHeaders = ["Content-Type": "application/json"]
+            
+            guard let token: String = KeychainWrapper.standard[.myToken] else { return Disposables.create { } }
+            
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer \(token)",
+                "Content-Type": "application/json"
+            ]
             
             let task = AF.request(urlResource.url,
                                   method: .post,
                                   parameters: param,
                                   encoding: JSONEncoding.default,
-                                  headers: header)
+                                  headers: headers)
                 .validate(statusCode: 200...399)
                 .responseDecodable(of: T.self) { response in
                     switch response.result {

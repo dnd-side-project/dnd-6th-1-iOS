@@ -108,6 +108,7 @@ extension PostDetailVC {
         NotificationCenter.default.addObserver(self, selector: #selector(editComment), name: .whenEditCommentMenuTapped, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteComment), name: .whenDeleteCommentMenuTapped, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(postEditCompleted), name: .popupAlertView, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(postComment), name: .whenPostComment, object: nil)
     }
     
     @objc func editPost() {
@@ -116,6 +117,10 @@ extension PostDetailVC {
         editPostVC.isEditingView = true
         editPostVC.post = self.post
         self.navigationController?.pushViewController(editPostVC, animated: true)
+    }
+    
+    @objc func postComment() {
+        postCommentRequest(boardId: self.boardId!)
     }
     
     @objc func editComment() {
@@ -201,6 +206,26 @@ extension PostDetailVC {
                     DispatchQueue.main.async {
                         self.commentListTV.reloadData()
                     }
+                case .failure:
+                    self.networkErrorAlert()
+                }
+            })
+            .disposed(by: bag)
+    }
+    
+    private func postCommentRequest(boardId: Int) {
+        let postURL = "http://13.125.239.189:3000/boards/\(boardId)/comments"
+        let url = URL(string: postURL)!
+        let postInformation = CommentModel(commentContent: chatInputView.textInputField.text)
+        let postParameter = postInformation.param
+        let resource = urlResource<CommentModel>(url: url)
+        
+        apiSession.postRequest(with: resource, param: postParameter)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success:
+                    self.showToast(alertType: AlertType.commentPost)
                 case .failure:
                     self.networkErrorAlert()
                 }

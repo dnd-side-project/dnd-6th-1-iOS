@@ -13,6 +13,7 @@ class ChatInputView: UIView {
     @IBOutlet weak var textInputField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     
+    let apiSession = APISession()
     let bag = DisposeBag()
     
     override init(frame: CGRect) {
@@ -61,9 +62,9 @@ class ChatInputView: UIView {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
+                NotificationCenter.default.post(name: .whenPostComment, object: nil)
                 self.textInputField.text = ""
                 self.textInputField.resignFirstResponder()
-                // TODO: - 입력 댓글 서버 전송
             })
             .disposed(by: bag)
     }
