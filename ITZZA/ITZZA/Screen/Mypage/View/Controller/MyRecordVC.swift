@@ -69,9 +69,9 @@ extension MyRecordVC {
     
     func getMyPost() {
         guard let userId: String = KeychainWrapper.standard[.userId] else { return }
-        let urlString = "http://13.125.239.189:3000/users/\(userId)/all"
+        let urlString = "https://www.itzza.shop/users/\(userId)/all"
         let url = URL(string: urlString)!
-        let resource = urlResource<MyRecordData>(url: url)
+        let resource = urlResource<MyRecordModel>(url: url)
         
         apiSession.getRequest(with: resource)
             .withUnretained(self)

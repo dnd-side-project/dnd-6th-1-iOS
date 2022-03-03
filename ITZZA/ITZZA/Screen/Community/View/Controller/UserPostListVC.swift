@@ -22,30 +22,12 @@ class UserPostListVC: UIViewController {
         super.viewDidLoad()
         
         setNaviBarView()
-        
-        let urlString = "http://13.125.239.189:3000/users/\(userId!)/boards"
-        let encodedStr = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let url = URL(string: encodedStr)!
-        apiSession.getRequest(with: urlResource<[PostModel]>(url: url))
-            .withUnretained(self)
-            .subscribe(onNext: { owner, result in
-                switch result {
-                case .failure:
-                    self.isNoneData = true
-                    self.configureTV()
-                case .success(let decodedPost):
-                    self.post = decodedPost
-                    self.isNoneData = false
-                    DispatchQueue.main.async {
-                        self.configureTV()
-                    }
-                }
-            })
-            .disposed(by: self.bag)
+        getPost()
     }
 }
 
 extension UserPostListVC {
+    // MARK: - Configure
     func setNaviBarView() {
         navigationItem.title = (userName ?? "") + "님의 글"
         let backButton = UIBarButtonItem()
@@ -66,8 +48,33 @@ extension UserPostListVC {
             postTV.separatorStyle = .none
         }
     }
+    
+    // MARK: - Network
+    private func getPost() {
+        let urlString = "https://www.itzza.shop/users/\(userId!)/boards"
+        let encodedStr = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        guard let url = URL(string: encodedStr) else { return }
+        
+        apiSession.getRequest(with: urlResource<[PostModel]>(url: url))
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .failure:
+                    self.isNoneData = true
+                    self.configureTV()
+                case .success(let decodedPost):
+                    self.post = decodedPost
+                    self.isNoneData = false
+                    DispatchQueue.main.async {
+                        self.configureTV()
+                    }
+                }
+            })
+            .disposed(by: self.bag)
+    }
 }
 
+// MARK: - UITableViewDataSource
 extension UserPostListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         (post.count == 0) ? 1 : post.count
@@ -85,6 +92,7 @@ extension UserPostListVC: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension UserPostListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if post.count == 0

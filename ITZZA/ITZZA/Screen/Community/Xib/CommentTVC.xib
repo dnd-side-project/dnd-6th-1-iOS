@@ -14,6 +14,9 @@
         <array key="SFPRODISPLAYREGULAR.OTF">
             <string>SFProDisplay-Regular</string>
         </array>
+        <array key="SpoqaHanSansNeo-Regular.otf">
+            <string>SpoqaHanSansNeo-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -32,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="댓글 내용" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ttt-1p-vgq">
-                        <rect key="frame" x="70" y="36" width="220" height="49"/>
+                        <rect key="frame" x="70" y="36" width="188" height="49"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="textColor" systemColor="labelColor"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="13"/>
@@ -59,19 +62,43 @@
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" title="답글 달기"/>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocL-wr-3s4">
+                        <rect key="frame" x="146.5" y="15" width="36" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="582-AE-YmN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehA-c4-pKg">
+                        <rect key="frame" x="266" y="15" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="Ckz-Wo-EF9"/>
+                            <constraint firstAttribute="height" constant="24" id="n4d-ZH-Ph4"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="Menu_Horizontal"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="fq9-W1-Px2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="70" id="D03-23-vIt"/>
                     <constraint firstItem="fq9-W1-Px2" firstAttribute="top" secondItem="ttt-1p-vgq" secondAttribute="bottom" constant="8" id="E47-uC-1dr"/>
+                    <constraint firstItem="ocL-wr-3s4" firstAttribute="leading" secondItem="NUy-n0-BB6" secondAttribute="trailing" constant="5" id="H4O-LA-ZRU"/>
+                    <constraint firstItem="ocL-wr-3s4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="Ik7-kk-6PK"/>
                     <constraint firstItem="NUy-n0-BB6" firstAttribute="leading" secondItem="lfD-ur-noy" secondAttribute="trailing" constant="10" id="RW6-cZ-9kv"/>
                     <constraint firstItem="GmH-sc-fyT" firstAttribute="centerY" secondItem="fq9-W1-Px2" secondAttribute="centerY" id="UOf-xY-TAV"/>
                     <constraint firstItem="GmH-sc-fyT" firstAttribute="leading" secondItem="fq9-W1-Px2" secondAttribute="trailing" constant="10" id="YS2-Gc-QZc"/>
-                    <constraint firstAttribute="trailing" secondItem="ttt-1p-vgq" secondAttribute="trailing" constant="30" id="avQ-M2-zEZ"/>
+                    <constraint firstItem="ttt-1p-vgq" firstAttribute="top" secondItem="ocL-wr-3s4" secondAttribute="bottom" constant="5" id="YsM-R8-prl"/>
                     <constraint firstItem="lfD-ur-noy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="d2g-qi-g1a"/>
                     <constraint firstItem="NUy-n0-BB6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="fSJ-Yv-cdf"/>
+                    <constraint firstItem="ehA-c4-pKg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="g2J-jH-BUn"/>
+                    <constraint firstItem="ocL-wr-3s4" firstAttribute="centerY" secondItem="NUy-n0-BB6" secondAttribute="centerY" id="gZ3-un-EEs"/>
+                    <constraint firstAttribute="trailing" secondItem="ehA-c4-pKg" secondAttribute="trailing" constant="30" id="jy1-4J-zsK"/>
                     <constraint firstItem="lfD-ur-noy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="lLC-QG-GAw"/>
                     <constraint firstAttribute="bottom" secondItem="GmH-sc-fyT" secondAttribute="bottom" constant="15" id="szC-0X-h6h"/>
                     <constraint firstItem="ttt-1p-vgq" firstAttribute="top" secondItem="NUy-n0-BB6" secondAttribute="bottom" constant="5" id="ud8-hN-wFy"/>
+                    <constraint firstItem="ehA-c4-pKg" firstAttribute="leading" secondItem="ttt-1p-vgq" secondAttribute="trailing" constant="8" symbolic="YES" id="y4j-HT-kOR"/>
                     <constraint firstItem="ttt-1p-vgq" firstAttribute="leading" secondItem="lfD-ur-noy" secondAttribute="trailing" constant="10" id="zog-yk-RM4"/>
                 </constraints>
             </tableViewCellContentView>
@@ -83,13 +110,16 @@
                 <outlet property="commentContent" destination="ttt-1p-vgq" id="r7b-4z-EnO"/>
                 <outlet property="createAt" destination="fq9-W1-Px2" id="L2w-3U-tZm"/>
                 <outlet property="createCommentButton" destination="GmH-sc-fyT" id="6N7-fW-B9t"/>
+                <outlet property="menuButton" destination="ehA-c4-pKg" id="yDv-v3-48G"/>
                 <outlet property="profileImg" destination="lfD-ur-noy" id="vCK-o1-YeT"/>
                 <outlet property="userName" destination="NUy-n0-BB6" id="xrr-jj-oOq"/>
+                <outlet property="writer" destination="ocL-wr-3s4" id="9wP-lC-FBv"/>
             </connections>
             <point key="canvasLocation" x="134.78260869565219" y="92.410714285714278"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Menu_Horizontal" width="24" height="24"/>
         <image name="Null_Comment" width="60" height="60"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

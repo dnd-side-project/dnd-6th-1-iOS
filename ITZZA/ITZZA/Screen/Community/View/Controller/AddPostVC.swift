@@ -49,19 +49,22 @@ class AddPostVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureView()
+        setImageCVHeight()
+        setNotification()
+        bindUI()
+    }
+}
+
+extension AddPostVC {
+    //MARK: - Configure
+    func configureView() {
         configureEditingContentView(post ?? PostModel())
         configureNavigationBar()
         configureChooseCategoryButton()
         configurePostContentComponent()
-        setImageCVHeight()
-        setNotification()
-        bindAddImageBar()
-        bindCategoryBottomSheet()
     }
-}
-
-//MARK: - Custom Methods
-extension AddPostVC {
+    
     func configureEditingContentView(_ post: PostModel) {
         guard let categoryIndex = post.categoryId else { return }
         self.categoryIndex = categoryIndex
@@ -74,14 +77,21 @@ extension AddPostVC {
         setImageCVHeight()
     }
     
-    //MARK: - configure
     func configureNavigationBar() {
         navigationController?.setSubNaviBarTitle(navigationItem: self.navigationItem, title: "게시글 작성")
         navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .black)
         
         let savePostButton = UIBarButtonItem()
-        savePostButton.title = "저장"
-        savePostButton.tintColor = .primary
+            .then {
+                $0.title = "저장"
+                $0.tintColor = .primary
+            }
+        
+        let backButton = UIBarButtonItem()
+            .then {
+                $0.image = UIImage(systemName: "chevron.backward")
+            }
+        
         savePostButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] _ in
@@ -90,8 +100,6 @@ extension AddPostVC {
             })
             .disposed(by: bag)
         
-        let backButton = UIBarButtonItem()
-        backButton.image = UIImage(systemName: "chevron.backward")
         backButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] _ in
@@ -142,6 +150,11 @@ extension AddPostVC {
     }
     
     //MARK: - bind
+    func bindUI() {
+        bindCategoryBottomSheet()
+        bindAddImageBar()
+    }
+    
     func bindCategoryBottomSheet() {
         chooseCategoryButton.rx.tap
             .asDriver()
@@ -183,32 +196,7 @@ extension AddPostVC {
             .disposed(by: bag)
     }
     
-    func addImageToCollectionView(_ images: [UIImage]) {
-        imageListView.selectedImages = images
-        imageListView.imageCV.reloadData()
-    }
-    
-    func convertAssetToImages(_ selectedAssets: [PHAsset]) {
-        imageListView.selectedImages = selectedAssets.map {
-            let imageManager = PHImageManager.default()
-            let option = PHImageRequestOptions()
-            option.isSynchronous = true
-            var image = UIImage()
-            
-            imageManager.requestImage(for: $0,
-                                         targetSize: CGSize(width:300, height: 300),
-                                         contentMode: .aspectFit,
-                                         options: option) { (result, info) in
-                image = result!
-            }
-            
-            let data = image.jpegData(compressionQuality: 0.7)
-            let newImage = UIImage(data: data!)!
-            
-            return newImage
-        }
-    }
-    
+    // MARK: - Notification
     func setNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadImageCollectionView), name:.whenDeleteImageButtonTapped, object: nil)
     }
@@ -217,6 +205,34 @@ extension AddPostVC {
         setImageCVHeight()
     }
     
+    // MARK: - Network
+    private func postPost(boardId: String, method: HTTPMethod) {
+        let postURL = "https://www.itzza.shop/boards/\(boardId)"
+        let url = URL(string: postURL)!
+        let postInformation = PostModel(categoryId: categoryIndex,
+                                        postTitle: postWriteView.title.text,
+                                        postContent: postWriteView.contents.text)
+        let postParameter = postInformation.postParam
+        let resource = urlResource<PostModel>(url: url)
+        
+        apiSession.postRequestWithImages(with: resource,
+                                         param: postParameter,
+                                         images: imageListView.selectedImages,
+                                         method: method)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success:
+                    NotificationCenter.default.post(name: .popupAlertView, object: false)
+                    owner.navigationController?.popViewController(animated: true)
+                case .failure:
+                    break
+                }
+            })
+            .disposed(by: bag)
+    }
+    
+    // MARK: - Custom Methods
     func checkInputValid() {
         if postWriteView.title.text!.isEmpty
             || postWriteView.contents.textColor == postContentPlaceholderColor
@@ -244,7 +260,8 @@ extension AddPostVC {
             let alert = UIAlertController(title: "게시글이 저장되지 않았습니다.\n나가시겠어요?", message: "", preferredStyle: UIAlertController.Style.alert)
             alert.view.tintColor = .darkGray6
             alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
-            let ok = UIAlertAction(title: "네", style: .destructive) { _ in
+            let ok = UIAlertAction(title: "네", style: .destructive) { [weak self] _ in
+                guard let self = self else { return }
                 self.navigationController?.popViewController(animated: true)
             }
             let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
@@ -257,26 +274,30 @@ extension AddPostVC {
         }
     }
     
-    func postPost(boardId: String, method: HTTPMethod) {
-        let postURL = "http://13.125.239.189:3000/boards/\(boardId)"
-        let url = URL(string: postURL)!
-        let postInformation = PostModel(categoryId: categoryIndex,
-                                        postTitle: postWriteView.title.text,
-                                        postContent: postWriteView.contents.text)
-        let postParameter = postInformation.postParam
-        
-        apiSession.postRequestWithImages(with: urlResource<PostModel>(url: url), param: postParameter, images: imageListView.selectedImages, method: method)
-            .withUnretained(self)
-            .subscribe(onNext: { owner, result in
-                switch result {
-                case .success:
-                    NotificationCenter.default.post(name: .popupAlertView, object: nil)
-                    self.navigationController?.popViewController(animated: true)
-                case .failure:
-                    break
-                }
-            })
-            .disposed(by: bag)
+    func addImageToCollectionView(_ images: [UIImage]) {
+        imageListView.selectedImages = images
+        imageListView.imageCV.reloadData()
+    }
+    
+    func convertAssetToImages(_ selectedAssets: [PHAsset]) {
+        imageListView.selectedImages = selectedAssets.map {
+            let imageManager = PHImageManager.default()
+            let option = PHImageRequestOptions()
+            option.isSynchronous = true
+            var image = UIImage()
+            
+            imageManager.requestImage(for: $0,
+                                         targetSize: CGSize(width:300, height: 300),
+                                         contentMode: .aspectFit,
+                                         options: option) { (result, info) in
+                image = result!
+            }
+            
+            let data = image.jpegData(compressionQuality: 0.7)
+            let newImage = UIImage(data: data!)!
+            
+            return newImage
+        }
     }
 }
 

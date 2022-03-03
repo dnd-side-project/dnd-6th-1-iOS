@@ -46,13 +46,13 @@ class CommunityVC: TabmanViewController {
               let scrollView = fadedView.subviews.compactMap({ $0 as? UIScrollView }).first,
               let layoutGrid = scrollView.subviews.first,
               let verticalStackView = layoutGrid.subviews.compactMap({ $0 as? UIStackView }).first  else {
-                return
+                  return
               }
         verticalStackView.spacing = 4.0
     }
 }
 
-//MARK: - Custom Methods
+//MARK: - Configure
 extension CommunityVC {
     func configureNavigationBar() {
         setNaviBarView()
@@ -97,7 +97,7 @@ extension CommunityVC {
             .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 guard let addPostVC = ViewControllerFactory.viewController(for: .addPost) as? AddPostVC else { return }
-
+                
                 addPostVC.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(addPostVC, animated: true)
             })
@@ -126,7 +126,7 @@ extension CommunityVC {
             button.font = UIFont.SpoqaHanSansNeoMedium(size: 15)
             button.selectedFont = UIFont.SpoqaHanSansNeoBold(size: 15)
         }
-    
+        
         bar.indicator.cornerStyle = .eliptical
         bar.indicator.weight = .medium
         bar.indicator.tintColor = .primary
@@ -139,7 +139,7 @@ extension CommunityVC {
         
         addBar(bar, dataSource: self, at: .custom(view: categoryTB, layout: nil))
     }
-
+    
 }
 
 //MARK: TMBarDataSource
@@ -167,12 +167,12 @@ extension CommunityVC: PageboyViewControllerDataSource {
 class TabPagerButton: Tabman.TMLabelBarButton {
     override func update(for selectionState: TMBarButton.SelectionState) {
         switch selectionState {
-            case .selected:
-                backgroundColor = .primary
-            default:
-                backgroundColor = .background
+        case .selected:
+            backgroundColor = .primary
+        default:
+            backgroundColor = .background
         }
-
+        
         super.update(for: selectionState)
     }
 }

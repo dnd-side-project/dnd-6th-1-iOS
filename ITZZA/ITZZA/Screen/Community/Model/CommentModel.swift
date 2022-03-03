@@ -13,6 +13,7 @@ struct CommentDataModel: Decodable {
 }
 
 struct CommentModel: Decodable {
+    var commentId: Int?
     var nickname: String?
     var profileImage: String?
     var commentContent: String?

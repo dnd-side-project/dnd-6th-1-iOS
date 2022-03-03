@@ -13,6 +13,7 @@ import RxDataSources
 class CategoryVC: UIViewController {
     @IBOutlet weak var postListTV: UITableView!
     
+    let apiSession = APISession()
     let bag = DisposeBag()
     var postListVM: PostListVM!
     var communityType: CommunityType?
@@ -22,12 +23,28 @@ class CategoryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setPost()
+        setNotification()
+        getPostList()
     }
 }
 
-//MARK: - Custom Methods
 extension CategoryVC {
+    // MARK: - Configure
+    func bindRefreshController() {
+        refreshControl.addTarget(self, action: #selector(updateTV(refreshControl:)), for: .valueChanged)
+        
+        postListTV.refreshControl = refreshControl
+    }
+    
+    @objc func updateTV(refreshControl: UIRefreshControl) {
+        self.getPostList()
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) { [weak self] in
+            guard let self = self else { return }
+            self.postListTV.reloadData()
+            refreshControl.endRefreshing()
+        }
+    }
+    
     func setPostTV() {
         postListTV.dataSource = self
         postListTV.delegate = self
@@ -38,39 +55,56 @@ extension CategoryVC {
         bindRefreshController()
     }
     
-    func bindRefreshController() {
-        refreshControl.addTarget(self, action: #selector(updateTV(refreshControl:)), for: .valueChanged)
-        
-        postListTV.refreshControl = refreshControl
+    // MARK: - Notification
+    func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(showToast), name: .popupAlertView, object: nil)
     }
     
-    @objc func updateTV(refreshControl: UIRefreshControl) {
-        self.setPost()
-        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) { [weak self] in
-            guard let self = self else { return }
-            self.postListTV.reloadData()
-            refreshControl.endRefreshing()
+    @objc func showToast(_ notification: Notification) {
+        let toastView = AlertView()
+        if notification.object as! Bool {
+            toastView.setAlertTitle(alertType: AlertType.postDeleted)
+        } else {
+            toastView.setAlertTitle(alertType: AlertType.postPost)
         }
+        self.view.addSubview(toastView)
+        toastView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().offset(-20)
+            $0.leading.equalToSuperview().offset(52)
+            $0.trailing.equalToSuperview().offset(-52)
+            $0.height.equalTo(44)
+        }
+        toastView.showToastView()
     }
     
-    func setPost() {
+    // MARK: - Network
+    private func getPostList() {
+        let baseURL = "https://www.itzza.shop/boards"
         guard let type = communityType else { return }
+        guard let url = URL(string: baseURL + type.apiQuery) else { return }
+        let resource = urlResource<[PostModel]>(url: url)
         
-        PostManager().getPost(type.apiQuery) { posts in
-            if let posts = posts {
-                self.postListVM = PostListVM(posts: posts)
-                self.isNoneData = false
-                DispatchQueue.main.async {
+        apiSession.getRequest(with: resource)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success(let postList):
+                    self.postListVM = PostListVM(posts: postList)
+                    self.isNoneData = false
+                    DispatchQueue.main.async {
+                        self.setPostTV()
+                    }
+                case .failure:
+                    self.isNoneData = true
                     self.setPostTV()
                 }
-            } else {
-                self.isNoneData = true
-                self.setPostTV()
-            }
-        }
+                
+            })
+            .disposed(by: bag)
     }
 }
 
+// MARK: - UITableViewDelegate
 extension CategoryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if postListVM?.posts.count == 0
@@ -82,22 +116,23 @@ extension CategoryVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.postListTV.deselectRow(at: indexPath, animated: false)
+        postListTV.deselectRow(at: indexPath, animated: false)
         
         guard let postDetailVC = ViewControllerFactory.viewController(for: .postDetail) as? PostDetailVC else { return }
-        postDetailVC.boardId = self.postListVM.postAtIndex(indexPath.row).post.boardId
+        postDetailVC.boardId = postListVM.postAtIndex(indexPath.row).post.boardId
         postDetailVC.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(postDetailVC, animated: true)
+        navigationController?.pushViewController(postDetailVC, animated: true)
     }
 }
 
+// MARK: - UITableViewDataSource
 extension CategoryVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if postListVM?.posts.count == 0
             || isNoneData {
             return 1
         } else {
-            return self.postListVM.posts.count
+            return postListVM.posts.count
         }
     }
     

@@ -13,7 +13,9 @@ import SwiftKeychainWrapper
 
 class PostDetailVC: UIViewController {
     @IBOutlet weak var commentListTV: UITableView!
+    @IBOutlet weak var chatInputView: ChatInputView!
     
+    let apiSession = APISession()
     let bag = DisposeBag()
     var post = PostModel()
     var boardId: Int?
@@ -24,37 +26,30 @@ class PostDetailVC: UIViewController {
         super.viewDidLoad()
         
         register()
-        setPost()
-        configureNavigationbar()
+        getPost()
         setNotification()
     }
 }
 
-//MARK: - Custom Methods
 extension PostDetailVC {
-    func setPost() {
-        PostManager().getPostDetail(boardId ?? 0) { posts in
-            if let posts = posts {
-                self.post = posts
-                DispatchQueue.main.async {
-                    self.setCommentListTV()
-                }
-            } else {
-                self.showEmptyAlert()
-            }
-        }
-    }
-    
-    func showEmptyAlert() {
-        let alert = UIAlertController(title: "삭제된 게시글입니다", message: "", preferredStyle: UIAlertController.Style.alert)
-        alert.view.tintColor = .darkGray6
-        alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
-        let ok = UIAlertAction(title: "확인", style: .destructive) { _ in
-            self.navigationController?.popViewController(animated: true)
-        }
+    // MARK: - Configure
+    func configureNavigationMenuButton() {
+        let menuButton = UIBarButtonItem()
+        menuButton.image = UIImage(named: "Menu_Horizontal")
         
-        alert.addAction(ok)
-        present(alert, animated: false, completion: nil)
+        navigationItem.rightBarButtonItem = menuButton
+        
+        if post.canEdit ?? false {
+            menuButton.rx.tap
+                .asDriver()
+                .drive(onNext: { [weak self] _ in
+                    guard let self = self else { return }
+                    let menuBottomSheet = MenuBottomSheet()
+                    menuBottomSheet.bindButtonAction(.whenEditPostMenuTapped, .whenDeletePostMenuTapped)
+                    self.present(menuBottomSheet, animated: true)
+                })
+                .disposed(by: bag)
+        }
     }
     
     func bindRefreshController() {
@@ -64,28 +59,17 @@ extension PostDetailVC {
     }
     
     @objc func updateTV(refreshControl: UIRefreshControl) {
-        self.setPost()
+        self.getPost()
         DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) { [weak self] in
             guard let self = self else { return }
             self.commentListTV.reloadData()
             refreshControl.endRefreshing()
         }
     }
-    
-    func configureNavigationbar() {
-        let menuButton = UIBarButtonItem()
-        menuButton.image = UIImage(named: "Menu_Horizontal")
-        
-        navigationItem.rightBarButtonItem = menuButton
-        
-        menuButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                let menuBottomSheet = MenuBottomSheet()
-                self.present(menuBottomSheet, animated: true)
-            })
-            .disposed(by: bag)
+
+    func register(){
+        commentListTV.register(UINib(nibName: Identifiers.commentTVC, bundle: nil), forCellReuseIdentifier: Identifiers.commentTVC)
+        commentListTV.register(PostContentTableViewHeader.self, forHeaderFooterViewReuseIdentifier: Identifiers.postContentTableViewHeader)
     }
     
     func setCommentListTV() {
@@ -107,17 +91,17 @@ extension PostDetailVC {
         }
     }
     
-    func register(){
-        commentListTV.register(UINib(nibName: Identifiers.commentTVC, bundle: nil), forCellReuseIdentifier: Identifiers.commentTVC)
-        commentListTV.register(PostContentTableViewHeader.self, forHeaderFooterViewReuseIdentifier: Identifiers.postContentTableViewHeader)
-    }
     
+    // MARK: - Notification
     func setNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(popupDeleteAlert), name: .whenDeletePostMenuTapped, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(pushEditPostView), name: .whenEditPostMenuTapped, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deletePost), name: .whenDeletePostMenuTapped, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(editPost), name: .whenEditPostMenuTapped, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(editComment), name: .whenEditCommentMenuTapped, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteComment), name: .whenDeleteCommentMenuTapped, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(postEditCompleted), name: .popupAlertView, object: nil)
     }
     
-    @objc func pushEditPostView() {
+    @objc func editPost() {
         guard let editPostVC = ViewControllerFactory.viewController(for: .addPost) as? AddPostVC else { return }
         editPostVC.boardId = self.boardId!
         editPostVC.isEditingView = true
@@ -125,12 +109,80 @@ extension PostDetailVC {
         self.navigationController?.pushViewController(editPostVC, animated: true)
     }
     
-    @objc func popupDeleteAlert() {
-        let alert = UIAlertController(title: "게시글을 정말 삭제하시겠습니까?", message: "", preferredStyle: UIAlertController.Style.alert)
+    @objc func editComment() {
+        //TODO: - 댓글 수정
+        print("댓글 수정")
+    }
+    
+    @objc func deletePost() {
+        popupDeleteAlert(alertType: AlertType.shouldPostDelete)
+    }
+    
+    @objc func deleteComment() {
+        popupDeleteAlert(alertType: AlertType.shouldCommentDelete)
+    }
+    
+    @objc func postEditCompleted() {
+        showToast(alertType: AlertType.postEdit)
+    }
+    
+    // MARK: - Network
+    private func getPost() {
+        let baseURL = "https://www.itzza.shop/boards"
+        guard let boardId = boardId else { return }
+        guard let url = URL(string: baseURL + "/\(boardId)") else { return }
+        let resource = urlResource<PostModel>(url: url)
+        
+        apiSession.getRequest(with: resource)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success(let post):
+                    self.post = post
+                    DispatchQueue.main.async {
+                        self.setCommentListTV()
+                        self.configureNavigationMenuButton()
+                    }
+                case .failure:
+                    self.showEmptyAlert()
+                }
+            })
+            .disposed(by: bag)
+    }
+    
+    private func deleteRequest(_ boardId: Int) {
+        let baseURL = "https://www.itzza.shop/boards"
+        guard let url = URL(string: baseURL + "/\(boardId)") else { return }
+        let resource = urlResource<EmptyModel>(url: url)
+        
+        apiSession.deleteRequest(with: resource)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success:
+                    NotificationCenter.default.post(name: .popupAlertView, object: true)
+                    self.navigationController?.popViewController(animated: true)
+                case .failure:
+                    self.networkErrorAlert()
+                }
+            })
+            .disposed(by: bag)
+    }
+    
+    // MARK: - Alert
+    func popupDeleteAlert(alertType: AlertType) {
+        let alert = UIAlertController(title: alertType.message, message: "", preferredStyle: UIAlertController.Style.alert)
         alert.view.tintColor = .darkGray6
         alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
         let ok = UIAlertAction(title: "네", style: .destructive) { _ in
-            self.deletePost(self.boardId ?? 0)
+            switch alertType {
+            case .shouldPostDelete:
+                self.deleteRequest(self.boardId ?? 0)
+            case .shouldCommentDelete:
+                print("comment delete")
+            default:
+                break
+            }
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         
@@ -139,29 +191,43 @@ extension PostDetailVC {
         present(alert, animated: false, completion: nil)
     }
     
-    func deletePost(_ boardId: Int) {
-        let baseURL = "http://13.125.239.189:3000/boards/"
-        guard let url = URL(string: baseURL + "\(boardId)") else { return }
-        guard let token: String = KeychainWrapper.standard[.myToken] else { return }
-        let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+    func networkErrorAlert() {
+        let alert = UIAlertController(title: "네트워크 오류", message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.view.tintColor = .darkGray6
+        alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
+        let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
         
-        AF.request(url, method: .delete, headers: header).responseData { response in
-            switch response.result {
-            case .success:
-                self.navigationController?.popViewController(animated: true)
-            case .failure:
-                let alert = UIAlertController(title: "네트워크 오류", message: "", preferredStyle: UIAlertController.Style.alert)
-                alert.view.tintColor = .darkGray6
-                alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
-                let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
-                
-                alert.addAction(cancel)
-                self.present(alert, animated: false, completion: nil)
-            }
+        alert.addAction(cancel)
+        self.present(alert, animated: false, completion: nil)
+    }
+    
+    func showEmptyAlert() {
+        let alert = UIAlertController(title: "삭제된 게시글입니다", message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.view.tintColor = .darkGray6
+        alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
+        let ok = UIAlertAction(title: "확인", style: .destructive) { _ in
+            self.navigationController?.popViewController(animated: true)
         }
+        
+        alert.addAction(ok)
+        present(alert, animated: false, completion: nil)
+    }
+    
+    func showToast(alertType: AlertType) {
+        let toastView = AlertView()
+        toastView.setAlertTitle(alertType: alertType)
+        self.view.addSubview(toastView)
+        toastView.snp.makeConstraints {
+            $0.bottom.equalTo(chatInputView.snp.top).offset(-20)
+            $0.leading.equalToSuperview().offset(52)
+            $0.trailing.equalToSuperview().offset(-52)
+            $0.height.equalTo(44)
+        }
+        toastView.showToastView()
     }
 }
 
+// MARK: - UITableViewDelegate
 extension PostDetailVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: Identifiers.postContentTableViewHeader) as? PostContentTableViewHeader else { return nil }
@@ -176,6 +242,7 @@ extension PostDetailVC: UITableViewDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension PostDetailVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if post.commentCnt == 0 {
@@ -206,7 +273,7 @@ extension PostDetailVC: UITableViewDataSource {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentTVC, for: indexPath) as? CommentTVC else { return UITableViewCell() }
                 cell.selectionStyle = .none
                 cell.configureCell(self.post.comments![indexPath.row - 1].comment!)
-                
+                cell.didTapMenuButton(self, post.comments![indexPath.row - 1].comment!.canEdit!)
                 return cell
             }
         }

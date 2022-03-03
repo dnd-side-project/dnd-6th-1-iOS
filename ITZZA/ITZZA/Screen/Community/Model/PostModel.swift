@@ -26,6 +26,7 @@ struct PostModel: Decodable {
     var likeCnt: Int?
     var bookmarkStatus: Bool?
     var likeStatus: Bool?
+    var canEdit: Bool?
 }
 
 extension PostModel {

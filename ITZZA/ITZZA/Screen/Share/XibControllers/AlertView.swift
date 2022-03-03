@@ -29,8 +29,6 @@ class AlertView: UIView {
         view.layer.cornerRadius = 5
         self.addSubview(view)
         
-        view.isHidden = true
-        
         view.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -38,13 +36,21 @@ class AlertView: UIView {
         configureAlertView()
     }
     
-    func setAlertTitle(_ title: String) {
-        alertTitle.text = title
-    }
-    
     private func configureAlertView() {
         alertTitle.textColor = .primary
         alertTitle.font = UIFont.SpoqaHanSansNeoRegular(size: 13)
         alertTitle.textAlignment = .center
+    }
+    
+    func showToastView() {
+        UIView.animate(withDuration: 0.7, delay: 0.8, options: .curveEaseOut) {
+            self.alpha = 0.0
+        } completion: { (isCompleted) in
+            self.removeFromSuperview()
+        }
+    }
+    
+    func setAlertTitle(alertType: AlertType) {
+        alertTitle.text = alertType.message
     }
 }

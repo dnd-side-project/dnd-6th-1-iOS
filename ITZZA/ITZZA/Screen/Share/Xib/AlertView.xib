@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertView" customModule="ITZZA" customModuleProvider="target">
             <connections>
-                <outlet property="alertTitle" destination="J3O-lB-9dU" id="dLu-zj-uuJ"/>
+                <outlet property="alertTitle" destination="J3O-lB-9dU" id="2dX-9k-ces"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
