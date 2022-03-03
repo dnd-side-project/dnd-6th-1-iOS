@@ -31,8 +31,8 @@ class EmotionCVC: UICollectionViewCell {
             emojiLabel.textColor = color.1
         } else {
             imageView.image = UIImage(named: name)
-            emojiBackground.backgroundColor = .gray
-            emojiLabel.textColor = .gray
+            emojiBackground.backgroundColor = .lightGray1
+            emojiLabel.textColor = .lightGray6
         }
         emojiLabel.text = label
     }

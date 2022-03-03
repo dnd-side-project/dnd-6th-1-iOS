@@ -58,6 +58,12 @@ extension WriteDiaryVC {
         cancelButton.contentHorizontalAlignment = .leading
         saveButton.contentHorizontalAlignment = .trailing
         dateLabel.text = selectedDate
+        cancelButton.setTitleColor(.darkGray6, for: .normal)
+        cancelButton.titleLabel?.font = .SpoqaHanSansNeoMedium(size: 15)
+        dateLabel.textColor = .darkGray6
+        dateLabel.font = .SpoqaHanSansNeoBold(size: 20)
+        saveButton.setTitleColor(.primary, for: .normal)
+        saveButton.titleLabel?.font = .SpoqaHanSansNeoBold(size: 15)
     }
     
     private func addViewsToVC() {

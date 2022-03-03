@@ -22,17 +22,21 @@ class SignInVC: UIViewController {
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var passwordView: UIView!
     @IBOutlet weak var findIdPasswordButton: UIButton!
+    @IBOutlet weak var askingPasswordButton: UIButton!
+    @IBOutlet weak var askingSignUpButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var passwordEyeButton: UIButton!
     @IBOutlet weak var signInIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var saveSignInStateButton: UIButton!
-
+    @IBOutlet weak var loginStatusLabel: UILabel!
+    
     var disposeBag = DisposeBag()
     var signInViewModel = SignInVM()
     var validation = Validation()
 
     override func viewDidLoad() {
         bindUI()
+        bindVM()
         setInitialUIValue()
         didTapSignInButton()
         signInOnSessionError()
@@ -67,6 +71,16 @@ extension SignInVC {
             })
             .disposed(by: disposeBag)
         
+        passwordTextField.rx.controlEvent(.editingChanged)
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.passwordEyeButton.tintColor = .darkGray6
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindVM() {
         signInViewModel.indicatorController.asDriver()
             .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
@@ -114,7 +128,7 @@ extension SignInVC {
         .bind(to: signInButton.rx.isEnabled)
         .disposed(by: disposeBag)
         
-        validation.isEyeOn.asDriver()
+        validation.isEyeOn.asDriver(onErrorJustReturn: false)
             .drive(onNext: { [weak self] eyeStatus in
                 guard let self = self else { return }
                 self.didTapPasswordEyeButton(eyeStatus)
@@ -153,9 +167,13 @@ extension SignInVC {
     
     func didTapSaveSignInStatusButton(_ selected: Bool) {
         if selected {
-            saveSignInStateButton.setImage(UIImage(named: "CheckBoxFill"), for: .normal)
+            let image = UIImage(named: "CheckBoxFill")?.withRenderingMode(.alwaysTemplate)
+            saveSignInStateButton.setImage(image, for: .normal)
+            saveSignInStateButton.tintColor = .primary
+            loginStatusLabel.textColor = .primary
         } else {
             saveSignInStateButton.setImage(UIImage(named: "CheckBoxOutline"), for: .normal)
+            loginStatusLabel.textColor = .lightGray6
         }
     }
 }
@@ -165,10 +183,10 @@ extension SignInVC {
     func didTapPasswordEyeButton(_ isEyeOn: Bool) {
         if isEyeOn {
             passwordEyeButton.setImage(UIImage(named: "PasswordEyeOff"), for: .normal)
-            passwordTextField.isSecureTextEntry = false
+            passwordTextField.isSecureTextEntry = true
         } else {
             passwordEyeButton.setImage(UIImage(named: "PasswordEyeOn"), for: .normal)
-            passwordTextField.isSecureTextEntry = true
+            passwordTextField.isSecureTextEntry = false
         }
     }
     
@@ -177,7 +195,7 @@ extension SignInVC {
             idPasswordView.layer.borderWidth = 0
         } else {
             idPasswordView.layer.borderWidth = 1
-            idPasswordView.layer.borderColor = UIColor.systemPink.cgColor
+            idPasswordView.layer.borderColor = UIColor.primary.cgColor
         }
     }
 }
@@ -237,10 +255,10 @@ extension SignInVC {
     
     func changeSignInButton(_ flag: Bool) -> Bool {
         if flag {
-            signInButton.backgroundColor = .systemPink
+            signInButton.backgroundColor = .primary
             return true
         } else {
-            signInButton.backgroundColor = UIColor.signInButtonBackgroundColor
+            signInButton.backgroundColor = .lightGray6
             return false
         }
     }
@@ -277,6 +295,29 @@ extension SignInVC {
         saveSignInStateButton.isSelected = false
         saveSignInStateButton.layer.cornerRadius = 20
         signInIndicatorView.isHidden = true
+        isEmailValidLabel.textColor = .primary
+        isPasswordValidLabel.textColor = .primary
+        isEmailValidLabel.font = .SpoqaHanSansNeoRegular(size: 12)
+        isPasswordValidLabel.font = .SpoqaHanSansNeoRegular(size: 12)
+        loginStatusLabel.textColor = .lightGray6
+        loginStatusLabel.font = .SpoqaHanSansNeoRegular(size: 12)
+        emailView.backgroundColor = .textFieldBackgroundColor
+        passwordView.backgroundColor = .textFieldBackgroundColor
+        signInButton.backgroundColor = .lightGray6
+        signInButton.setTitleColor(.white, for: .normal)
+        signInButton.titleLabel?.font = .SpoqaHanSansNeoBold(size: 17)
+        askingPasswordButton.titleLabel?.font = .SpoqaHanSansNeoRegular(size: 12)
+        askingPasswordButton.setTitleColor(.darkGray2, for: .normal)
+        findIdPasswordButton.titleLabel?.font = .SpoqaHanSansNeoBold(size: 12)
+        findIdPasswordButton.setTitleColor(.darkGray2, for: .normal)
+        findIdPasswordButton.setUnderline()
+        askingSignUpButton.titleLabel?.font = .SpoqaHanSansNeoRegular(size: 12)
+        askingSignUpButton.setTitleColor(.darkGray2, for: .normal)
+        signUpButton.titleLabel?.font = .SpoqaHanSansNeoBold(size: 12)
+        signUpButton.setTitleColor(.darkGray2, for: .normal)
+        signUpButton.setUnderline()
+        passwordEyeButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
+        passwordEyeButton.tintColor = .lightGray5
     }
     
     func showSignUpSuccessView() {

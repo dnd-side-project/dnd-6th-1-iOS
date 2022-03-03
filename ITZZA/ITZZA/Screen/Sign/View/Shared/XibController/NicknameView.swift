@@ -16,6 +16,8 @@ class NicknameView: UIView {
     @IBOutlet weak var validNicknameLabel: UILabel!
     @IBOutlet weak var underlineView: UIView!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var stepLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     var disposeBag = DisposeBag()
     let nicknameVM = NicknameVM()
@@ -45,16 +47,21 @@ class NicknameView: UIView {
 // MARK: - Change UI
 extension NicknameView {
     private func setInitialValue() {
-        checkDuplicateButton.layer.borderColor = UIColor.gray.cgColor
+        checkDuplicateButton.layer.borderColor = UIColor.primary.cgColor
         checkDuplicateButton.layer.borderWidth = 1
         checkDuplicateButton.layer.cornerRadius = 5
+        checkDuplicateButton.backgroundColor = .primary
+        checkDuplicateButton.setTitleColor(.white, for: .normal)
+        checkDuplicateButton.titleLabel?.font = .SpoqaHanSansNeoMedium(size: 12)
+        checkDuplicateButton.isEnabled = false
         indicatorView.isHidden = true
         validNicknameLabel.isHidden = true
-        validNicknameLabel.textColor = .orange
-        underlineView.backgroundColor = .gray
-        checkDuplicateButton.backgroundColor = .white
-        checkDuplicateButton.setTitleColor(.gray, for: .normal)
-        checkDuplicateButton.isEnabled = false
+        validNicknameLabel.textColor = .primary
+        underlineView.backgroundColor = .lightGray5
+        stepLabel.textColor = .primary
+        stepLabel.font = .SpoqaHanSansNeoBold(size: 15)
+        descriptionLabel.textColor = .darkGray6
+        descriptionLabel.font = .SpoqaHanSansNeoBold(size: 20)
     }
     
     private func startIndicator() {
@@ -81,9 +88,9 @@ extension NicknameView {
     private func availableNickname() {
         validNicknameLabel.isHidden = false
         validNicknameLabel.text = "사용가능한 닉네임입니다."
-        checkDuplicateButton.setTitleColor(.white, for: .normal)
+        checkDuplicateButton.setTitleColor(.primary, for: .normal)
         checkDuplicateButton.setTitle("확인완료", for: .normal)
-        checkDuplicateButton.backgroundColor = .orange
+        checkDuplicateButton.backgroundColor = .white
         underlineView.backgroundColor = .orange
     }
     
@@ -91,8 +98,8 @@ extension NicknameView {
         validNicknameLabel.isHidden = false
         validNicknameLabel.text = "같은 닉네임이 존재합니다."
         checkDuplicateButton.setTitle("중복확인", for: .normal)
-        checkDuplicateButton.backgroundColor = .white
-        checkDuplicateButton.setTitleColor(.orange, for: .normal)
+        checkDuplicateButton.backgroundColor = .primary
+        checkDuplicateButton.setTitleColor(.white, for: .normal)
         underlineView.backgroundColor = .orange
     }
     
@@ -100,26 +107,27 @@ extension NicknameView {
         validNicknameLabel.isHidden = false
         validNicknameLabel.text = "서버 에러! 다시 시도해주세요."
         checkDuplicateButton.setTitle("중복확인", for: .normal)
-        checkDuplicateButton.backgroundColor = .white
-        checkDuplicateButton.setTitleColor(.orange, for: .normal)
+        checkDuplicateButton.backgroundColor = .primary
+        checkDuplicateButton.setTitleColor(.white, for: .normal)
         underlineView.backgroundColor = .orange
     }
     
     private func decideStatusOfDuplicateCheckButton(_ status: Bool) {
         isValidNickname.accept(false)
-        checkDuplicateButton.backgroundColor = .white
         checkDuplicateButton.setTitle("중복확인", for: .normal)
-        underlineView.backgroundColor = .gray
+        underlineView.backgroundColor = .lightGray5
         validNicknameLabel.isHidden = true
         
         if status {
             enableCheckButton()
-            checkDuplicateButton.layer.borderColor = UIColor.orange.cgColor
-            checkDuplicateButton.setTitleColor(.orange, for: .normal)
+            checkDuplicateButton.backgroundColor = .primary
+            checkDuplicateButton.layer.borderColor = UIColor.primary.cgColor
+            checkDuplicateButton.setTitleColor(.white, for: .normal)
         } else {
             disableCheckButton()
-            checkDuplicateButton.layer.borderColor = UIColor.gray.cgColor
-            checkDuplicateButton.setTitleColor(.gray, for: .normal)
+            checkDuplicateButton.backgroundColor = .white
+            checkDuplicateButton.layer.borderColor = UIColor.lightGray5.cgColor
+            checkDuplicateButton.setTitleColor(.lightGray5, for: .normal)
         }
     }
     

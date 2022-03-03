@@ -36,7 +36,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="오늘은 어떤 하루였나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6x8-Vy-RGt">
                                 <rect key="frame" x="20" y="206" width="117" height="16"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="6x8-Vy-RGt" secondAttribute="height" multiplier="117:16" id="Vxd-g4-KWL"/>
                                     <constraint firstAttribute="height" constant="16" id="m1W-vF-6E5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -138,11 +137,13 @@
                     <navigationItem key="navigationItem" id="ZLq-4u-Oak"/>
                     <connections>
                         <outlet property="animationView" destination="n7S-Dw-K9C" id="tV6-gR-kCx"/>
+                        <outlet property="askingLabel" destination="6x8-Vy-RGt" id="ayR-yL-Zf3"/>
                         <outlet property="calendarMonthLabel" destination="L0R-oj-Dhc" id="Y6e-Mi-7pv"/>
                         <outlet property="calendarNextPageButton" destination="cnd-CV-gh9" id="mZ6-6B-v9f"/>
                         <outlet property="calendarPreviousPageButton" destination="HbX-qR-YHY" id="hQK-jx-74g"/>
                         <outlet property="calendarView" destination="b2J-7g-ohw" id="24D-GH-S6A"/>
                         <outlet property="calendarYearLabel" destination="eLn-ev-QXf" id="5fi-2D-9Di"/>
+                        <outlet property="homeTitleLabel" destination="y41-lo-197" id="QdL-9A-tnS"/>
                         <outlet property="writeTodayDiaryButton" destination="kEz-hS-IRb" id="cXJ-N5-Twe"/>
                     </connections>
                 </viewController>

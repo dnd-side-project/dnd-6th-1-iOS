@@ -82,7 +82,7 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="yEK-W0-yBL" id="wId-wl-ox2"/>
-                        <outlet property="dateTitle" destination="XsB-lh-Qt7" id="Dk0-VV-ULA"/>
+                        <outlet property="dateTitleLabel" destination="XsB-lh-Qt7" id="Dk0-VV-ULA"/>
                         <outlet property="dateTitleView" destination="dzt-cC-Dsf" id="08R-5y-qCZ"/>
                         <outlet property="menuButton" destination="vkD-9s-RXH" id="THt-ty-joO"/>
                         <outlet property="writeDiaryButton" destination="GcR-rx-Due" id="Jlo-GC-GLn"/>

@@ -11,8 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NicknameView" customModule="ITZZA" customModuleProvider="target">
             <connections>
                 <outlet property="checkDuplicateButton" destination="prN-rb-x8T" id="Lht-uw-UWG"/>
+                <outlet property="descriptionLabel" destination="r6t-oE-ASs" id="PQk-bw-wr0"/>
                 <outlet property="indicatorView" destination="1PC-bP-w83" id="4NY-fO-NCd"/>
                 <outlet property="nicknameTextField" destination="WLP-SX-YWR" id="qi2-fL-4MW"/>
+                <outlet property="stepLabel" destination="8Ml-Qh-Dbs" id="MSa-yK-JIw"/>
                 <outlet property="underlineView" destination="sYG-yj-ly8" id="IL9-Uh-Sfe"/>
                 <outlet property="validNicknameLabel" destination="vv4-Hw-NfD" id="h6L-TR-Zqa"/>
             </connections>
@@ -79,7 +81,7 @@
                         <constraint firstAttribute="width" constant="20" id="Fgr-OV-lXi"/>
                         <constraint firstAttribute="height" constant="20" id="HZr-dw-q8G"/>
                     </constraints>
-                    <color key="color" systemColor="systemOrangeColor"/>
+                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="kyD-61-JFN"/>
@@ -105,7 +107,7 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="138.40579710144928" y="138.61607142857142"/>
+            <point key="canvasLocation" x="138.40000000000001" y="138.17733990147784"/>
         </view>
     </objects>
     <resources>

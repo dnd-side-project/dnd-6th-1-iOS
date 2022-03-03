@@ -42,12 +42,15 @@ class ProfileInfoView: UIView {
 extension ProfileInfoView {
     private func configureProfileInfoView() {
         settingButton.isHidden = true
-        recentConnect.isHidden = true
-        clockImage.isHidden = true
-        userEmail.font = UIFont.SpoqaHanSansNeoRegular(size: 12)
+        userEmail.font = .SpoqaHanSansNeoRegular(size: 12)
         userEmail.textColor = .darkGray6
-        userNickname.font = UIFont.SpoqaHanSansNeoBold(size: 17)
+        userNickname.font = .SpoqaHanSansNeoBold(size: 17)
         userNickname.textColor = .darkGray6
+        recentConnect.font = .SpoqaHanSansNeoRegular(size: 10)
+        recentConnect.textColor = .lightGray5
+        userEmail.text = "waiting..."
+        userNickname.text = "Waiting..."
+        recentConnect.text = "최근작성..."
     }
 }
 

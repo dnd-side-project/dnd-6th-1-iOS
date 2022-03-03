@@ -13,7 +13,7 @@ import RxCocoa
 class DiaryVC: UIViewController {
     
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var dateTitle: UILabel!
+    @IBOutlet weak var dateTitleLabel: UILabel!
     @IBOutlet weak var dateTitleView: UIView!
     @IBOutlet weak var writeDiaryButton: UIButton!
     @IBOutlet weak var menuButton: UIButton!
@@ -39,10 +39,15 @@ extension DiaryVC {
     private func setInitialUIValue() {
         view.backgroundColor = .calendarBackgroundColor
         dateTitleView.backgroundColor = .calendarBackgroundColor
+        dateTitleLabel.textColor = .darkGray6
+        dateTitleLabel.font = .SpoqaHanSansNeoBold(size: 20)
         cancelButton.contentHorizontalAlignment = .leading
-        dateTitle.text = seletedDate
-        cancelButton.setTitleColor(.orange, for: .normal)
+        cancelButton.setTitleColor(.darkGray6, for: .normal)
+        cancelButton.titleLabel?.font = .SpoqaHanSansNeoMedium(size: 15)
+        dateTitleLabel.text = seletedDate
         writeDiaryButton.layer.cornerRadius = 4
+        writeDiaryButton.titleLabel?.font = .SpoqaHanSansNeoBold(size: 15)
+        writeDiaryButton.backgroundColor = .primary
         view.bringSubviewToFront(writeDiaryButton)
     }
     

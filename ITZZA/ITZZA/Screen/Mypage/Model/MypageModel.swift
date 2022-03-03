@@ -18,6 +18,7 @@ struct UserObject: Codable {
     var email: String?
     var nickname: String?
     var profileImage: String?
+    var recentPost: String?
 }
 
 extension MypageModel {

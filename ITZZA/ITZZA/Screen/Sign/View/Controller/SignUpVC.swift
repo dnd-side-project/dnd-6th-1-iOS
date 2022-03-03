@@ -17,9 +17,12 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var buttonStackView: UIStackView!
+    @IBOutlet weak var askingSignInButton: UIButton!
+    @IBOutlet weak var signInButton: UIButton!
+    
+    
     var emojiImage = UIImageView()
     var bubbleView = UIView()
     var tipView = UIView()
@@ -57,12 +60,26 @@ class SignUpVC: UIViewController {
 // MARK:- Change UI
 extension SignUpVC {
     func setInitialUIValue() {
+        titleLabel.textColor = .darkGray6
+        titleLabel.font = .SpoqaHanSansNeoBold(size: 22)
+        titleLabel.text = "회원가입"
         previousButton.layer.borderWidth = 1.0
-        previousButton.layer.borderColor = UIColor.black.cgColor
+        previousButton.layer.borderColor = UIColor.primary.cgColor
         previousButton.layer.cornerRadius = 5
+        previousButton.setTitleColor(.primary, for: .normal)
+        previousButton.titleLabel?.font = .SpoqaHanSansNeoBold(size: 17)
         nextButton.layer.cornerRadius = 5
+        nextButton.setTitleColor(.white, for: .normal)
+        nextButton.titleLabel?.font = .SpoqaHanSansNeoBold(size: 17)
+        nextButton.backgroundColor = .lightGray5
         bubbleView.layer.cornerRadius = 5
         scrollView.isPagingEnabled = false
+        askingSignInButton.setTitleColor(.darkGray2, for: .normal)
+        askingSignInButton.titleLabel?.font = .SpoqaHanSansNeoRegular(size: 12)
+        signInButton.setTitleColor(.darkGray2, for: .normal)
+        signInButton.titleLabel?.font = .SpoqaHanSansNeoBold(size: 12)
+        signInButton.setUnderline()
+        bubbleLabel.font = .SpoqaHanSansNeoRegular(size: 10)
     }
     
     func recognizeTapInScrollView() {
@@ -75,10 +92,6 @@ extension SignUpVC {
     
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
-    }
-    
-    func changeMainTitle(_ newTitle: String) {
-        titleLabel.text = newTitle
     }
     
     func createEmojiAndBubble() {
@@ -234,10 +247,10 @@ extension SignUpVC {
     
     func changeNextButton(_ isValid: Bool) {
         if isValid {
-            nextButton.backgroundColor = .orange
+            nextButton.backgroundColor = .primary
             nextButton.isEnabled = true
         } else {
-            nextButton.backgroundColor = .gray
+            nextButton.backgroundColor = .lightGray5
             nextButton.isEnabled = false
         }
     }
@@ -389,10 +402,9 @@ extension SignUpVC {
         signUpVM.visualizeAngryImage.asDriver()
             .drive(onNext: { [weak self] flag in
                 guard let self = self else { return }
-                self.changeMainTitle(Literal.email.description)
                 self.moveAndChangeEmoji(to: .coloredAngryEmoji, 0.25, false)
                 self.moveBubbleLocation(0.25, false)
-                self.changeBubbleInfo(to: .orange, Literal.first.description)
+                self.changeBubbleInfo(to: .seconAngry, Literal.first.description)
             })
             .disposed(by: disposeBag)
         
@@ -400,10 +412,9 @@ extension SignUpVC {
             .skip(1)
             .drive(onNext: { [weak self] flag in
                 guard let self = self else { return }
-                self.changeMainTitle(Literal.password.description)
                 self.moveAndChangeEmoji(to: .coloredConfuseEmoji, 0.5, false)
                 self.moveBubbleLocation(0.5, false)
-                self.changeBubbleInfo(to: .purple, Literal.second.description)
+                self.changeBubbleInfo(to: .seconConfused, Literal.second.description)
             })
             .disposed(by: disposeBag)
         
@@ -411,10 +422,9 @@ extension SignUpVC {
             .skip(1)
             .drive(onNext: { [weak self] flag in
                 guard let self = self else { return }
-                self.changeMainTitle(Literal.nickname.description)
                 self.moveAndChangeEmoji(to: .coloredSadEmoji, 0.75, false)
                 self.moveBubbleLocation(0.75, false)
-                self.changeBubbleInfo(to: .blue, Literal.third.description)
+                self.changeBubbleInfo(to: .seconSorrow, Literal.third.description)
             })
             .disposed(by: disposeBag)
         
@@ -422,10 +432,9 @@ extension SignUpVC {
             .skip(1)
             .drive(onNext: { [weak self] flag in
                 guard let self = self else { return }
-                self.changeMainTitle(Literal.agreement.description)
                 self.moveAndChangeEmoji(to: .coloredComfyEmoji, 1, true)
                 self.moveBubbleLocation(1, true)
-                self.changeBubbleInfo(to: .yellow, Literal.fourth.description)
+                self.changeBubbleInfo(to: .seconRelaxed, Literal.fourth.description)
             })
             .disposed(by: disposeBag)
         

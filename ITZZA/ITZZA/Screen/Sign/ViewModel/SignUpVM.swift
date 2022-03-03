@@ -64,15 +64,15 @@ class SignUpVM {
     private func changeProgressBarColor() {
         switch pageCount.value {
         case 0:
-            decideProgressBarColor.accept(UIColor.orange)
+            decideProgressBarColor.accept(UIColor.seconAngry)
         case 1:
-            decideProgressBarColor.accept(UIColor.purple)
+            decideProgressBarColor.accept(UIColor.seconConfused)
         case 2:
-            decideProgressBarColor.accept(UIColor.blue)
+            decideProgressBarColor.accept(UIColor.seconSorrow)
         case 3:
-            decideProgressBarColor.accept(UIColor.yellow)
+            decideProgressBarColor.accept(UIColor.seconRelaxed)
         default:
-            decideProgressBarColor.accept(UIColor.orange)
+            decideProgressBarColor.accept(UIColor.seconAngry)
         }
     }
     
