@@ -26,6 +26,7 @@ class PostDetailVC: UIViewController {
         super.viewDidLoad()
         
         register()
+        configureLayout()
         getPost()
         setNotification()
     }
@@ -49,6 +50,14 @@ extension PostDetailVC {
                     self.present(menuBottomSheet, animated: true)
                 })
                 .disposed(by: bag)
+        }
+    }
+    
+    func configureLayout() {
+        hideKeyboard()
+        
+        chatInputView.snp.makeConstraints {
+            $0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top)
         }
     }
     
