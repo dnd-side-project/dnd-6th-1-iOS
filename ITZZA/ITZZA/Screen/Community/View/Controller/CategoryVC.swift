@@ -62,10 +62,13 @@ extension CategoryVC {
     
     @objc func showToast(_ notification: Notification) {
         let toastView = AlertView()
-        if notification.object as! Bool {
-            toastView.setAlertTitle(alertType: AlertType.postDeleted)
-        } else {
-            toastView.setAlertTitle(alertType: AlertType.postPost)
+        switch notification.object as! AlertType {
+        case .postDeleted:
+            toastView.setAlertTitle(alertType: .postDeleted)
+        case .postPost:
+            toastView.setAlertTitle(alertType: .postPost)
+        default:
+            break
         }
         self.view.addSubview(toastView)
         toastView.snp.makeConstraints {

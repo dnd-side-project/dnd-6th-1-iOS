@@ -156,8 +156,14 @@ extension PostDetailVC {
                          commentIndex: commentIndex)
     }
     
-    @objc func postEditCompleted() {
-        showToast(alertType: AlertType.postEdit)
+    @objc func postEditCompleted(_ notification: Notification) {
+        switch notification.object as! AlertType {
+        case .commentDeleted:
+            showToast(alertType: .commentDeleted)
+        default:
+            //TODO: - post, patch 나누면 case 분류
+            showToast(alertType: AlertType.postEdit)
+        }
     }
     
     // MARK: - Network
@@ -194,7 +200,7 @@ extension PostDetailVC {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success:
-                    NotificationCenter.default.post(name: .popupAlertView, object: true)
+                    NotificationCenter.default.post(name: .popupAlertView, object: AlertType.postDeleted)
                     self.navigationController?.popViewController(animated: true)
                 case .failure:
                     self.networkErrorAlert()
@@ -213,8 +219,8 @@ extension PostDetailVC {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success:
-                    NotificationCenter.default.post(name: .popupAlertView, object: true)
-                    self.post.comments?.remove(at: commentIndex.row)
+                    NotificationCenter.default.post(name: .popupAlertView, object: AlertType.commentDeleted)
+                    self.post.comments?.remove(at: commentIndex.row - 1)
                     self.commentListTV.deleteRows(at: [commentIndex], with: .none)
                     DispatchQueue.main.async {
                         self.commentListTV.reloadData()
@@ -361,7 +367,7 @@ extension PostDetailVC: UITableViewDataSource {
         } else {
             if indexPath == [0,0] {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentCountTVC, for: indexPath) as? CommentCountTVC else { return UITableViewCell() }
-                cell.setCommentCount(self.post.commentCnt ?? 0)
+                cell.setCommentCount(self.post.comments?.count ?? 0)
                 cell.isUserInteractionEnabled = false
                 cell.backgroundColor = .clear
                 
