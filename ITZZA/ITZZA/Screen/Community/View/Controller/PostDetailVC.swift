@@ -54,7 +54,7 @@ extension PostDetailVC {
     }
     
     func configureLayout() {
-        hideKeyboard()
+        addGestureRecgognizerToView()
         
         chatInputView.snp.makeConstraints {
             $0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top)
@@ -98,6 +98,19 @@ extension PostDetailVC {
         if isScrolled {
             commentListTV.scrollToRow(at: [0,0], at: .bottom, animated: true)
         }
+    }
+    
+    func addGestureRecgognizerToView() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(resignCommentEditState))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func resignCommentEditState() {
+        view.endEditing(true)
+        chatInputView.isEdit = false
+        chatInputView.textInputField.text = ""
     }
     
     
