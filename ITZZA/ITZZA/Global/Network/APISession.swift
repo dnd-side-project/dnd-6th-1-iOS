@@ -54,6 +54,46 @@ struct APISession: APIService {
         }
     }
     
+    func patchRequest<T: Decodable>(with urlResource: urlResource<T>, param: Parameters) -> Observable<Result<T, APIError>> {
+        
+        Observable<Result<T, APIError>>.create { observer in
+            
+            guard let token: String = KeychainWrapper.standard[.myToken] else { return Disposables.create { } }
+            
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer \(token)",
+                "Content-Type": "application/json"
+            ]
+            
+            let task = AF.request(urlResource.url,
+                                  method: .patch,
+                                  parameters: param,
+                                  encoding: JSONEncoding.default,
+                                  headers: headers)
+                .validate(statusCode: 200...399)
+                .responseDecodable(of: T.self) { response in
+                    switch response.result {
+                    case .failure(let error):
+                        print("Unknown HTTP Response Error!!!: \(error.localizedDescription)")
+                        
+                        switch response.response?.statusCode {
+                        case 400:
+                            observer.onNext(.failure(.http(status: 400)))
+                        default:
+                            observer.onNext(.failure(.unknown))
+                        }
+                        
+                    case .success(let decodedData):
+                        observer.onNext(.success(decodedData))
+                    }
+                }
+            
+            return Disposables.create {
+                task.cancel()
+            }
+        }
+    }
+    
     func getRequest<T>(with urlResource: urlResource<T>) -> Observable<Result<T, APIError>> where T : Decodable {
         
         return Observable<Result<T, APIError>>.create { observer in

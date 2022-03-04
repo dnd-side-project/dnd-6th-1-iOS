@@ -15,6 +15,8 @@ class ChatInputView: UIView {
     
     let apiSession = APISession()
     let bag = DisposeBag()
+    var isEdit = false
+    var editingCommentId: Int?
     
     override init(frame: CGRect) {
       super.init(frame: frame)
@@ -62,7 +64,11 @@ class ChatInputView: UIView {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
-                NotificationCenter.default.post(name: .whenPostComment, object: nil)
+                if self.isEdit {
+                    NotificationCenter.default.post(name: .whenEditComment, object: nil)
+                } else {
+                    NotificationCenter.default.post(name: .whenPostComment, object: nil)                    
+                }
                 self.textInputField.text = ""
                 self.textInputField.resignFirstResponder()
             })

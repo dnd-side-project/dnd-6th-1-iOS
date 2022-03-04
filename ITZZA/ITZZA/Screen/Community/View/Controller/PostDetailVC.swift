@@ -109,6 +109,7 @@ extension PostDetailVC {
         NotificationCenter.default.addObserver(self, selector: #selector(deleteComment), name: .whenDeleteCommentMenuTapped, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(postEditCompleted), name: .popupAlertView, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(postComment), name: .whenPostComment, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(patchComment), name: .whenEditComment, object: nil)
     }
     
     @objc func editPost() {
@@ -123,9 +124,21 @@ extension PostDetailVC {
         postCommentRequest(boardId: self.boardId!)
     }
     
-    @objc func editComment() {
-        //TODO: - 댓글 수정
-        print("댓글 수정")
+    @objc func editComment(_ notification: Notification) {
+        guard let object = notification.object as? [Int?],
+              let commentId = object[0],
+              let commentIndex = object[1] else { return }
+        chatInputView.isEdit = true
+        chatInputView.editingCommentId = commentId
+        chatInputView.textInputField.becomeFirstResponder()
+        chatInputView.textInputField.text = post.comments![commentIndex - 1].comment?.commentContent
+        commentListTV.scrollToRow(at: [0,commentIndex], at: .bottom, animated: true)
+    }
+    
+    @objc func patchComment() {
+        guard let commentId = chatInputView.editingCommentId else { return }
+        patchCommentRequest(boardId: self.boardId!, commentId: commentId)
+        chatInputView.isEdit = false
     }
     
     @objc func deletePost() {
@@ -226,6 +239,26 @@ extension PostDetailVC {
                 switch result {
                 case .success:
                     self.showToast(alertType: AlertType.commentPost)
+                case .failure:
+                    self.networkErrorAlert()
+                }
+            })
+            .disposed(by: bag)
+    }
+    
+    private func patchCommentRequest(boardId: Int, commentId: Int) {
+        let postURL = "http://13.125.239.189:3000/boards/\(boardId)/comments/\(commentId)"
+        let url = URL(string: postURL)!
+        let postInformation = CommentModel(commentContent: chatInputView.textInputField.text)
+        let postParameter = postInformation.param
+        let resource = urlResource<CommentModel>(url: url)
+        
+        apiSession.patchRequest(with: resource, param: postParameter)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success:
+                    self.showToast(alertType: AlertType.commentEdit)
                 case .failure:
                     self.networkErrorAlert()
                 }
