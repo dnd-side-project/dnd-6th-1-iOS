@@ -26,6 +26,7 @@ class PostDetailVC: UIViewController {
         super.viewDidLoad()
         
         register()
+        configureLayout()
         getPost()
         setNotification()
     }
@@ -49,6 +50,14 @@ extension PostDetailVC {
                     self.present(menuBottomSheet, animated: true)
                 })
                 .disposed(by: bag)
+        }
+    }
+    
+    func configureLayout() {
+        addGestureRecgognizerToView()
+        
+        chatInputView.snp.makeConstraints {
+            $0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top)
         }
     }
     
@@ -91,6 +100,19 @@ extension PostDetailVC {
         }
     }
     
+    func addGestureRecgognizerToView() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(resignCommentEditState))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func resignCommentEditState() {
+        view.endEditing(true)
+        chatInputView.isEdit = false
+        chatInputView.textInputField.text = ""
+    }
+    
     
     // MARK: - Notification
     func setNotification() {
@@ -99,6 +121,8 @@ extension PostDetailVC {
         NotificationCenter.default.addObserver(self, selector: #selector(editComment), name: .whenEditCommentMenuTapped, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteComment), name: .whenDeleteCommentMenuTapped, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(postEditCompleted), name: .popupAlertView, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(postComment), name: .whenPostComment, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(patchComment), name: .whenEditComment, object: nil)
     }
     
     @objc func editPost() {
@@ -109,21 +133,50 @@ extension PostDetailVC {
         self.navigationController?.pushViewController(editPostVC, animated: true)
     }
     
-    @objc func editComment() {
-        //TODO: - 댓글 수정
-        print("댓글 수정")
+    @objc func postComment() {
+        postCommentRequest(boardId: self.boardId!)
+    }
+    
+    @objc func editComment(_ notification: Notification) {
+        guard let object = notification.object as? [Int?],
+              let commentId = object[0],
+              let commentIndex = object[1] else { return }
+        chatInputView.isEdit = true
+        chatInputView.editingCommentId = commentId
+        chatInputView.textInputField.becomeFirstResponder()
+        chatInputView.textInputField.text = post.comments![commentIndex - 1].comment?.commentContent
+        commentListTV.scrollToRow(at: [0,commentIndex], at: .bottom, animated: true)
+    }
+    
+    @objc func patchComment() {
+        guard let commentId = chatInputView.editingCommentId else { return }
+        patchCommentRequest(boardId: self.boardId!, commentId: commentId)
+        chatInputView.isEdit = false
     }
     
     @objc func deletePost() {
-        popupDeleteAlert(alertType: AlertType.shouldPostDelete)
+        popupDeleteAlert(alertType: AlertType.shouldPostDelete,
+                         commentId: nil,
+                         commentIndex: nil)
     }
     
-    @objc func deleteComment() {
-        popupDeleteAlert(alertType: AlertType.shouldCommentDelete)
+    @objc func deleteComment(_ notification: Notification) {
+        guard let object = notification.object as? [Int?],
+              let commentId = object[0],
+              let commentIndex = object[1] else { return }
+        popupDeleteAlert(alertType: AlertType.shouldCommentDelete,
+                         commentId: commentId,
+                         commentIndex: commentIndex)
     }
     
-    @objc func postEditCompleted() {
-        showToast(alertType: AlertType.postEdit)
+    @objc func postEditCompleted(_ notification: Notification) {
+        switch notification.object as! AlertType {
+        case .commentDeleted:
+            showToast(alertType: .commentDeleted)
+        default:
+            //TODO: - post, patch 나누면 case 분류
+            showToast(alertType: AlertType.postEdit)
+        }
     }
     
     // MARK: - Network
@@ -150,7 +203,7 @@ extension PostDetailVC {
             .disposed(by: bag)
     }
     
-    private func deleteRequest(_ boardId: Int) {
+    private func deletePostRequest(_ boardId: Int) {
         let baseURL = "https://www.itzza.shop/boards"
         guard let url = URL(string: baseURL + "/\(boardId)") else { return }
         let resource = urlResource<EmptyModel>(url: url)
@@ -160,7 +213,7 @@ extension PostDetailVC {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success:
-                    NotificationCenter.default.post(name: .popupAlertView, object: true)
+                    NotificationCenter.default.post(name: .popupAlertView, object: AlertType.postDeleted)
                     self.navigationController?.popViewController(animated: true)
                 case .failure:
                     self.networkErrorAlert()
@@ -169,17 +222,80 @@ extension PostDetailVC {
             .disposed(by: bag)
     }
     
+    private func deleteCommentRequest(_ boardId: Int, _ commentId: Int, _ commentIndex: IndexPath) {
+        let baseURL = "https://www.itzza.shop/boards"
+        guard let url = URL(string: baseURL + "/\(boardId)/comments/\(commentId)") else { return }
+        let resource = urlResource<EmptyModel>(url: url)
+        
+        apiSession.deleteRequest(with: resource)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success:
+                    NotificationCenter.default.post(name: .popupAlertView, object: AlertType.commentDeleted)
+                    self.post.comments?.remove(at: commentIndex.row - 1)
+                    self.commentListTV.deleteRows(at: [commentIndex], with: .none)
+                    DispatchQueue.main.async {
+                        self.commentListTV.reloadData()
+                    }
+                case .failure:
+                    self.networkErrorAlert()
+                }
+            })
+            .disposed(by: bag)
+    }
+    
+    private func postCommentRequest(boardId: Int) {
+        let postURL = "http://13.125.239.189:3000/boards/\(boardId)/comments"
+        let url = URL(string: postURL)!
+        let postInformation = CommentModel(commentContent: chatInputView.textInputField.text)
+        let postParameter = postInformation.param
+        let resource = urlResource<CommentModel>(url: url)
+        
+        apiSession.postRequest(with: resource, param: postParameter)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success:
+                    self.showToast(alertType: AlertType.commentPost)
+                case .failure:
+                    self.networkErrorAlert()
+                }
+            })
+            .disposed(by: bag)
+    }
+    
+    private func patchCommentRequest(boardId: Int, commentId: Int) {
+        let postURL = "http://13.125.239.189:3000/boards/\(boardId)/comments/\(commentId)"
+        let url = URL(string: postURL)!
+        let postInformation = CommentModel(commentContent: chatInputView.textInputField.text)
+        let postParameter = postInformation.param
+        let resource = urlResource<CommentModel>(url: url)
+        
+        apiSession.patchRequest(with: resource, param: postParameter)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success:
+                    self.showToast(alertType: AlertType.commentEdit)
+                case .failure:
+                    self.networkErrorAlert()
+                }
+            })
+            .disposed(by: bag)
+    }
+    
     // MARK: - Alert
-    func popupDeleteAlert(alertType: AlertType) {
+    func popupDeleteAlert(alertType: AlertType, commentId: Int?, commentIndex: Int?) {
         let alert = UIAlertController(title: alertType.message, message: "", preferredStyle: UIAlertController.Style.alert)
         alert.view.tintColor = .darkGray6
         alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
         let ok = UIAlertAction(title: "네", style: .destructive) { _ in
             switch alertType {
             case .shouldPostDelete:
-                self.deleteRequest(self.boardId ?? 0)
+                self.deletePostRequest(self.boardId ?? 0)
             case .shouldCommentDelete:
-                print("comment delete")
+                self.deleteCommentRequest(self.boardId ?? 0, commentId!, [0, commentIndex!])
             default:
                 break
             }
@@ -264,7 +380,7 @@ extension PostDetailVC: UITableViewDataSource {
         } else {
             if indexPath == [0,0] {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentCountTVC, for: indexPath) as? CommentCountTVC else { return UITableViewCell() }
-                cell.setCommentCount(self.post.commentCnt ?? 0)
+                cell.setCommentCount(self.post.comments?.count ?? 0)
                 cell.isUserInteractionEnabled = false
                 cell.backgroundColor = .clear
                 
@@ -272,8 +388,8 @@ extension PostDetailVC: UITableViewDataSource {
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.commentTVC, for: indexPath) as? CommentTVC else { return UITableViewCell() }
                 cell.selectionStyle = .none
-                cell.configureCell(self.post.comments![indexPath.row - 1].comment!)
-                cell.didTapMenuButton(self, post.comments![indexPath.row - 1].comment!.canEdit!)
+                cell.configureCell(self.post.comments?[indexPath.row - 1].comment! ?? CommentModel(), indexPath.row)
+                cell.didTapMenuButton(self, post.comments?[indexPath.row - 1].comment!.canEdit ?? false)
                 return cell
             }
         }

@@ -15,6 +15,8 @@ import Then
 class MenuBottomSheet: DynamicBottomSheetViewController {
     
     let bag = DisposeBag()
+    var commentId: Int?
+    var commentIndex: Int?
     
     // MARK: - Private Properties
     
@@ -79,7 +81,8 @@ extension MenuBottomSheet {
             .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.dismiss(animated: true) {
-                    NotificationCenter.default.post(name: editNotificationName, object: nil)
+                    NotificationCenter.default.post(name: editNotificationName,
+                                                    object: [(self.commentId ?? 0), (self.commentIndex ?? 0)])
                 }
             })
             .disposed(by: bag)
@@ -89,7 +92,8 @@ extension MenuBottomSheet {
             .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.dismiss(animated: true) {
-                    NotificationCenter.default.post(name: deleteNotificationName, object: nil)
+                    NotificationCenter.default.post(name: deleteNotificationName,
+                                                    object: [(self.commentId ?? 0), (self.commentIndex ?? 0)])
                 }
             })
             .disposed(by: bag)

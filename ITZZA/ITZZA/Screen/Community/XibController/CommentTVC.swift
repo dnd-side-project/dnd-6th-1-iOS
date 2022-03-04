@@ -17,7 +17,8 @@ class CommentTVC: UITableViewCell {
     @IBOutlet weak var createCommentButton: UIButton!
     @IBOutlet weak var writer: UILabel!
     @IBOutlet weak var menuButton: UIButton!
-    
+    var commentId: Int?
+    var commentIndex: Int?
     let bag = DisposeBag()
     
     override func awakeFromNib() {
@@ -64,8 +65,11 @@ class CommentTVC: UITableViewCell {
         if canEdit {
             menuButton.rx.tap
                 .asDriver()
-                .drive(onNext: {
+                .drive(onNext: { [weak self] in
+                    guard let self = self else { return }
                     let menuBottomSheet = MenuBottomSheet()
+                    menuBottomSheet.commentId = self.commentId
+                    menuBottomSheet.commentIndex = self.commentIndex
                     menuBottomSheet.bindButtonAction(.whenEditCommentMenuTapped, .whenDeleteCommentMenuTapped)
                     vc.present(menuBottomSheet, animated: true)
                 })
@@ -73,7 +77,7 @@ class CommentTVC: UITableViewCell {
         }
     }
     
-    func configureCell(_ comments: CommentModel) {
+    func configureCell(_ comments: CommentModel, _ index: Int) {
         profileImg.kf.setImage(with: URL(string: comments.profileImage!),
                                placeholder: UIImage(named: "Null_Comment"),
                                options: [
@@ -84,5 +88,7 @@ class CommentTVC: UITableViewCell {
         writer.isHidden = !(comments.writerOrNot ?? false)
         commentContent.text = comments.commentContent
         createAt.text = comments.createdAt
+        commentId = comments.commentId
+        commentIndex = index
     }
 }

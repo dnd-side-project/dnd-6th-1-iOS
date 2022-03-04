@@ -35,6 +35,7 @@ class PostWriteView: UIView {
     }
     
     private func configureFont() {
+        title.delegate = self
         title.textColor = .darkGray6
         title.font = UIFont.SpoqaHanSansNeoMedium(size: 15)
         title.setPlaceholderColor(.lightGray5)
@@ -50,5 +51,12 @@ class PostWriteView: UIView {
     
     func setContentsPlaceholder(_ placeholder: String) {
         contents.setTextViewPlaceholder(placeholder)
+    }
+}
+
+extension PostWriteView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        contents.becomeFirstResponder()
+        return true
     }
 }
