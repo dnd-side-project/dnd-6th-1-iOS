@@ -63,6 +63,7 @@ extension AddPostVC {
         configureNavigationBar()
         configureChooseCategoryButton()
         configurePostContentComponent()
+        hideKeyboard()
     }
     
     func configureEditingContentView(_ post: PostModel) {
