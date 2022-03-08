@@ -8,6 +8,7 @@
 import RxSwift
 import RxCocoa
 import Photos
+import Alamofire
 
 class WriteDiaryVM {
     
@@ -15,7 +16,10 @@ class WriteDiaryVM {
     let apiSession = APISession()
     let postResponseError = PublishSubject<APIError>()
     let postResponseSuccess = PublishSubject<HomeModel>()
-    
+    var isPatch = false
+    var diaryId: Int?
+    var previousImageCount: Int?
+    var isInitial = false
 }
 
 // MARK: - Related to Adding Images
@@ -25,9 +29,16 @@ extension WriteDiaryVM {
         imageListView.selectedImages = images
         imageListView.imageCV.reloadData()
     }
-    
+
     func convertAssetToImages(_ selectedAssets: [PHAsset],
                               _ imageListView: ImageCollectionView) {
+        if previousImageCount != nil {
+            isInitial = false
+        } else {
+            isInitial = true
+            previousImageCount = selectedAssets.count
+        }
+        
         imageListView.selectedImages = selectedAssets.map {
             let imageManager = PHImageManager.default()
             let option = PHImageRequestOptions()
@@ -46,6 +57,7 @@ extension WriteDiaryVM {
             
             return newImage
         }
+        imageListView.imageCV.reloadData()
     }
 }
 
@@ -56,7 +68,21 @@ extension WriteDiaryVM {
                                _ postWriteView: PostWriteView,
                                _ categoryReason: String,
                                _ imageListView: ImageCollectionView) {
-        let baseURL = "http://13.125.239.189:3000/diaries"
+        
+        var baseURL = ""
+        var method: HTTPMethod
+        
+        if isPatch {
+            guard let diaryId = diaryId else {
+                return
+            }
+            baseURL = "https://www.itzza.shop/diaries/\(diaryId)"
+            method = .patch
+        } else {
+            baseURL = "https://www.itzza.shop/diaries"
+            method = .post
+        }
+        
         let url = URL(string: baseURL)!
         let resource = urlResource<HomeModel>(url: url)
         let replacedDate = date.replacingOccurrences(of: ".", with: "-")
@@ -74,7 +100,7 @@ extension WriteDiaryVM {
         apiSession.postRequestWithImages(with: resource,
                                          param: diaryParameter,
                                          images: imageListView.selectedImages,
-                                         method: .post)
+                                         method: method)
             .withUnretained(self)
             .subscribe(onNext: { owner, result in
                 switch result {

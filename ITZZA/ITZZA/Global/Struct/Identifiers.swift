@@ -60,7 +60,7 @@ struct Identifiers {
     static let postWriteView = "PostWriteView"
     static let chatInputView = "ChatInputView"
     static let postContentTableViewHeader = "PostContentTableViewHeader"
-    static let emptyDiaryView = "EmptyDiaryView"
+    static let diaryView = "DiaryView"
     static let emotionView = "EmotionView"
     static let imageScrollView = "ImageScrollView"
     static let imageCollectionView = "ImageCollectionView"

@@ -134,8 +134,8 @@
 		623DE31127B65B27005E78D0 /* NicknameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623DE31027B65B27005E78D0 /* NicknameVM.swift */; };
 		624C457E27BCDA24000A37DF /* DiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624C457D27BCDA24000A37DF /* DiaryVC.swift */; };
 		624C458027BCDA30000A37DF /* Diary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624C457F27BCDA30000A37DF /* Diary.storyboard */; };
-		624C458427BD0E55000A37DF /* EmptyDiaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 624C458327BD0E55000A37DF /* EmptyDiaryView.xib */; };
-		624C458A27BD1221000A37DF /* EmptyDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624C458927BD1221000A37DF /* EmptyDiaryView.swift */; };
+		624C458427BD0E55000A37DF /* DiaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 624C458327BD0E55000A37DF /* DiaryView.xib */; };
+		624C458A27BD1221000A37DF /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624C458927BD1221000A37DF /* DiaryView.swift */; };
 		624C458C27BD1D80000A37DF /* WriteDiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624C458B27BD1D80000A37DF /* WriteDiaryVC.swift */; };
 		624C458E27BD1DA2000A37DF /* WriteDiary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624C458D27BD1DA2000A37DF /* WriteDiary.storyboard */; };
 		6254618227B152E300184DA1 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6254618127B152E300184DA1 /* PasswordView.swift */; };
@@ -145,6 +145,7 @@
 		62654E5D27C75A3600A48363 /* EmojiAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62654E5C27C75A3600A48363 /* EmojiAnimationView.swift */; };
 		62654E5F27C75A6A00A48363 /* EmojiAnimationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62654E5E27C75A6A00A48363 /* EmojiAnimationView.xib */; };
 		62654E6127C7825700A48363 /* WriteDiaryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62654E6027C7825700A48363 /* WriteDiaryVM.swift */; };
+		626E165327D74F5B00444D80 /* DeleteDiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626E165227D74F5B00444D80 /* DeleteDiaryModel.swift */; };
 		6270D40127ACE590004FD7A9 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6270D40027ACE590004FD7A9 /* SignUpVC.swift */; };
 		627E1A8F27AEAD7D005C1777 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E1A8E27AEAD7D005C1777 /* Array+.swift */; };
 		6283B53627CE026000D55AA9 /* ProfileInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6283B53527CE026000D55AA9 /* ProfileInfoView.xib */; };
@@ -303,8 +304,8 @@
 		623DE31027B65B27005E78D0 /* NicknameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameVM.swift; sourceTree = "<group>"; };
 		624C457D27BCDA24000A37DF /* DiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryVC.swift; sourceTree = "<group>"; };
 		624C457F27BCDA30000A37DF /* Diary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Diary.storyboard; sourceTree = "<group>"; };
-		624C458327BD0E55000A37DF /* EmptyDiaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyDiaryView.xib; sourceTree = "<group>"; };
-		624C458927BD1221000A37DF /* EmptyDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDiaryView.swift; sourceTree = "<group>"; };
+		624C458327BD0E55000A37DF /* DiaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiaryView.xib; sourceTree = "<group>"; };
+		624C458927BD1221000A37DF /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
 		624C458B27BD1D80000A37DF /* WriteDiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteDiaryVC.swift; sourceTree = "<group>"; };
 		624C458D27BD1DA2000A37DF /* WriteDiary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WriteDiary.storyboard; sourceTree = "<group>"; };
 		6254618127B152E300184DA1 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
@@ -314,6 +315,7 @@
 		62654E5C27C75A3600A48363 /* EmojiAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAnimationView.swift; sourceTree = "<group>"; };
 		62654E5E27C75A6A00A48363 /* EmojiAnimationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmojiAnimationView.xib; sourceTree = "<group>"; };
 		62654E6027C7825700A48363 /* WriteDiaryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteDiaryVM.swift; sourceTree = "<group>"; };
+		626E165227D74F5B00444D80 /* DeleteDiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDiaryModel.swift; sourceTree = "<group>"; };
 		6270D40027ACE590004FD7A9 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		627E1A8E27AEAD7D005C1777 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		6283B53527CE026000D55AA9 /* ProfileInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInfoView.xib; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				232CC03B27A0328000040131 /* HomeModel.swift */,
+				626E165227D74F5B00444D80 /* DeleteDiaryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -893,7 +896,7 @@
 		624C458227BD0DEB000A37DF /* Xib */ = {
 			isa = PBXGroup;
 			children = (
-				624C458327BD0E55000A37DF /* EmptyDiaryView.xib */,
+				624C458327BD0E55000A37DF /* DiaryView.xib */,
 				62654E5E27C75A6A00A48363 /* EmojiAnimationView.xib */,
 				622C57D527C25FAF0011D833 /* EmotionView.xib */,
 				622C57D727C26A0D0011D833 /* EmotionCVC.xib */,
@@ -933,7 +936,7 @@
 		624C458827BD11B4000A37DF /* XibController */ = {
 			isa = PBXGroup;
 			children = (
-				624C458927BD1221000A37DF /* EmptyDiaryView.swift */,
+				624C458927BD1221000A37DF /* DiaryView.swift */,
 				622C57D327C25F8E0011D833 /* EmotionView.swift */,
 				622C57D927C26A950011D833 /* EmotionCVC.swift */,
 				62654E5C27C75A3600A48363 /* EmojiAnimationView.swift */,
@@ -1148,7 +1151,7 @@
 				6254618827B1530500184DA1 /* NicknameView.xib in Resources */,
 				232CC01E27A0317900040131 /* Assets.xcassets in Resources */,
 				23B4DECF27C750B40051ED87 /* AlertView.xib in Resources */,
-				624C458427BD0E55000A37DF /* EmptyDiaryView.xib in Resources */,
+				624C458427BD0E55000A37DF /* DiaryView.xib in Resources */,
 				624C458027BCDA30000A37DF /* Diary.storyboard in Resources */,
 				622D51CD27BEBC7000F59679 /* HomeAlarm.storyboard in Resources */,
 				235DCED927C13E5D0034D4C1 /* AddedImageCVC.xib in Resources */,
@@ -1281,11 +1284,12 @@
 				23B66EBC27B813A500FC477D /* CategoryBottomSheetVC.swift in Sources */,
 				62BE209027A66F34001F150A /* APISession.swift in Sources */,
 				62D3B61827C53990001593CF /* UserInformation.swift in Sources */,
+				626E165327D74F5B00444D80 /* DeleteDiaryModel.swift in Sources */,
 				236C9EA627C10D4600B0BADA /* ImageScrollView.swift in Sources */,
 				23D56B5627C62FC10000D3E5 /* KeywordContentView.swift in Sources */,
 				2335241327A98D57009C654F /* PostDataSource.swift in Sources */,
 				232CC08927A0390B00040131 /* UIFont+.swift in Sources */,
-				624C458A27BD1221000A37DF /* EmptyDiaryView.swift in Sources */,
+				624C458A27BD1221000A37DF /* DiaryView.swift in Sources */,
 				238CEEA227A7DFCF006BE766 /* NavigationController+.swift in Sources */,
 				238CEEAE27A7F577006BE766 /* PostModel.swift in Sources */,
 				232CC01527A0317900040131 /* AppDelegate.swift in Sources */,

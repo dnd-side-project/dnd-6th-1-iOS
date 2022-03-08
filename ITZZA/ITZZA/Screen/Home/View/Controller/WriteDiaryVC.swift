@@ -33,6 +33,7 @@ class WriteDiaryVC: UIViewController {
     let maxImageSelectionCount = 3
     let minimumLineSpacing: CGFloat = 20
     var selectedDate: String?
+    var isUpdate = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -220,11 +221,9 @@ extension WriteDiaryVC {
             .asDriver(onErrorJustReturn: 0)
             .drive(onNext: { [weak self] imageCount in
                 guard let self = self else { return }
-                self.setImageCVHeight(imageCount)
+                self.updateImageCVHeight(imageCount)
             })
             .disposed(by: disposeBag)
-        
-        
     }
 }
 
@@ -246,8 +245,11 @@ extension WriteDiaryVC {
         }, cancel: { (assets) in
         }, finish: { (assets) in
             self.writeDirayVM.convertAssetToImages(assets, self.imageListView)
-            self.writeDirayVM.addImageToCollectionView(self.imageListView.selectedImages, self.imageListView)
-            self.setImageCVHeight(self.imageListView.selectedImages.count)
+            if self.writeDirayVM.isInitial {
+                self.setImageCVHeight(self.imageListView.selectedImages.count)
+            } else {
+                self.updateImageCVHeight(self.imageListView.selectedImages.count)
+            }
             self.imageListView.selectedAssets = assets
         }, completion: {
         })
@@ -260,6 +262,18 @@ extension WriteDiaryVC {
             }
         } else {
             imageListView.snp.makeConstraints {
+                $0.height.equalTo(CGFloat(imageCount) * (imageListView.imageCV.frame.width + minimumLineSpacing) - minimumLineSpacing)
+            }
+        }
+    }
+    
+    func updateImageCVHeight(_ imageCount: Int) {
+        if imageCount == 0 {
+            imageListView.snp.makeConstraints {
+                $0.height.equalTo(0)
+            }
+        } else {
+            imageListView.snp.updateConstraints {
                 $0.height.equalTo(CGFloat(imageCount) * (imageListView.imageCV.frame.width + minimumLineSpacing) - minimumLineSpacing)
             }
         }

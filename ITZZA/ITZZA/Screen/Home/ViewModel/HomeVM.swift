@@ -12,8 +12,7 @@ class HomeVM {
     var disposeBag = DisposeBag()
     let apiSession = APISession()
     let apiError = PublishSubject<APIError>()
-    let getDiarySuccess = PublishSubject<[Date: Int]>()
-    var monthlyDiaryData: [HomeModel] = []
+    let getDiarySuccess = PublishSubject<Void>()
     var events: [Date: Int] = [:]
     var parsedDiaryData: [Date: HomeModel] = [:]
     
@@ -31,7 +30,7 @@ class HomeVM {
         return df
     }()
   
-    private func extractDateFromData() {
+    private func extractDateFromData(_ monthlyDiaryData: [HomeModel]) {
         events = [:]
         parsedDiaryData = [:]
         
@@ -63,14 +62,13 @@ class HomeVM {
         diaryVC.seletedDate = dotDateFormatter.string(from: date)
         
         if events.keys.contains(date) {
-            let temporalView = EmptyDiaryView()
+            let temporalView = DiaryView()
             let parsedData = parsedDiaryData[date]
             
             temporalView.emotionSentence.text = parsedData?.categoryReason
             temporalView.postContentView.title.text = parsedData?.diaryTitle
             temporalView.postContentView.contents.text = parsedData?.diaryContent
             temporalView.addImagesToImageScrollView(with: parsedData?.diaryImages ?? [])
-            temporalView.addImagesToImageScrollView(with: [])
             
             temporalView.emotionSentence.textColor = .darkGray6
             temporalView.postContentView.title.textColor = .darkGray6
@@ -78,7 +76,8 @@ class HomeVM {
             
             diaryVC.viewStatus = true
             diaryVC.categoryId = parsedData?.categoryId
-            diaryVC.emptyDiaryView = temporalView
+            diaryVC.diaryId = parsedData?.diaryId
+            diaryVC.diaryView = temporalView
             return diaryVC
         } else {
             diaryVC.viewStatus = false
@@ -90,7 +89,7 @@ class HomeVM {
 // MARK: - Networking
 extension HomeVM {
     func getDiaryData(_ month: String, _ year: String) {
-        let baseURL = "http://13.125.239.189:3000/diaries?month=\(month)&year=\(year)"
+        let baseURL = "https://www.itzza.shop/diaries?month=\(month)&year=\(year)"
         let url = URL(string: baseURL)!
         let resource = urlResource<[HomeModel]>(url: url)
         
@@ -102,9 +101,8 @@ extension HomeVM {
                     owner.apiError.onNext(error)
                     
                 case .success(let response):
-                    owner.monthlyDiaryData = response
-                    owner.extractDateFromData()
-                    owner.getDiarySuccess.onNext(owner.events)
+                    owner.extractDateFromData(response)
+                    owner.getDiarySuccess.onNext(())
                 }
             })
             .disposed(by: disposeBag)

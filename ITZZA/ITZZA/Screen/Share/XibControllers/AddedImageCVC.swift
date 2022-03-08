@@ -15,6 +15,10 @@ class AddedImageCVC: UICollectionViewCell {
     override func awakeFromNib() {
         configureButton()
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
 }
 
 extension AddedImageCVC {
