@@ -22,14 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Thread.sleep(forTimeInterval: 1.0)
         
-        guard let tmp = UserDefaults.standard.string(forKey: "email") else {
+        guard let userEmail = UserDefaults.standard.string(forKey: "email") else {
             let onboardingViewController = ViewControllerFactory.viewController(for: .onboarding) as? OnboardingVC
             self.window?.rootViewController = onboardingViewController
             return true
         }
         
-        guard let userEmail = UserDefaults.standard.string(forKey: "email"),
-              let userPassword: String = KeychainWrapper.standard[.myPassword],
+        guard let userPassword: String = KeychainWrapper.standard[.myPassword],
               let userToken: String = KeychainWrapper.standard[.myToken],
               let keychainUserId: String = KeychainWrapper.standard[.userId] else {
                   let signInVC = ViewControllerFactory.viewController(for: .signIn)

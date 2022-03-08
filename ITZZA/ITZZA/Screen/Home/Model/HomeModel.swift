@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 
 struct HomeModel: Codable {
-    var dirayId: Int?
+    var diaryId: Int?
     var userId: Int?
     var date: String?
     var categoryId: Int?
@@ -30,9 +30,9 @@ extension HomeModel {
         guard let diaryImageURL = images else { return nil }
         
         diaryImageURL.forEach {
-            let replacedURL = $0.replacingOccurrences(of: "//", with: "/")
-            let imageData = try? Data(contentsOf: URL(string: replacedURL)!)
-            diaryImages.append(UIImage(data: imageData!)!)
+            print($0)
+            let imageData = try? Data(contentsOf: URL(string: $0)!)
+            diaryImages.append(UIImage(data: imageData!) ?? UIImage())
         }
         
         return diaryImages

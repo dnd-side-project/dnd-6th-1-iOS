@@ -20,10 +20,11 @@ class DiaryVC: UIViewController {
     
     var seletedDate: String!
     var disposeBag = DisposeBag()
-    var emptyDiaryView = EmptyDiaryView()
+    var diaryView = DiaryView()
     var viewStatus: Bool?
     var emojiAnimationView = EmojiAnimationView()
     var categoryId: Int?
+    var diaryId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +55,9 @@ extension DiaryVC {
     private func decideViewToAdd(_ flag: Bool) {
         if flag {
             addEmojiAnimationView()
-            addEmptyDiaryViewWithAnimation()
+            addDiaryViewWithAnimation()
         } else {
-            addEmptyDiaryView()
+            addDiaryView()
         }
     }
     
@@ -72,20 +73,20 @@ extension DiaryVC {
         }
     }
     
-    private func addEmptyDiaryView() {
-        view.addSubview(emptyDiaryView)
+    private func addDiaryView() {
+        view.addSubview(diaryView)
         
-        emptyDiaryView.snp.makeConstraints {
+        diaryView.snp.makeConstraints {
             $0.top.equalTo(dateTitleView.snp.bottom).offset(20)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
             $0.trailing.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
         }
     }
     
-    private func addEmptyDiaryViewWithAnimation() {
-        view.addSubview(emptyDiaryView)
+    private func addDiaryViewWithAnimation() {
+        view.addSubview(diaryView)
         
-        emptyDiaryView.snp.makeConstraints {
+        diaryView.snp.makeConstraints {
             $0.top.equalTo(emojiAnimationView.snp.bottom)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
             $0.trailing.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
@@ -125,6 +126,16 @@ extension DiaryVC {
                 
                 writeDiaryVC.selectedDate = self.seletedDate
                 self.present(writeDiaryVC, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+        
+        menuButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                let menuBottomSheet = MenuBottomSheet()
+                menuBottomSheet.activateMenuButtonForDiary(self.diaryId)
+                self.present(menuBottomSheet, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
     }

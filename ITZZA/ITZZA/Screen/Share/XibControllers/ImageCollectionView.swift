@@ -14,7 +14,7 @@ import RxCocoa
 class ImageCollectionView: UIView {
     @IBOutlet weak var imageCV: UICollectionView!
     
-    let numberOfImages = PublishRelay<Int>()
+    var numberOfImages = PublishRelay<Int>()
     
     var selectedImages: [UIImage] = []
     var selectedAssets: [PHAsset] = []

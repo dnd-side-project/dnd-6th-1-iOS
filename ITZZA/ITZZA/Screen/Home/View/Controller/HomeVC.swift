@@ -28,7 +28,6 @@ class HomeVC: UIViewController {
     var disposeBag = DisposeBag()
     let homeVM = HomeVM()
     var currentPage: Date?
-    var events: [Date: Int] = [:]
     var currentMonth = ""
     var currentYear = ""
     
@@ -88,7 +87,7 @@ extension HomeVC {
     }
     
     private func checkDateAndChangeEventColor(_ date: Date) -> [UIColor] {
-        if events.keys.contains(date) {
+        if homeVM.events.keys.contains(date) {
             return homeVM.decideEventColor(date)
         } else {
             return [UIColor.clear]
@@ -202,7 +201,7 @@ extension HomeVC: FSCalendarDelegate {
 // MARK: - Calendar Datasource
 extension HomeVC: FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        events.keys.contains(date) ? 1 : 0
+        homeVM.events.keys.contains(date) ? 1 : 0
     }
 }
 
@@ -259,7 +258,6 @@ extension HomeVC {
         homeVM.getDiarySuccess
             .withUnretained(self)
             .subscribe(onNext: { owner, diaryData in
-                owner.events = diaryData
                 owner.calendarView.reloadData()
             })
             .disposed(by: disposeBag)

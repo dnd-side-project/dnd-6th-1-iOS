@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class EmptyDiaryView: UIView {
+class DiaryView: UIView {
     
     @IBOutlet weak var postContentView: PostContentView!
     @IBOutlet weak var imageScrollView: ImageScrollView!
@@ -31,12 +31,12 @@ class EmptyDiaryView: UIView {
     }
     
     private func setContentView() {
-        insertXibView(with: Identifiers.emptyDiaryView)
+        insertXibView(with: Identifiers.diaryView)
     }
 }
 
 // MARK: - Change UI
-extension EmptyDiaryView {
+extension DiaryView {
     func setInitialUIValue() {
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 3
