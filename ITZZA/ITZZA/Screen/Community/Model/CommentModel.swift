@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 struct CommentDataModel: Decodable {
     var comment: CommentModel?
@@ -20,4 +21,10 @@ struct CommentModel: Decodable {
     var createdAt: String?
     var canEdit: Bool?
     var writerOrNot: Bool?
+}
+
+extension CommentModel {
+    var param: Parameters {
+        return ["commentContent": commentContent!]
+    }
 }

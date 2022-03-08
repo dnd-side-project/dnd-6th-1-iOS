@@ -36,7 +36,7 @@
                                 <constraint firstAttribute="height" constant="34" id="l0M-jI-W1O"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="15"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         </textField>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rOy-m5-qXl">
                             <rect key="frame" x="0.0" y="49" width="315" height="35"/>

@@ -63,6 +63,7 @@ extension AddPostVC {
         configureNavigationBar()
         configureChooseCategoryButton()
         configurePostContentComponent()
+        hideKeyboard()
     }
     
     func configureEditingContentView(_ post: PostModel) {
@@ -223,7 +224,7 @@ extension AddPostVC {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success:
-                    NotificationCenter.default.post(name: .popupAlertView, object: false)
+                    NotificationCenter.default.post(name: .popupAlertView, object: AlertType.postPost)
                     owner.navigationController?.popViewController(animated: true)
                 case .failure:
                     break

@@ -10,6 +10,7 @@ import Foundation
 enum AlertType {
     case postPost
     case postDeleted
+    case commentPost
     case commentDeleted
     case shouldPostDelete
     case shouldCommentDelete
@@ -22,6 +23,8 @@ enum AlertType {
             return "게시글이 업로드 되었습니다"
         case .postDeleted:
             return "게시글이 삭제되었습니다"
+        case .commentPost:
+            return "댓글이 등록되었습니다"
         case .commentDeleted:
             return "댓글이 삭제되었습니다"
         case .shouldPostDelete:
