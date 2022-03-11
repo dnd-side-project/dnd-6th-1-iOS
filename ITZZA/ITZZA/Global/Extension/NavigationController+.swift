@@ -32,4 +32,16 @@ extension UINavigationController {
     func setNaviItemTintColor(navigationController: UINavigationController?, color: UIColor) {
         navigationController?.navigationBar.tintColor = color
     }
+    
+    func setHomeNaviBarTitle(navigationItem: UINavigationItem?, title: String) {
+        let naviTitle = UILabel()
+        naviTitle.textColor = .label
+        naviTitle.text = title
+        naviTitle.font = UIFont.SpoqaHanSansNeoMedium(size: 18)
+        navigationItem?.title = ""
+        
+        let paddingView = UIView()
+        
+        navigationItem!.leftBarButtonItems = [UIBarButtonItem.init(customView: paddingView), UIBarButtonItem.init(customView: naviTitle)]
+    }
 }
