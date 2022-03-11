@@ -103,13 +103,15 @@ extension HomeVC {
     }
     
     private func setNaviBarView() {
+        navigationController?.setHomeNaviBarTitle(navigationItem: self.navigationItem, title: "ITZZA")
         navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .black)
     }
     
     private func setNaviBarItem() {
         homeAlarmButton = UIBarButtonItem()
-        homeAlarmButton.image = UIImage(named: "Home_Alarm")
+        homeAlarmButton.image = UIImage(named: "Alarm")
         navigationItem.rightBarButtonItem = homeAlarmButton
+        navigationItem.backButtonTitle = "알림"
     }
     
     private func setInitialUIValue() {

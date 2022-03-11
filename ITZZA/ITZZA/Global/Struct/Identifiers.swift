@@ -81,6 +81,7 @@ struct Identifiers {
     static let keywordContentTVC = "KeywordContentTVC"
     static let searchedUserTVC = "SearchedUserTVC"
     static let noneSearchedContentTVC = "NoneSearchedContentTVC"
+    static let homeAlarmCell = "HomeAlarmCell"
     
     //MARK: - CVC
     static let addedImageCVC = "AddedImageCVC"

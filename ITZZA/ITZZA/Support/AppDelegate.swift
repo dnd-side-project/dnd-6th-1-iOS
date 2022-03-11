@@ -50,7 +50,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         let tabBarAppearance = UITabBarItem.appearance()
-        tabBarAppearance.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.SpoqaHanSansNeoRegular(size: 11)], for: .normal)
+        tabBarAppearance
+            .setTitleTextAttributes(
+                [NSAttributedString.Key.font : UIFont.SpoqaHanSansNeoRegular(size: 11)],
+                for: .normal)
+        
+        let customFont = UIFont.SpoqaHanSansNeoBold(size: 22)
+        UIBarButtonItem.appearance()
+            .setTitleTextAttributes(
+                [NSAttributedString.Key.font: customFont],
+                for: .normal)
         
         return true
     }
