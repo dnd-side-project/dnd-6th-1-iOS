@@ -90,4 +90,5 @@ struct Identifiers {
     static let emotionCVC = "EmotionCVC"
     static let mypageCVC = "MypageCVC"
     static let emotionRankCVC = "EmotionRankCVC"
+    static let emotionListCVC = "EmotionListCVC"
 }

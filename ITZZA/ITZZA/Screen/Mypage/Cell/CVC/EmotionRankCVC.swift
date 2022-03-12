@@ -18,6 +18,7 @@ class EmotionRankCVC: UICollectionViewCell {
     @IBOutlet weak var seperatorBar: UIView!
     
     override func awakeFromNib() {
+        super.awakeFromNib()
         configureContentView()
         configureFont()
         configureTextColor(with: .darkGray6)
