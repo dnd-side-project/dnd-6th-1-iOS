@@ -7,57 +7,49 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
+import Photos
 
 class ReportVC: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
     
-    var scrollView = UIScrollView()
-    var contentView = UIView()
-    var imageView = UIImageView()
-    var tmpView = UIView()
+    let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNaviBar()
-        configureScrollView()
-        configureContentView()
-        configureImageView()
     }
-    
+}
+
+extension ReportVC {
     private func configureNaviBar() {
         navigationItem.title = "리포트"
         let saveButton = UIBarButtonItem()
         saveButton.title = "저장"
         navigationItem.rightBarButtonItem = saveButton
+        
+        saveButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                
+                guard let report = self.scrollView.subviews.first?.transfromToImage() else { return }
+                
+                self.saveImage(report)
+            })
+            .disposed(by: bag)
     }
     
-    private func configureScrollView() {
-        view.addSubview(scrollView)
-        
-        scrollView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
+    func saveImage(_ image: UIImage) {
+        PHPhotoLibrary.requestAuthorization { status in
+            guard status == .authorized else { return }
+            
+            DispatchQueue.main.async {
+                PHPhotoLibrary.shared().performChanges({
+                    PHAssetChangeRequest.creationRequestForAsset(from: image)
+                }, completionHandler: nil)
+            }
         }
-    }
-    
-    private func configureContentView() {
-        scrollView.addSubview(contentView)
-
-        contentView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-            $0.width.equalTo(scrollView)
-        }
-    }
-    
-    private func configureImageView() {
-        contentView.addSubview(imageView)
-        imageView.image = UIImage(named: "Report_Image")
-        
-        imageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(25)
-            $0.leading.equalToSuperview().offset(25)
-            $0.trailing.equalToSuperview().offset(-25)
-            $0.bottom.equalToSuperview().offset(-25)
-            $0.height.equalTo(1000)
-        }
-        
     }
 }

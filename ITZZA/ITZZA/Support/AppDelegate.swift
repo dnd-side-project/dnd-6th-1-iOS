@@ -55,11 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 [NSAttributedString.Key.font : UIFont.SpoqaHanSansNeoRegular(size: 11)],
                 for: .normal)
         
-        let customFont = UIFont.SpoqaHanSansNeoBold(size: 22)
-        UIBarButtonItem.appearance()
-            .setTitleTextAttributes(
-                [NSAttributedString.Key.font: customFont],
-                for: .normal)
+//        let customFont = UIFont.SpoqaHanSansNeoBold(size: 15)
+//        UIBarButtonItem.appearance()
+//            .setTitleTextAttributes(
+//                [NSAttributedString.Key.font: customFont],
+//                for: .normal)
         
         return true
     }
