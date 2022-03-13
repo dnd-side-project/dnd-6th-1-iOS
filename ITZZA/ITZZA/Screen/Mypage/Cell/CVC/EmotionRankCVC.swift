@@ -58,6 +58,8 @@ extension EmotionRankCVC {
         backgroundColor = Emoji.angry.color
         configureTextColor(with: .white)
         
+        rank.text = ""
+        
         emotionImage.layer.cornerRadius = emotionImage.frame.width / 2
         emotionImage.layer.borderWidth = 1
         emotionImage.layer.borderColor = UIColor.lightGray1.cgColor
@@ -80,7 +82,7 @@ extension EmotionRankCVC {
     
     private func addFirstStiker() {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Sticker_angry")
+        imageView.image = UIImage(named: "MVP")
         
         contentView.superview?.addSubview(imageView)
         

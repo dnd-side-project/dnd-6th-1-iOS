@@ -147,6 +147,7 @@
                                                                                 </imageView>
                                                                             </subviews>
                                                                             <constraints>
+                                                                                <constraint firstItem="yBD-8Z-Akw" firstAttribute="leading" secondItem="3Qc-Cd-l5c" secondAttribute="leading" constant="56.333333333333343" id="5az-Q4-8Sv"/>
                                                                                 <constraint firstItem="Isk-VU-Mqs" firstAttribute="centerY" secondItem="3Qc-Cd-l5c" secondAttribute="centerY" id="5iX-SN-Gom"/>
                                                                                 <constraint firstItem="qu4-OL-bc7" firstAttribute="leading" secondItem="Isk-VU-Mqs" secondAttribute="trailing" constant="16" id="B4e-pO-zbk"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="qu4-OL-bc7" secondAttribute="trailing" constant="16" id="KvL-8g-sDw"/>
@@ -157,7 +158,6 @@
                                                                                 <constraint firstItem="3Se-1a-2wi" firstAttribute="leading" secondItem="9dF-ds-IWn" secondAttribute="trailing" constant="1" id="Uyc-JY-jIY"/>
                                                                                 <constraint firstItem="Isk-VU-Mqs" firstAttribute="leading" secondItem="3Se-1a-2wi" secondAttribute="trailing" constant="16" id="Vn6-hB-SGr"/>
                                                                                 <constraint firstItem="GBl-9U-6ia" firstAttribute="leading" secondItem="yBD-8Z-Akw" secondAttribute="trailing" constant="10" id="Xek-kn-gTz"/>
-                                                                                <constraint firstItem="yBD-8Z-Akw" firstAttribute="leading" secondItem="fmg-qw-rMy" secondAttribute="trailing" constant="16" id="fUv-Z4-9Et"/>
                                                                                 <constraint firstItem="qu4-OL-bc7" firstAttribute="centerY" secondItem="3Qc-Cd-l5c" secondAttribute="centerY" id="fZ4-KC-X5h"/>
                                                                                 <constraint firstItem="3Se-1a-2wi" firstAttribute="centerY" secondItem="3Qc-Cd-l5c" secondAttribute="centerY" id="lTc-aS-KxV"/>
                                                                                 <constraint firstItem="fmg-qw-rMy" firstAttribute="centerY" secondItem="3Qc-Cd-l5c" secondAttribute="centerY" id="qLW-NQ-fQx"/>
@@ -186,9 +186,29 @@
                                                             <constraint firstItem="F0g-Ea-OZf" firstAttribute="top" secondItem="TDY-7v-DRP" secondAttribute="top" id="mrA-UI-P29"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H5f-jb-YKX" customClass="EmotionAnalyzeView" customModule="ITZZA" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H5f-jb-YKX">
                                                         <rect key="frame" x="0.0" y="517" width="375" height="463"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxB-y1-FAJ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="433"/>
+                                                                <color key="backgroundColor" red="0.98409181830000003" green="0.97329741719999996" blue="0.96661323310000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </view>
+                                                            <pageControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="kMd-V2-a8M">
+                                                                <rect key="frame" x="0.0" y="437" width="375" height="26"/>
+                                                                <color key="pageIndicatorTintColor" red="0.76862745098039209" green="0.76862745098039209" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="currentPageIndicatorTintColor" red="1" green="0.47843137254901957" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </pageControl>
+                                                        </subviews>
                                                         <color key="backgroundColor" red="0.98431372549019602" green="0.97254901960784312" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="wxB-y1-FAJ" secondAttribute="trailing" id="F7E-cc-uU6"/>
+                                                            <constraint firstItem="kMd-V2-a8M" firstAttribute="leading" secondItem="H5f-jb-YKX" secondAttribute="leading" id="HJu-a7-fy8"/>
+                                                            <constraint firstItem="wxB-y1-FAJ" firstAttribute="top" secondItem="H5f-jb-YKX" secondAttribute="top" id="aZ9-L7-Jbk"/>
+                                                            <constraint firstAttribute="trailing" secondItem="kMd-V2-a8M" secondAttribute="trailing" id="cxt-rh-C9z"/>
+                                                            <constraint firstItem="kMd-V2-a8M" firstAttribute="top" secondItem="wxB-y1-FAJ" secondAttribute="bottom" id="eOC-rO-bwL"/>
+                                                            <constraint firstItem="wxB-y1-FAJ" firstAttribute="leading" secondItem="H5f-jb-YKX" secondAttribute="leading" id="jtD-eC-4zu"/>
+                                                            <constraint firstAttribute="bottom" secondItem="kMd-V2-a8M" secondAttribute="bottom" constant="35" id="p28-Iy-UF2"/>
+                                                        </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0tN-TL-N3w">
                                                         <rect key="frame" x="0.0" y="980" width="375" height="339"/>
@@ -360,9 +380,10 @@
                     <size key="freeformSize" width="375" height="1500"/>
                     <connections>
                         <outlet property="animationView" destination="jHG-sn-V4I" id="MHq-On-hDf"/>
-                        <outlet property="emotionAnalyzeView" destination="H5f-jb-YKX" id="DoX-Ja-GTT"/>
+                        <outlet property="emotionAnalyzeHolderView" destination="wxB-y1-FAJ" id="AKt-Ue-q1k"/>
                         <outlet property="emotionListCV" destination="52E-Eh-RqP" id="x95-BH-tTH"/>
                         <outlet property="emotionRankCV" destination="F0g-Ea-OZf" id="IMU-YU-QkI"/>
+                        <outlet property="pageController" destination="kMd-V2-a8M" id="36e-hh-OMw"/>
                         <outlet property="profileImg" destination="IVS-GE-NEh" id="Xe1-qe-HNK"/>
                         <outlet property="reportPeriodButton" destination="hOs-vI-tjb" id="g9b-nU-4TL"/>
                         <outlet property="reportTitle" destination="5Hv-lL-ITZ" id="POW-JW-RMc"/>

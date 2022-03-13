@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class EmotionAnalyzeCVC: UICollectionViewCell {
 
@@ -62,5 +63,20 @@ extension EmotionAnalyzeCVC {
         
         createdAt.font = .SpoqaHanSansNeoRegular(size: 10)
         createdAt.textColor = .lightGray5
+    }
+    
+    func configureLine() {
+        layer.masksToBounds = false
+        
+        let lineView = UIView()
+        lineView.backgroundColor = .lightGray5
+        contentView.superview?.addSubview(lineView)
+        
+        lineView.snp.makeConstraints {
+            $0.width.equalTo(1)
+            $0.height.equalTo(65)
+            $0.top.equalTo(dotImage.snp.bottom)
+            $0.centerX.equalTo(dotImage.snp.centerX)
+        }
     }
 }

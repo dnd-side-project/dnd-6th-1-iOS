@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class EmotionAnalyzeView: UIView {
     @IBOutlet weak var title: UILabel!
@@ -64,7 +65,9 @@ extension EmotionAnalyzeView: UICollectionViewDataSource {
             for: indexPath) as? EmotionAnalyzeCVC
         else { return UICollectionViewCell() }
         
-        //        cell.configureCell(with: selectedImages[indexPath.row], and: indexPath)
+        if indexPath.row < (diaryCount ?? 0) - 1 {
+            cell.configureLine()
+        }
         return cell
     }
 }

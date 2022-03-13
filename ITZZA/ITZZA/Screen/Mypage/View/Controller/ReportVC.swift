@@ -18,19 +18,21 @@ class ReportVC: UIViewController {
     @IBOutlet weak var reportPeriodButton: UIButton!
     @IBOutlet weak var reportTitle: UILabel!
     @IBOutlet weak var emotionRankCV: UICollectionView!
-    @IBOutlet weak var emotionAnalyzeView: EmotionAnalyzeView!
+    @IBOutlet weak var emotionAnalyzeHolderView: UIView!
+    @IBOutlet weak var pageController: UIPageControl!
     @IBOutlet weak var emotionListCV: UICollectionView!
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var writeDiaryButton: UIButton!
     
     let bag = DisposeBag()
+    let MVPScrollView = UIScrollView()
+    let MVPStackView = UIStackView()
+    
+    var MVPEmotionCount: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        
-        emotionAnalyzeView.diaryCount = 4
-        emotionAnalyzeView.configureDiaryListCV()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +49,7 @@ extension ReportVC {
         configureNaviBar()
         configureTitleView()
         configureEmotionRankCV()
+        configureEmotionAnalyzeView()
         configureEmotionListCV()
         setWriteDiaryButton()
     }
@@ -77,6 +80,7 @@ extension ReportVC {
         reportPeriodButton.titleLabel?.font = .SpoqaHanSansNeoMedium(size: 13)
         reportPeriodButton.contentHorizontalAlignment = .left
         reportPeriodButton.semanticContentAttribute = .forceRightToLeft
+        reportPeriodButton.imageView?.layer.transform = CATransform3DMakeScale(0.7, 0.7, 0.7)
         
         reportTitle.text = "이번 주 감정 순위는 '혼란함' 1등!"
         reportTitle.font = .SpoqaHanSansNeoBold(size: 17)
@@ -121,6 +125,62 @@ extension ReportVC {
                 PHPhotoLibrary.shared().performChanges({
                     PHAssetChangeRequest.creationRequestForAsset(from: image)
                 }, completionHandler: nil)
+            }
+        }
+    }
+    
+    // MARK: - EmotionAnalyzeView
+    func configureEmotionAnalyzeView() {
+        // TODO: - 네트워크 연결
+        MVPEmotionCount = 2
+        
+        setEmotionAnalyzeScrollView()
+        setEmotionAnalyzeStackView()
+        setEmotionAnalyzePageController()
+        addEmotionAnalyzeView()
+    }
+    
+    func setEmotionAnalyzeScrollView() {
+        MVPScrollView.delegate = self
+        
+        emotionAnalyzeHolderView.addSubview(MVPScrollView)
+        MVPScrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        MVPScrollView.showsHorizontalScrollIndicator = false
+        
+        MVPScrollView.contentSize = CGSize(width: emotionAnalyzeHolderView.frame.size.width * CGFloat(MVPEmotionCount ?? 1), height: 0)
+        MVPScrollView.isPagingEnabled = true
+    }
+    
+    func setEmotionAnalyzeStackView() {
+        MVPStackView.axis = .horizontal
+        MVPStackView.alignment = .fill
+        MVPScrollView.addSubview(MVPStackView)
+        
+        MVPStackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.height.equalTo(MVPScrollView.snp.height)
+        }
+    }
+    
+    func setEmotionAnalyzePageController() {
+        pageController.numberOfPages = MVPEmotionCount ?? 1
+        pageController.currentPage = 0
+        pageController.pageIndicatorTintColor = .lightGray5
+        pageController.currentPageIndicatorTintColor = .primary
+    }
+    
+    func addEmotionAnalyzeView() {
+        for _ in 0 ..< (MVPEmotionCount ?? 1) {
+            let analyzeView = EmotionAnalyzeView()
+            analyzeView.diaryCount = 3
+            analyzeView.configureDiaryListCV()
+
+            MVPStackView.addArrangedSubview(analyzeView)
+            analyzeView.snp.makeConstraints {
+                $0.width.equalTo(MVPScrollView.snp.width)
+                $0.height.equalTo(MVPScrollView.snp.height)
             }
         }
     }
@@ -190,5 +250,14 @@ extension ReportVC: UICollectionViewDelegateFlowLayout {
         default:
             return UIEdgeInsets()
         }
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+extension ReportVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let page = round(scrollView.contentOffset.x / scrollView.frame.width)
+        if page.isNaN || page.isInfinite { return }
+        pageController.currentPage = Int(page)
     }
 }
