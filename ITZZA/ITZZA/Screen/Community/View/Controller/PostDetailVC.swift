@@ -46,7 +46,7 @@ extension PostDetailVC {
                 .drive(onNext: { [weak self] _ in
                     guard let self = self else { return }
                     let menuBottomSheet = MenuBottomSheet()
-                    menuBottomSheet.bindButtonAction(.whenEditPostMenuTapped, .whenDeletePostMenuTapped)
+                    menuBottomSheet.activateMenuButtonForCommunity(.whenEditPostMenuTapped, .whenDeletePostMenuTapped)
                     self.present(menuBottomSheet, animated: true)
                 })
                 .disposed(by: bag)
