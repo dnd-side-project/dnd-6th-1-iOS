@@ -216,7 +216,7 @@
                         <outlet property="askingSignUpButton" destination="8OU-Qc-5HP" id="c71-BW-qSN"/>
                         <outlet property="emailTextField" destination="Hc4-7R-C9d" id="pqn-Ey-sRC"/>
                         <outlet property="emailView" destination="bFn-wL-ncK" id="nCi-1P-gQk"/>
-                        <outlet property="findIdPasswordButton" destination="RJQ-Vp-NXu" id="2N5-Vt-plM"/>
+                        <outlet property="findPasswordButton" destination="RJQ-Vp-NXu" id="2N5-Vt-plM"/>
                         <outlet property="isEmailValidLabel" destination="bf4-cy-zoI" id="AEr-v0-EKd"/>
                         <outlet property="isPasswordValidLabel" destination="OJP-qX-bSj" id="glX-e9-T5e"/>
                         <outlet property="loginStatusLabel" destination="HdD-Hp-NZr" id="L4K-Yo-Mqf"/>
