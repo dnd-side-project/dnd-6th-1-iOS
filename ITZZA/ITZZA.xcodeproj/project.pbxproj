@@ -147,6 +147,8 @@
 		62654E6127C7825700A48363 /* WriteDiaryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62654E6027C7825700A48363 /* WriteDiaryVM.swift */; };
 		626E165327D74F5B00444D80 /* DeleteDiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626E165227D74F5B00444D80 /* DeleteDiaryModel.swift */; };
 		6270D40127ACE590004FD7A9 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6270D40027ACE590004FD7A9 /* SignUpVC.swift */; };
+		627E0FF427DDAFDC00E015A8 /* FindPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 627E0FF327DDAFDC00E015A8 /* FindPassword.storyboard */; };
+		627E0FF627DDAFF200E015A8 /* FindPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E0FF527DDAFF200E015A8 /* FindPasswordVC.swift */; };
 		627E1A8F27AEAD7D005C1777 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E1A8E27AEAD7D005C1777 /* Array+.swift */; };
 		6282F77A27D8B0EE006AC025 /* HomeAlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6282F77927D8B0EE006AC025 /* HomeAlarmCell.swift */; };
 		6282F77C27D8B281006AC025 /* HomeAlarmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6282F77B27D8B281006AC025 /* HomeAlarmCell.xib */; };
@@ -321,6 +323,8 @@
 		62654E6027C7825700A48363 /* WriteDiaryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteDiaryVM.swift; sourceTree = "<group>"; };
 		626E165227D74F5B00444D80 /* DeleteDiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDiaryModel.swift; sourceTree = "<group>"; };
 		6270D40027ACE590004FD7A9 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		627E0FF327DDAFDC00E015A8 /* FindPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindPassword.storyboard; sourceTree = "<group>"; };
+		627E0FF527DDAFF200E015A8 /* FindPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordVC.swift; sourceTree = "<group>"; };
 		627E1A8E27AEAD7D005C1777 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		6282F77927D8B0EE006AC025 /* HomeAlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAlarmCell.swift; sourceTree = "<group>"; };
 		6282F77B27D8B281006AC025 /* HomeAlarmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeAlarmCell.xib; sourceTree = "<group>"; };
@@ -849,6 +853,7 @@
 			children = (
 				6208CFDA27A254B900F17603 /* SignIn.storyboard */,
 				62E2BDF727ACFBD80052DDCE /* SignUp.storyboard */,
+				627E0FF327DDAFDC00E015A8 /* FindPassword.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -858,6 +863,7 @@
 			children = (
 				62BE208C27A590D0001F150A /* SignInVC.swift */,
 				6270D40027ACE590004FD7A9 /* SignUpVC.swift */,
+				627E0FF527DDAFF200E015A8 /* FindPasswordVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1139,6 +1145,7 @@
 			files = (
 				623DE30527B55BFD005E78D0 /* Agreement.txt in Resources */,
 				238CEEA427A7E6F1006BE766 /* Category.storyboard in Resources */,
+				627E0FF427DDAFDC00E015A8 /* FindPassword.storyboard in Resources */,
 				232CC0A227A03B4100040131 /* TabBar.storyboard in Resources */,
 				6254618627B152FC00184DA1 /* PasswordView.xib in Resources */,
 				2387375227C67E3F0060971E /* UserPostList.storyboard in Resources */,
@@ -1288,6 +1295,7 @@
 				2323030927B035ED00E20078 /* UITextField+.swift in Sources */,
 				622D51CB27BEB54400F59679 /* HomeNC.swift in Sources */,
 				23765D6B27C8DCAB0001D525 /* OnboardingVC.swift in Sources */,
+				627E0FF627DDAFF200E015A8 /* FindPasswordVC.swift in Sources */,
 				232CC07527A0370D00040131 /* TypeOfViewController.swift in Sources */,
 				623DE30727B5603A005E78D0 /* Literal.swift in Sources */,
 				62E2BDFC27AD41620052DDCE /* UIImage+.swift in Sources */,
