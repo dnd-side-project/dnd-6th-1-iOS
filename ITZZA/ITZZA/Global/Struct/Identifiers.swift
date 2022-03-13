@@ -69,6 +69,7 @@ struct Identifiers {
     static let keywordContentView = "KeywordContentView"
     static let alertView = "AlertView"
     static let profileInfoView = "ProfileInfoView"
+    static let emotionAnalyzeView = "EmotionAnalyzeView"
     
     //MARK: - TVC
     static let postTVC = "PostTVC"
@@ -91,4 +92,5 @@ struct Identifiers {
     static let mypageCVC = "MypageCVC"
     static let emotionRankCVC = "EmotionRankCVC"
     static let emotionListCVC = "EmotionListCVC"
+    static let emotionAnalyzeCVC = "EmotionAnalyzeCVC"
 }

@@ -25,13 +25,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XzX-Ab-rwg">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XzX-Ab-rwg">
                                 <rect key="frame" x="0.0" y="44" width="375" height="1422"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D4W-nB-gNx">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D4W-nB-gNx">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1319"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hxY-0J-rOc">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hxY-0J-rOc">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1319"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Xd-fU-aLH">
@@ -186,14 +186,11 @@
                                                             <constraint firstItem="F0g-Ea-OZf" firstAttribute="top" secondItem="TDY-7v-DRP" secondAttribute="top" id="mrA-UI-P29"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5f-jb-YKX">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H5f-jb-YKX" customClass="EmotionAnalyzeView" customModule="ITZZA" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="517" width="375" height="463"/>
                                                         <color key="backgroundColor" red="0.98431372549019602" green="0.97254901960784312" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="463" id="Aew-fS-fyh"/>
-                                                        </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0tN-TL-N3w">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0tN-TL-N3w">
                                                         <rect key="frame" x="0.0" y="980" width="375" height="339"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqR-jW-d0x">
@@ -323,6 +320,12 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="H5f-jb-YKX" secondAttribute="trailing" id="0Nh-Ff-lyN"/>
+                                                    <constraint firstItem="0tN-TL-N3w" firstAttribute="top" secondItem="H5f-jb-YKX" secondAttribute="bottom" id="fyt-h4-9zv"/>
+                                                    <constraint firstItem="H5f-jb-YKX" firstAttribute="top" secondItem="TDY-7v-DRP" secondAttribute="bottom" id="mQJ-QF-fHK"/>
+                                                    <constraint firstItem="H5f-jb-YKX" firstAttribute="leading" secondItem="hxY-0J-rOc" secondAttribute="leading" id="nnz-RI-Tss"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -357,6 +360,7 @@
                     <size key="freeformSize" width="375" height="1500"/>
                     <connections>
                         <outlet property="animationView" destination="jHG-sn-V4I" id="MHq-On-hDf"/>
+                        <outlet property="emotionAnalyzeView" destination="H5f-jb-YKX" id="DoX-Ja-GTT"/>
                         <outlet property="emotionListCV" destination="52E-Eh-RqP" id="x95-BH-tTH"/>
                         <outlet property="emotionRankCV" destination="F0g-Ea-OZf" id="IMU-YU-QkI"/>
                         <outlet property="profileImg" destination="IVS-GE-NEh" id="Xe1-qe-HNK"/>

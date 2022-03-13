@@ -18,6 +18,7 @@ class ReportVC: UIViewController {
     @IBOutlet weak var reportPeriodButton: UIButton!
     @IBOutlet weak var reportTitle: UILabel!
     @IBOutlet weak var emotionRankCV: UICollectionView!
+    @IBOutlet weak var emotionAnalyzeView: EmotionAnalyzeView!
     @IBOutlet weak var emotionListCV: UICollectionView!
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var writeDiaryButton: UIButton!
@@ -27,6 +28,9 @@ class ReportVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        
+        emotionAnalyzeView.diaryCount = 4
+        emotionAnalyzeView.configureDiaryListCV()
     }
     
     override func viewWillAppear(_ animated: Bool) {

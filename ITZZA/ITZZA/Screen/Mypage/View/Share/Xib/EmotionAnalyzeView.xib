@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SpoqaHanSansNeo-Bold.otf">
+            <string>SpoqaHanSansNeo-Bold</string>
+        </array>
+        <array key="SpoqaHanSansNeo-Medium.otf">
+            <string>SpoqaHanSansNeo-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmotionAnalyzeView" customModule="ITZZA" customModuleProvider="target">
+            <connections>
+                <outlet property="diaryListCV" destination="iM4-Wr-743" id="SLP-OY-RuA"/>
+                <outlet property="diaryListCVHeight" destination="c00-PW-4M7" id="Yhp-rE-QaH"/>
+                <outlet property="period" destination="T26-WI-Plp" id="84q-0u-Zaa"/>
+                <outlet property="title" destination="Cu8-lJ-AQu" id="FaI-gi-qyv"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이번주 MVP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cs6-x4-28t">
+                    <rect key="frame" x="25" y="40" width="325" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="DMB-0a-TmH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="13"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.38431372549019605" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="\(기간) 한 주" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T26-WI-Plp">
+                    <rect key="frame" x="282" y="97" width="68" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="35F-My-Gpe"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="13"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.38431372549999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'\(감정)'을 분석해봤어요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cu8-lJ-AQu">
+                    <rect key="frame" x="25" y="61" width="325" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="du5-kr-7zh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="iM4-Wr-743">
+                    <rect key="frame" x="25" y="120" width="328" height="280"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="280" id="c00-PW-4M7"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="V2i-ok-fvM">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qyf-bh-uUG">
+                    <rect key="frame" x="266" y="98.666666666666671" width="14" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="14" id="B8k-Fo-67d"/>
+                        <constraint firstAttribute="height" constant="14" id="oha-ez-ivI"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="iM4-Wr-743" firstAttribute="top" secondItem="T26-WI-Plp" secondAttribute="bottom" constant="6" id="02w-AM-3SK"/>
+                <constraint firstItem="cs6-x4-28t" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="1BV-Br-jEG"/>
+                <constraint firstAttribute="bottom" secondItem="iM4-Wr-743" secondAttribute="bottom" id="CVp-Zg-utg"/>
+                <constraint firstAttribute="trailing" secondItem="iM4-Wr-743" secondAttribute="trailing" constant="22" id="U5O-jg-Oxz"/>
+                <constraint firstItem="cs6-x4-28t" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="cQB-A3-bbz"/>
+                <constraint firstAttribute="trailing" secondItem="Cu8-lJ-AQu" secondAttribute="trailing" constant="25" id="fYz-3A-QYg"/>
+                <constraint firstItem="iM4-Wr-743" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="fuj-oe-XHv"/>
+                <constraint firstItem="T26-WI-Plp" firstAttribute="leading" secondItem="qyf-bh-uUG" secondAttribute="trailing" constant="2" id="hmQ-oN-W3g"/>
+                <constraint firstItem="T26-WI-Plp" firstAttribute="centerY" secondItem="qyf-bh-uUG" secondAttribute="centerY" id="itf-wf-Ue2"/>
+                <constraint firstAttribute="trailing" secondItem="cs6-x4-28t" secondAttribute="trailing" constant="25" id="l1g-Ms-0ER"/>
+                <constraint firstItem="Cu8-lJ-AQu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="vFz-Kg-1P6"/>
+                <constraint firstAttribute="trailing" secondItem="T26-WI-Plp" secondAttribute="trailing" constant="25" id="vVE-Qk-ZMn"/>
+                <constraint firstItem="Cu8-lJ-AQu" firstAttribute="top" secondItem="cs6-x4-28t" secondAttribute="bottom" constant="4" id="w19-lU-VMw"/>
+                <constraint firstItem="T26-WI-Plp" firstAttribute="top" secondItem="Cu8-lJ-AQu" secondAttribute="bottom" constant="14" id="z6C-nx-G5O"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="138.40000000000001" y="114.90147783251231"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
