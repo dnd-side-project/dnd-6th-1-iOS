@@ -18,7 +18,7 @@
 		2323030927B035ED00E20078 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2323030827B035ED00E20078 /* UITextField+.swift */; };
 		2327FD7D27C6730B007D65F4 /* SearchedUserTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2327FD7B27C6730B007D65F4 /* SearchedUserTVC.swift */; };
 		2327FD7E27C6730B007D65F4 /* SearchedUserTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2327FD7C27C6730B007D65F4 /* SearchedUserTVC.xib */; };
-		2329B63227CF69CA004B182A /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2329B63127CF69CA004B182A /* AlertType.swift */; };
+		2329B63227CF69CA004B182A /* ToastType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2329B63127CF69CA004B182A /* ToastType.swift */; };
 		232CC01527A0317900040131 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CC01427A0317900040131 /* AppDelegate.swift */; };
 		232CC01E27A0317900040131 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 232CC01D27A0317900040131 /* Assets.xcassets */; };
 		232CC02127A0317900040131 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232CC01F27A0317900040131 /* LaunchScreen.storyboard */; };
@@ -63,6 +63,7 @@
 		235DCED627C13DA10034D4C1 /* ImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCED427C13DA10034D4C1 /* ImageCollectionView.swift */; };
 		235DCED727C13DA10034D4C1 /* ImageCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235DCED527C13DA10034D4C1 /* ImageCollectionView.xib */; };
 		235DCED927C13E5D0034D4C1 /* AddedImageCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235DCED827C13E5D0034D4C1 /* AddedImageCVC.xib */; };
+		235E7AE727DDC940009B4A5B /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E7AE627DDC940009B4A5B /* AlertType.swift */; };
 		2368021127B2965B00A4392B /* PostContentTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */; };
 		2368021327B2966800A4392B /* PostContentTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2368021227B2966800A4392B /* PostContentTableViewHeader.xib */; };
 		236C98DE27B239C200CE1EFD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236C98DD27B239C200CE1EFD /* UIView+.swift */; };
@@ -189,7 +190,7 @@
 		2323030827B035ED00E20078 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		2327FD7B27C6730B007D65F4 /* SearchedUserTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedUserTVC.swift; sourceTree = "<group>"; };
 		2327FD7C27C6730B007D65F4 /* SearchedUserTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchedUserTVC.xib; sourceTree = "<group>"; };
-		2329B63127CF69CA004B182A /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
+		2329B63127CF69CA004B182A /* ToastType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastType.swift; sourceTree = "<group>"; };
 		232CC01127A0317900040131 /* ITZZA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITZZA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		232CC01427A0317900040131 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		232CC01D27A0317900040131 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -236,6 +237,7 @@
 		235DCED427C13DA10034D4C1 /* ImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionView.swift; sourceTree = "<group>"; };
 		235DCED527C13DA10034D4C1 /* ImageCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionView.xib; sourceTree = "<group>"; };
 		235DCED827C13E5D0034D4C1 /* AddedImageCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddedImageCVC.xib; sourceTree = "<group>"; };
+		235E7AE627DDC940009B4A5B /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentTableViewHeader.swift; sourceTree = "<group>"; };
 		2368021227B2966800A4392B /* PostContentTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostContentTableViewHeader.xib; sourceTree = "<group>"; };
 		236C98DD27B239C200CE1EFD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -820,7 +822,8 @@
 			children = (
 				623DE30627B5603A005E78D0 /* Literal.swift */,
 				2376DA7527BA850700E4A0E8 /* CommunityType.swift */,
-				2329B63127CF69CA004B182A /* AlertType.swift */,
+				2329B63127CF69CA004B182A /* ToastType.swift */,
+				235E7AE627DDC940009B4A5B /* AlertType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1304,6 +1307,7 @@
 				236C9EA627C10D4600B0BADA /* ImageScrollView.swift in Sources */,
 				23D56B5627C62FC10000D3E5 /* KeywordContentView.swift in Sources */,
 				2335241327A98D57009C654F /* PostDataSource.swift in Sources */,
+				235E7AE727DDC940009B4A5B /* AlertType.swift in Sources */,
 				232CC08927A0390B00040131 /* UIFont+.swift in Sources */,
 				624C458A27BD1221000A37DF /* DiaryView.swift in Sources */,
 				238CEEA227A7DFCF006BE766 /* NavigationController+.swift in Sources */,
@@ -1349,7 +1353,7 @@
 				232CC03C27A0328000040131 /* HomeModel.swift in Sources */,
 				62BE208D27A590D0001F150A /* SignInVC.swift in Sources */,
 				2343A67227C8126600117742 /* SearchedResultModel.swift in Sources */,
-				2329B63227CF69CA004B182A /* AlertType.swift in Sources */,
+				2329B63227CF69CA004B182A /* ToastType.swift in Sources */,
 				2327FD7D27C6730B007D65F4 /* SearchedUserTVC.swift in Sources */,
 				23AEE7B127C6481D00C79FF5 /* KeywordContentTVC.swift in Sources */,
 				2387375427C67E480060971E /* UserPostListVC.swift in Sources */,
