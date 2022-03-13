@@ -62,7 +62,7 @@ extension CategoryVC {
     
     @objc func showToast(_ notification: Notification) {
         let toastView = AlertView()
-        switch notification.object as! AlertType {
+        switch notification.object as! ToastType {
         case .postDeleted:
             toastView.setAlertTitle(alertType: .postDeleted)
         case .postPost:

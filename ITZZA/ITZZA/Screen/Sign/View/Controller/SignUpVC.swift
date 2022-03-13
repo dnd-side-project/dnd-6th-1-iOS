@@ -451,14 +451,14 @@ extension SignUpVC {
         signUpVM.signUpFail.asDriver(onErrorJustReturn: "닉네임 중복확인을 다시 한 번 해주세요")
             .drive(onNext: { [weak self] response in
                 guard let self = self else { return }
-                self.showSignUpErrorAlert(response)
+                self.showConfirmAlert(with: .signUpError, alertMessage: response, style: .default)
             })
             .disposed(by: disposeBag)
         
         signUpVM.serverError.asDriver(onErrorJustReturn: .unknown)
             .drive(onNext: { [weak self] error in
                 guard let self = self else { return }
-                self.showSignUpErrorAlert(error.description)
+                self.showConfirmAlert(with: .signUpError, alertMessage: error.description, style: .default)
             })
             .disposed(by: disposeBag)
     }

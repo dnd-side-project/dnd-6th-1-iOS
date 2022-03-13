@@ -16,6 +16,11 @@ class HomeAlarmTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewConfiguration()
+        navigationConfiguration()
+    }
+    
+    private func navigationConfiguration() {
+        navigationController?.setBackButtonWithTitle(navigationItem: self.navigationItem, title: "알림")
     }
     
     private func tableViewConfiguration() {

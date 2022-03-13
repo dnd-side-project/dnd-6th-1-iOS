@@ -41,7 +41,8 @@ extension MypageVC {
     private func configureNaviBar() {
         navigationController?
             .setNaviBarTitle(navigationItem: self.navigationItem,
-                             title: "마이페이지")
+                             title: "마이페이지",
+                             font: .SpoqaHanSansNeoBold(size: 22))
         
         navigationController?
             .setNaviItemTintColor(navigationController: self.navigationController,

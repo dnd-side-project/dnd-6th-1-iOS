@@ -222,7 +222,7 @@ extension SignInVC {
         signInViewModel.onError.asDriver(onErrorJustReturn: .unknown)
             .drive { [weak self] error in
                 guard let self = self else { return }
-                self.showSignInErrorAlert(error.description)
+                self.showConfirmAlert(with: .signInError, alertMessage: error.description, style: .default)
             }
             .disposed(by: disposeBag)
     }
@@ -231,7 +231,7 @@ extension SignInVC {
         signInViewModel.signInResponseFail.asDriver(onErrorJustReturn: "0")
             .drive { [weak self] response in
                 guard let self = self else { return }
-                self.showSignInErrorAlert(response)
+                self.showConfirmAlert(with: .signInError, alertMessage: response, style: .default)
             }
             .disposed(by: disposeBag)
     }

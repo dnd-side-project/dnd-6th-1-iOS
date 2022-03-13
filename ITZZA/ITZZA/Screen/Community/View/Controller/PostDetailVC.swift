@@ -46,7 +46,7 @@ extension PostDetailVC {
                 .drive(onNext: { [weak self] _ in
                     guard let self = self else { return }
                     let menuBottomSheet = MenuBottomSheet()
-                    menuBottomSheet.bindButtonAction(.whenEditPostMenuTapped, .whenDeletePostMenuTapped)
+                    menuBottomSheet.activateMenuButtonForCommunity(.whenEditPostMenuTapped, .whenDeletePostMenuTapped)
                     self.present(menuBottomSheet, animated: true)
                 })
                 .disposed(by: bag)
@@ -155,7 +155,7 @@ extension PostDetailVC {
     }
     
     @objc func deletePost() {
-        popupDeleteAlert(alertType: AlertType.shouldPostDelete,
+        popupDeleteAlert(alertType: ToastType.shouldPostDelete,
                          commentId: nil,
                          commentIndex: nil)
     }
@@ -164,18 +164,18 @@ extension PostDetailVC {
         guard let object = notification.object as? [Int?],
               let commentId = object[0],
               let commentIndex = object[1] else { return }
-        popupDeleteAlert(alertType: AlertType.shouldCommentDelete,
+        popupDeleteAlert(alertType: ToastType.shouldCommentDelete,
                          commentId: commentId,
                          commentIndex: commentIndex)
     }
     
     @objc func postEditCompleted(_ notification: Notification) {
-        switch notification.object as! AlertType {
+        switch notification.object as! ToastType {
         case .commentDeleted:
             showToast(alertType: .commentDeleted)
         default:
             //TODO: - post, patch 나누면 case 분류
-            showToast(alertType: AlertType.postEdit)
+            showToast(alertType: ToastType.postEdit)
         }
     }
     
@@ -213,7 +213,7 @@ extension PostDetailVC {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success:
-                    NotificationCenter.default.post(name: .popupAlertView, object: AlertType.postDeleted)
+                    NotificationCenter.default.post(name: .popupAlertView, object: ToastType.postDeleted)
                     self.navigationController?.popViewController(animated: true)
                 case .failure:
                     self.networkErrorAlert()
@@ -232,7 +232,7 @@ extension PostDetailVC {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success:
-                    NotificationCenter.default.post(name: .popupAlertView, object: AlertType.commentDeleted)
+                    NotificationCenter.default.post(name: .popupAlertView, object: ToastType.commentDeleted)
                     self.post.comments?.remove(at: commentIndex.row - 1)
                     self.commentListTV.deleteRows(at: [commentIndex], with: .none)
                     DispatchQueue.main.async {
@@ -257,7 +257,7 @@ extension PostDetailVC {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success:
-                    self.showToast(alertType: AlertType.commentPost)
+                    self.showToast(alertType: ToastType.commentPost)
                 case .failure:
                     self.networkErrorAlert()
                 }
@@ -277,7 +277,7 @@ extension PostDetailVC {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success:
-                    self.showToast(alertType: AlertType.commentEdit)
+                    self.showToast(alertType: ToastType.commentEdit)
                 case .failure:
                     self.networkErrorAlert()
                 }
@@ -286,7 +286,7 @@ extension PostDetailVC {
     }
     
     // MARK: - Alert
-    func popupDeleteAlert(alertType: AlertType, commentId: Int?, commentIndex: Int?) {
+    func popupDeleteAlert(alertType: ToastType, commentId: Int?, commentIndex: Int?) {
         let alert = UIAlertController(title: alertType.message, message: "", preferredStyle: UIAlertController.Style.alert)
         alert.view.tintColor = .darkGray6
         alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
@@ -308,28 +308,14 @@ extension PostDetailVC {
     }
     
     func networkErrorAlert() {
-        let alert = UIAlertController(title: "네트워크 오류", message: "", preferredStyle: UIAlertController.Style.alert)
-        alert.view.tintColor = .darkGray6
-        alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
-        let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
-        
-        alert.addAction(cancel)
-        self.present(alert, animated: false, completion: nil)
+        showConfirmAlert(with: AlertType.networkError, alertMessage: "", style: .default)
     }
     
     func showEmptyAlert() {
-        let alert = UIAlertController(title: "삭제된 게시글입니다", message: "", preferredStyle: UIAlertController.Style.alert)
-        alert.view.tintColor = .darkGray6
-        alert.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
-        let ok = UIAlertAction(title: "확인", style: .destructive) { _ in
-            self.navigationController?.popViewController(animated: true)
-        }
-        
-        alert.addAction(ok)
-        present(alert, animated: false, completion: nil)
+        showConfirmAlert(with: AlertType.deletedPost, alertMessage: "", style: .destructive)
     }
     
-    func showToast(alertType: AlertType) {
+    func showToast(alertType: ToastType) {
         let toastView = AlertView()
         toastView.setAlertTitle(alertType: alertType)
         self.view.addSubview(toastView)
