@@ -49,14 +49,15 @@ class MenuBottomSheet: DynamicBottomSheetViewController {
 // MARK: - Layout
 
 extension MenuBottomSheet {
-    
+    // MARK: - Configuration
     override func configureView() {
         super.configureView()
-        layoutStackView()
-        setButtons()
+        setStackViewLayout()
+        setButtonsLayout()
     }
     
-    private func layoutStackView() {
+    // MARK: - Layout
+    private func setStackViewLayout() {
         
         contentView.addSubview(stackView)
         stackView.snp.makeConstraints {
@@ -65,7 +66,7 @@ extension MenuBottomSheet {
         }
     }
     
-    private func setButtons() {
+    private func setButtonsLayout() {
         stackView.addArrangedSubview(editButton)
         editButton.snp.makeConstraints {
             $0.height.equalTo(62)
@@ -76,7 +77,8 @@ extension MenuBottomSheet {
         }
     }
     
-    func bindButtonAction(_ editNotificationName: Notification.Name, _ deleteNotificationName: Notification.Name) {
+    // MARK: - Bind button
+    func activateMenuButtonForCommunity(_ editNotificationName: Notification.Name, _ deleteNotificationName: Notification.Name) {
         editButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] _ in

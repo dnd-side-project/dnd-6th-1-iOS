@@ -70,7 +70,7 @@ class CommentTVC: UITableViewCell {
                     let menuBottomSheet = MenuBottomSheet()
                     menuBottomSheet.commentId = self.commentId
                     menuBottomSheet.commentIndex = self.commentIndex
-                    menuBottomSheet.bindButtonAction(.whenEditCommentMenuTapped, .whenDeleteCommentMenuTapped)
+                    menuBottomSheet.activateMenuButtonForCommunity(.whenEditCommentMenuTapped, .whenDeleteCommentMenuTapped)
                     vc.present(menuBottomSheet, animated: true)
                 })
                 .disposed(by: bag)

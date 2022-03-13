@@ -25,6 +25,7 @@ struct Identifiers {
     static let homeAlarmSB = "HomeAlarm"
     static let myRecordSB = "MyRecord"
     static let reportSB = "Report"
+    static let findPasswordSB = "FindPassword"
     
     //MARK: - Controller
     static let itzzaTBC = "ITZZATBC"
@@ -47,6 +48,7 @@ struct Identifiers {
     static let homeAlarmTVC = "HomeAlarmTVC"
     static let myRecordVC = "MyRecordVC"
     static let reportVC = "ReportVC"
+    static let findPasswordVC = "FindPasswordVC"
     
     //MARK: - View
     static let profileHeaderView = "ProfileHeaderView"

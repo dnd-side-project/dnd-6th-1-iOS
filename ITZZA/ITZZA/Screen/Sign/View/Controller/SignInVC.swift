@@ -21,7 +21,7 @@ class SignInVC: UIViewController {
     @IBOutlet weak var isPasswordValidLabel: UILabel!
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var passwordView: UIView!
-    @IBOutlet weak var findIdPasswordButton: UIButton!
+    @IBOutlet weak var findPasswordButton: UIButton!
     @IBOutlet weak var askingPasswordButton: UIButton!
     @IBOutlet weak var askingSignUpButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
@@ -76,6 +76,14 @@ extension SignInVC {
             .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.passwordEyeButton.tintColor = .darkGray6
+            })
+            .disposed(by: disposeBag)
+        
+        findPasswordButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.showFindPasswordVC()
             })
             .disposed(by: disposeBag)
     }
@@ -222,7 +230,7 @@ extension SignInVC {
         signInViewModel.onError.asDriver(onErrorJustReturn: .unknown)
             .drive { [weak self] error in
                 guard let self = self else { return }
-                self.showSignInErrorAlert(error.description)
+                self.showConfirmAlert(with: .signInError, alertMessage: error.description, style: .default)
             }
             .disposed(by: disposeBag)
     }
@@ -231,7 +239,7 @@ extension SignInVC {
         signInViewModel.signInResponseFail.asDriver(onErrorJustReturn: "0")
             .drive { [weak self] response in
                 guard let self = self else { return }
-                self.showSignInErrorAlert(response)
+                self.showConfirmAlert(with: .signInError, alertMessage: response, style: .default)
             }
             .disposed(by: disposeBag)
     }
@@ -268,9 +276,20 @@ extension SignInVC {
 // MARK: - Change View Controller
 extension SignInVC {
     func showSignUpVC() {
-        let signUpVC = ViewControllerFactory.viewController(for: .signUp) as! SignUpVC
+        guard let signUpVC = ViewControllerFactory
+                .viewController(for: .signUp)
+                as? SignUpVC else { return }
+        
         signUpVC.modalPresentationStyle = .fullScreen
         self.present(signUpVC, animated: true, completion: nil)
+    }
+    
+    func showFindPasswordVC() {
+        guard let findPasswordVC = ViewControllerFactory
+                .viewController(for: .findPassword)
+                as? FindPasswordVC else { return }
+        
+        self.present(findPasswordVC, animated: true, completion: nil)
     }
 }
 
@@ -308,9 +327,9 @@ extension SignInVC {
         signInButton.titleLabel?.font = .SpoqaHanSansNeoBold(size: 17)
         askingPasswordButton.titleLabel?.font = .SpoqaHanSansNeoRegular(size: 12)
         askingPasswordButton.setTitleColor(.darkGray2, for: .normal)
-        findIdPasswordButton.titleLabel?.font = .SpoqaHanSansNeoBold(size: 12)
-        findIdPasswordButton.setTitleColor(.darkGray2, for: .normal)
-        findIdPasswordButton.setUnderline()
+        findPasswordButton.titleLabel?.font = .SpoqaHanSansNeoBold(size: 12)
+        findPasswordButton.setTitleColor(.darkGray2, for: .normal)
+        findPasswordButton.setUnderline()
         askingSignUpButton.titleLabel?.font = .SpoqaHanSansNeoRegular(size: 12)
         askingSignUpButton.setTitleColor(.darkGray2, for: .normal)
         signUpButton.titleLabel?.font = .SpoqaHanSansNeoBold(size: 12)
