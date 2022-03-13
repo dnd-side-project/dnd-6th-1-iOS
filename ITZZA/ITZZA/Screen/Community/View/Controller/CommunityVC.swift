@@ -68,8 +68,11 @@ extension CommunityVC {
 //MARK: - Setup Methods
 extension CommunityVC {
     func setNaviBarView() {
-        navigationController?.setNaviBarTitle(navigationItem: self.navigationItem, title: "커뮤니티")
-        navigationController?.setNaviItemTintColor(navigationController: self.navigationController, color: .black)
+        navigationController?.setNaviBarTitle(navigationItem: self.navigationItem,
+                                              title: "커뮤니티",
+                                              font: .SpoqaHanSansNeoBold(size: 22))
+        navigationController?.setNaviItemTintColor(navigationController: self.navigationController,
+                                                   color: .black)
     }
     
     func setNaviBarItems() {
