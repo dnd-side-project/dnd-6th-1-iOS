@@ -8,6 +8,18 @@
 import UIKit
 
 extension UIViewController {
+    func showConfirmAlert(with alertTitle: AlertType, alertMessage: String, style: UIAlertAction.Style) {
+        let alertController = UIAlertController(title: alertTitle.title,
+                                                message: alertMessage,
+                                                preferredStyle: .alert)
+        alertController.view.tintColor = .darkGray6
+        alertController.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
+        let action = UIAlertAction(title: "확인", style: style)
+        
+        alertController.addAction(action)
+        present(alertController, animated: true)
+    }
+    
     func showSignInErrorAlert(_ message: String?) {
         let alertController = UIAlertController(title: "로그인 에러",
                                                 message: message,
@@ -17,9 +29,9 @@ extension UIViewController {
         
         let action = UIAlertAction(title: "확인",
                                    style: .default)
-
+        
         alertController.addAction(action)
-
+        
         present(alertController, animated: true)
     }
     
@@ -32,9 +44,9 @@ extension UIViewController {
         
         let action = UIAlertAction(title: "확인",
                                    style: .default)
-
+        
         alertController.addAction(action)
-
+        
         present(alertController, animated: true)
     }
     
@@ -47,9 +59,9 @@ extension UIViewController {
         
         let action = UIAlertAction(title: "확인",
                                    style: .default)
-
+        
         alertController.addAction(action)
-
+        
         present(alertController, animated: true)
     }
     

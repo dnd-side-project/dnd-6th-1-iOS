@@ -54,13 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .setTitleTextAttributes(
                 [NSAttributedString.Key.font : UIFont.SpoqaHanSansNeoRegular(size: 11)],
                 for: .normal)
-        
-//        let customFont = UIFont.SpoqaHanSansNeoBold(size: 15)
-//        UIBarButtonItem.appearance()
-//            .setTitleTextAttributes(
-//                [NSAttributedString.Key.font: customFont],
-//                for: .normal)
-        
+
         return true
     }
 
