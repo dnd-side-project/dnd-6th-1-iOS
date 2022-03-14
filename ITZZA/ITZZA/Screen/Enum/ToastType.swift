@@ -16,6 +16,7 @@ enum ToastType {
     case shouldCommentDelete
     case postEdit
     case commentEdit
+    case reportSaved
     
     var message: String {
         switch self {
@@ -35,6 +36,8 @@ enum ToastType {
             return "게시글 수정이 완료되었습니다"
         case .commentEdit:
             return "댓글 수정이 완료되었습니다"
+        case .reportSaved:
+            return "리포트가 저장되었습니다"
         }
     }
 }

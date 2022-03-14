@@ -8,6 +8,20 @@
 import UIKit
 
 extension UIViewController {
+    func showToast(with toastTitle: ToastType) {
+        let toastView = ToastView()
+        toastView.setToastTitle(toastType: toastTitle)
+        
+        view.addSubview(toastView)
+        toastView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().offset(-20)
+            $0.leading.equalToSuperview().offset(52)
+            $0.trailing.equalToSuperview().offset(-52)
+            $0.height.equalTo(44)
+        }
+        toastView.showToastView()
+    }
+    
     func showConfirmAlert(with alertTitle: AlertType, alertMessage: String, style: UIAlertAction.Style) {
         let alertController = UIAlertController(title: alertTitle.title,
                                                 message: alertMessage,

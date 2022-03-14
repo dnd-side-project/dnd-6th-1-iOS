@@ -67,7 +67,8 @@ extension ReportVC {
                 
                 guard let report = self.scrollView.subviews.first?.transformToImage() else { return }
                 
-                self.saveImage(report)
+                self.saveViewtoGallery(report)
+                self.showToast(with: .reportSaved)
             })
             .disposed(by: bag)
     }
@@ -117,7 +118,7 @@ extension ReportVC {
     }
     
     // MARK: - Custom Function
-    func saveImage(_ image: UIImage) {
+    func saveViewtoGallery(_ image: UIImage) {
         PHPhotoLibrary.requestAuthorization { status in
             guard status == .authorized else { return }
             

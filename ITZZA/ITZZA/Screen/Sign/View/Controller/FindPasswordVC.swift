@@ -19,7 +19,7 @@ class FindPasswordVC: UIViewController {
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     let validation = Validation()
-    let toastView = AlertView()
+    let toastView = ToastView()
     var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -124,7 +124,7 @@ extension FindPasswordVC {
     func showToastView() {
         // TODO: develop 브랜치에서 새로 브랜치 만든 후 수정
         // toastView.setAlertTitle(alertType: <#T##AlertType#>)
-        toastView.setAlertTitle(alertType: .commentDeleted)
+        toastView.setToastTitle(toastType: .commentDeleted)
         toastView.showToastView()
     }
 }

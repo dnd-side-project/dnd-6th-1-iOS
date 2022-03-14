@@ -69,7 +69,7 @@ struct Identifiers {
     static let emojiAnimationView = "EmojiAnimationView"
     static let tabView = "TabView"
     static let keywordContentView = "KeywordContentView"
-    static let alertView = "AlertView"
+    static let toastView = "ToastView"
     static let profileInfoView = "ProfileInfoView"
     static let emotionAnalyzeView = "EmotionAnalyzeView"
     
