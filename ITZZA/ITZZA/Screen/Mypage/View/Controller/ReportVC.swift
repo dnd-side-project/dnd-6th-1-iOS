@@ -65,7 +65,7 @@ extension ReportVC {
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
                 
-                guard let report = self.scrollView.subviews.first?.transfromToImage() else { return }
+                guard let report = self.scrollView.subviews.first?.transformToImage() else { return }
                 
                 self.saveImage(report)
             })

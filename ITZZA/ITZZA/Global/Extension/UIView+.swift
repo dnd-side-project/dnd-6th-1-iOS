@@ -21,7 +21,7 @@ extension UIView {
         }
     }
     
-    func transfromToImage() -> UIImage? {
+    func transformToImage() -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
         defer {
             UIGraphicsEndImageContext()
