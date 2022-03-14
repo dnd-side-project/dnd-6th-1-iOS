@@ -13,6 +13,7 @@ class AddedImageCVC: UICollectionViewCell {
     @IBOutlet weak var deleteImageButton: UIButton!
     
     override func awakeFromNib() {
+        super.awakeFromNib()
         configureButton()
     }
     

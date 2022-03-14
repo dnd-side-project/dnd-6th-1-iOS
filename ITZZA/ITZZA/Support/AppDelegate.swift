@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .setTitleTextAttributes(
                 [NSAttributedString.Key.font : UIFont.SpoqaHanSansNeoRegular(size: 11)],
                 for: .normal)
-        
+
         return true
     }
 
