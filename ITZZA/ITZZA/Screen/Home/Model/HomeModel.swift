@@ -22,6 +22,9 @@ struct HomeModel: Codable {
     var week: Int?
     var diaryStatus: Bool?
     var images: [String]?
+    
+    var day: Int?
+    var dayOfWeek: String?
 }
 
 extension HomeModel {

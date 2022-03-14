@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import Photos
 import Lottie
+import SwiftKeychainWrapper
 
 class ReportVC: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
@@ -24,7 +25,10 @@ class ReportVC: UIViewController {
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var writeDiaryButton: UIButton!
     
+    let apiSession = APISession()
     let bag = DisposeBag()
+    var reportPeriodList = [ReportPeriodModel]()
+    var report = ReportModel()
     let MVPScrollView = UIScrollView()
     let MVPStackView = UIStackView()
     
@@ -32,7 +36,9 @@ class ReportVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
+        getReportPeriod()
+        getReport(year: 2022, week: 11)
+//        configureView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +81,7 @@ extension ReportVC {
     
     private func configureTitleView() {
         reportPeriodButton.tintColor = .darkGray2
-        reportPeriodButton.setTitle("2022년 11번째 리포트", for: .normal)
+        reportPeriodButton.setTitle("\(reportPeriodList.last?.year ?? 0)년 \(reportPeriodList.last?.week ?? 0)번째 리포트", for: .normal)
         reportPeriodButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         reportPeriodButton.imageView?.contentMode = .scaleAspectFit
         reportPeriodButton.titleLabel?.font = .SpoqaHanSansNeoMedium(size: 13)
@@ -83,7 +89,7 @@ extension ReportVC {
         reportPeriodButton.semanticContentAttribute = .forceRightToLeft
         reportPeriodButton.imageView?.layer.transform = CATransform3DMakeScale(0.7, 0.7, 0.7)
         
-        reportTitle.text = "이번 주 감정 순위는 '혼란함' 1등!"
+        reportTitle.text = "이번 주 감정 순위는 '\(Emoji.allCases[(report.emotion?.first?.category ?? 1) - 1].name)' 1등!"
         reportTitle.font = .SpoqaHanSansNeoBold(size: 17)
         reportTitle.textColor = .darkGray6
     }
@@ -133,8 +139,6 @@ extension ReportVC {
     // MARK: - EmotionAnalyzeView
     func configureEmotionAnalyzeView() {
         // TODO: - 네트워크 연결
-        MVPEmotionCount = 2
-        
         setEmotionAnalyzeScrollView()
         setEmotionAnalyzeStackView()
         setEmotionAnalyzePageController()
@@ -185,6 +189,49 @@ extension ReportVC {
             }
         }
     }
+    
+    // MARK: - Network
+    func getReportPeriod() {
+        let baseURL = "https://www.itzza.shop/users/"
+        guard let userId: String = KeychainWrapper.standard[.userId] else { return }
+        guard let url = URL(string: baseURL + "\(userId)/reports") else { return }
+        let resource = urlResource<[ReportPeriodModel]>(url: url)
+        
+        apiSession.getRequest(with: resource)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success(let reportList):
+                    dump(reportList)
+                    self.reportPeriodList = reportList
+                case .failure:
+                    break
+                }
+            })
+            .disposed(by: bag)
+    }
+    
+    func getReport(year: Int, week: Int) {
+        let baseURL = "https://www.itzza.shop/users/"
+        guard let userId: String = KeychainWrapper.standard[.userId] else { return }
+        guard let url = URL(string: baseURL + "\(userId)/reports?year=\(year)&week=\(week)") else { return }
+        let resource = urlResource<ReportModel>(url: url)
+        
+        apiSession.getRequest(with: resource)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .success(let reportList):
+                    self.report = reportList
+                    DispatchQueue.main.async {
+                        self.configureView()
+                    }
+                case .failure:
+                    break
+                }
+            })
+            .disposed(by: bag)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -201,7 +248,7 @@ extension ReportVC: UICollectionViewDataSource {
                 for: indexPath) as? EmotionRankCVC
             else { return UICollectionViewCell() }
             
-            cell.configureCell(indexPath.row)
+            cell.configureCell(report.emotion![indexPath.row])
             return cell
         case emotionListCV:
             guard let cell = collectionView.dequeueReusableCell(
@@ -211,7 +258,6 @@ extension ReportVC: UICollectionViewDataSource {
             cell.backgroundColor = Emoji.allCases[indexPath.row].color
             cell.layer.cornerRadius = 4
             cell.title.text = Emoji.allCases[indexPath.row].name
-            cell.setTitleColor()
             return cell
         default:
             return UICollectionViewCell()

@@ -117,8 +117,9 @@
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9dF-ds-IWn">
-                                                                                    <rect key="frame" x="210" y="21.333333333333329" width="14" height="11.666666666666671"/>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9dF-ds-IWn">
+                                                                                    <rect key="frame" x="210" y="25.666666666666668" width="14" height="2.6666666666666607"/>
+                                                                                    <color key="tintColor" red="0.99215686274509807" green="0.50588235294117645" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="14" id="Lyy-jY-0Ni"/>
                                                                                         <constraint firstAttribute="height" constant="14" id="TJQ-NT-6cK"/>
@@ -402,7 +403,7 @@
     <resources>
         <image name="Null_Comment" width="60" height="60"/>
         <image name="Sticker_angry" width="32" height="32"/>
-        <image name="triangle.fill" catalog="system" width="128" height="112"/>
+        <image name="minus" catalog="system" width="128" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

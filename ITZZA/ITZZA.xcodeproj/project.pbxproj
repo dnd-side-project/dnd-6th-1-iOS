@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2302A61127C4FB6200B03A49 /* HistoryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302A61027C4FB6200B03A49 /* HistoryTVC.swift */; };
 		2305120D27AEE52100CF7FCF /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2305120C27AEE52100CF7FCF /* UIButton+.swift */; };
+		2308504927DF688E004DC058 /* ReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308504827DF688E004DC058 /* ReportModel.swift */; };
 		232302FC27AFC13200E20078 /* CommentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232302FA27AFC13200E20078 /* CommentTVC.swift */; };
 		232302FD27AFC13200E20078 /* CommentTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232302FB27AFC13200E20078 /* CommentTVC.xib */; };
 		232302FF27AFD18000E20078 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232302FE27AFD18000E20078 /* UITextView+.swift */; };
@@ -189,6 +190,7 @@
 /* Begin PBXFileReference section */
 		2302A61027C4FB6200B03A49 /* HistoryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTVC.swift; sourceTree = "<group>"; };
 		2305120C27AEE52100CF7FCF /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		2308504827DF688E004DC058 /* ReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModel.swift; sourceTree = "<group>"; };
 		232302FA27AFC13200E20078 /* CommentTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTVC.swift; sourceTree = "<group>"; };
 		232302FB27AFC13200E20078 /* CommentTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTVC.xib; sourceTree = "<group>"; };
 		232302FE27AFD18000E20078 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
@@ -666,6 +668,7 @@
 			isa = PBXGroup;
 			children = (
 				62B6DC8527C9526100F2FED8 /* MypageModel.swift */,
+				2308504827DF688E004DC058 /* ReportModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1368,6 +1371,7 @@
 				623DE30927B615EB005E78D0 /* EmailVM.swift in Sources */,
 				238EC09F27AA88EC001CBB24 /* ImageAddBar.swift in Sources */,
 				23D56B5327C607B50000D3E5 /* TabCVC.swift in Sources */,
+				2308504927DF688E004DC058 /* ReportModel.swift in Sources */,
 				232CC03E27A0328600040131 /* c.swift in Sources */,
 				6270D40127ACE590004FD7A9 /* SignUpVC.swift in Sources */,
 				62BE20A027A8F1A0001F150A /* UIViewController+.swift in Sources */,

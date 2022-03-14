@@ -54,8 +54,8 @@ extension EmotionRankCVC {
         totalEmotionCount.textColor = color
     }
     
-    private func setFirstRankCell() {
-        backgroundColor = Emoji.angry.color
+    private func setFirstRankCell(_ category: Int) {
+        backgroundColor = Emoji.allCases[category - 1].color
         configureTextColor(with: .white)
         
         rank.text = ""
@@ -70,14 +70,17 @@ extension EmotionRankCVC {
         seperatorBar.backgroundColor = .white
     }
     
-    func configureCell(_ rank: Int) {
-        if rank + 1 == 1 {
-            setFirstRankCell()
+    func configureCell(_ report: ReportEmotionModel) {
+        setChangedRank(report.rankChange)
+        rank.text = "\(report.rank)등"
+        emotionName.text = Emoji.allCases[report.category - 1].name
+        emotionImage.image = Emoji.allCases[report.category - 1].StickerImage
+        totalEmotionCount.text = "총 \(report.cnt)번"
+        
+        if report.rank == 1 {
+            setFirstRankCell(report.category)
             addFirstStiker()
         }
-        
-        emotionName.text = Emoji.allCases[rank].name
-        emotionImage.image = Emoji.allCases[rank].StickerImage
     }
     
     private func addFirstStiker() {
@@ -90,6 +93,25 @@ extension EmotionRankCVC {
             $0.width.height.equalTo(35)
             $0.leading.equalTo(contentView.snp.leading).offset(-10)
             $0.top.equalTo(contentView.snp.top).offset(-10)
+        }
+    }
+    
+    private func setChangedRank(_ rankChange: Int) {
+        if rankChange < 0 {
+            changeCount.text = "\(rankChange * -1)"
+            changeCount.textColor = .seconLonely
+            changeCountImage.image = UIImage(systemName: "arrowtriangle.down.fill")
+            changeCountImage.tintColor = .seconLonely
+        } else if rankChange > 0 {
+            changeCount.text = "\(rankChange)"
+            changeCount.textColor = .seconAngry
+            changeCountImage.image = UIImage(systemName: "arrowtriangle.up.fill")
+            changeCountImage.tintColor = .seconAngry
+        } else {
+            changeCount.text = "\(rankChange)"
+            changeCount.textColor = .lightGray6
+            changeCountImage.image = UIImage(systemName: "minus")
+            changeCountImage.tintColor = .lightGray6
         }
     }
 }
