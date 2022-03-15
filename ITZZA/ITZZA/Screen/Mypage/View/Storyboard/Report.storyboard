@@ -50,9 +50,11 @@
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOs-vI-tjb">
                                                                         <rect key="frame" x="0.0" y="0.0" width="274" height="30"/>
                                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                        <state key="normal" title="Button"/>
+                                                                        <state key="normal" title="기간">
+                                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Hv-lL-ITZ">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이번 주 감정 순위는~?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Hv-lL-ITZ">
                                                                         <rect key="frame" x="0.0" y="33" width="274" height="20.333333333333329"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
@@ -61,7 +63,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="저번 주와 비교한 순위변동을 나타냅니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7K-WP-mjS">
-                                                                <rect key="frame" x="181.66666666666663" y="89.333333333333343" width="168.33333333333337" height="12.666666666666671"/>
+                                                                <rect key="frame" x="181.66666666666663" y="94.333333333333343" width="168.33333333333337" height="12.666666666666671"/>
                                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="10"/>
                                                                 <color key="textColor" red="0.59215686270000001" green="0.57254901960000004" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -74,7 +76,7 @@
                                                             <constraint firstAttribute="trailing" secondItem="J7K-WP-mjS" secondAttribute="trailing" constant="25" id="EAY-ub-B4J"/>
                                                             <constraint firstItem="C8R-7j-IzV" firstAttribute="leading" secondItem="IVS-GE-NEh" secondAttribute="trailing" constant="16" id="IdF-p2-RSr"/>
                                                             <constraint firstItem="IVS-GE-NEh" firstAttribute="leading" secondItem="4Xd-fU-aLH" secondAttribute="leading" constant="25" id="J3A-ay-Y4f"/>
-                                                            <constraint firstAttribute="bottom" secondItem="J7K-WP-mjS" secondAttribute="bottom" constant="5" id="Pj0-bI-b3l"/>
+                                                            <constraint firstAttribute="bottom" secondItem="J7K-WP-mjS" secondAttribute="bottom" id="Pj0-bI-b3l"/>
                                                             <constraint firstItem="C8R-7j-IzV" firstAttribute="centerY" secondItem="4Xd-fU-aLH" secondAttribute="centerY" id="VZf-Zf-kSZ"/>
                                                             <constraint firstAttribute="trailing" secondItem="C8R-7j-IzV" secondAttribute="trailing" constant="25" id="fuo-1K-lKJ"/>
                                                         </constraints>
@@ -139,7 +141,7 @@
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sticker_angry" translatesAutoresizingMaskIntoConstraints="NO" id="yBD-8Z-Akw">
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Null_Category" translatesAutoresizingMaskIntoConstraints="NO" id="yBD-8Z-Akw">
                                                                                     <rect key="frame" x="56.333333333333343" y="11" width="32" height="32"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="32" id="j2s-33-1lZ"/>
@@ -389,6 +391,7 @@
                         <outlet property="reportPeriodButton" destination="hOs-vI-tjb" id="g9b-nU-4TL"/>
                         <outlet property="reportTitle" destination="5Hv-lL-ITZ" id="POW-JW-RMc"/>
                         <outlet property="scrollView" destination="XzX-Ab-rwg" id="zx2-kc-eo1"/>
+                        <outlet property="stackView" destination="hxY-0J-rOc" id="cSc-TK-tKU"/>
                         <outlet property="writeDiaryButton" destination="iRW-kp-d4j" id="p8G-Rq-amx"/>
                     </connections>
                 </viewController>
@@ -401,8 +404,8 @@
         <designable name="jHG-sn-V4I"/>
     </designables>
     <resources>
+        <image name="Null_Category" width="116.66666412353516" height="80"/>
         <image name="Null_Comment" width="60" height="60"/>
-        <image name="Sticker_angry" width="32" height="32"/>
         <image name="minus" catalog="system" width="128" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -14,7 +14,7 @@ class EmotionAnalyzeView: UIView {
     @IBOutlet weak var diaryListCV: UICollectionView!
     @IBOutlet weak var diaryListCVHeight: NSLayoutConstraint!
     
-    var diaryCount: Int?
+    var reportDiary: ReportDiaryModel?
     let cellHeight = 64
     
     override init(frame: CGRect) {
@@ -37,6 +37,13 @@ class EmotionAnalyzeView: UIView {
         }
     }
     
+    func configureEmotionAnalyzeView() {
+        title.text = "'\(Emoji.allCases[(reportDiary?.category ?? 1) - 1].emotion)'을 분석해봤어요"
+        period.text = "\(reportDiary?.period ?? "") 한 주"
+        
+        configureDiaryListCV()
+    }
+    
     func configureDiaryListCV() {
         diaryListCV.dataSource = self
         diaryListCV.delegate = self
@@ -49,14 +56,14 @@ class EmotionAnalyzeView: UIView {
     }
     
     func setDiaryListCVHeight() {
-        diaryListCVHeight.constant = CGFloat((cellHeight + 10) * (diaryCount ?? 0))
+        diaryListCVHeight.constant = CGFloat((cellHeight + 10) * (reportDiary?.diary.count ?? 0))
     }
 }
 
 // MARK: - UICollectionViewDataSource
 extension EmotionAnalyzeView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        diaryCount ?? 0
+        reportDiary?.diary.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -64,8 +71,9 @@ extension EmotionAnalyzeView: UICollectionViewDataSource {
             withReuseIdentifier: Identifiers.emotionAnalyzeCVC,
             for: indexPath) as? EmotionAnalyzeCVC
         else { return UICollectionViewCell() }
+        cell.configureCell(reportDiary?.diary[indexPath.row] ?? HomeModel())
         
-        if indexPath.row < (diaryCount ?? 0) - 1 {
+        if indexPath.row < (reportDiary?.diary.count ?? 0) - 1 {
             cell.configureLine()
         }
         return cell

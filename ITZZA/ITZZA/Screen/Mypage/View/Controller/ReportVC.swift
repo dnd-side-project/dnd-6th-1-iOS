@@ -15,6 +15,7 @@ import SwiftKeychainWrapper
 
 class ReportVC: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var reportPeriodButton: UIButton!
     @IBOutlet weak var reportTitle: UILabel!
@@ -37,8 +38,6 @@ class ReportVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getReportPeriod()
-        getReport(year: 2022, week: 11)
-//        configureView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,7 +88,11 @@ extension ReportVC {
         reportPeriodButton.semanticContentAttribute = .forceRightToLeft
         reportPeriodButton.imageView?.layer.transform = CATransform3DMakeScale(0.7, 0.7, 0.7)
         
-        reportTitle.text = "이번 주 감정 순위는 '\(Emoji.allCases[(report.emotion?.first?.category ?? 1) - 1].name)' 1등!"
+        if report.diaries?.count != 1 {
+            reportTitle.text = "이번 주 감정 순위는 공동 1등!"
+        } else {
+            reportTitle.text = "이번 주 감정 순위는 '\(Emoji.allCases[(report.emotion?.first?.category ?? 1) - 1].emotion)' 1등!"
+        }
         reportTitle.font = .SpoqaHanSansNeoBold(size: 17)
         reportTitle.textColor = .darkGray6
     }
@@ -136,9 +139,12 @@ extension ReportVC {
         }
     }
     
+    func configureNoDataView() {
+        // TODO: - 뷰 구조 싹 바꾸기..ㅎ....
+    }
+    
     // MARK: - EmotionAnalyzeView
     func configureEmotionAnalyzeView() {
-        // TODO: - 네트워크 연결
         setEmotionAnalyzeScrollView()
         setEmotionAnalyzeStackView()
         setEmotionAnalyzePageController()
@@ -177,10 +183,10 @@ extension ReportVC {
     }
     
     func addEmotionAnalyzeView() {
-        for _ in 0 ..< (MVPEmotionCount ?? 1) {
+        for i in 0 ..< (MVPEmotionCount ?? 1) {
             let analyzeView = EmotionAnalyzeView()
-            analyzeView.diaryCount = 3
-            analyzeView.configureDiaryListCV()
+            analyzeView.reportDiary = report.diaries?[i]
+            analyzeView.configureEmotionAnalyzeView()
 
             MVPStackView.addArrangedSubview(analyzeView)
             analyzeView.snp.makeConstraints {
@@ -202,8 +208,14 @@ extension ReportVC {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success(let reportList):
-                    dump(reportList)
                     self.reportPeriodList = reportList
+                    if reportList.isEmpty {
+                        self.configureNoDataView()
+                    } else {
+                        self.getReport(
+                            year: reportList.last!.year,
+                            week: reportList.last!.week)
+                    }
                 case .failure:
                     break
                 }
@@ -223,6 +235,7 @@ extension ReportVC {
                 switch result {
                 case .success(let reportList):
                     self.report = reportList
+                    self.MVPEmotionCount = reportList.diaries?.count
                     DispatchQueue.main.async {
                         self.configureView()
                     }
@@ -293,7 +306,7 @@ extension ReportVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch collectionView {
         case emotionRankCV:
-            return UIEdgeInsets(top: 23, left: 0, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         default:
             return UIEdgeInsets()
         }

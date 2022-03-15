@@ -60,4 +60,19 @@ extension Emoji {
             return UIImage(named: "Sticker_lonely")!
         }
     }
+    
+    var emotion: String {
+        switch self {
+        case .angry:
+            return "화남"
+        case .comfy:
+            return "편안함"
+        case .confuse:
+            return "혼란함"
+        case .sad:
+            return "슬픔"
+        case .lonely:
+            return "외로움"
+        }
+    }
 }
