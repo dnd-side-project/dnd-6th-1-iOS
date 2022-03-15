@@ -94,11 +94,11 @@
                     <navigationItem key="navigationItem" id="6Ev-2L-UvP"/>
                     <connections>
                         <outlet property="checkReportButton" destination="ouR-Vj-cN7" id="GaG-Ft-5aO"/>
-                        <outlet property="deleteAccountButton" destination="7kl-vM-YF7" id="6uP-PH-qu0"/>
                         <outlet property="myWritesCV" destination="EGh-2F-HJq" id="GGP-aj-Q12"/>
                         <outlet property="signOutButton" destination="EF1-hg-mZW" id="3IK-ET-d1n"/>
                         <outlet property="storyButton" destination="k0j-Af-YJu" id="w9g-0k-LMb"/>
                         <outlet property="viewSeparator" destination="TG4-FN-i64" id="KFY-bV-eVo"/>
+                        <outlet property="withdrawalButton" destination="7kl-vM-YF7" id="6uP-PH-qu0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

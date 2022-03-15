@@ -112,7 +112,7 @@ extension SignUpVM {
         let resource = urlResource<SignUpResponse>(url: url)
         
         apiSession
-            .postRequest(with: resource, param: signUpParameter)
+            .signInPostRequest(with: resource, param: signUpParameter)
             .withUnretained(self)
             .subscribe(onNext: { owner, result in
                 switch result {

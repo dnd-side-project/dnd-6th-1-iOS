@@ -26,6 +26,7 @@ struct Identifiers {
     static let myRecordSB = "MyRecord"
     static let reportSB = "Report"
     static let findPasswordSB = "FindPassword"
+    static let withdrawalSB = "Withdrawal"
     
     //MARK: - Controller
     static let itzzaTBC = "ITZZATBC"
@@ -49,6 +50,7 @@ struct Identifiers {
     static let myRecordVC = "MyRecordVC"
     static let reportVC = "ReportVC"
     static let findPasswordVC = "FindPasswordVC"
+    static let withdrawalVC = "WithdrawalVC"
     
     //MARK: - View
     static let profileHeaderView = "ProfileHeaderView"
