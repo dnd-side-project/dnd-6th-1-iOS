@@ -25,6 +25,7 @@ enum TypeOfViewController {
     case writeDiary
     case homeAlarm
     case findPassword
+    case withdrawal
     
     case myRecord
     case report
@@ -69,6 +70,8 @@ extension TypeOfViewController {
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.reportSB, storyboardId: Identifiers.reportVC)
         case .findPassword:
             return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.findPasswordSB, storyboardId: Identifiers.findPasswordVC)
+        case .withdrawal:
+            return StoryboardRepresentation(bundle: nil, storyboardName: Identifiers.withdrawalSB, storyboardId: Identifiers.withdrawalVC)
         }
     }
 }

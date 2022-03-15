@@ -122,9 +122,7 @@ extension FindPasswordVC {
     }
     
     func showToastView() {
-        // TODO: develop 브랜치에서 새로 브랜치 만든 후 수정
-        // toastView.setAlertTitle(alertType: <#T##AlertType#>)
-        toastView.setAlertTitle(alertType: .commentDeleted)
+        toastView.setAlertTitle(alertType: .findPassword)
         toastView.showToastView()
     }
 }

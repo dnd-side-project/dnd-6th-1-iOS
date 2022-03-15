@@ -16,7 +16,7 @@ class MypageVC: UIViewController {
     @IBOutlet weak var checkReportButton: UIButton!
     @IBOutlet weak var viewSeparator: UIView!
     @IBOutlet weak var storyButton: UIButton!
-    @IBOutlet weak var deleteAccountButton: UIButton!
+    @IBOutlet weak var withdrawalButton: UIButton!
     @IBOutlet weak var signOutButton: UIButton!
     
     var disposeBag = DisposeBag()
@@ -26,13 +26,17 @@ class MypageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         callMypageApi()
-        configureNaviBar()
         configureProfileInfoView()
         setInitialUIValue()
         configureCV()
         configureButton()
         bindUI()
         bindVM()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNaviBar()
     }
 }
 
@@ -59,8 +63,8 @@ extension MypageVC {
         checkReportButton.backgroundColor = .primary
         storyButton.titleLabel?.font = .SpoqaHanSansNeoRegular(size: 15)
         storyButton.setTitleColor(.darkGray6, for: .normal)
-        deleteAccountButton.titleLabel?.font = .SpoqaHanSansNeoRegular(size: 15)
-        deleteAccountButton.setTitleColor(.darkGray6, for: .normal)
+        withdrawalButton.titleLabel?.font = .SpoqaHanSansNeoRegular(size: 15)
+        withdrawalButton.setTitleColor(.darkGray6, for: .normal)
         signOutButton.titleLabel?.font = .SpoqaHanSansNeoRegular(size: 15)
         signOutButton.setTitleColor(.darkGray6, for: .normal)
     }
@@ -82,7 +86,7 @@ extension MypageVC {
     }
     
     private func configureButton() {
-        let buttonArray = [storyButton, deleteAccountButton, signOutButton]
+        let buttonArray = [storyButton, withdrawalButton, signOutButton]
         var config = UIButton.Configuration.plain()
         config.imagePadding = 12
         config.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 0, trailing: 0)
@@ -108,6 +112,26 @@ extension MypageVC {
     private func showReportView() {
         let reportView = ViewControllerFactory.viewController(for: .report)
         navigationController?.pushViewController(reportView, animated: true)
+    }
+    
+    private func signOut() {
+        guard let signInVC = ViewControllerFactory.viewController(for: .signIn) as? SignInVC,
+                let ad = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        self.dismiss(animated: true) {
+            ad.window?.rootViewController = signInVC
+            signInVC.setToastViewPosition()
+            signInVC.showToastView(alertType: .signOut)
+        }
+    }
+    
+    private func showWithdrawalVC() {        
+        guard let withdrawalVC =
+                ViewControllerFactory
+                .viewController(for: .withdrawal)
+                as? WithdrawalVC else { return }
+        
+        navigationController?.pushViewController(withdrawalVC, animated: true)
     }
 }
 
@@ -166,6 +190,22 @@ extension MypageVC {
             .asDriver()
             .drive()
             .disposed(by: disposeBag)
+        
+        signOutButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.mypageVM.signOut()
+            })
+            .disposed(by: disposeBag)
+        
+        withdrawalButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.showWithdrawalVC()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindVM() {
@@ -178,6 +218,22 @@ extension MypageVC {
                 self.profileInfoView.userNickname.text = response.user?.nickname
                 self.profileInfoView.recentConnect.text = "최근작성 \(response.user?.recentPost ?? "")"
                 self.myWritesCV.reloadData()
+            })
+            .disposed(by: disposeBag)
+        
+        mypageVM.signOutSuccess
+            .asDriver(onErrorJustReturn: ())
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.signOut()
+            })
+            .disposed(by: disposeBag)
+        
+        mypageVM.apiError
+            .asDriver(onErrorJustReturn: .unknown)
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.showConfirmAlert(with: .networkError, alertMessage: "서버 오류 발생", style: .default)
             })
             .disposed(by: disposeBag)
     }

@@ -443,7 +443,9 @@ extension SignUpVC {
                 guard let self = self else { return }
                 let signInVC = self.presentingViewController as! SignInVC
                 self.dismiss(animated: true) {
-                    signInVC.showSignUpSuccessView()
+                    // signInVC.showSignUpSuccessView()
+                    signInVC.setToastViewPosition()
+                    signInVC.showToastView(alertType: .signUp)
                 }
             })
             .disposed(by: disposeBag)

@@ -16,6 +16,10 @@ enum ToastType {
     case shouldCommentDelete
     case postEdit
     case commentEdit
+    case signUp
+    case signOut
+    case withdrawal
+    case findPassword
     
     var message: String {
         switch self {
@@ -35,6 +39,14 @@ enum ToastType {
             return "게시글 수정이 완료되었습니다"
         case .commentEdit:
             return "댓글 수정이 완료되었습니다"
+        case .signUp:
+            return "회원가입이 완료되었습니다"
+        case .signOut:
+            return "로그아웃이 완료되었습니다"
+        case .withdrawal:
+            return "회원탈퇴가 완료되었습니다"
+        case .findPassword:
+            return "이메일로 임시 비밀번호가 전송되었습니다"
         }
     }
 }
