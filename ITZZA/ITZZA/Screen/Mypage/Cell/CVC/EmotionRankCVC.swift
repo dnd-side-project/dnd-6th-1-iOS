@@ -16,6 +16,7 @@ class EmotionRankCVC: UICollectionViewCell {
     @IBOutlet weak var changeCount: UILabel!
     @IBOutlet weak var totalEmotionCount: UILabel!
     @IBOutlet weak var seperatorBar: UIView!
+    let firstStiker = UIImageView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -72,7 +73,6 @@ extension EmotionRankCVC {
     
     func configureCell(_ report: ReportEmotionModel) {
         setChangedRank(report.rankChange)
-        rank.text = "\(report.rank)등"
         emotionName.text = Emoji.allCases[report.category - 1].name
         emotionImage.image = Emoji.allCases[report.category - 1].StickerImage
         totalEmotionCount.text = "총 \(report.cnt)번"
@@ -80,16 +80,20 @@ extension EmotionRankCVC {
         if report.rank == 1 {
             setFirstRankCell(report.category)
             addFirstStiker()
+        } else {
+            backgroundColor = .white
+            configureTextColor(with: .darkGray6)
+            rank.text = "\(report.rank)등"
+            firstStiker.image = UIImage()
         }
     }
     
     private func addFirstStiker() {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "MVP")
+        firstStiker.image = UIImage(named: "MVP")
         
-        contentView.superview?.addSubview(imageView)
+        contentView.superview?.addSubview(firstStiker)
         
-        imageView.snp.makeConstraints {
+        firstStiker.snp.makeConstraints {
             $0.width.height.equalTo(35)
             $0.leading.equalTo(contentView.snp.leading).offset(-10)
             $0.top.equalTo(contentView.snp.top).offset(-10)

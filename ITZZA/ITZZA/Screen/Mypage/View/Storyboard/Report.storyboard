@@ -120,11 +120,10 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9dF-ds-IWn">
-                                                                                    <rect key="frame" x="210" y="25.666666666666668" width="14" height="2.6666666666666607"/>
+                                                                                    <rect key="frame" x="210" y="25.666666666666661" width="14" height="2.6666666666666679"/>
                                                                                     <color key="tintColor" red="0.99215686274509807" green="0.50588235294117645" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="14" id="Lyy-jY-0Ni"/>
-                                                                                        <constraint firstAttribute="height" constant="14" id="TJQ-NT-6cK"/>
                                                                                     </constraints>
                                                                                 </imageView>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Isk-VU-Mqs">
@@ -153,8 +152,10 @@
                                                                                 <constraint firstItem="yBD-8Z-Akw" firstAttribute="leading" secondItem="3Qc-Cd-l5c" secondAttribute="leading" constant="56.333333333333343" id="5az-Q4-8Sv"/>
                                                                                 <constraint firstItem="Isk-VU-Mqs" firstAttribute="centerY" secondItem="3Qc-Cd-l5c" secondAttribute="centerY" id="5iX-SN-Gom"/>
                                                                                 <constraint firstItem="qu4-OL-bc7" firstAttribute="leading" secondItem="Isk-VU-Mqs" secondAttribute="trailing" constant="16" id="B4e-pO-zbk"/>
+                                                                                <constraint firstItem="9dF-ds-IWn" firstAttribute="top" secondItem="3Qc-Cd-l5c" secondAttribute="top" constant="17.329999999999998" id="D27-J4-QVh"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="qu4-OL-bc7" secondAttribute="trailing" constant="16" id="KvL-8g-sDw"/>
                                                                                 <constraint firstItem="fmg-qw-rMy" firstAttribute="leading" secondItem="3Qc-Cd-l5c" secondAttribute="leading" constant="16" id="Lg8-6p-qrG"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="9dF-ds-IWn" secondAttribute="bottom" constant="17.329999999999998" id="N1C-MQ-rmD"/>
                                                                                 <constraint firstItem="GBl-9U-6ia" firstAttribute="centerY" secondItem="3Qc-Cd-l5c" secondAttribute="centerY" id="Oms-nl-fHd"/>
                                                                                 <constraint firstItem="yBD-8Z-Akw" firstAttribute="centerY" secondItem="3Qc-Cd-l5c" secondAttribute="centerY" id="SAW-p9-rN5"/>
                                                                                 <constraint firstItem="9dF-ds-IWn" firstAttribute="centerY" secondItem="3Qc-Cd-l5c" secondAttribute="centerY" id="UHX-xc-e2p"/>

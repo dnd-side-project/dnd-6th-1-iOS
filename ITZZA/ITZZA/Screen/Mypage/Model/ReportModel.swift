@@ -9,8 +9,8 @@ import UIKit
 import Alamofire
 
 struct ReportPeriodModel: Decodable {
-    var year: Int
-    var week: Int
+    var year: Int?
+    var week: Int?
 }
 
 struct ReportModel: Decodable {

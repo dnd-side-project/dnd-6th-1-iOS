@@ -31,12 +31,15 @@ class ReportVC: UIViewController {
     var reportPeriodList = [ReportPeriodModel]()
     var report = ReportModel()
     let MVPScrollView = UIScrollView()
-    let MVPStackView = UIStackView()
+    var MVPStackView = UIStackView()
+    var year: Int?
+    var week: Int?
     
     var MVPEmotionCount: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNotification()
         getReportPeriod()
     }
     
@@ -57,6 +60,8 @@ extension ReportVC {
         configureEmotionAnalyzeView()
         configureEmotionListCV()
         setWriteDiaryButton()
+        
+        view.reloadInputViews()
     }
     
     private func configureNaviBar() {
@@ -80,13 +85,14 @@ extension ReportVC {
     
     private func configureTitleView() {
         reportPeriodButton.tintColor = .darkGray2
-        reportPeriodButton.setTitle("\(reportPeriodList.last?.year ?? 0)년 \(reportPeriodList.last?.week ?? 0)번째 리포트", for: .normal)
+        reportPeriodButton.setTitle("\(year ?? (reportPeriodList.first?.year ?? 0))년 \(week ?? (reportPeriodList.first?.week ?? 0))번째 리포트", for: .normal)
         reportPeriodButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         reportPeriodButton.imageView?.contentMode = .scaleAspectFit
         reportPeriodButton.titleLabel?.font = .SpoqaHanSansNeoMedium(size: 13)
         reportPeriodButton.contentHorizontalAlignment = .left
         reportPeriodButton.semanticContentAttribute = .forceRightToLeft
         reportPeriodButton.imageView?.layer.transform = CATransform3DMakeScale(0.7, 0.7, 0.7)
+        bindReportPeriodButton()
         
         if report.diaries?.count != 1 {
             reportTitle.text = "이번 주 감정 순위는 공동 1등!"
@@ -97,11 +103,49 @@ extension ReportVC {
         reportTitle.textColor = .darkGray6
     }
     
+    private func bindReportPeriodButton() {
+        reportPeriodButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.configureSelectView()
+            })
+            .disposed(by: bag)
+    }
+    
+    private func configureSelectView() {
+        let selectTV = SelectAlertTV()
+        selectTV.reportPeriodList = reportPeriodList
+        let alertVC = UIViewController.init()
+        let alertController = UIAlertController(title: "날짜 선택",
+                                                message: "",
+                                                preferredStyle: .alert)
+        alertController.view.tintColor = .darkGray6
+        alertController.view.subviews.first?.subviews.first?.subviews.first!.backgroundColor = .white
+        alertController.setValue(alertVC, forKey: "contentViewController")
+        alertVC.view.addSubview(selectTV)
+        
+        let height = (reportPeriodList.count > 6) ? 5 : reportPeriodList.count
+        
+        alertVC.view.snp.makeConstraints {
+            $0.height.equalTo(height * 54)
+        }
+        selectTV.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        present(alertController, animated: true) {
+            alertController.view.superview?.isUserInteractionEnabled = true
+            alertController.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+        }
+    }
+    
     private func configureEmotionRankCV() {
         emotionRankCV.dataSource = self
         emotionRankCV.delegate = self
         
         emotionRankCV.isScrollEnabled = false
+        emotionRankCV.reloadData()
     }
     
     private func configureEmotionListCV() {
@@ -143,12 +187,17 @@ extension ReportVC {
         // TODO: - 뷰 구조 싹 바꾸기..ㅎ....
     }
     
+    @objc func alertControllerBackgroundTapped() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - EmotionAnalyzeView
     func configureEmotionAnalyzeView() {
         setEmotionAnalyzeScrollView()
         setEmotionAnalyzeStackView()
         setEmotionAnalyzePageController()
         addEmotionAnalyzeView()
+        emotionAnalyzeHolderView.reloadInputViews()
     }
     
     func setEmotionAnalyzeScrollView() {
@@ -183,6 +232,8 @@ extension ReportVC {
     }
     
     func addEmotionAnalyzeView() {
+        MVPStackView.removeAllArrangedSubviews()
+        
         for i in 0 ..< (MVPEmotionCount ?? 1) {
             let analyzeView = EmotionAnalyzeView()
             analyzeView.reportDiary = report.diaries?[i]
@@ -194,6 +245,19 @@ extension ReportVC {
                 $0.height.equalTo(MVPScrollView.snp.height)
             }
         }
+    }
+    
+    // MARK: - Notification
+    func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadReportView), name: .whenReportWeekSelected, object: nil)
+    }
+    
+    @objc func reloadReportView(_ notification: Notification) {
+        guard let object = notification.object as? [Int?], let year = object[0], let week = object[1] else { return }
+        getReport(year: year, week: week)
+        self.year = year
+        self.week = week
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Network
@@ -212,9 +276,8 @@ extension ReportVC {
                     if reportList.isEmpty {
                         self.configureNoDataView()
                     } else {
-                        self.getReport(
-                            year: reportList.last!.year,
-                            week: reportList.last!.week)
+                        self.getReport(year: reportList.first!.year ?? 0,
+                                       week: reportList.first!.week ?? 0)
                     }
                 case .failure:
                     break

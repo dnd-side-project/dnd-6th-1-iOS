@@ -53,6 +53,7 @@ class EmotionAnalyzeView: UIView {
         diaryListCV.backgroundColor = .clear
         
         setDiaryListCVHeight()
+        diaryListCV.reloadData()
     }
     
     func setDiaryListCVHeight() {
