@@ -441,7 +441,8 @@ extension SignUpVC {
         signUpVM.signUpSuccess.asDriver(onErrorJustReturn: "회원가입이 완료되었습니다")
             .drive(onNext: { [weak self] response in
                 guard let self = self else { return }
-                let signInVC = self.presentingViewController as! SignInVC
+                guard let signInVC = self.presentingViewController as? SignInVC else { return }
+                
                 self.dismiss(animated: true) {
                     signInVC.setToastViewPosition()
                     signInVC.showToastView(alertType: .signUp)

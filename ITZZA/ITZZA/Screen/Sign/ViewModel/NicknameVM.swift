@@ -46,7 +46,7 @@ class NicknameVM {
         let url = URL(string: encodedURL)!
         let resource = urlResource<NicknameResponse>(url: url)
         
-        apiSession.signUpGetRequest(with: resource)
+        apiSession.getRequest(with: resource)
             .withUnretained(self)
             .subscribe(onNext: { owner, result in
                 switch result {

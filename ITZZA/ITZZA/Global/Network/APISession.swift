@@ -14,82 +14,22 @@ struct urlResource<T: Decodable> {
 }
 
 struct APISession: APIService {
-    func signInPostRequest<T: Decodable>(with urlResource: urlResource<T>, param: Parameters) -> Observable<Result<T, APIError>> {
-        
-        Observable<Result<T, APIError>>.create { observer in
-            
-            let headers: HTTPHeaders = [
-                "Content-Type": "application/json"
-            ]
-            
-            let task = AF.request(urlResource.url,
-                                  method: .post,
-                                  parameters: param,
-                                  encoding: JSONEncoding.default,
-                                  headers: headers)
-                .validate(statusCode: 200...399)
-                .responseDecodable(of: T.self) { response in
-                    switch response.result {
-                    case .failure(let error):
-                        print("Unknown HTTP Response Error!!!: \(error.localizedDescription)")
-                        
-                        switch response.response?.statusCode {
-                        case 400:
-                            observer.onNext(.failure(.http(status: 400)))
-                        default:
-                            observer.onNext(.failure(.unknown))
-                        }
-                        
-                    case .success(let decodedData):
-                        observer.onNext(.success(decodedData))
-                    }
-                }
-            
-            return Disposables.create {
-                task.cancel()
-            }
-        }
-    }
-    
-    func signUpGetRequest<T>(with urlResource: urlResource<T>) -> Observable<Result<T, APIError>> where T : Decodable {
-        
-        return Observable<Result<T, APIError>>.create { observer in
-            
-            let task = AF.request(urlResource.url)
-                .validate(statusCode: 200...399)
-                .responseDecodable(of: T.self) { response in
-                    switch response.result {
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                        
-                        switch response.response?.statusCode {
-                        case 409:
-                            observer.onNext(.failure(.http(status: 409)))
-                        default:
-                            observer.onNext(.failure(.unknown))
-                        }
-                        
-                    case .success(let decodedData):
-                        observer.onNext(.success(decodedData))
-                    }
-                }
-            
-            return Disposables.create {
-                task.cancel()
-            }
-        }
-    }
-    
     func postRequest<T: Decodable>(with urlResource: urlResource<T>, param: Parameters) -> Observable<Result<T, APIError>> {
         
         Observable<Result<T, APIError>>.create { observer in
             
-            guard let token: String = KeychainWrapper.standard[.myToken] else { return Disposables.create { } }
+            var headers: HTTPHeaders?
             
-            let headers: HTTPHeaders = [
-                "Authorization": "Bearer \(token)",
-                "Content-Type": "application/json"
-            ]
+            if let token: String = KeychainWrapper.standard[.myToken] {
+                headers = [
+                    "Authorization": "Bearer \(token)",
+                    "Content-Type": "application/json"
+                ]
+            } else {
+                headers = [
+                    "Content-Type": "application/json"
+                ]
+            }
             
             let task = AF.request(urlResource.url,
                                   method: .post,
@@ -164,13 +104,20 @@ struct APISession: APIService {
         
         return Observable<Result<T, APIError>>.create { observer in
             
-            guard let token: String = KeychainWrapper.standard[.myToken] else { return Disposables.create { } }
+            var headers: HTTPHeaders?
             
-            let header: HTTPHeaders = [
-                "Authorization": "Bearer \(token)"
-            ]
+            if let token: String = KeychainWrapper.standard[.myToken] {
+                headers = [
+                    "Authorization": "Bearer \(token)",
+                    "Content-Type": "application/json"
+                ]
+            } else {
+                headers = [
+                    "Content-Type": "application/json"
+                ]
+            }
             
-            let task = AF.request(urlResource.url, headers: header)
+            let task = AF.request(urlResource.url, headers: headers)
                 .validate(statusCode: 200...399)
                 .responseDecodable(of: T.self) { response in
                     switch response.result {
