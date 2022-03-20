@@ -22,6 +22,8 @@
 		2323030527B02D9200E20078 /* ChatInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2323030327B02D9200E20078 /* ChatInputView.xib */; };
 		2323030927B035ED00E20078 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2323030827B035ED00E20078 /* UITextField+.swift */; };
 		2325A50427E7B7D200B459FB /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2325A50327E7B7D200B459FB /* UIStackView+.swift */; };
+		2325A50727E7BD2000B459FB /* TipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2325A50527E7BD2000B459FB /* TipView.swift */; };
+		2325A50827E7BD2000B459FB /* TipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2325A50627E7BD2000B459FB /* TipView.xib */; };
 		2327FD7D27C6730B007D65F4 /* SearchedUserTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2327FD7B27C6730B007D65F4 /* SearchedUserTVC.swift */; };
 		2327FD7E27C6730B007D65F4 /* SearchedUserTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2327FD7C27C6730B007D65F4 /* SearchedUserTVC.xib */; };
 		2329B63227CF69CA004B182A /* ToastType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2329B63127CF69CA004B182A /* ToastType.swift */; };
@@ -68,6 +70,8 @@
 		235DCED727C13DA10034D4C1 /* ImageCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235DCED527C13DA10034D4C1 /* ImageCollectionView.xib */; };
 		235DCED927C13E5D0034D4C1 /* AddedImageCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235DCED827C13E5D0034D4C1 /* AddedImageCVC.xib */; };
 		235E7AE727DDC940009B4A5B /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E7AE627DDC940009B4A5B /* AlertType.swift */; };
+		2365079927E7C52300EA76D5 /* EmotionListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2365079727E7C52300EA76D5 /* EmotionListCVC.swift */; };
+		2365079A27E7C52300EA76D5 /* EmotionListCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2365079827E7C52300EA76D5 /* EmotionListCVC.xib */; };
 		2368021127B2965B00A4392B /* PostContentTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */; };
 		2368021327B2966800A4392B /* PostContentTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2368021227B2966800A4392B /* PostContentTableViewHeader.xib */; };
 		236C98DE27B239C200CE1EFD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236C98DD27B239C200CE1EFD /* UIView+.swift */; };
@@ -105,7 +109,6 @@
 		23BCDC2C27C211D300054334 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BCDC2B27C211D300054334 /* Notification+Name.swift */; };
 		23C26C1F27DC88B1009C4402 /* EmotionRankCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C26C1E27DC88B1009C4402 /* EmotionRankCVC.swift */; };
 		23C26C2127DC97A4009C4402 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C26C2027DC97A4009C4402 /* Emoji.swift */; };
-		23C26C2327DCAE9F009C4402 /* EmotionListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C26C2227DCAE9F009C4402 /* EmotionListCVC.swift */; };
 		23C26C2627DCE996009C4402 /* EmotionAnalyzeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C26C2427DCE996009C4402 /* EmotionAnalyzeView.swift */; };
 		23C26C2727DCE996009C4402 /* EmotionAnalyzeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C26C2527DCE996009C4402 /* EmotionAnalyzeView.xib */; };
 		23C26C2A27DCF20B009C4402 /* EmotionAnalyzeCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C26C2827DCF20B009C4402 /* EmotionAnalyzeCVC.swift */; };
@@ -207,6 +210,8 @@
 		2323030327B02D9200E20078 /* ChatInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatInputView.xib; sourceTree = "<group>"; };
 		2323030827B035ED00E20078 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		2325A50327E7B7D200B459FB /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
+		2325A50527E7BD2000B459FB /* TipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
+		2325A50627E7BD2000B459FB /* TipView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipView.xib; sourceTree = "<group>"; };
 		2327FD7B27C6730B007D65F4 /* SearchedUserTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedUserTVC.swift; sourceTree = "<group>"; };
 		2327FD7C27C6730B007D65F4 /* SearchedUserTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchedUserTVC.xib; sourceTree = "<group>"; };
 		2329B63127CF69CA004B182A /* ToastType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastType.swift; sourceTree = "<group>"; };
@@ -255,6 +260,8 @@
 		235DCED527C13DA10034D4C1 /* ImageCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionView.xib; sourceTree = "<group>"; };
 		235DCED827C13E5D0034D4C1 /* AddedImageCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddedImageCVC.xib; sourceTree = "<group>"; };
 		235E7AE627DDC940009B4A5B /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
+		2365079727E7C52300EA76D5 /* EmotionListCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionListCVC.swift; sourceTree = "<group>"; };
+		2365079827E7C52300EA76D5 /* EmotionListCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmotionListCVC.xib; sourceTree = "<group>"; };
 		2368021027B2965B00A4392B /* PostContentTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentTableViewHeader.swift; sourceTree = "<group>"; };
 		2368021227B2966800A4392B /* PostContentTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostContentTableViewHeader.xib; sourceTree = "<group>"; };
 		236C98DD27B239C200CE1EFD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -292,7 +299,6 @@
 		23BCDC2B27C211D300054334 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		23C26C1E27DC88B1009C4402 /* EmotionRankCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionRankCVC.swift; sourceTree = "<group>"; };
 		23C26C2027DC97A4009C4402 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
-		23C26C2227DCAE9F009C4402 /* EmotionListCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionListCVC.swift; sourceTree = "<group>"; };
 		23C26C2427DCE996009C4402 /* EmotionAnalyzeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionAnalyzeView.swift; sourceTree = "<group>"; };
 		23C26C2527DCE996009C4402 /* EmotionAnalyzeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmotionAnalyzeView.xib; sourceTree = "<group>"; };
 		23C26C2827DCF20B009C4402 /* EmotionAnalyzeCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionAnalyzeCVC.swift; sourceTree = "<group>"; };
@@ -666,9 +672,10 @@
 			isa = PBXGroup;
 			children = (
 				23C26C1E27DC88B1009C4402 /* EmotionRankCVC.swift */,
-				23C26C2227DCAE9F009C4402 /* EmotionListCVC.swift */,
 				23C26C2827DCF20B009C4402 /* EmotionAnalyzeCVC.swift */,
 				23C26C2927DCF20B009C4402 /* EmotionAnalyzeCVC.xib */,
+				2365079727E7C52300EA76D5 /* EmotionListCVC.swift */,
+				2365079827E7C52300EA76D5 /* EmotionListCVC.xib */,
 			);
 			path = CVC;
 			sourceTree = "<group>";
@@ -1010,6 +1017,7 @@
 				6283B53527CE026000D55AA9 /* ProfileInfoView.xib */,
 				23C26C2527DCE996009C4402 /* EmotionAnalyzeView.xib */,
 				2308504B27E057D2004DC058 /* SelectAlertTV.xib */,
+				2325A50627E7BD2000B459FB /* TipView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -1021,6 +1029,7 @@
 				6283B53727CE05C500D55AA9 /* ProfileInfoView.swift */,
 				23C26C2427DCE996009C4402 /* EmotionAnalyzeView.swift */,
 				2308504A27E057D2004DC058 /* SelectAlertTV.swift */,
+				2325A50527E7BD2000B459FB /* TipView.swift */,
 			);
 			path = XibController;
 			sourceTree = "<group>";
@@ -1179,6 +1188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2325A50827E7BD2000B459FB /* TipView.xib in Resources */,
 				623DE30527B55BFD005E78D0 /* Agreement.txt in Resources */,
 				238CEEA427A7E6F1006BE766 /* Category.storyboard in Resources */,
 				627E0FF427DDAFDC00E015A8 /* FindPassword.storyboard in Resources */,
@@ -1216,6 +1226,7 @@
 				2308504D27E057D2004DC058 /* SelectAlertTV.xib in Resources */,
 				62654E5F27C75A6A00A48363 /* EmojiAnimationView.xib in Resources */,
 				2368021327B2966800A4392B /* PostContentTableViewHeader.xib in Resources */,
+				2365079A27E7C52300EA76D5 /* EmotionListCVC.xib in Resources */,
 				235DCED727C13DA10034D4C1 /* ImageCollectionView.xib in Resources */,
 				2356305627BFA1D10032E520 /* SpoqaHanSansNeo-Bold.otf in Resources */,
 				232302FD27AFC13200E20078 /* CommentTVC.xib in Resources */,
@@ -1329,10 +1340,10 @@
 				233B636B27AF9D9D00914F60 /* PostDetailVC.swift in Sources */,
 				232302FC27AFC13200E20078 /* CommentTVC.swift in Sources */,
 				6208CFE127A2662700F17603 /* SignInVM.swift in Sources */,
-				23C26C2327DCAE9F009C4402 /* EmotionListCVC.swift in Sources */,
 				623DE31127B65B27005E78D0 /* NicknameVM.swift in Sources */,
 				23A56BDA27B3F8BA00959269 /* UILabel+.swift in Sources */,
 				2368021127B2965B00A4392B /* PostContentTableViewHeader.swift in Sources */,
+				2365079927E7C52300EA76D5 /* EmotionListCVC.swift in Sources */,
 				2325A50427E7B7D200B459FB /* UIStackView+.swift in Sources */,
 				23A2BB6827C942D80074D21C /* MyRecordModel.swift in Sources */,
 				62654E6127C7825700A48363 /* WriteDiaryVM.swift in Sources */,
@@ -1370,6 +1381,7 @@
 				2376DA7627BA850700E4A0E8 /* CommunityType.swift in Sources */,
 				232CC08727A038FB00040131 /* UIColor+.swift in Sources */,
 				62B6DC8027C92BEA00F2FED8 /* MypageCVC.swift in Sources */,
+				2325A50727E7BD2000B459FB /* TipView.swift in Sources */,
 				232CC07727A0372300040131 /* ViewControllerFactory.swift in Sources */,
 				232CC0A427A03B8F00040131 /* ITZZATBC.swift in Sources */,
 				23B3340D27CFD5C40099B7A4 /* EmptyModel.swift in Sources */,

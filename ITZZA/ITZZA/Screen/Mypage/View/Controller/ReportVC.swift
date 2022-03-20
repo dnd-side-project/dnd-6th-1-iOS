@@ -41,11 +41,8 @@ class ReportVC: UIViewController {
         super.viewDidLoad()
         setNotification()
         getReportPeriod()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setLottieAnimation()
+        configureNaviBar()
+        configureTipView()
     }
 }
 
@@ -54,12 +51,9 @@ extension ReportVC {
     private func configureView() {
         scrollView.showsVerticalScrollIndicator = false
         
-        configureNaviBar()
         configureTitleView()
         configureEmotionRankCV()
         configureEmotionAnalyzeView()
-        configureEmotionListCV()
-        setWriteDiaryButton()
         
         view.reloadInputViews()
     }
@@ -148,28 +142,6 @@ extension ReportVC {
         emotionRankCV.reloadData()
     }
     
-    private func configureEmotionListCV() {
-        emotionListCV.dataSource = self
-        emotionListCV.delegate = self
-        
-        emotionListCV.isScrollEnabled = false
-    }
-    
-    private func setWriteDiaryButton() {
-        writeDiaryButton.backgroundColor = .primary
-        writeDiaryButton.layer.cornerRadius = 4
-        writeDiaryButton.setTitle("일기 작성하기", for: .normal)
-        writeDiaryButton.titleLabel?.font = .SpoqaHanSansNeoMedium(size: 12)
-        writeDiaryButton.tintColor = .white
-    }
-    
-    private func setLottieAnimation() {
-        animationView.clipsToBounds = false
-        animationView.contentMode = .scaleAspectFill
-        animationView.play()
-        animationView.loopMode = .loop
-    }
-    
     // MARK: - Custom Function
     func saveViewtoGallery(_ image: UIImage) {
         PHPhotoLibrary.requestAuthorization { status in
@@ -183,8 +155,31 @@ extension ReportVC {
         }
     }
     
+    func configureTipView() {
+        stackView.addArrangedSubview(TipView())
+    }
+    
     func configureNoDataView() {
-        // TODO: - 뷰 구조 싹 바꾸기..ㅎ....
+        stackView.removeAllArrangedSubviews()
+        let noneView = UIView()
+        let message = UILabel()
+        
+        stackView.addArrangedSubview(noneView)
+        stackView.addArrangedSubview(TipView())
+        
+        message.text = "이번 주 기록이 없습니다"
+        message.font = .SpoqaHanSansNeoRegular(size: 15)
+        message.textColor = .lightGray5
+        noneView.addSubview(message)
+        message.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
+        
+        noneView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalTo(scrollView.frame.height - 339)
+        }
     }
     
     @objc func alertControllerBackgroundTapped() {
@@ -317,62 +312,29 @@ extension ReportVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch collectionView {
-        case emotionRankCV:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Identifiers.emotionRankCVC,
-                for: indexPath) as? EmotionRankCVC
-            else { return UICollectionViewCell() }
-            
-            cell.configureCell(report.emotion![indexPath.row])
-            return cell
-        case emotionListCV:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: Identifiers.emotionListCVC,
-                for: indexPath) as? EmotionListCVC
-            else { return UICollectionViewCell() }
-            cell.backgroundColor = Emoji.allCases[indexPath.row].color
-            cell.layer.cornerRadius = 4
-            cell.title.text = Emoji.allCases[indexPath.row].name
-            return cell
-        default:
-            return UICollectionViewCell()
-        }
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: Identifiers.emotionRankCVC,
+            for: indexPath) as? EmotionRankCVC
+        else { return UICollectionViewCell() }
+        
+        cell.configureCell(report.emotion![indexPath.row])
+        return cell
     }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension ReportVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        switch collectionView {
-        case emotionRankCV:
-            return 16
-        case emotionListCV:
-            return 20
-        default:
-            return 0
-        }
+        return 16
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch collectionView {
-        case emotionRankCV:
-            return CGSize(width: collectionView.frame.width - 50,
-                          height: 56)
-        case emotionListCV:
-            return CGSize(width: (collectionView.frame.width - 40) / 5, height: collectionView.frame.height)
-        default:
-            return CGSize()
-        }
+        return CGSize(width: collectionView.frame.width - 50,
+                      height: 56)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        switch collectionView {
-        case emotionRankCV:
-            return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
-        default:
-            return UIEdgeInsets()
-        }
+        return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
     }
 }
 

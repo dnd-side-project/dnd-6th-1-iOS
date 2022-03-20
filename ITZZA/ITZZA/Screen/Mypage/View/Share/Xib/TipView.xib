@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SpoqaHanSansNeo-Bold.otf">
+            <string>SpoqaHanSansNeo-Bold</string>
+        </array>
+        <array key="SpoqaHanSansNeo-Medium.otf">
+            <string>SpoqaHanSansNeo-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TipView" customModule="ITZZA" customModuleProvider="target">
+            <connections>
+                <outlet property="animationView" destination="n0Y-Sa-FNM" id="OsH-nw-Png"/>
+                <outlet property="emotionListCV" destination="wEi-vq-7a2" id="XXh-D2-ArO"/>
+                <outlet property="writeDiaryButton" destination="dXV-Q3-NWi" id="WCg-za-yfX"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="339"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="TIP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbW-cT-d3A">
+                    <rect key="frame" x="25" y="40" width="20.666666666666671" height="16.333333333333329"/>
+                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="13"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.38431372549999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="잊자, 5가지 감정이 뭐죠?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2I-3W-OZE">
+                    <rect key="frame" x="25" y="58.333333333333343" width="175.66666666666666" height="21.333333333333314"/>
+                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="17"/>
+                    <color key="textColor" red="0.12549019610000001" green="0.1176470588" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wEi-vq-7a2">
+                    <rect key="frame" x="25" y="92.666666666666671" width="325" height="25"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="Wm0-IW-f5W"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PZb-nX-opP">
+                        <size key="itemSize" width="71" height="33"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <cells/>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IX1-9l-XId">
+                    <rect key="frame" x="25" y="149" width="325" height="150"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RCc-Ij-OAG">
+                            <rect key="frame" x="20.000000000000007" y="20" width="125.66666666666669" height="54"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일기를 통해" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwU-Er-4ml">
+                                    <rect key="frame" x="0.0" y="0.0" width="63" height="16.333333333333332"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="16.333333333333332" id="lbB-eZ-zBy"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="13"/>
+                                    <color key="textColor" red="0.3294117647" green="0.32156862749999998" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나의 마음을 정리하고" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZj-g0-pan">
+                                    <rect key="frame" x="0.0" y="21.333333333333343" width="113.66666666666667" height="16.333333333333329"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="16.333333333333329" id="mhS-CX-C2u"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="13"/>
+                                    <color key="textColor" red="0.3294117647" green="0.32156862749999998" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="돌보는 시간을 가져봐요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Por-Gw-i5D">
+                                    <rect key="frame" x="0.0" y="42.666666666666657" width="125.66666666666667" height="11.333333333333336"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="11.333333333333336" id="zdu-lb-2Fh"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="13"/>
+                                    <color key="textColor" red="0.3294117647" green="0.32156862749999998" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXV-Q3-NWi">
+                            <rect key="frame" x="20" y="94" width="93" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="93" id="LdF-5R-s9w"/>
+                                <constraint firstAttribute="height" constant="28" id="YMC-Vu-BCR"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Button"/>
+                        </button>
+                        <view contentMode="scaleToFill" horizontalHuggingPriority="501" verticalHuggingPriority="501" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="n0Y-Sa-FNM" customClass="AnimationView" customModule="Lottie">
+                            <rect key="frame" x="190" y="10" width="130" height="130"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="130" id="EPn-8t-IJb"/>
+                                <constraint firstAttribute="height" constant="130" id="vKG-Ue-DRK"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="Animation_Main"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.98431372549999996" green="0.97254901959999995" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="dXV-Q3-NWi" secondAttribute="bottom" constant="28" id="V5d-1Q-XTZ"/>
+                        <constraint firstItem="RCc-Ij-OAG" firstAttribute="top" secondItem="IX1-9l-XId" secondAttribute="top" constant="20" id="WgR-Ib-CgG"/>
+                        <constraint firstItem="RCc-Ij-OAG" firstAttribute="leading" secondItem="IX1-9l-XId" secondAttribute="leading" constant="20" id="Yqw-5a-aqK"/>
+                        <constraint firstItem="dXV-Q3-NWi" firstAttribute="top" secondItem="RCc-Ij-OAG" secondAttribute="bottom" constant="20" id="bGt-oj-qdf"/>
+                        <constraint firstAttribute="height" constant="150" id="bwq-vK-2Xz"/>
+                        <constraint firstItem="dXV-Q3-NWi" firstAttribute="leading" secondItem="IX1-9l-XId" secondAttribute="leading" constant="20" id="cly-Iz-LuQ"/>
+                        <constraint firstAttribute="trailing" secondItem="n0Y-Sa-FNM" secondAttribute="trailing" constant="5" id="pzM-au-srt"/>
+                        <constraint firstItem="n0Y-Sa-FNM" firstAttribute="centerY" secondItem="IX1-9l-XId" secondAttribute="centerY" id="yU7-BA-An7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IX1-9l-XId" secondAttribute="trailing" constant="25" id="0P5-Ic-Hz4"/>
+                <constraint firstItem="wEi-vq-7a2" firstAttribute="top" secondItem="o2I-3W-OZE" secondAttribute="bottom" constant="13" id="79C-E6-MDX"/>
+                <constraint firstItem="wEi-vq-7a2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="CJG-gs-7Ck"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wEi-vq-7a2" secondAttribute="trailing" constant="25" id="DLL-gH-gZt"/>
+                <constraint firstItem="IX1-9l-XId" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="DM0-Lq-S7U"/>
+                <constraint firstItem="o2I-3W-OZE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="Iis-xR-Lyj"/>
+                <constraint firstItem="IX1-9l-XId" firstAttribute="top" secondItem="wEi-vq-7a2" secondAttribute="bottom" constant="31.329999999999998" id="LFP-uD-5S9"/>
+                <constraint firstItem="AbW-cT-d3A" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="QYf-yK-GAe"/>
+                <constraint firstItem="o2I-3W-OZE" firstAttribute="top" secondItem="AbW-cT-d3A" secondAttribute="bottom" constant="2.0000000000000071" id="Rk3-7O-K3g"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="IX1-9l-XId" secondAttribute="bottom" constant="40" id="lyr-Ru-FlU"/>
+                <constraint firstItem="AbW-cT-d3A" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="wMH-rc-AyJ"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="139" y="106"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="n0Y-Sa-FNM"/>
+    </designables>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

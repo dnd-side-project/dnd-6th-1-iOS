@@ -73,6 +73,7 @@ struct Identifiers {
     static let profileInfoView = "ProfileInfoView"
     static let emotionAnalyzeView = "EmotionAnalyzeView"
     static let selectAlertTV = "SelectAlertTV"
+    static let tipView = "TipView"
     
     //MARK: - TVC
     static let postTVC = "PostTVC"
