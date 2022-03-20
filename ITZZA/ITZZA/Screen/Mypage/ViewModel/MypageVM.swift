@@ -16,6 +16,7 @@ class MypageVM {
     let apiSession = APISession()
     let apiError = PublishSubject<APIError>()
     let getMypageSuccess = PublishSubject<MypageModel>()
+    let signOutSuccess = PublishSubject<Void>()
     var myInfo = MypageModel()
         
 }
@@ -25,7 +26,7 @@ extension MypageVM {
     func getUserInformation() {
         guard let userId: String = KeychainWrapper.standard[.userId] else { return }
         
-        let baseURL = "http://13.125.239.189:3000/users/\(userId)"
+        let baseURL = "https://www.itzza.shop/users/\(userId)"
         let url = URL(string: baseURL)!
         let resource = urlResource<MypageModel>(url: url)
         
@@ -42,6 +43,30 @@ extension MypageVM {
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    func signOut() {
+        let baseURL = "https://www.itzza.shop/auth/signout"
+        let url = URL(string: baseURL)!
+        let resource = urlResource<SignOutModel>(url: url)
         
+        apiSession.patchRequest(with: resource, param: Parameters())
+            .withUnretained(self)
+            .subscribe(onNext: { owner, result in
+                switch result {
+                case .failure(let error):
+                    owner.apiError.onNext(error)
+                    
+                case .success(_):
+                    owner.removeUserData()
+                    owner.signOutSuccess.onNext(())
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func removeUserData() {
+        UserDefaults.standard.removeObject(forKey: "email")
+        KeychainWrapper.standard.removeAllKeys()
     }
 }

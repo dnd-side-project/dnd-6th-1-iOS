@@ -36,7 +36,7 @@ class SignInVM {
         let signInParameter = signInformation.loginParam
         let resource = urlResource<SignInResponse>(url: url)
         
-        apiSession.postRequest(with: resource, param: signInParameter)
+        apiSession.signInPostRequest(with: resource, param: signInParameter)
             .withUnretained(self)
             .subscribe(onNext: { owner, result in
                 switch result {

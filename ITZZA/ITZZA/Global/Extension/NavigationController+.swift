@@ -25,6 +25,13 @@ extension UINavigationController {
         navigationItem.title = title
     }
     
+    func setSub(navigationItem: UINavigationItem,
+                navigationBar: UINavigationBar?,
+                title: String) {
+        navigationItem.title = title
+        navigationBar?.titleTextAttributes = [NSAttributedString.Key.font: UIFont.SpoqaHanSansNeoBold(size: 20)]
+    }
+    
     func setBackButtonWithTitle(navigationItem: UINavigationItem, title: String) {
         let naviTitle = UILabel()
         naviTitle.textColor = .darkGray6

@@ -33,6 +33,7 @@ class SignInVC: UIViewController {
     var disposeBag = DisposeBag()
     var signInViewModel = SignInVM()
     var validation = Validation()
+    let toastView = AlertView()
 
     override func viewDidLoad() {
         bindUI()
@@ -373,5 +374,21 @@ extension SignInVC {
         UIView.animate(withDuration: 1.5) {
             signUpSuccessView.alpha = 0
         }
+    }
+    
+    func setToastViewPosition() {
+        view.addSubview(toastView)
+        
+        toastView.snp.makeConstraints {
+            $0.top.equalTo(findPasswordButton.snp.bottom).offset(52)
+            $0.leading.equalToSuperview().offset(52)
+            $0.trailing.equalToSuperview().offset(-52)
+            $0.height.equalTo(44)
+        }
+    }
+    
+    func showToastView(alertType: ToastType) {
+        toastView.setAlertTitle(alertType: alertType)
+        toastView.showToastView()
     }
 }
