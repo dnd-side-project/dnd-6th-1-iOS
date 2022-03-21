@@ -19,7 +19,7 @@ class FindPasswordVC: UIViewController {
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     let validation = Validation()
-    let toastView = AlertView()
+    let toastView = ToastView()
     var disposeBag = DisposeBag()
     
     override func viewDidLoad() {

@@ -29,14 +29,14 @@ class EmotionAnalyzeCVC: UICollectionViewCell {
 }
 
 extension EmotionAnalyzeCVC {
-    func configureDotImage() {
+    private func configureDotImage() {
         dotImage.layer.cornerRadius = dotImage.frame.width / 2
         dotImage.backgroundColor = .white
         dotImage.layer.borderWidth = 2
         dotImage.layer.borderColor = UIColor.seconConfused.cgColor
     }
     
-    func configureDiaryView() {
+    private func configureDiaryView() {
         diaryView.layer.masksToBounds = false
         diaryView.layer.shadowColor = UIColor.black.cgColor
         diaryView.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -48,7 +48,7 @@ extension EmotionAnalyzeCVC {
         pointView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
     }
     
-    func configureFont() {
+    private func configureFont() {
         day.font = .SpoqaHanSansNeoMedium(size: 13)
         day.textColor = .darkGray2
         
@@ -78,5 +78,13 @@ extension EmotionAnalyzeCVC {
             $0.top.equalTo(dotImage.snp.bottom)
             $0.centerX.equalTo(dotImage.snp.centerX)
         }
+    }
+    
+    func configureCell(_ reportDiary: HomeModel) {
+        day.text = "\(reportDiary.dayOfWeek ?? "")"
+        date.text = "\(reportDiary.day ?? 0)"
+        diaryTitle.text = reportDiary.diaryTitle
+        diaryContent.text = reportDiary.categoryReason
+        createdAt.text = reportDiary.diaryCreated
     }
 }

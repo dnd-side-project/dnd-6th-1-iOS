@@ -71,9 +71,11 @@ struct Identifiers {
     static let emojiAnimationView = "EmojiAnimationView"
     static let tabView = "TabView"
     static let keywordContentView = "KeywordContentView"
-    static let alertView = "AlertView"
+    static let toastView = "ToastView"
     static let profileInfoView = "ProfileInfoView"
     static let emotionAnalyzeView = "EmotionAnalyzeView"
+    static let selectAlertTV = "SelectAlertTV"
+    static let tipView = "TipView"
     
     //MARK: - TVC
     static let postTVC = "PostTVC"
@@ -87,6 +89,7 @@ struct Identifiers {
     static let searchedUserTVC = "SearchedUserTVC"
     static let noneSearchedContentTVC = "NoneSearchedContentTVC"
     static let homeAlarmCell = "HomeAlarmCell"
+    static let selectTVC = "SelectTVC"
     
     //MARK: - CVC
     static let addedImageCVC = "AddedImageCVC"

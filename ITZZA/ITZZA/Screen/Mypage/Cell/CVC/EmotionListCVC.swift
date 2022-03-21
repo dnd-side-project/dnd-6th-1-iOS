@@ -9,17 +9,15 @@ import UIKit
 
 class EmotionListCVC: UICollectionViewCell {
     @IBOutlet weak var title: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setTitleColor()
+    }
 }
 
 extension EmotionListCVC {
-    func setTitleColor() {
-        switch title.text {
-        case Emoji.angry.name,
-            Emoji.comfy.name,
-            Emoji.lonely.name:
-            title.textColor = .white
-        default:
-            title.textColor = .darkGray6
-        }
+    private func setTitleColor() {
+        title.textColor = .white
     }
 }

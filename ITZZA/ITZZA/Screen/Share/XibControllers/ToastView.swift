@@ -8,8 +8,8 @@
 import UIKit
 import SnapKit
 
-class AlertView: UIView {
-    @IBOutlet weak var alertTitle: UILabel!
+class ToastView: UIView {
+    @IBOutlet weak var toastTitle: UILabel!
     
     override init(frame: CGRect) {
       super.init(frame: frame)
@@ -22,7 +22,7 @@ class AlertView: UIView {
     }
     
     private func setContentView() {
-        guard let view = loadXibView(with: Identifiers.alertView) else { return }
+        guard let view = loadXibView(with: Identifiers.toastView) else { return }
         view.backgroundColor = .white
         view.layer.borderColor = UIColor.primary.cgColor
         view.layer.borderWidth = 1.0
@@ -37,9 +37,9 @@ class AlertView: UIView {
     }
     
     private func configureAlertView() {
-        alertTitle.textColor = .primary
-        alertTitle.font = UIFont.SpoqaHanSansNeoRegular(size: 13)
-        alertTitle.textAlignment = .center
+        toastTitle.textColor = .primary
+        toastTitle.font = UIFont.SpoqaHanSansNeoRegular(size: 13)
+        toastTitle.textAlignment = .center
     }
     
     func showToastView() {
@@ -50,7 +50,7 @@ class AlertView: UIView {
         }
     }
     
-    func setAlertTitle(alertType: ToastType) {
-        alertTitle.text = alertType.message
+    func setToastTitle(toastType: ToastType) {
+        toastTitle.text = toastType.message
     }
 }

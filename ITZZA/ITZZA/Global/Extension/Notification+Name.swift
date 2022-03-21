@@ -19,4 +19,5 @@ extension Notification.Name {
     static let whenEditCommentMenuTapped = Notification.Name("whenEditCommentMenuTapped")
     static let whenPostComment = Notification.Name("whenPostComment")
     static let whenEditComment = Notification.Name("whenEditComment")
+    static let whenReportWeekSelected = Notification.Name("whenReportWeekSelected")
 }
