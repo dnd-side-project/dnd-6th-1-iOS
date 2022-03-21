@@ -122,7 +122,7 @@ extension FindPasswordVC {
     }
     
     func showToastView() {
-        toastView.setAlertTitle(alertType: .findPassword)
+        toastView.setToastTitle(toastType: .findPassword)
         toastView.showToastView()
     }
 }
