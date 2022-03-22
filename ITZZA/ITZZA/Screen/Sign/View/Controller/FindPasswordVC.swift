@@ -21,18 +21,13 @@ class FindPasswordVC: UIViewController {
     let validation = Validation()
     let toastView = ToastView()
     var disposeBag = DisposeBag()
+    let findPasswordVM = FindPasswordVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllerConfiguration()
         bindUI()
         bindVM()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setToastViewPosition()
-        showToastView()
     }
     
     private func viewControllerConfiguration() {
@@ -71,6 +66,7 @@ extension FindPasswordVC {
             .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.changeIndicatorUI(true)
+                self.findPasswordVM.sendEmail(self.emailTextField.text!)
             })
             .disposed(by: disposeBag)
     }
@@ -82,6 +78,24 @@ extension FindPasswordVC {
             .drive(onNext: { [weak self] flag in
                 guard let self = self else { return }
                 self.changeButtonUI(flag)
+            })
+            .disposed(by: disposeBag)
+        
+        findPasswordVM.sendEmailSuccess
+            .asDriver(onErrorJustReturn: ())
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.changeIndicatorUI(false)
+                self.configureToastView()
+            })
+            .disposed(by: disposeBag)
+        
+        findPasswordVM.sendEmailFail
+            .asDriver(onErrorJustReturn: ())
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.changeIndicatorUI(false)
+                self.showConfirmAlert(with: .networkError, alertMessage: "서버 오류 발생", style: .default)
             })
             .disposed(by: disposeBag)
     }
@@ -108,6 +122,11 @@ extension FindPasswordVC {
         } else {
             self.indicatorView.stopAnimating()
         }
+    }
+    
+    func configureToastView() {
+        setToastViewPosition()
+        showToastView()
     }
     
     func setToastViewPosition() {
