@@ -19,7 +19,7 @@ class FindPasswordVC: UIViewController {
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     let validation = Validation()
-    let toastView = AlertView()
+    let toastView = ToastView()
     var disposeBag = DisposeBag()
     let findPasswordVM = FindPasswordVM()
     
@@ -141,7 +141,7 @@ extension FindPasswordVC {
     }
     
     func showToastView() {
-        toastView.setAlertTitle(alertType: .findPassword)
+        toastView.setToastTitle(toastType: .findPassword)
         toastView.showToastView()
     }
 }

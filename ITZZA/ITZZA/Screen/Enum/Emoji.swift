@@ -9,8 +9,8 @@ import UIKit
 
 enum Emoji: CaseIterable{
     case angry
-    case confuse
     case comfy
+    case confuse
     case sad
     case lonely
 }
@@ -20,10 +20,10 @@ extension Emoji {
         switch self {
         case .angry:
             return .seconAngry
-        case .confuse:
-            return .seconConfused
         case .comfy:
             return .seconRelaxed
+        case .confuse:
+            return .seconConfused
         case .sad:
             return .seconSorrow
         case .lonely:
@@ -35,10 +35,10 @@ extension Emoji {
         switch self {
         case .angry:
             return "화남이"
-        case .confuse:
-            return "혼란이"
         case .comfy:
             return "편안이"
+        case .confuse:
+            return "혼란이"
         case .sad:
             return "슬픔이"
         case .lonely:
@@ -50,14 +50,29 @@ extension Emoji {
         switch self {
         case .angry:
             return UIImage(named: "Sticker_angry")!
-        case .confuse:
-            return UIImage(named: "Sticker_confusion")!
         case .comfy:
             return UIImage(named: "Sticker_comfy")!
+        case .confuse:
+            return UIImage(named: "Sticker_confusion")!
         case .sad:
             return UIImage(named: "Sticker_sad")!
         case .lonely:
             return UIImage(named: "Sticker_lonely")!
+        }
+    }
+    
+    var emotion: String {
+        switch self {
+        case .angry:
+            return "화남"
+        case .comfy:
+            return "편안함"
+        case .confuse:
+            return "혼란함"
+        case .sad:
+            return "슬픔"
+        case .lonely:
+            return "외로움"
         }
     }
 }

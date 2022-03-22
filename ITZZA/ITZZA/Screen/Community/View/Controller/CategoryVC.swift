@@ -57,16 +57,16 @@ extension CategoryVC {
     
     // MARK: - Notification
     func setNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(showToast), name: .popupAlertView, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showCategoryToast), name: .popupAlertView, object: nil)
     }
     
-    @objc func showToast(_ notification: Notification) {
-        let toastView = AlertView()
+    @objc func showCategoryToast(_ notification: Notification) {
+        let toastView = ToastView()
         switch notification.object as! ToastType {
         case .postDeleted:
-            toastView.setAlertTitle(alertType: .postDeleted)
+            toastView.setToastTitle(toastType: .postDeleted)
         case .postPost:
-            toastView.setAlertTitle(alertType: .postPost)
+            toastView.setToastTitle(toastType: .postPost)
         default:
             break
         }

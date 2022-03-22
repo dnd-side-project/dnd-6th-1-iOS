@@ -33,7 +33,7 @@ class SignInVC: UIViewController {
     var disposeBag = DisposeBag()
     var signInViewModel = SignInVM()
     var validation = Validation()
-    let toastView = AlertView()
+    let toastView = ToastView()
 
     override func viewDidLoad() {
         bindUI()
@@ -388,7 +388,7 @@ extension SignInVC {
     }
     
     func showToastView(alertType: ToastType) {
-        toastView.setAlertTitle(alertType: alertType)
+        toastView.setToastTitle(toastType: alertType)
         toastView.showToastView()
     }
 }

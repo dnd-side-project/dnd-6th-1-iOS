@@ -172,10 +172,10 @@ extension PostDetailVC {
     @objc func postEditCompleted(_ notification: Notification) {
         switch notification.object as! ToastType {
         case .commentDeleted:
-            showToast(alertType: .commentDeleted)
+            showToast(with: .commentDeleted)
         default:
             //TODO: - post, patch 나누면 case 분류
-            showToast(alertType: ToastType.postEdit)
+            showToast(with: .postEdit)
         }
     }
     
@@ -257,7 +257,7 @@ extension PostDetailVC {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success:
-                    self.showToast(alertType: ToastType.commentPost)
+                    self.showToast(with: .commentPost)
                 case .failure:
                     self.networkErrorAlert()
                 }
@@ -277,7 +277,7 @@ extension PostDetailVC {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success:
-                    self.showToast(alertType: ToastType.commentEdit)
+                    self.showToast(with: .commentEdit)
                 case .failure:
                     self.networkErrorAlert()
                 }
@@ -313,19 +313,6 @@ extension PostDetailVC {
     
     func showEmptyAlert() {
         showConfirmAlert(with: AlertType.deletedPost, alertMessage: "", style: .destructive)
-    }
-    
-    func showToast(alertType: ToastType) {
-        let toastView = AlertView()
-        toastView.setAlertTitle(alertType: alertType)
-        self.view.addSubview(toastView)
-        toastView.snp.makeConstraints {
-            $0.bottom.equalTo(chatInputView.snp.top).offset(-20)
-            $0.leading.equalToSuperview().offset(52)
-            $0.trailing.equalToSuperview().offset(-52)
-            $0.height.equalTo(44)
-        }
-        toastView.showToastView()
     }
 }
 

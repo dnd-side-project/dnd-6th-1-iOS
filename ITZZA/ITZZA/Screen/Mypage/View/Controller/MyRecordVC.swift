@@ -80,7 +80,6 @@ extension MyRecordVC {
                 case .failure:
                     owner.configureTabView()
                 case .success(let decodedPost):
-                    dump(decodedPost)
                     owner.keywordContentView.mypagePost = decodedPost
                     owner.configureTabView()
                 }
