@@ -76,10 +76,10 @@ extension WriteDiaryVM {
             guard let diaryId = diaryId else {
                 return
             }
-            baseURL = "https://www.itzza.shop/diaries/\(diaryId)"
+            baseURL = "http://3.36.71.216:3000/diaries/\(diaryId)"
             method = .patch
         } else {
-            baseURL = "https://www.itzza.shop/diaries"
+            baseURL = "http://3.36.71.216:3000/diaries"
             method = .post
         }
         

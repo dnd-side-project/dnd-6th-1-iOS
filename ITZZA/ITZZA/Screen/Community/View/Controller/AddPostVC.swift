@@ -208,7 +208,7 @@ extension AddPostVC {
     
     // MARK: - Network
     private func postPost(boardId: String, method: HTTPMethod) {
-        let postURL = "https://www.itzza.shop/boards/\(boardId)"
+        let postURL = "http://3.36.71.216:3000/boards/\(boardId)"
         let url = URL(string: postURL)!
         let postInformation = PostModel(categoryId: categoryIndex,
                                         postTitle: postWriteView.title.text,

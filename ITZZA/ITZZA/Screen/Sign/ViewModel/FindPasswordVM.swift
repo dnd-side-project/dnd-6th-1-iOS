@@ -16,7 +16,7 @@ class FindPasswordVM {
     let sendEmailFail = PublishSubject<Void>()
     
     func sendEmail(_ email: String) {
-        let baseURL = "https://www.itzza.shop/auth/signin/\(email)"
+        let baseURL = "http://3.36.71.216:3000/auth/signin/\(email)"
         let url = URL(string: baseURL)!
         let resource = urlResource<FindPasswordModel>(url: url)
         

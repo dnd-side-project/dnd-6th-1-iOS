@@ -19,7 +19,7 @@ class WithdrawalVM {
     func tryWithdrawal() {
         guard let userId: String = KeychainWrapper.standard[.userId] else { return }
         
-        let baseURL = "https://www.itzza.shop/users/\(userId)"
+        let baseURL = "http://3.36.71.216:3000/users/\(userId)"
         let url = URL(string: baseURL)!
         let resource = urlResource<SignOutModel>(url: url)
         

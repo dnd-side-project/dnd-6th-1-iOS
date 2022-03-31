@@ -51,7 +51,7 @@ extension UserPostListVC {
     
     // MARK: - Network
     private func getPost() {
-        let urlString = "https://www.itzza.shop/users/\(userId!)/boards"
+        let urlString = "http://3.36.71.216:3000/users/\(userId!)/boards"
         let encodedStr = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         guard let url = URL(string: encodedStr) else { return }
         

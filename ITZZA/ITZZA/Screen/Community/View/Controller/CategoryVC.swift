@@ -82,7 +82,7 @@ extension CategoryVC {
     
     // MARK: - Network
     private func getPostList() {
-        let baseURL = "https://www.itzza.shop/boards"
+        let baseURL = "http://3.36.71.216:3000/boards"
         guard let type = communityType else { return }
         guard let url = URL(string: baseURL + type.apiQuery) else { return }
         let resource = urlResource<[PostModel]>(url: url)

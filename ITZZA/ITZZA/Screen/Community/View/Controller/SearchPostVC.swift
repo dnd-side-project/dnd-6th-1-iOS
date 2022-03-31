@@ -114,7 +114,7 @@ extension SearchPostVC {
     
     // MARK: - Network
     private func getKeywordHistory() {
-        let baseURL = "https://www.itzza.shop/users/"
+        let baseURL = "http://3.36.71.216:3000/users/"
         guard let userId: String = KeychainWrapper.standard[.userId] else { return }
         guard let url = URL(string: baseURL + userId + "/histories") else { return }
         let resource = urlResource<[SearchKeywordModel]>(url: url)
@@ -136,7 +136,7 @@ extension SearchPostVC {
     }
     
     private func deletePost(_ historyId: String?) {
-        let baseURL = "https://www.itzza.shop/users/"
+        let baseURL = "http://3.36.71.216:3000/users/"
         guard let userId: String = KeychainWrapper.standard[.userId] else { return }
         guard let url = URL(string: baseURL + (userId) + "/histories/" + (historyId ?? "")) else { return }
         let resource = urlResource<EmptyModel>(url: url)
@@ -148,7 +148,7 @@ extension SearchPostVC {
     }
     
     private func getSearchedList() {
-        let urlString = "https://www.itzza.shop/boards?keyword=" + self.searchBar.text!
+        let urlString = "http://3.36.71.216:3000/boards?keyword=" + self.searchBar.text!
         let encodedStr = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         guard let url = URL(string: encodedStr) else { return }
         let resource = urlResource<SearchedResultModel>(url: url)
