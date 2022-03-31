@@ -26,7 +26,7 @@ extension MypageVM {
     func getUserInformation() {
         guard let userId: String = KeychainWrapper.standard[.userId] else { return }
         
-        let baseURL = "https://www.itzza.shop/users/\(userId)"
+        let baseURL = "http://3.36.71.216:3000/users/\(userId)"
         let url = URL(string: baseURL)!
         let resource = urlResource<MypageModel>(url: url)
         
@@ -46,7 +46,7 @@ extension MypageVM {
     }
     
     func signOut() {
-        let baseURL = "https://www.itzza.shop/auth/signout"
+        let baseURL = "http://3.36.71.216:3000/auth/signout"
         let url = URL(string: baseURL)!
         let resource = urlResource<SignOutModel>(url: url)
         

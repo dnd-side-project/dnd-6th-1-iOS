@@ -89,7 +89,7 @@ class HomeVM {
 // MARK: - Networking
 extension HomeVM {
     func getDiaryData(_ month: String, _ year: String) {
-        let baseURL = "https://www.itzza.shop/diaries?month=\(month)&year=\(year)"
+        let baseURL = "http://3.36.71.216:3000/diaries?month=\(month)&year=\(year)"
         let url = URL(string: baseURL)!
         let resource = urlResource<[HomeModel]>(url: url)
         

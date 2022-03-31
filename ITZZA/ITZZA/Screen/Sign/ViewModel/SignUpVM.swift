@@ -105,7 +105,7 @@ class SignUpVM {
 // MARK: - Networking
 extension SignUpVM {
     func trySignUp(with email: String, _ password: String, _ nickname: String) {
-        let signUpURL = "https://www.itzza.shop/auth/signup"
+        let signUpURL = "http://3.36.71.216:3000/auth/signup"
         let url = URL(string: signUpURL)!
         let signUpModel = SignUpModel(email: email, password: password, nickname: nickname)
         let signUpParameter = signUpModel.signUpParam
