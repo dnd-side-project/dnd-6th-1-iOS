@@ -39,6 +39,7 @@
 | Client   | ![swift](https://img.shields.io/badge/swift-5.0-F05138?logo=swift) ![rxswift](https://img.shields.io/badge/RxSwift-6.2.0-B7178C?logo=ReactiveX) ![snapkit](https://img.shields.io/badge/SnapKit-5.0.1-yellow) ![alamofire](https://img.shields.io/badge/Alamofire-5.5-orange)|
 | Server   | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?logo=NestJS) ![TypeORM](https://img.shields.io/badge/TypeORM-FF8700) ![TypeScript](https://img.shields.io/badge/TypeScript-v4.4.4-3178C6?logo=TypeScript) ![MySQL](https://img.shields.io/badge/MySQL-v5.7.17-4479A1?logo=MySQL) |
 | Code Management | ![Git](https://img.shields.io/badge/Git-gray?logo=Git) ![github](https://img.shields.io/badge/GitHub-gray?logo=github) |
+
 <br><br>
 
 # 🏛 전체 시스템 구조도
