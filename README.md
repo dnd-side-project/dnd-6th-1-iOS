@@ -38,7 +38,7 @@
 | Infra    | ![EC2](https://img.shields.io/badge/AWS_EC2-232F3E?logo=amazon) ![S3](https://img.shields.io/badge/AWS_S3-232F32?logo=amazon) |
 | Client   | ![swift](https://img.shields.io/badge/swift-5.0-F05138?logo=swift) ![rxswift](https://img.shields.io/badge/RxSwift-6.2.0-B7178C?logo=ReactiveX) ![snapkit](https://img.shields.io/badge/SnapKit-5.0.1-yellow) ![alamofire](https://img.shields.io/badge/Alamofire-5.5-orange)|
 | Server   | ![NestJS](https://img.shields.io/badge/NestJS-E0234E?logo=NestJS) ![TypeORM](https://img.shields.io/badge/TypeORM-FF8700) ![TypeScript](https://img.shields.io/badge/TypeScript-v4.4.4-3178C6?logo=TypeScript) ![MySQL](https://img.shields.io/badge/MySQL-v5.7.17-4479A1?logo=MySQL) |
-| Code Management | ![Git](https://img.shields.io/badge/Git-gray?logo=Git) ![github](https://img.shields.io/badge/GitHub-gray?logo=github) 
+| Code Management | ![Git](https://img.shields.io/badge/Git-gray?logo=Git) ![github](https://img.shields.io/badge/GitHub-gray?logo=github) |
 <br><br>
 
 # 🏛 전체 시스템 구조도
@@ -71,3 +71,6 @@
 
 ## _7. Report_
 ![09_UI-레포트](https://user-images.githubusercontent.com/44153216/161083341-cdb8be7d-abda-471b-97e7-40075777cef6.png)
+
+# 🔗 시연 영상
+### 👉 [시연 영상 시청하러 가기!](https://drive.google.com/file/d/1gZJlCVJiiW2ftsUez5sCtcd46xYWHNrG/view?usp=sharing)
