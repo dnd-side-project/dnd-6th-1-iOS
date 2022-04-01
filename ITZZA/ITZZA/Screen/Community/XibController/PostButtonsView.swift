@@ -106,7 +106,7 @@ extension PostButtonsView {
     
     // MARK: - Network
     func postLikeStatus(_ boardId: Int) {
-        let baseURL = "http://13.125.239.189:3000/boards/"
+        let baseURL = "http://3.36.71.216:3000/boards/"
         guard let url = URL(string: baseURL + "\(boardId)" + "/likes") else { return }
         guard let token: String = KeychainWrapper.standard[.myToken] else { return }
         let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]
@@ -125,7 +125,7 @@ extension PostButtonsView {
     }
     
     func postBookmarkStatus(_ boardId: Int) {
-        let baseURL = "http://13.125.239.189:3000/boards/"
+        let baseURL = "http://3.36.71.216:3000/boards/"
         guard let url = URL(string: baseURL + "\(boardId)" + "/bookmarks") else { return }
         guard let token: String = KeychainWrapper.standard[.myToken] else { return }
         let header: HTTPHeaders = ["Authorization": "Bearer \(token)"]

@@ -30,7 +30,8 @@ class SignInVM {
     
     func tapSignInButton(_ email: String, _ password: String) {
         
-        let loginURL = "https://www.itzza.shop/auth/signin"
+        // let loginURL = "https://www.itzza.shop/auth/signin"
+        let loginURL = "http://3.36.71.216:3000/auth/signin"
         let url = URL(string: loginURL)!
         let signInformation = SignInModel(email: email, password: password)
         let signInParameter = signInformation.loginParam

@@ -257,7 +257,7 @@ extension ReportVC {
     
     // MARK: - Network
     func getReportPeriod() {
-        let baseURL = "https://www.itzza.shop/users/"
+        let baseURL = "http://3.36.71.216:3000/users/"
         guard let userId: String = KeychainWrapper.standard[.userId] else { return }
         guard let url = URL(string: baseURL + "\(userId)/reports") else { return }
         let resource = urlResource<[ReportPeriodModel]>(url: url)
@@ -282,7 +282,7 @@ extension ReportVC {
     }
     
     func getReport(year: Int, week: Int) {
-        let baseURL = "https://www.itzza.shop/users/"
+        let baseURL = "http://3.36.71.216:3000/users/"
         guard let userId: String = KeychainWrapper.standard[.userId] else { return }
         guard let url = URL(string: baseURL + "\(userId)/reports?year=\(year)&week=\(week)") else { return }
         let resource = urlResource<ReportModel>(url: url)
@@ -292,6 +292,7 @@ extension ReportVC {
             .subscribe(onNext: { owner, result in
                 switch result {
                 case .success(let reportList):
+                    dump(reportList)
                     self.report = reportList
                     self.MVPEmotionCount = reportList.diaries?.count
                     DispatchQueue.main.async {

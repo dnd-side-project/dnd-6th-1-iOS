@@ -181,7 +181,7 @@ extension PostDetailVC {
     
     // MARK: - Network
     private func getPost() {
-        let baseURL = "https://www.itzza.shop/boards"
+        let baseURL = "http://3.36.71.216:3000/boards"
         guard let boardId = boardId else { return }
         guard let url = URL(string: baseURL + "/\(boardId)") else { return }
         let resource = urlResource<PostModel>(url: url)
@@ -204,7 +204,7 @@ extension PostDetailVC {
     }
     
     private func deletePostRequest(_ boardId: Int) {
-        let baseURL = "https://www.itzza.shop/boards"
+        let baseURL = "http://3.36.71.216:3000/boards"
         guard let url = URL(string: baseURL + "/\(boardId)") else { return }
         let resource = urlResource<EmptyModel>(url: url)
         
@@ -223,7 +223,7 @@ extension PostDetailVC {
     }
     
     private func deleteCommentRequest(_ boardId: Int, _ commentId: Int, _ commentIndex: IndexPath) {
-        let baseURL = "https://www.itzza.shop/boards"
+        let baseURL = "http://3.36.71.216:3000/boards"
         guard let url = URL(string: baseURL + "/\(boardId)/comments/\(commentId)") else { return }
         let resource = urlResource<EmptyModel>(url: url)
         
@@ -246,7 +246,7 @@ extension PostDetailVC {
     }
     
     private func postCommentRequest(boardId: Int) {
-        let postURL = "http://13.125.239.189:3000/boards/\(boardId)/comments"
+        let postURL = "http://3.36.71.216:3000/boards/\(boardId)/comments"
         let url = URL(string: postURL)!
         let postInformation = CommentModel(commentContent: chatInputView.textInputField.text)
         let postParameter = postInformation.param
@@ -266,7 +266,7 @@ extension PostDetailVC {
     }
     
     private func patchCommentRequest(boardId: Int, commentId: Int) {
-        let postURL = "http://13.125.239.189:3000/boards/\(boardId)/comments/\(commentId)"
+        let postURL = "http://3.36.71.216:3000/boards/\(boardId)/comments/\(commentId)"
         let url = URL(string: postURL)!
         let postInformation = CommentModel(commentContent: chatInputView.textInputField.text)
         let postParameter = postInformation.param

@@ -41,7 +41,7 @@ class NicknameVM {
     func tapCheckDuplicateButton(with nickname: String?) {
         guard let nickname = nickname else { return }
         
-        let baseURL = "https://www.itzza.shop/auth/signup/\(nickname)"
+        let baseURL = "http://3.36.71.216:3000/auth/signup/\(nickname)"
         let encodedURL = baseURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let url = URL(string: encodedURL)!
         let resource = urlResource<NicknameResponse>(url: url)

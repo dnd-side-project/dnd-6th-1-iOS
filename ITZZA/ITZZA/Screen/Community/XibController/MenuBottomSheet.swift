@@ -160,7 +160,7 @@ extension MenuBottomSheet {
         alertController.view.layer.cornerRadius = 4
         
         let ok = UIAlertAction(title: "네", style: .destructive) { action in
-            let baseURL = "https://www.itzza.shop/diaries/\(diaryId ?? 0)"
+            let baseURL = "http://3.36.71.216:3000/diaries/\(diaryId ?? 0)"
             let url = URL(string: baseURL)!
             let resource = urlResource<DeleteDiaryModel>(url: url)
             

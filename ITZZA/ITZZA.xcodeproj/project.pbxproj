@@ -1410,7 +1410,7 @@
 				23B4DEC727C74E1A0051ED87 /* ImagesModel.swift in Sources */,
 				62BE209427A66F60001F150A /* APIError.swift in Sources */,
 				62BE209927A679A2001F150A /* Service.swift in Sources */,
-				23B4DECE27C750B40051ED87 /* AlertView.swift in Sources */,
+				23B4DECE27C750B40051ED87 /* ToastView.swift in Sources */,
 				625C838627E0DF0000784FA5 /* FindPasswordModel.swift in Sources */,
 				23B4DECE27C750B40051ED87 /* ToastView.swift in Sources */,
 				23DC8F9327B8E35400F79EF4 /* CommunityVM.swift in Sources */,
@@ -1591,7 +1591,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = U2Z5Z44P4R;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITZZA/Support/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
@@ -1621,7 +1621,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = U2Z5Z44P4R;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITZZA/Support/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
