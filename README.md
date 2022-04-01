@@ -74,4 +74,4 @@
 ![09_UI-레포트](https://user-images.githubusercontent.com/44153216/161083341-cdb8be7d-abda-471b-97e7-40075777cef6.png)
 
 # 🔗 시연 영상
-### 👉 [시연 영상 시청하러 가기!](https://drive.google.com/file/d/1gZJlCVJiiW2ftsUez5sCtcd46xYWHNrG/view?usp=sharing)
+### 👉 [시연 영상 시청하러 가기!](https://drive.google.com/file/d/1f3IPlFAIGbzXjTKEOHVE1VFkm9MDFsao/view?usp=sharing)
